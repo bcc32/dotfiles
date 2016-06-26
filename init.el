@@ -30,7 +30,7 @@ values."
      markdown
      org
      (shell :variables
-            shell-default-shell 'ansi-term
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      ;; spell-checking
@@ -41,7 +41,6 @@ values."
      ocaml
      ruby
      ibuffer
-     ;; haskell
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
