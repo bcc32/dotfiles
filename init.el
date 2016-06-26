@@ -261,6 +261,7 @@ you should place your code here."
   (spacemacs/toggle-golden-ratio-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
+  (spacemacs/toggle-smooth-scrolling-off)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
