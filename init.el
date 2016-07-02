@@ -24,7 +24,6 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
      emacs-lisp
      git
      markdown
@@ -33,9 +32,6 @@ values."
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
      osx
      common-lisp
      ocaml
@@ -101,13 +97,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(;; spacemacs-dark
-                         ;; spacemacs-light
-                         ;; solarized-light
-                         ;; solarized-dark
-                         ;; leuven
-                         ;; monokai
-                         zenburn
+   dotspacemacs-themes '(zenburn
                          leuven
                          solarized-light
                          solarized-dark)
