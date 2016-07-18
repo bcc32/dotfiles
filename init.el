@@ -33,10 +33,12 @@ values."
             shell-default-height 30
             shell-default-position 'bottom)
      osx
-     common-lisp
      ocaml
+     common-lisp
      ruby
+     python
      ibuffer
+     syntax-checking
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
