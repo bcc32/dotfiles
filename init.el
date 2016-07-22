@@ -257,6 +257,7 @@ you should place your code here."
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-smooth-scrolling-off)
   (setq company-idle-delay 1)
+  (setq ffap-machine-p-known 'reject)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
