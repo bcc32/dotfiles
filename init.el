@@ -258,6 +258,9 @@ you should place your code here."
   (spacemacs/toggle-smooth-scrolling-off)
   (setq company-idle-delay 1)
   (setq ffap-machine-p-known 'reject)
+  (define-key spacemacs-tuareg-mode-map-prefix
+    (kbd "v")
+    'merlin-enclosing-expand)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
