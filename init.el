@@ -251,6 +251,7 @@ you should place your code here."
   (spacemacs/toggle-golden-ratio-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
+  (spacemacs/toggle-mode-line-org-clock-on)
   (setq company-idle-delay 2)
   (setq ffap-machine-p-known 'reject)
   (define-key spacemacs-tuareg-mode-map-prefix
@@ -266,7 +267,10 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(comment-style (quote multi-line))
- '(org-agenda-files (quote ("~/misc.org"))))
+ '(fill-column 80)
+ '(org-agenda-files
+   (quote
+    ("~/Google Drive/MIT/3/14.01/14_01.org" "~/Google Drive/MIT/3/6.034/6_034.org" "~/misc.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
