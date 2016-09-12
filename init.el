@@ -32,13 +32,10 @@ values."
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
-     osx
-     ocaml
      common-lisp
      ruby
      python
      ibuffer
-     rust
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -254,9 +251,6 @@ you should place your code here."
   (spacemacs/toggle-mode-line-org-clock-on)
   (setq company-idle-delay 2)
   (setq ffap-machine-p-known 'reject)
-  (define-key spacemacs-tuareg-mode-map-prefix
-    (kbd "v")
-    'merlin-enclosing-expand)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -270,7 +264,7 @@ you should place your code here."
  '(fill-column 80)
  '(org-agenda-files
    (quote
-    ("~/Google Drive/MIT/3/14.01/14_01.org" "~/Google Drive/MIT/3/6.034/6_034.org" "~/misc.org"))))
+    ("C:/Users/Aaron/Google Drive/MIT/3/14.01/14_01.org" "C:/Users/Aaron/Google Drive/MIT/3/6.034/6_034.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
