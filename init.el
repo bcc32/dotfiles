@@ -23,23 +23,41 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;; Emacs
+     ibuffer
+     osx
+     xkcd
+     ;; Miscellaneous
      auto-completion
-     emacs-lisp
+     spell-checking
+     syntax-checking
+     ;; Programmer tools
      git
-     markdown
-     org
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
-     osx
+     ;; Programming languages
+     ;; Functional
      ocaml
+     ;; Lisps
      common-lisp
-     ruby
-     python
-     ibuffer
+     emacs-lisp
+     scheme
+     ;; System
+     c-c++
+     go
      rust
+     ;; Web/script
      javascript
+     lua
+     python
+     ruby
+     ;; Markup
+     latex
+     markdown
+     org
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
