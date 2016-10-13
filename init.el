@@ -25,11 +25,9 @@ values."
      ;; ----------------------------------------------------------------
      ;; Emacs
      ibuffer
-     osx
      xkcd
      ;; Miscellaneous
      auto-completion
-     spell-checking
      syntax-checking
      ;; Programmer tools
      git
@@ -39,22 +37,18 @@ values."
             shell-default-position 'bottom)
      ;; Programming languages
      ;; Functional
-     ocaml
      ;; Lisps
      common-lisp
      emacs-lisp
      scheme
      ;; System
      c-c++
-     go
-     rust
      ;; Web/script
      javascript
      lua
      python
      ruby
      ;; Markup
-     latex
      markdown
      org
      yaml
