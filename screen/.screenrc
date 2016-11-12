@@ -1,0 +1,3 @@
+startup_message off
+autodetach on
+hardstatus alwayslastline "%w %= %c:%s %H %l"

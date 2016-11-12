@@ -1,0 +1,8 @@
+PKG async
+PKG bignum
+PKG core
+PKG ounit
+PKG ppx_jane
+PKG re2
+FLG -w A-4-33-40-41-42-43-34-44
+FLG -warn-error A

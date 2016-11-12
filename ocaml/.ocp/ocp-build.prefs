@@ -1,0 +1,37 @@
+
+
+(*************************************)
+(*   Never edit options files while  *)
+(*       the program is running      *)
+(*************************************)
+(* SECTION : Header                  *)
+(* These options must be read first  *)
+(*************************************)
+
+
+
+(* Maximal number of jobs started in parallel *)
+(*  (0 = auto-detect) *)
+njobs = 0
+
+(* Verbosity for debugging *)
+(* 0 = almost no output, *)
+(* 1 = shortened output, *)
+(* 2 = commands, etc. *)
+verbosity = 1
+
+(* If true, always scan for new .ocp files *)
+autoscan = true
+
+(* If true, use color if terminal is ok *)
+color = true
+
+(* If true, use content digest change to trigger recompilation *)
+(* If false, use timestamps + inode numbers *)
+digest = false
+
+(* If set, compile in bytecode *)
+bytecode = true
+
+(* If set, compile in native code *)
+native = true
