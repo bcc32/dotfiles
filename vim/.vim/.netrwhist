@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/rouka/temp2/pix/app/views/home'
+let g:netrw_dirhist_2='/Users/rouka/temp'
+let g:netrw_dirhist_3='/Users/rouka'
+let g:netrw_dirhist_4='/Users'
+let g:netrw_dirhist_5='/Users/rouka/internauts_2015/.git'
+let g:netrw_dirhist_6='/Users/rouka/internauts_2015'
+let g:netrw_dirhist_7='/Users/rouka/internauts_2015/.git'
+let g:netrw_dirhist_8='/Users/rouka/Google Drive/ProjectEuler/ocaml/.git'
+let g:netrw_dirhist_9='/Users/rouka/.vim'
