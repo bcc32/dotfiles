@@ -1,0 +1,19 @@
+[user]
+	email = a2z@mit.edu
+	name = Aaron L. Zeng
+[alias]
+	co = checkout
+	ci = commit
+	st = status -s
+	br = branch
+	type = cat-file -t
+	dump = cat-file -p
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	lol = log --graph --oneline --decorate --color --all
+        wow = log --graph --oneline --decorate --all --simplify-by-decoration
+[push]
+	default = simple
+[core]
+	autocrlf = input
+	editor = vim
+	excludesfile = ~/.gitignore
