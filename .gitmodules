@@ -1,0 +1,3 @@
+[submodule "emacs/.spacemacs.d"]
+	path = emacs/.spacemacs.d
+	url = git@github.com:bcc32/spacemacsd.git
