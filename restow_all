@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . -type d -mindepth 1 -maxdepth 1 -not -name .\* | sed -e 's/\/$//' | sed -e 's/\.\///' | xargs stow -R
