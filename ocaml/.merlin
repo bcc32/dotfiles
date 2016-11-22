@@ -1,6 +1,7 @@
 PKG async
 PKG bignum
 PKG core
+PKG core_bench
 PKG ounit
 PKG ppx_jane
 PKG re2
