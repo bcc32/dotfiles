@@ -26,7 +26,7 @@ values."
      ;; Emacs
      ibuffer
      xkcd
-     ;; Miscellaneous
+     ;; Text editing
      auto-completion
      syntax-checking
      ;; Programmer tools
@@ -43,15 +43,14 @@ values."
      scheme
      ;; System
      c-c++
+     go
      ;; Web/script
      javascript
-     lua
      python
      ruby
      ;; Markup
      markdown
      org
-     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -277,6 +276,7 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(comment-style (quote multi-line))
+ '(evil-want-Y-yank-to-eol t)
  '(fill-column 80)
  '(org-agenda-files
    (quote
