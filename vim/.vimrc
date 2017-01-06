@@ -35,7 +35,7 @@ au BufNewFile,BufRead *.rs set filetype= " rust
 "set printoptions+=number:y
 set clipboard=unnamed
 
-filetype plugin on
+filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 if has('gui_running')
@@ -51,4 +51,4 @@ let g:airline_powerline_fonts = 1
 
 "OCaml
 set rtp+=~/.opam/4.04.0/share/merlin/vim
-set rtp+=~/.opam/4.04.0/share/ocp-indent/vim
+set rtp+=~/.vim/ocp-indent-vim

@@ -1,3 +1,6 @@
 [submodule "emacs/.spacemacs.d"]
 	path = emacs/.spacemacs.d
 	url = git@github.com:bcc32/spacemacsd.git
+[submodule "vim/.vim/ocp-indent-vim"]
+	path = vim/.vim/ocp-indent-vim
+	url = https://github.com/let-def/ocp-indent-vim
