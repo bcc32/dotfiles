@@ -48,3 +48,7 @@ if has('gui_running')
 endif
 
 let g:airline_powerline_fonts = 1
+
+"OCaml
+set rtp+=~/.opam/4.04.0/share/merlin/vim
+set rtp+=~/.opam/4.04.0/share/ocp-indent/vim
