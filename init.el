@@ -280,7 +280,7 @@ you should place your code here."
  '(fill-column 80)
  '(org-agenda-files
    (quote
-    ("~/Google Drive/MIT/3/6.178/6_178.org" "~/Google Drive/misc.org"))))
+    ("~/Google Drive/mit/6.005 TA/6_005.org" "~/Google Drive/MIT/3/6.178/6_178.org" "~/Google Drive/misc.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
