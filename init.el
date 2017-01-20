@@ -57,7 +57,10 @@ values."
      ;; Markup
      latex
      markdown
-     org
+     (org
+      :variables
+      org-enable-github-support t
+      org-enable-reveal-js-support t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -290,7 +293,8 @@ you should place your code here."
  '(fill-column 80)
  '(org-agenda-files
    (quote
-    ("~/Google Drive/mit/6.005 TA/6_005.org" "~/Google Drive/MIT/3/6.178/6_178.org" "~/Google Drive/misc.org"))))
+    ("~/Google Drive/mit/6.005 TA/6_005.org" "~/Google Drive/MIT/3/6.178/6_178.org" "~/Google Drive/misc.org")))
+ '(org-export-backends (quote (ascii gfm html icalendar latex md org reveal))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
