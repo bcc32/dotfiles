@@ -11,6 +11,7 @@ set shiftwidth=4
 set smartcase
 set nosmartindent
 set softtabstop=4
+set textwidth=79
 " set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set viminfo=""
 let fortran_free_source=1
