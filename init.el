@@ -50,7 +50,10 @@ values."
      ruby
      ;; Markup
      markdown
-     org
+     (org
+      :variables
+      org-enable-github-support t
+      org-enable-reveal-js-support t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -111,7 +114,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn leuven)
+   dotspacemacs-themes '(zenburn leuven solarized-light solarized-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -279,8 +282,14 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol t)
  '(fill-column 80)
  '(org-agenda-files
-   (quote
-    ("~/Google Drive/mit/6.005 TA/6_005.org" "~/Google Drive/MIT/3/6.178/6_178.org" "~/Google Drive/misc.org"))))
+   '(
+     "~/Google Drive/MIT/3/6.033/6_033.org"
+     "~/Google Drive/MIT/3/21G.596/21G_596.org"
+     "~/Google Drive/MIT/6.005 TA/6_005.org"
+     "~/Google Drive/MIT/3/6.178/6_178.org"
+     "~/Google Drive/misc.org"
+     ))
+ '(org-export-backends (quote (ascii gfm html icalendar latex md org reveal))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
