@@ -292,8 +292,13 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol t)
  '(fill-column 80)
  '(org-agenda-files
-   (quote
-    ("~/Google Drive/MIT/3/6.033/6_033.org" "~/Google Drive/MIT/3/21G.596/21G_596.org" "~/Google Drive/mit/6.005 TA/6_005.org" "~/Google Drive/MIT/3/6.178/6_178.org" "~/Google Drive/misc.org")))
+   '(
+     "~/Google Drive/MIT/3/6.033/6_033.org"
+     "~/Google Drive/MIT/3/21G.596/21G_596.org"
+     "~/Google Drive/MIT/6.005 TA/6_005.org"
+     "~/Google Drive/MIT/3/6.178/6_178.org"
+     "~/Google Drive/misc.org"
+     ))
  '(org-export-backends (quote (ascii gfm html icalendar latex md org reveal))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
