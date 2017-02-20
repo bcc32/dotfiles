@@ -40,7 +40,9 @@ values."
      ;; Lisps
      common-lisp
      emacs-lisp
-     scheme
+     (scheme :variables
+             geiser-active-implementations '(mit chicken)
+             geiser-default-implementation 'mit)
      ;; System
      c-c++
      go
@@ -283,6 +285,8 @@ you should place your code here."
  '(fill-column 80)
  '(org-agenda-files
    '(
+     "~/Google Drive/MIT/3/21M.284/21M_284.org"
+     "~/Google Drive/MIT/3/6.905/6_905.org"
      "~/Google Drive/MIT/3/6.033/6_033.org"
      "~/Google Drive/MIT/3/21G.596/21G_596.org"
      "~/Google Drive/MIT/6.005 TA/6_005.org"
