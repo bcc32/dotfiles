@@ -41,6 +41,7 @@ values."
      ;; Functional
      haskell
      ocaml
+     elm
      ;; Lisps
      common-lisp
      emacs-lisp
