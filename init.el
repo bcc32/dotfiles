@@ -229,7 +229,7 @@ values."
    ;; in all non-asynchronous sources. If set to `source', preserve individual
    ;; source settings. Else, disable fuzzy matching in all sources.
    ;; (default 'always)
-   dotspacemacs-helm-use-fuzzy 'always
+   dotspacemacs-helm-use-fuzzy nil
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
    dotspacemacs-enable-paste-transient-state nil
@@ -341,8 +341,6 @@ you should place your code here."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
-  (setq company-idle-delay 2)
-  (setq ffap-machine-p-known 'reject)
   (define-key spacemacs-tuareg-mode-map-prefix
     (kbd "v")
     'merlin-enclosing-expand)
