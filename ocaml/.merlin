@@ -5,5 +5,6 @@ PKG core_bench
 PKG ounit
 PKG ppx_jane
 PKG re2
+FLG -thread
 FLG -w A-4-33-40-41-42-43-34-44
 FLG -warn-error A
