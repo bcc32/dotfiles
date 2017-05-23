@@ -355,7 +355,6 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(comment-style (quote multi-line))
- '(evil-want-Y-yank-to-eol t)
  '(fill-column 80)
  '(org-agenda-files
    '(
