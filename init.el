@@ -72,6 +72,7 @@ values."
      ruby
      ;; Markup
      latex
+     bibtex
      markdown
      (org
       :variables
