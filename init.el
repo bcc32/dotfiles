@@ -358,6 +358,7 @@ you should place your code here."
  '(fill-column 80)
  '(org-agenda-files
    '(
+     "~/Google Drive/Internships/Jane Street/2017/internship.org"
      "~/Google Drive/misc.org"
      ))
  '(org-export-backends (quote (ascii gfm html icalendar latex md org reveal))))
