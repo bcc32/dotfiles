@@ -38,6 +38,7 @@ values."
      ;; ----------------------------------------------------------------
      ;; Emacs
      ibuffer
+     ivy
      osx
      xkcd
      ;; Text editing
