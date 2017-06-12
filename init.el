@@ -40,6 +40,7 @@ values."
      ibuffer
      ivy
      osx
+     themes-megapack
      xkcd
      ;; Text editing
      auto-completion
@@ -338,15 +339,19 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-fill-column-indicator-on)
   (spacemacs/toggle-golden-ratio-on)
+  (spacemacs/toggle-highlight-long-lines-globally-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+  (spacemacs/toggle-mode-line-point-position-on)
   (define-key spacemacs-tuareg-mode-map-prefix
     (kbd "v")
     'merlin-enclosing-expand)
-  )
+  (setq company-idle-delay 1.0)
+  (setq powerline-default-separator 'arrow))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
