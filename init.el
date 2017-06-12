@@ -330,6 +330,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq custom-file "/dev/null")
   )
 
 (defun dotspacemacs/user-config ()
@@ -350,27 +351,14 @@ you should place your code here."
   (define-key spacemacs-tuareg-mode-map-prefix
     (kbd "v")
     'merlin-enclosing-expand)
+  (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
-  (setq powerline-default-separator 'arrow))
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(comment-style (quote multi-line))
- '(fill-column 80)
- '(org-agenda-files
-   '(
-     "~/Google Drive/Internships/Jane Street/2017/internship.org"
-     "~/Google Drive/misc.org"
-     ))
- '(org-export-backends (quote (ascii gfm html icalendar latex md org reveal))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  (setq fill-column 80)
+  (setq org-agenda-files
+        '(
+          "~/Google Drive/Internships/Jane Street/2017/internship.org"
+          "~/Google Drive/misc.org"
+          ))
+  (setq org-export-backends '(ascii gfm html icalendar latex md org reveal))
+  (setq powerline-default-separator 'arrow)
+  )
