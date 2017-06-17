@@ -156,8 +156,10 @@ values."
    dotspacemacs-themes '(
                          zenburn
                          leuven
-                         solarized-light
-                         solarized-dark
+                         spacemacs-dark
+                         spacemacs-light
+                         tao-yin
+                         tao-yang
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
