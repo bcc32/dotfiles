@@ -60,13 +60,9 @@ values."
      ;; Lisps
      common-lisp
      emacs-lisp
-     (scheme :variables
-             geiser-active-implementations '(mit chicken)
-             geiser-default-implementation 'mit)
      ;; System
      c-c++
      go
-     rust
      ;; Web/script
      html
      javascript
