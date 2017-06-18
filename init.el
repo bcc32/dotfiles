@@ -63,6 +63,7 @@ values."
      ;; System
      c-c++
      go
+     rust
      ;; Web/script
      html
      javascript
