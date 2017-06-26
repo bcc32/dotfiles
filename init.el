@@ -350,7 +350,6 @@ you should place your code here."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
-  (spacemacs/toggle-mode-line-point-position-on)
   (define-key spacemacs-tuareg-mode-map-prefix
     (kbd "v")
     'merlin-enclosing-expand)
