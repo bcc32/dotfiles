@@ -346,7 +346,6 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-fill-column-indicator-on)
-  (spacemacs/toggle-golden-ratio-on)
   (spacemacs/toggle-highlight-long-lines-globally-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
