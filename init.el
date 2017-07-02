@@ -69,14 +69,11 @@ values."
      javascript
      python
      ruby
-     ;; Markup
+     ;; Documents/markup
      latex
      bibtex
      markdown
-     (org
-      :variables
-      org-enable-github-support t
-      org-enable-reveal-js-support t)
+     org
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -365,13 +362,10 @@ you should place your code here."
   (setq org-export-backends
         '(
           ascii
-          gfm
           html
           icalendar
           latex
-          md
           org
-          reveal
           ))
   (setq powerline-default-separator 'arrow)
   )
