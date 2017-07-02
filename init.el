@@ -349,6 +349,7 @@ you should place your code here."
   (spacemacs/toggle-highlight-long-lines-globally-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
+  (spacemacs/toggle-mode-line-minor-modes-off)
   (spacemacs/toggle-mode-line-org-clock-on)
   (define-key spacemacs-tuareg-mode-map-prefix
     (kbd "v")
