@@ -41,17 +41,13 @@ values."
      ivy
      osx
      themes-megapack
-     xkcd
      ;; Text editing
      auto-completion
      spell-checking
      syntax-checking
      ;; Programmer tools
      git
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-default-height 30
-            shell-default-position 'bottom)
+     (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
      ;; Functional
      haskell
