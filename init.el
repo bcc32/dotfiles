@@ -351,7 +351,7 @@ you should place your code here."
   (setq fill-column 80)
   (setq org-agenda-files
         '(
-          "~/Google Drive/Internships/Jane Street/2017/internship.org"
+          "~/Google Drive/Jane Street/Internships/2017/internship.org"
           "~/Google Drive/misc.org"
           ))
   (setq org-export-backends
