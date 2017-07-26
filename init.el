@@ -38,24 +38,19 @@ values."
      ;; ----------------------------------------------------------------
      ;; Emacs
      ibuffer
-     xkcd
+     ivy
+     themes-megapack
      ;; Text editing
      auto-completion
      syntax-checking
      ;; Programmer tools
      git
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-default-height 30
-            shell-default-position 'bottom)
+     (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
      ;; Functional
      ;; Lisps
      common-lisp
      emacs-lisp
-     (scheme :variables
-             geiser-active-implementations '(mit chicken)
-             geiser-default-implementation 'mit)
      ;; System
      c-c++
      go
@@ -63,12 +58,11 @@ values."
      javascript
      python
      ruby
-     ;; Markup
+     ;; Documents/markup
+     latex
+     bibtex
      markdown
-     (org
-      :variables
-      org-enable-github-support t
-      org-enable-reveal-js-support t)
+     org
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -146,7 +140,14 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn leuven solarized-light solarized-dark)
+   dotspacemacs-themes '(
+                         zenburn
+                         leuven
+                         spacemacs-dark
+                         spacemacs-light
+                         tao-yin
+                         tao-yang
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -221,7 +222,7 @@ values."
    ;; in all non-asynchronous sources. If set to `source', preserve individual
    ;; source settings. Else, disable fuzzy matching in all sources.
    ;; (default 'always)
-   dotspacemacs-helm-use-fuzzy nil
+   dotspacemacs-helm-use-fuzzy 'always
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
    dotspacemacs-enable-paste-transient-state nil
@@ -319,6 +320,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq custom-file "/dev/null")
   )
 
 (defun dotspacemacs/user-config ()
@@ -328,37 +330,26 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-fill-column-indicator-on)
-  (spacemacs/toggle-golden-ratio-on)
+  (spacemacs/toggle-highlight-long-lines-globally-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+  (setq comment-style 'multi-line)
+  (setq company-idle-delay 1.0)
+  (setq fill-column 80)
+  (setq org-agenda-files
+        '(
+          "~/Google Drive/misc.org"
+          ))
+  (setq org-export-backends
+        '(
+          ascii
+          html
+          icalendar
+          latex
+          org
+          ))
+  (setq powerline-default-separator 'arrow)
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(comment-style (quote multi-line))
- '(evil-want-Y-yank-to-eol t)
- '(fill-column 80)
- '(org-agenda-files
-   '(
-     "~/Google Drive/MIT/3/6.033/6_033.org"
-     "~/Google Drive/MIT/3/6.905/6_905.org"
-     "~/Google Drive/MIT/3/21G.596/21G_596.org"
-     "~/Google Drive/MIT/3/21M.284/21M_284.org"
-     "~/Google Drive/MIT/6.005 TA/6_005.org"
-     "~/Google Drive/misc.org"
-     ))
- '(org-export-backends (quote (ascii gfm html icalendar latex md org reveal))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
