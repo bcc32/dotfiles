@@ -64,6 +64,7 @@ values."
      javascript
      python
      ruby
+     sql
      ;; Documents/markup
      latex
      bibtex
