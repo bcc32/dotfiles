@@ -348,6 +348,7 @@ you should place your code here."
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
   (setq fill-column 80)
+  (setq js-indent-level 2)
   (setq org-agenda-files
         '(
           "~/Google Drive/misc.org"
