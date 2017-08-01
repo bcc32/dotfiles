@@ -353,6 +353,7 @@ you should place your code here."
   (setq org-agenda-files
         '(
           "~/Google Drive/misc.org"
+          "~/Google Drive/Personal/Germany Trip/germany-trip.org"
           ))
   (setq org-export-backends
         '(
