@@ -37,6 +37,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; Emacs
+     (finance :variables ledger-default-date-format ledger-iso-date-format)
      ibuffer
      ivy
      osx
