@@ -37,7 +37,9 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; Emacs
-     (finance :variables ledger-default-date-format ledger-iso-date-format)
+     ;; FIXME would like to use ledger-iso-date-format here but it's not
+     ;; available until ledger-mode is loaded?
+     (finance :variables ledger-default-date-format "%Y-%m-%d")
      ibuffer
      ivy
      osx
