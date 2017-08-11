@@ -57,7 +57,7 @@ values."
      common-lisp
      emacs-lisp
      ;; System
-     c-c++
+     (c-c++ :variables flycheck-clang-language-standard "c++14")
      go
      rust
      ;; Web/script
