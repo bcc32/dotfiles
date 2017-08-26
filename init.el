@@ -69,8 +69,9 @@ values."
      ruby
      sql
      ;; Documents/markup
-     latex
      bibtex
+     csv
+     latex
      markdown
      org
      )
