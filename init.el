@@ -60,7 +60,9 @@ values."
      emacs-lisp
      ;; System
      c-c++
-     (go :variables go-tab-width 4)
+     (go :variables
+         gofmt-command "goimports"
+         go-tab-width 4)
      rust
      ;; Web/script
      html
