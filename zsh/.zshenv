@@ -1,7 +1,7 @@
 export EDITOR=vi
 export GOPATH=~/go
 export GPG_TTY=$(tty)
-export PATH=~/bin:/usr/games/bin:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
 LEDGER_PATH="~/Google Drive/Finances/Journal"
 export LEDGER_FILE=$LEDGER_PATH/journal.ldg
