@@ -156,8 +156,6 @@ values."
    dotspacemacs-themes '(
                          zenburn
                          leuven
-                         spacemacs-dark
-                         spacemacs-light
                          tao-yin
                          tao-yang
                          )
