@@ -356,6 +356,8 @@ you should place your code here."
   (setq js-indent-level 2)
   (setq org-agenda-files
         '(
+          "~/Google Drive/MIT/4/6.814/6_814.org"
+          "~/Google Drive/MIT/4/6.820/6_820.org"
           "~/Google Drive/misc.org"
           ))
   (setq org-export-backends
