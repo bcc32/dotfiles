@@ -37,6 +37,9 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; Emacs
+     ;; FIXME would like to use ledger-iso-date-format here but it's not
+     ;; available until ledger-mode is loaded?
+     (finance :variables ledger-default-date-format "%Y-%m-%d")
      ibuffer
      ivy
      themes-megapack
@@ -53,14 +56,18 @@ values."
      emacs-lisp
      ;; System
      c-c++
-     go
+     (go :variables
+         gofmt-command "goimports"
+         go-tab-width 4)
      ;; Web/script
      javascript
      python
      ruby
+     sql
      ;; Documents/markup
-     latex
      bibtex
+     csv
+     latex
      markdown
      org
      )
@@ -143,8 +150,6 @@ values."
    dotspacemacs-themes '(
                          zenburn
                          leuven
-                         spacemacs-dark
-                         spacemacs-light
                          tao-yin
                          tao-yang
                          )
@@ -320,7 +325,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq custom-file "/dev/null")
+  (setq custom-file "~/.spacemacs.d/custom.el")
   )
 
 (defun dotspacemacs/user-config ()
@@ -339,8 +344,12 @@ you should place your code here."
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
   (setq fill-column 80)
+  (setq js-indent-level 2)
   (setq org-agenda-files
         '(
+          "~/Google Drive/MIT/4/6.814/6_814.org"
+          "~/Google Drive/MIT/4/6.820/6_820.org"
+          "~/Google Drive/MIT/4/6.UAT/6_UAT.org"
           "~/Google Drive/misc.org"
           ))
   (setq org-export-backends
