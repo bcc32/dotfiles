@@ -1,3 +1,3 @@
 # dotfiles
 
-Clone into `~` and run `./restow_all`.
+Clone as `~/dotfiles` and run `./restow_all`.
