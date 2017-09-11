@@ -67,6 +67,7 @@ values."
      ;; Web/script
      html
      javascript
+     nginx
      python
      ruby
      sql
