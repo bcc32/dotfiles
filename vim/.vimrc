@@ -12,7 +12,7 @@ set smartcase
 set nosmartindent
 set softtabstop=4
 set textwidth=79
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set viminfo=""
 syntax on
 
@@ -34,3 +34,21 @@ filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 set gfn=Anonymous\ Pro:h13
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+
+set background=dark
+colors solarized
+let g:airline_theme='solarized'
