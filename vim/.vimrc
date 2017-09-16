@@ -49,6 +49,8 @@ call plug#end()
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 
-set background=dark
-colors solarized
-let g:airline_theme='solarized'
+if has('gui_running')
+    set background=dark
+    colors solarized
+    let g:airline_theme='solarized'
+endif
