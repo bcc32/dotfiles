@@ -42,4 +42,4 @@ alias ll='ls -alF'
 alias ls='ls -G'
 alias e='open -a /Applications/Emacs.app'
 screen -ls
-# eval `opam config env`
+eval `opam config env`
