@@ -2,6 +2,7 @@ export EDITOR=vi
 export GOPATH=~/go
 export GPG_TTY=$(tty)
 export PATH=~/bin:/usr/local/bin:$GOPATH/bin:$PATH
+export COPYFILE_DISABLE=1 # prevent tar from adding ._* files
 
 LEDGER_PATH="~/Google Drive/Finances/Journal"
 export LEDGER_FILE=$LEDGER_PATH/journal.ldg
