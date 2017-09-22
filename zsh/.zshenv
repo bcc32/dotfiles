@@ -9,8 +9,10 @@ export LEDGER_FILE=$LEDGER_PATH/journal.ldg
 export LEDGER_PRICE_DB=$LEDGER_PATH/pricedb.ldg
 export LEDGER_EXPLICIT=1
 export LEDGER_PEDANTIC=1
+export LEDGER_DATE_FORMAT=%Y-%m-%d
 
 export YT_API_KEY='AIzaSyAPGisBETz4EIj9Byxl70QVQQHKwIF-X3A'
+export PATH=/usr/local/Cellar/perl/5.26.0/bin:$PATH
 
 # OPAM configuration
 . /Users/rouka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
