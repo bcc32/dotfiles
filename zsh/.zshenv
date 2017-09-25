@@ -15,5 +15,5 @@ export YT_API_KEY='AIzaSyAPGisBETz4EIj9Byxl70QVQQHKwIF-X3A'
 export PATH=/usr/local/Cellar/perl/5.26.0/bin:$PATH
 
 # OPAM configuration
-. /Users/rouka/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 eval `opam config env`
