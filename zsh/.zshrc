@@ -42,5 +42,3 @@ alias ll='ls -alF'
 alias ls='ls -G'
 alias e='open -a /Applications/Emacs.app'
 alias db='danbooru-tool'
-screen -ls
-tmux ls
