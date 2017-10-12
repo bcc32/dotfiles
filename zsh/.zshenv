@@ -12,7 +12,6 @@ export LEDGER_PEDANTIC=1
 export LEDGER_DATE_FORMAT=%Y-%m-%d
 
 export YT_API_KEY='AIzaSyAPGisBETz4EIj9Byxl70QVQQHKwIF-X3A'
-export PATH=/usr/local/Cellar/perl/5.26.0/bin:$PATH
 
 # OPAM configuration
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
