@@ -36,8 +36,12 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 ## CUSTOM
-alias l='ls -CF'
+alias l='ls -F'
 alias la='ls -A'
 alias ll='ls -alF'
+case "$(uname -s)" in
+    Darwin*) alias ls='ls -G'           ;;
+    *)       alias ls='ls --color=auto' ;;
+esac
 alias e='open -a /Applications/Emacs.app'
 alias db='danbooru-tool'
