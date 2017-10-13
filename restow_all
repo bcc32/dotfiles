@@ -10,4 +10,4 @@ while (readdir $dh) {
     push @dirs, $_ if -d && !/^\./;
 }
 
-system { "/usr/bin/stow" } ("stow", "-Rv", @dirs);
+system { "/usr/bin/env" } ("env", "stow", "-Rv", @dirs);
