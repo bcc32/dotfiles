@@ -1,3 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env perl
+use 5.016;
+use warnings;
+use autodie;
 
-find . -mindepth 1 -maxdepth 1 -type d -not -name .\* | sed -e 's/\/$//' | sed -e 's/\.\///' | xargs stow -Rv
+my @dirs;
+
+opendir my $dh, '.';
+while (readdir $dh) {
+    push @dirs, $_ if -d && !/^\./;
+}
+
+system { "/usr/bin/stow" } ("stow", "-Rv", @dirs);
