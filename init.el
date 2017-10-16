@@ -77,6 +77,7 @@ values."
      ;; Documents/markup
      bibtex
      csv
+     graphviz
      latex
      markdown
      org
