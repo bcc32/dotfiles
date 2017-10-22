@@ -4,3 +4,6 @@
 [submodule "vim/.vim/ocp-indent-vim"]
 	path = vim/.vim/ocp-indent-vim
 	url = https://github.com/let-def/ocp-indent-vim
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
