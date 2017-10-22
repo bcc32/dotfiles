@@ -26,6 +26,7 @@ au FileType ocaml :setlocal sts=2 sw=2
 au FileType ruby :setlocal sts=2 sw=2
 
 autocmd BufWritePre * :%s/\s\+$//e
+set cursorline
 set number
 set relativenumber
 set clipboard=unnamed
