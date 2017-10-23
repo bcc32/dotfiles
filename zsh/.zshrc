@@ -61,7 +61,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(colored-man-pages common-aliases emacs git tmux)
 case $(uname) in
     Darwin)
-        plugins = ($plugins[@] battery brew osx)
+        plugins=($plugins[@] battery brew osx)
         ;;
 esac
 
