@@ -58,7 +58,7 @@ ZSH_CUSTOM=~/.zcustom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages common-aliases emacs git tmux)
+plugins=(colored-man-pages common-aliases emacs git tmux z)
 case $(uname) in
     Darwin)
         plugins=($plugins[@] battery brew osx)
