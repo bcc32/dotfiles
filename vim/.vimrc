@@ -47,6 +47,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+colors solarized
+
 " CtrlP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
@@ -55,6 +57,5 @@ let g:airline#extensions#tabline#enabled = 1
 
 if has('gui_running')
     set background=dark
-    colors solarized
     let g:airline_theme='solarized'
 endif
