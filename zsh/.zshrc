@@ -70,7 +70,7 @@ if have git; then
 fi
 case $(uname) in
     Darwin)
-        plugins+=(battery brew osx)
+        plugins+=(brew osx)
         ;;
 esac
 
