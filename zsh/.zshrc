@@ -107,3 +107,4 @@ if have vim; then
 fi
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 set -o noclobber
+bindkey "^I" expand-or-complete-with-dots
