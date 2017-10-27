@@ -102,5 +102,8 @@ source $ZSH/oh-my-zsh.sh
 alias e='open -a /Applications/Emacs.app'
 alias db='danbooru-tool'
 alias mplayer='mpv'
+if have vim; then
+    alias vi='vim'
+fi
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 set -o noclobber
