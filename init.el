@@ -82,7 +82,9 @@ values."
      graphviz
      latex
      markdown
-     org
+     (org :variables
+          org-html-htmlize-output-type 'css
+          org-html-htmlize-font-prefix "org-")
      yaml
      )
    ;; List of additional packages that will be installed without being
