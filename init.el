@@ -43,7 +43,9 @@ values."
      ibuffer
      ivy
      osx
-     themes-megapack
+     (themes-megapack :variables
+                      solarized-distinct-doc-face t
+                      solarized-use-more-italic t)
      ;; Text editing
      auto-completion
      spell-checking
