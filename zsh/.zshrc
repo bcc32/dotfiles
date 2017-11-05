@@ -62,11 +62,6 @@ fi
 if have git; then
     plugins+=(git)
 fi
-case $(uname) in
-    Darwin)
-        plugins+=(brew osx)
-        ;;
-esac
 
 source $ZSH/oh-my-zsh.sh
 
