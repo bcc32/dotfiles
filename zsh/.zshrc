@@ -52,7 +52,7 @@ ZSH_CUSTOM=~/.zcustom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages common-aliases z)
+plugins=(colored-man-pages common-aliases dotenv z)
 if have emacs; then
     plugins+=(emacs)
 fi
@@ -108,3 +108,6 @@ fi
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 set -o noclobber
 bindkey "^I" expand-or-complete-with-dots
+
+# dotenv only does this when we `cd`
+source_env
