@@ -62,6 +62,9 @@ fi
 if have git; then
     plugins+=(git)
 fi
+if have hg; then
+    plugins+=(mercurial)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
