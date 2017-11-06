@@ -364,6 +364,8 @@ you should place your code here."
   (define-key spacemacs-tuareg-mode-map-prefix
     (kbd "v")
     'merlin-enclosing-expand)
+  ;; https://github.com/syl20bnr/spacemacs/issues/480
+  (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
   (setq fill-column 80)
