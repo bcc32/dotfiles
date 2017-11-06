@@ -29,3 +29,6 @@ fi
 
 # CPAN configuration
 eval `perl -Mlocal::lib`
+
+# rbenv
+eval "$(rbenv init -)"
