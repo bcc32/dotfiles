@@ -18,4 +18,4 @@
 	url = https://github.com/tmux-plugins/tmux-open
 [submodule ".zprezto"]
 	path = zsh/.zprezto
-	url = https://github.com/sorin-ionescu/prezto.git
+	url = git@github.com:bcc32/prezto.git
