@@ -51,6 +51,7 @@ values."
      spell-checking
      syntax-checking
      ;; Programmer tools
+     ansible
      git
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
