@@ -366,8 +366,6 @@ you should place your code here."
     'merlin-enclosing-expand)
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
-  ;; https://github.com/syl20bnr/spacemacs/issues/3920#issuecomment-319559581
-  (setq exec-path-from-shell-arguments '("-i"))
   (setq fill-column 80)
   (setq ivy-use-virtual-buffers nil)
   (setq js-indent-level 2)
