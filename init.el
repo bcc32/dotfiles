@@ -85,8 +85,17 @@ values."
      latex
      markdown
      (org :variables
+          org-agenda-files '(
+                             "~/blag/TODO.org"
+                             "~/Google Drive/MIT/4/6.814/6_814.org"
+                             "~/Google Drive/MIT/4/6.820/6_820.org"
+                             "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
+                             "~/Google Drive/MIT/4/6.UAT/6_UAT.org"
+                             "~/Google Drive/misc.org"
+                             )
           org-html-htmlize-output-type 'css
-          org-html-htmlize-font-prefix "org-")
+          org-html-htmlize-font-prefix "org-"
+          org-export-backends '(ascii html icalendar latex org))
      yaml
      )
    ;; List of additional packages that will be installed without being
@@ -371,22 +380,6 @@ you should place your code here."
   (setq fill-column 80)
   (setq ivy-use-virtual-buffers nil)
   (setq js-indent-level 2)
-  (setq org-agenda-files
-        '(
-          "~/Google Drive/MIT/4/6.814/6_814.org"
-          "~/Google Drive/MIT/4/6.820/6_820.org"
-          "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
-          "~/Google Drive/MIT/4/6.UAT/6_UAT.org"
-          "~/Google Drive/misc.org"
-          ))
-  (setq org-export-backends
-        '(
-          ascii
-          html
-          icalendar
-          latex
-          org
-          ))
   (setq powerline-default-separator 'arrow)
   (load "~/.spacemacs.d/PG/generic/proof-site")
   )
