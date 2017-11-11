@@ -380,6 +380,8 @@ you should place your code here."
     (setq ivy-use-virtual-buffers nil))
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
+  (setq cperl-close-paren-offset -2)
+  (setq cperl-indent-parens-as-block t)
   (setq fill-column 80)
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
