@@ -58,8 +58,6 @@ values."
      haskell
      ocaml
      ;; Lisps
-     (clojure :variables
-              clojure-enable-fancify-symbols t)
      common-lisp
      emacs-lisp
      ;; System
