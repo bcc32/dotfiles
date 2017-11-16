@@ -51,6 +51,7 @@ values."
      spell-checking
      syntax-checking
      ;; Programmer tools
+     fasd
      git
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
