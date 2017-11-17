@@ -374,6 +374,7 @@ you should place your code here."
     'merlin-enclosing-expand)
   ;; https://github.com/syl20bnr/spacemacs/issues/480
   (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
+  (defalias 'perl-mode 'cperl-mode)
   ;; https://stackoverflow.com/questions/44796844/switch-off-ivy-use-virtual-buffers-in-spacemacs
   (with-eval-after-load 'recentf
     (setq ivy-use-virtual-buffers nil))
