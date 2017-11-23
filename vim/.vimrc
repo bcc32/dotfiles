@@ -18,12 +18,10 @@ syntax on
 
 " Custom options for different file types
 
-au FileType css :setlocal sts=2 sw=2
-au FileType html :setlocal sts=2 sw=2
 au FileType javascript :setlocal sts=2 sw=2
-au FileType make :setlocal noexpandtab
-au FileType ocaml :setlocal sts=2 sw=2
-au FileType ruby :setlocal sts=2 sw=2
+au FileType make       :setlocal noexpandtab
+au FileType ocaml      :setlocal sts=2 sw=2
+au FileType ruby       :setlocal sts=2 sw=2
 
 autocmd BufWritePre * :%s/\s\+$//e
 set cursorline
