@@ -18,6 +18,7 @@ syntax on
 
 " Custom options for different file types
 
+au FileType go         :setlocal ts=4
 au FileType javascript :setlocal sts=2 sw=2
 au FileType make       :setlocal noexpandtab
 au FileType ocaml      :setlocal sts=2 sw=2
