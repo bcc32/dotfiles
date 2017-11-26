@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+id=$1
+md5=`curl https://danbooru.donmai.us/posts/$id.json | jq -r .md5`
+find . -name $md5\*
