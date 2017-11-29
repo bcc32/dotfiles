@@ -3,6 +3,7 @@ set backspace=2
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
 set fileformats=unix,dos
+set hidden  " keep undo history for backgrounded buffers
 set ignorecase
 set nohlsearch
 set ls=2
