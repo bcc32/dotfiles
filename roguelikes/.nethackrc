@@ -1,0 +1,5 @@
+OPTIONS=catname:Nova, dogname:Hachi, horsename:Armageddon, name:player
+OPTIONS=autopickup, pickup_types=$"=/!?+
+OPTIONS=autoquiver, !extmenu, menustyle:full, number_pad:0
+OPTIONS=boulder:0, color, hilite_pet, DECgraphics, lit_corridor
+OPTIONS=msg_window:combination, showexp, standout, suppress_alert:3.3.1, time
