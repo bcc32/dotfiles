@@ -3,5 +3,5 @@
 set -eu
 
 id=$1
-md5=`curl https://danbooru.donmai.us/posts/$id.json | jq -r .md5`
+md5=$(curl --user "$DANBOORU_AUTH" https://danbooru.donmai.us/posts/$id.json | jq -r .md5)
 find . -name $md5\*
