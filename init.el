@@ -86,10 +86,7 @@ values."
      (org :variables
           org-agenda-files '(
                              "~/blag/TODO.org"
-                             "~/Google Drive/MIT/4/6.814/6_814.org"
-                             "~/Google Drive/MIT/4/6.820/6_820.org"
                              "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
-                             "~/Google Drive/MIT/4/6.UAT/6_UAT.org"
                              "~/Google Drive/misc.org"
                              )
           org-html-htmlize-output-type 'css
