@@ -382,4 +382,7 @@ you should place your code here."
   (setq fill-column 80)
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
+  (with-eval-after-load 'ledger-mode
+    (push '("reconcile" "%(binary) -f %(ledger-file) r --effective --sort d -d \"d>[this month]\" -C %(account)")
+          ledger-reports))
   )
