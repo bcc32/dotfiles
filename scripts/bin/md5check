@@ -1,20 +1,18 @@
 #!/usr/bin/env perl
-
+use 5.016;
 use strict;
 use warnings;
 
 use File::Spec qw(splitpath);
 
-open my $find, "find . -type f |";
-open my $md5sum, "| gmd5sum -c --quiet";
-
-local $\ = "\n";
+open my $find, 'find . -type f |';
+open my $md5sum, '| gmd5sum -c --quiet';
 
 while (my $path = <$find>) {
     chomp $path;
     my (undef, undef, $basename) = File::Spec->splitpath($path);
-    if ($basename =~ /^([a-f0-9]{32})\.\w+$/i) {
+    if ($basename =~ /^([[:xdigit:]]{32})\.\w+$/) {
         my $expected = $1;
-        print $md5sum $expected, "  ", $path;
+        say $md5sum $expected, '  ', $path;
     }
 }
