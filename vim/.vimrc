@@ -35,7 +35,7 @@ set clipboard=unnamed
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
-set gfn=Anonymous\ Pro:h13
+set gfn=Iosevka:h13
 
 " vim-plug
 call plug#begin('~/.vim/plugged')
