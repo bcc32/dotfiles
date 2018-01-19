@@ -27,6 +27,7 @@ au FileType perl       :setlocal sts=2 sw=2
 au FileType ruby       :setlocal sts=2 sw=2
 
 autocmd BufWritePre * :%s/\s\+$//e
+set cursorcolumn
 set cursorline
 set number
 set relativenumber
