@@ -35,6 +35,11 @@ set clipboard=unnamed
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
+" for when you forget to start vim using sudo...
+cmap w!! w !sudo tee > /dev/null %
+
+set pastetoggle=<F3>
+
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
