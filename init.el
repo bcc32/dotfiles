@@ -42,11 +42,14 @@ values."
      (finance :variables ledger-default-date-format "%Y-%m-%d")
      ibuffer
      ivy
-     themes-megapack
+     (themes-megapack :variables
+                      solarized-distinct-doc-face t
+                      solarized-use-more-italic t)
      ;; Text editing
      auto-completion
      syntax-checking
      ;; Programmer tools
+     fasd
      git
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
@@ -67,9 +70,19 @@ values."
      ;; Documents/markup
      bibtex
      csv
+     graphviz
      latex
      markdown
-     org
+     (org :variables
+          org-agenda-files '(
+                             "~/blag/TODO.org"
+                             "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
+                             "~/Google Drive/misc.org"
+                             )
+          org-html-htmlize-output-type 'css
+          org-html-htmlize-font-prefix "org-"
+          org-export-backends '(ascii html icalendar latex org))
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -152,14 +165,16 @@ values."
                          leuven
                          tao-yin
                          tao-yang
+                         solarized-light
+                         solarized-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Anonymous Pro"
+   dotspacemacs-default-font '("Iosevka"
                                :size 15
-                               :weight normal
+                               :weight light
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -341,26 +356,20 @@ you should place your code here."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+  ;; https://github.com/syl20bnr/spacemacs/issues/480
+  (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
+  (defalias 'perl-mode 'cperl-mode)
+  ;; https://stackoverflow.com/questions/44796844/switch-off-ivy-use-virtual-buffers-in-spacemacs
+  (with-eval-after-load 'recentf
+    (setq ivy-use-virtual-buffers nil))
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
+  (setq cperl-close-paren-offset -2)
+  (setq cperl-indent-parens-as-block t)
   (setq fill-column 80)
   (setq js-indent-level 2)
-  (setq org-agenda-files
-        '(
-          "~/Google Drive/MIT/4/6.814/6_814.org"
-          "~/Google Drive/MIT/4/6.820/6_820.org"
-          "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
-          "~/Google Drive/MIT/4/6.UAT/6_UAT.org"
-          "~/Google Drive/misc.org"
-          ))
-  (setq org-export-backends
-        '(
-          ascii
-          html
-          icalendar
-          latex
-          org
-          ))
   (setq powerline-default-separator 'arrow)
-  (load "~/.spacemacs.d/PG/generic/proof-site")
+  (with-eval-after-load 'ledger-mode
+    (push '("reconcile" "%(binary) -f %(ledger-file) r --effective --sort d -d \"d>[this month]\" -C %(account)")
+          ledger-reports))
   )
