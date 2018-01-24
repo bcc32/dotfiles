@@ -362,4 +362,5 @@ you should place your code here."
           org
           ))
   (setq powerline-default-separator 'arrow)
+  (load "~/.spacemacs.d/PG/generic/proof-site")
   )
