@@ -23,6 +23,7 @@ set hlsearch
 set laststatus=2                        " always display status line
 set number
 set relativenumber
+set showcmd
 
 "" show whitespace characters
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
