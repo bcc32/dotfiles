@@ -3,7 +3,7 @@ if has('mac')
     set macligatures
 endif
 
-set guifont=Iosevka:h15
+set guifont=Iosevka\ Slab\ Extralight:h15
 
 " Consistent line numbering
 set columns=85
