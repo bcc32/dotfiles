@@ -1,3 +1,7 @@
+augroup vimrc_autocmds
+    autocmd!
+augroup END
+
 """" Editing
 
 """ Basics
@@ -20,7 +24,12 @@ set hlsearch
 set laststatus=2                        " always display status line
 set number
 set relativenumber
-set ruler                               " TODO remove, superseded by airline
+
+" Highlight
+augroup vimrc_autocmds
+    autocmd BufEnter * highlight OverLength cterm=standout gui=standout
+    autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
 
 """" Formatting
 
@@ -32,15 +41,19 @@ set shiftwidth=4                        " 4 space indent
 set softtabstop=-1                      " use value of shiftwidth
 
 """ Custom Indentation Options
-au FileType go         :setl ts=4
-au FileType javascript :setl sw=2
-au FileType make       :setl noet
-au FileType ocaml      :setl sw=2
-au FileType perl       :setl sw=2
-au FileType ruby       :setl sw=2
+augroup vimrc_autocmds
+    autocmd FileType go         :setl ts=4
+    autocmd FileType javascript :setl sw=2
+    autocmd FileType make       :setl noet
+    autocmd FileType ocaml      :setl sw=2
+    autocmd FileType perl       :setl sw=2
+    autocmd FileType ruby       :setl sw=2
+augroup END
 
 """ strip trailing spaces on write
-autocmd BufWritePre * :%s/\s\+$//e
+augroup vimrc_autocmds
+    autocmd BufWritePre * :%s/\s\+$//e
+augroup END
 
 """ Encoding and File Format
 set encoding=utf-8
