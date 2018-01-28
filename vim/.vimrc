@@ -25,6 +25,9 @@ set laststatus=2                        " always display status line
 set number
 set relativenumber
 
+"" show whitespace characters
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
 " Highlight
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength cterm=standout gui=standout
