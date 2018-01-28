@@ -87,6 +87,11 @@ nnoremap <F5> :UndotreeToggle<CR>
 "" goto buffer
 nnoremap gb :ls<CR>:b<Space>
 
+""" Switch between favorite themes
+nnoremap <F6> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=dark<CR>
+nnoremap <F7> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=light<CR>
+nnoremap <F8> :colo zenburn<CR>:AirlineTheme zenburn<CR>:set bg=dark<CR>
+
 """" Last but not least...
 
 if !exists("g:syntax_on")
