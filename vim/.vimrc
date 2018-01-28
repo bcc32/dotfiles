@@ -13,6 +13,7 @@ set ignorecase
 set smartcase
 
 """ User Interface
+set colorcolumn=+1                      " highlight textwidth limit
 set cursorcolumn
 set cursorline
 set hlsearch
