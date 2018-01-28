@@ -57,6 +57,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jnurmine/Zenburn'
 Plug 'mbbill/undotree'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
