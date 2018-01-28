@@ -102,6 +102,9 @@ let g:airline_theme                      = 'solarized'
 
 """" Key Bindings and Commands
 
+"" SPC begins commands
+nnoremap <Space> :
+
 "" for when you forget to start vim using sudo...
 cmap w!! w !sudo tee % >/dev/null
 
