@@ -84,9 +84,17 @@ colors solarized
 set background=dark
 
 """ CtrlP
-"" don't list files in .gitignore
-let g:ctrlp_user_command =
-            \['.git', 'cd %s && git ls-files -co --exclude-standard']
+"" list buffers+MRU+files by default
+let g:ctrlp_cmd = 'CtrlPMixed'
+
+"" don't list VCS ignored files
+let g:ctrlp_user_command = {
+            \ 'types': {
+            \     1: ['.git', 'cd %s && git ls-files -co --exclude-standard'],
+            \     2: ['.hg',  'hg --cwd %s files -I .'],
+            \ },
+            \ 'fallback': 'find %s -type f',
+            \ }
 
 """ Airline
 let g:airline#extensions#tabline#enabled = 1
