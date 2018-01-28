@@ -1,64 +1,91 @@
-set autoindent
-set backspace=2
-set expandtab
-set fileencodings=ucs-bom,utf-8,default,latin1
-set fileformats=unix,dos
-set hidden  " keep undo history for backgrounded buffers
-set ignorecase
-set nohlsearch
-set ls=2
-set ruler
-set shiftwidth=4
-set smartcase
-set nosmartindent
-set softtabstop=4
+"""" Editing
+
+""" Basics
+set backspace=indent,eol,start
+set clipboard=unnamed
+set hidden                              " keep undo history for hidden buffers
+set omnifunc=syntaxcomplete#Complete
 set textwidth=79
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-set viminfo=""
-syntax on
+set viminfo=""                          " TODO re-enable
 
-" Custom options for different file types
+""" Search
+set ignorecase
+set smartcase
 
-au FileType go         :setlocal ts=4
-au FileType javascript :setlocal sts=2 sw=2
-au FileType make       :setlocal noexpandtab
-au FileType ocaml      :setlocal sts=2 sw=2
-au FileType perl       :setlocal sts=2 sw=2
-au FileType ruby       :setlocal sts=2 sw=2
-
-autocmd BufWritePre * :%s/\s\+$//e
+""" User Interface
 set cursorcolumn
 set cursorline
+set nohlsearch                          " TODO remove
+set laststatus=2                        " always display status line
 set number
 set relativenumber
-set clipboard=unnamed
+set ruler                               " TODO remove, superseded by airline
 
+"""" Formatting
+
+""" Indentation Defaults
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
+set autoindent
+set expandtab
+set shiftwidth=4                        " 4 space indent
+set softtabstop=-1                      " use value of shiftwidth
 
-" for when you forget to start vim using sudo...
-cmap w!! w !sudo tee > /dev/null %
+""" Custom Indentation Options
+au FileType go         :setl ts=4
+au FileType javascript :setl sw=2
+au FileType make       :setl noet
+au FileType ocaml      :setl sw=2
+au FileType perl       :setl sw=2
+au FileType ruby       :setl sw=2
 
-set pastetoggle=<F3>
+""" strip trailing spaces on write
+autocmd BufWritePre * :%s/\s\+$//e
 
-" vim-plug
+""" Encoding and File Format
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
+set fileformats=unix,dos
+
+"""" Plugins
+
+""" vim-plug declarations
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jnurmine/Zenburn'
+Plug 'mbbill/undotree'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+""" Solarized color theme
 colors solarized
 set background=dark
 
-" CtrlP
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+""" CtrlP
+"" don't list files in .gitignore
+let g:ctrlp_user_command =
+            \['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-" Airline
+""" Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='solarized'
+let g:airline_theme                      = 'solarized'
+
+"""" Key Bindings and Commands
+
+"" for when you forget to start vim using sudo...
+cmap w!! w !sudo tee > /dev/null %
+
+set pastetoggle=<F3>
+
+nnoremap <F5> :UndotreeToggle<CR>
+
+"" goto buffer
+nnoremap gb :ls<CR>:b<Space>
+
+"""" Last but not least...
+
+syntax on                               " TODO replace with :syntax enable
