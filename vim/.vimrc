@@ -77,7 +77,7 @@ let g:airline_theme                      = 'solarized'
 """" Key Bindings and Commands
 
 "" for when you forget to start vim using sudo...
-cmap w!! w !sudo tee > /dev/null %
+cmap w!! w !sudo tee % >/dev/null
 
 set pastetoggle=<F3>
 
