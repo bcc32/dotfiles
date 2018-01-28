@@ -106,6 +106,7 @@ let g:airline_theme                      = 'solarized'
 cmap w!! w !sudo tee % >/dev/null
 
 set pastetoggle=<F3>
+nnoremap <F4> :nohlsearch<CR>
 
 nnoremap <F5> :UndotreeToggle<CR>
 
