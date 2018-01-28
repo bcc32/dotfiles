@@ -28,7 +28,7 @@ set relativenumber
 "" show whitespace characters
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-" Highlight
+"" highlight long lines
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength cterm=standout gui=standout
     autocmd BufEnter * match OverLength /\%80v.*/
@@ -105,7 +105,7 @@ nnoremap <F5> :UndotreeToggle<CR>
 "" goto buffer
 nnoremap gb :ls<CR>:b<Space>
 
-""" Switch between favorite themes
+""" switch between favorite themes
 nnoremap <F6> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=dark<CR>
 nnoremap <F7> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=light<CR>
 nnoremap <F8> :colo zenburn<CR>:AirlineTheme zenburn<CR>:set bg=dark<CR>
