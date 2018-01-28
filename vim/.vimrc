@@ -88,4 +88,6 @@ nnoremap gb :ls<CR>:b<Space>
 
 """" Last but not least...
 
-syntax on                               " TODO replace with :syntax enable
+if !exists("g:syntax_on")
+    syntax enable
+endif
