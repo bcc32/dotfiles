@@ -15,7 +15,7 @@ set smartcase
 """ User Interface
 set cursorcolumn
 set cursorline
-set nohlsearch                          " TODO remove
+set hlsearch
 set laststatus=2                        " always display status line
 set number
 set relativenumber
