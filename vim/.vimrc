@@ -10,7 +10,10 @@ set clipboard=unnamed
 set hidden                              " keep undo history for hidden buffers
 set omnifunc=syntaxcomplete#Complete
 set textwidth=79
-set viminfo=""                          " TODO re-enable
+
+""" Persistent Undo
+set undodir=~/.vim/undo//
+set undofile
 
 """ Search
 set ignorecase
