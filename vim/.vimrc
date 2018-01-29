@@ -5,7 +5,6 @@ augroup END
 """" Editing
 
 """ Basics
-set backspace=indent,eol,start
 set clipboard=unnamed
 set hidden                              " keep undo history for hidden buffers
 set omnifunc=syntaxcomplete#Complete
@@ -23,13 +22,9 @@ set smartcase
 set cursorcolumn
 set cursorline
 set hlsearch
-set laststatus=2                        " always display status line
 set number
 set relativenumber
 set showcmd
-
-"" show whitespace characters
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 "" highlight long lines
 augroup vimrc_autocmds
@@ -40,8 +35,6 @@ augroup END
 """" Formatting
 
 """ Indentation Defaults
-filetype plugin indent on
-set autoindent
 set expandtab
 set shiftwidth=4                        " 4 space indent
 set softtabstop=-1                      " use value of shiftwidth
@@ -78,6 +71,7 @@ Plug 'mbbill/undotree'
 Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -116,7 +110,7 @@ noremap <Space> :
 
 """ Function Keys
 set pastetoggle=<F3>
-nnoremap <F4> :nohlsearch<CR>
+nnoremap <F4> :set list!<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 
 "" switch between favorite themes
@@ -131,9 +125,3 @@ nnoremap gb :ls<CR>:b<Space>
 
 "" for when you forget to start vim using sudo...
 cmap w!! w !sudo tee % >/dev/null
-
-"""" Last but not least...
-
-if !exists("g:syntax_on")
-    syntax enable
-endif
