@@ -111,7 +111,7 @@ let g:airline_theme                      = 'solarized'
 """" Key Bindings and Commands
 
 "" SPC begins commands
-nnoremap <Space> :
+noremap <Space> :
 
 """ Function Keys
 set pastetoggle=<F3>
