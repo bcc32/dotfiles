@@ -75,12 +75,16 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jnurmine/Zenburn'
 Plug 'mbbill/undotree'
+Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+""" vim-signify
+let g:signify_vcs_list = [ 'git', 'hg' ]
 
 """ Solarized color theme
 colors solarized
