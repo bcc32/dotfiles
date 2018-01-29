@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# cleanup ~/.vim/swap and ~/.vim/undo
+
+find ~/.vim/{swap,undo} -type f -mtime +30 -exec rm -f {} +
