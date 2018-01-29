@@ -1,3 +1,4 @@
+"" Clear autocmds in case .vimrc is re-run
 augroup vimrc_autocmds
     autocmd!
 augroup END
