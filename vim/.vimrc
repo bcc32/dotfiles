@@ -129,12 +129,12 @@ nnoremap gb :ls<CR>:b<Space>
 cmap w!! w !sudo tee % >/dev/null
 
 function! ToggleBackground()
-        if exists("g:colors_name") && g:colors_name ==# "solarized"
-                    \&& &background ==# "dark"
-            set background=light
-        else
-            set background=dark
-        endif
+    if exists("g:colors_name") && g:colors_name ==# "solarized"
+                \&& &background ==# "dark"
+        set background=light
+    else
+        set background=dark
+    endif
 endfunction
 
 function! ToggleTheme(new_colors)
