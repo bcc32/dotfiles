@@ -24,6 +24,7 @@ set smartcase
 set cursorcolumn
 set cursorline
 set hlsearch
+set list                                " show certain whitespace chars
 set number
 set relativenumber
 set showcmd
@@ -84,7 +85,7 @@ call plug#end()
 let g:signify_vcs_list = [ 'git', 'hg' ]
 
 """ Solarized color theme
-colors solarized
+colorscheme solarized
 set background=dark
 
 """ CtrlP
@@ -116,9 +117,8 @@ nnoremap <F4> :set list!<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 
 "" switch between favorite themes
-nnoremap <F6> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=dark<CR>
-nnoremap <F7> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=light<CR>
-nnoremap <F8> :colo zenburn<CR>:AirlineTheme zenburn<CR>:set bg=dark<CR>
+nnoremap <F9> :call ToggleTheme("solarized")<CR>
+nnoremap <F10> :call ToggleTheme("zenburn")<CR>
 
 "" goto buffer
 nnoremap gb :ls<CR>:b<Space>
@@ -127,3 +127,22 @@ nnoremap gb :ls<CR>:b<Space>
 
 "" for when you forget to start vim using sudo...
 cmap w!! w !sudo tee % >/dev/null
+
+function! ToggleBackground()
+        if exists("g:colors_name") && g:colors_name ==# "solarized"
+                    \&& &background ==# "dark"
+            set background=light
+        else
+            set background=dark
+        endif
+endfunction
+
+function! ToggleTheme(new_colors)
+    if exists("g:colors_name") && g:colors_name ==# a:new_colors
+        call ToggleBackground()
+    else
+        set background=dark
+        execute "colorscheme"  a:new_colors
+        execute "AirlineTheme" a:new_colors
+    endif
+endfunction
