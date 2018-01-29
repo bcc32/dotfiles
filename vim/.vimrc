@@ -109,21 +109,23 @@ let g:airline_theme                      = 'solarized'
 "" SPC begins commands
 nnoremap <Space> :
 
-"" for when you forget to start vim using sudo...
-cmap w!! w !sudo tee % >/dev/null
-
+""" Function Keys
 set pastetoggle=<F3>
 nnoremap <F4> :nohlsearch<CR>
-
 nnoremap <F5> :UndotreeToggle<CR>
+
+"" switch between favorite themes
+nnoremap <F6> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=dark<CR>
+nnoremap <F7> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=light<CR>
+nnoremap <F8> :colo zenburn<CR>:AirlineTheme zenburn<CR>:set bg=dark<CR>
 
 "" goto buffer
 nnoremap gb :ls<CR>:b<Space>
 
-""" switch between favorite themes
-nnoremap <F6> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=dark<CR>
-nnoremap <F7> :colo solarized<CR>:AirlineTheme solarized<CR>:set bg=light<CR>
-nnoremap <F8> :colo zenburn<CR>:AirlineTheme zenburn<CR>:set bg=dark<CR>
+""" Custom Commands
+
+"" for when you forget to start vim using sudo...
+cmap w!! w !sudo tee % >/dev/null
 
 """" Last but not least...
 
