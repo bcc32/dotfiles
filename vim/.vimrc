@@ -70,6 +70,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jnurmine/Zenburn'
+Plug 'ledger/vim-ledger'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree'
