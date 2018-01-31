@@ -6,5 +6,5 @@ endif
 set guifont=Iosevka\ Extralight:h15
 
 " Consistent line numbering
-set columns=85
-set numberwidth=5
+set columns=96
+set numberwidth=8
