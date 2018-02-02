@@ -31,7 +31,8 @@ set showcmd
 
 "" highlight long lines
 augroup vimrc_autocmds
-    autocmd BufEnter * highlight OverLength cterm=standout gui=standout
+    autocmd BufEnter * highlight OverLength
+                \ term=undercurl cterm=undercurl gui=undercurl
     autocmd BufEnter * match OverLength /\%80v.*/
 augroup END
 
