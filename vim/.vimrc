@@ -147,3 +147,5 @@ function! ToggleTheme(new_colors)
         execute "AirlineTheme" a:new_colors
     endif
 endfunction
+
+runtime merlin.vim
