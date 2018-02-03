@@ -10,4 +10,5 @@ username = Aaron Zeng <me@bcc32.com>
 #
 fetch =
 pager =
+purge =
 color =
