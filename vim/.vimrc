@@ -33,7 +33,7 @@ set showcmd
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength
                 \ term=undercurl cterm=undercurl gui=undercurl
-    autocmd BufEnter * match OverLength /\%80v.*/
+    autocmd BufEnter * match OverLength /\%>79v.\+/
 augroup END
 
 """" Formatting
