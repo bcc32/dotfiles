@@ -66,9 +66,6 @@ values."
      (go :variables
          gofmt-command "goimports"
          go-tab-width 4)
-     (java :variables
-           eclim-eclipse-dirs "~/eclipse"
-           eclim-executable "~/eclipse/eclim")
      rust
      ;; Web/script
      html
