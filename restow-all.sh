@@ -8,5 +8,5 @@ DIRS=*/
 if which stow >/dev/null 2>&1; then
     stow $FLAGS $DIRS
 else
-    ./stow $FLAGS $DIRS
+    ./stow.pl $FLAGS $DIRS
 fi
