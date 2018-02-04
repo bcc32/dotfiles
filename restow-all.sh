@@ -8,5 +8,5 @@ DIRS=*/
 if which stow >/dev/null 2>&1; then
     stow $FLAGS $DIRS
 else
-    ./stow.pl $FLAGS $DIRS
+    perl -I./.vendor/lib ./.vendor/bin/stow $FLAGS $DIRS
 fi
