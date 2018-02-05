@@ -45,7 +45,7 @@ set softtabstop=-1                      " use value of shiftwidth
 
 """ Custom Indentation Options
 augroup vimrc_autocmds
-    autocmd FileType go         :setl ts=4
+    autocmd FileType go         :setl noet ts=4
     autocmd FileType javascript :setl sw=2
     autocmd FileType make       :setl noet
     autocmd FileType ocaml      :setl sw=2
