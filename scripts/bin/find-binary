@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find . -type f | perl -M5.016 -wne 'chomp; say if -f && -s && -B'
