@@ -6,7 +6,7 @@ use warnings;
 use File::Spec qw(splitpath);
 
 open my $find, 'find . -type f |';
-open my $md5sum, '| gmd5sum -c --quiet';
+open my $md5sum, '| md5sum -c --quiet';
 
 while (my $path = <$find>) {
     chomp $path;
