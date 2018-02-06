@@ -72,6 +72,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jnurmine/Zenburn'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'ledger/vim-ledger'
 Plug 'let-def/ocp-indent-vim'
 Plug 'mbbill/undotree'
