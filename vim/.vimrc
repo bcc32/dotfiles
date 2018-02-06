@@ -9,6 +9,7 @@ augroup END
 set clipboard=unnamed
 set directory=~/.vim/swap//             " centralized swapfile directory
 set hidden                              " keep undo history for hidden buffers
+set nomodeline
 set omnifunc=syntaxcomplete#Complete
 set textwidth=79
 
