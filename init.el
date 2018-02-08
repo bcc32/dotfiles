@@ -76,7 +76,12 @@ values."
      (org :variables
           org-agenda-files '(
                              "~/blag/TODO.org"
+                             "~/Google Drive/MIT/4/6.337/6_337.org"
+                             "~/Google Drive/MIT/4/6.813/6_813.org"
+                             "~/Google Drive/MIT/4/6.857/6_857.org"
                              "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
+                             "~/Google Drive/MIT/4/24.916/24_916.org"
+                             "~/Google Drive/MIT/6.005 TA/6_005-sp18.org"
                              "~/Google Drive/misc.org"
                              )
           org-html-htmlize-output-type 'css
@@ -370,6 +375,6 @@ you should place your code here."
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
   (with-eval-after-load 'ledger-mode
-    (push '("reconcile" "%(binary) -f %(ledger-file) r --effective --sort d -d \"d>[this month]\" -C %(account)")
+    (push '("reconcile" "%(binary) -f %(ledger-file) r --effective --sort d -d \"d>=[this month]\" -C %(account)")
           ledger-reports))
   )
