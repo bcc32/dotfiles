@@ -74,6 +74,7 @@ values."
      python
      ruby
      sql
+     typescript
      ;; Documents/markup
      bibtex
      csv
