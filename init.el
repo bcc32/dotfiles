@@ -84,7 +84,6 @@ values."
      (org :variables
           org-agenda-files '(
                              "~/blag/TODO.org"
-                             "~/Google Drive/MIT/4/6.337/6_337.org"
                              "~/Google Drive/MIT/4/6.813/6_813.org"
                              "~/Google Drive/MIT/4/6.857/6_857.org"
                              "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
