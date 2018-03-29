@@ -186,7 +186,7 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Iosevka"
                                :size 15
-                               :weight light
+                               :weight normal
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
