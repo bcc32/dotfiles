@@ -4,9 +4,9 @@ if has('mac')
 endif
 
 if has('gui_gtk2') || has('gui_gtk3')
-    set guifont=Iosevka\ Extralight\ 15
+    set guifont=Iosevka\ 15
 else
-    set guifont=Iosevka\ Extralight:h15
+    set guifont=Iosevka:h15
 endif
 
 " Consistent line numbering
