@@ -79,7 +79,9 @@ values."
      bibtex
      csv
      graphviz
-     latex
+     (latex :variables
+            latex-build-command "latexmk"
+            TeX-engine 'xetex)
      markdown
      (org :variables
           org-agenda-files '(
