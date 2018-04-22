@@ -63,29 +63,27 @@ values."
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
      ;; Functional
+     emacs-lisp
      haskell
      ocaml
-     ;; Lisps
-     common-lisp
-     emacs-lisp
      ;; System
      c-c++
      (go :variables
          gofmt-command "goimports"
          go-tab-width 4)
      rust
-     ;; Web/script
+     ;; Web
      html
      javascript
      nginx
+     typescript
+     sql
+     ;; Script
      python
      ruby
-     sql
-     typescript
      ;; Documents/markup
      bibtex
      csv
-     graphviz
      (latex :variables
             latex-build-command "latexmk"
             TeX-engine 'xetex)
