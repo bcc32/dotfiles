@@ -39,7 +39,14 @@ values."
      ;; Emacs
      ;; FIXME would like to use ledger-iso-date-format here but it's not
      ;; available until ledger-mode is loaded?
-     (finance :variables ledger-default-date-format "%Y-%m-%d")
+     (finance :variables
+              ledger-default-date-format "%Y-%m-%d"
+              ledger-reports
+              '(("reconcile" "%(binary) reg --effective --sort d -d \"d>=[this month]\" -C %(account)")
+                ("bal" "%(binary) bal")
+                ("reg" "%(binary) reg")
+                ("payee" "%(binary) reg @%(payee)")
+                ("account" "%(binary) reg %(account)")))
      ibuffer
      ivy
      osx
@@ -386,7 +393,4 @@ you should place your code here."
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
   (setq sentence-end-double-space t)
-  (with-eval-after-load 'ledger-mode
-    (push '("reconcile" "%(binary) -f %(ledger-file) r --effective --sort d -d \"d>=[this month]\" -C %(account)")
-          ledger-reports))
   )
