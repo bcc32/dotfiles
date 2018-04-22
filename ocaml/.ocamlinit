@@ -5,6 +5,3 @@ let () =
 ;;
 #use "topfind"
 #thread
-#camlp4o
-#require "core"
-#require "async"
