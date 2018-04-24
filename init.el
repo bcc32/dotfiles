@@ -39,7 +39,14 @@ values."
      ;; Emacs
      ;; FIXME would like to use ledger-iso-date-format here but it's not
      ;; available until ledger-mode is loaded?
-     (finance :variables ledger-default-date-format "%Y-%m-%d")
+     (finance :variables
+              ledger-default-date-format "%Y-%m-%d"
+              ledger-reports
+              '(("reconcile" "%(binary) reg --effective --sort d -d \"d>=[this month]\" -C %(account)")
+                ("bal" "%(binary) bal")
+                ("reg" "%(binary) reg")
+                ("payee" "%(binary) reg @%(payee)")
+                ("account" "%(binary) reg %(account)")))
      ibuffer
      ivy
      (themes-megapack :variables
@@ -54,28 +61,32 @@ values."
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
      ;; Functional
-     ;; Lisps
-     common-lisp
      emacs-lisp
+     haskell
+     ocaml
      ;; System
      c-c++
      (go :variables
          gofmt-command "goimports"
          go-tab-width 4)
-     ;; Web/script
+     ;; Web
+     html
      javascript
+     nginx
+     typescript
+     sql
+     ;; Script
      python
      ruby
-     sql
      ;; Documents/markup
      bibtex
      csv
-     graphviz
-     latex
+     (latex :variables
+            latex-build-command "latexmk"
+            TeX-engine 'xetex)
      markdown
      (org :variables
           org-agenda-files '(
-                             "~/Google Drive/MIT/4/6.337/6_337.org"
                              "~/Google Drive/MIT/4/6.813/6_813.org"
                              "~/Google Drive/MIT/4/6.857/6_857.org"
                              "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
@@ -178,7 +189,7 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Iosevka"
                                :size 15
-                               :weight light
+                               :weight normal
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -372,7 +383,5 @@ you should place your code here."
   (setq fill-column 80)
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
-  (with-eval-after-load 'ledger-mode
-    (push '("reconcile" "%(binary) -f %(ledger-file) r --effective --sort d -d \"d>=[this month]\" -C %(account)")
-          ledger-reports))
+  (setq sentence-end-double-space t)
   )
