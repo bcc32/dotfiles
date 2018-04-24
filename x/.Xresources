@@ -1,0 +1,2 @@
+*.font: xft:Iosevka:pixelsize=15
+#include ".Xresources.d/solarized"

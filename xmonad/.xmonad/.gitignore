@@ -1,0 +1,6 @@
+# executable
+xmonad-*-*
+
+*.hi
+*.o
+xmonad.errors
