@@ -94,10 +94,6 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 colorscheme solarized
 set background=dark
 
-""" CtrlP
-"" list buffers+MRU+files by default
-let g:ctrlp_cmd = 'CtrlPMixed'
-
 "" don't list VCS ignored files
 let g:ctrlp_user_command = {
             \ 'types': {
@@ -126,8 +122,12 @@ nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F9> :call ToggleTheme("solarized")<CR>
 nnoremap <F10> :call ToggleTheme("zenburn")<CR>
 
+""" CtrlP
+
 "" goto buffer
-nnoremap gb :ls<CR>:b<Space>
+nnoremap gb :CtrlPBuffer<CR>
+"" list MRU files
+nnoremap gc :CtrlPMRUFiles<CR>
 
 """ Custom Commands
 
