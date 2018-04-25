@@ -24,6 +24,7 @@ set smartcase
 """ User Interface
 set cursorcolumn
 set cursorline
+set incsearch
 set hlsearch
 set list                                " show certain whitespace chars
 set number
