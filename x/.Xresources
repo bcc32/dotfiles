@@ -1,2 +1,3 @@
-*.font: xft:Iosevka:pixelsize=15:antialias=true
+URxvt.font: xft:Iosevka:pixelsize=15:antialias=true
+Emacs.font: Iosevka-15
 #include ".Xresources.d/solarized"
