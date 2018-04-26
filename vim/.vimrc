@@ -110,6 +110,9 @@ let g:airline_theme                      = 'solarized'
 
 """" Key Bindings and Commands
 
+"" make Y consistent with C, S, D, etc.
+map Y y$
+
 "" SPC begins commands
 noremap <Space> :
 
