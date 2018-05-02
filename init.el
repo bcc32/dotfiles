@@ -43,8 +43,8 @@ values."
               ledger-default-date-format "%Y-%m-%d"
               ledger-reports
               '(("reconcile" "%(binary) reg --effective --sort d -d \"d>=[this month]\" -C %(account)")
+                ("uncleared" "%(binary) reg -U")
                 ("bal" "%(binary) bal")
-                ("reg" "%(binary) reg")
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")))
      ibuffer
