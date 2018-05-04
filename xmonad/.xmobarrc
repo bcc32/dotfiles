@@ -1,6 +1,6 @@
 Config {
     font = "xft:Iosevka:size=13:antialias=true"
-  , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %KBOS% | %date% || %kbd% "
+  , template = " %StdinReader% }{ %KBOS% || %multicpu% | %coretemp% | %memory% | %dynnetwork% | %battery% | %date% "
    -- plugins
    --   Numbers can be automatically colored according to their value. xmobar
    --   decides color based on a three-tier/two-cutoff system, controlled by
@@ -31,7 +31,7 @@ Config {
                              ] 10
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+        , Run MultiCpu       [ "--template" , "CPU: <total0>%|<total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "darkgreen"
@@ -58,7 +58,7 @@ Config {
                              ] 10
 
         -- battery monitor
-        , Run Battery        [ "--template" , "Batt: <acstatus>"
+        , Run Battery        [ "--template" , "Pwr: <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -74,13 +74,15 @@ Config {
                                        , "-i" , "<fc=#006000>Charged</fc>"
                              ] 50
 
-        -- time and date indicator
-        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#ABABAB>%FT%T (%a)</fc>" "date" 10
+        -- time and date indicator (strftime)
+        , Run Date           "<fc=#ABABAB>%F %T%z (%a)</fc>" "date" 10
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
-                             , ("us"         , "<fc=#8B0000>US</fc>")
-                             ]
+        -- , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
+        --                      , ("us"         , "<fc=#8B0000>US</fc>")
+        --                      ]
+
+        -- current workspace, window title
+        , Run StdinReader
         ]
    }
