@@ -2,7 +2,7 @@
 
 set -eu
 
-FLAGS=-R
+FLAGS=${FLAGS--R}
 DIRS=*/
 
 if which stow >/dev/null 2>&1; then
