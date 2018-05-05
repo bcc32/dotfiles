@@ -1,6 +1,6 @@
 Config {
     font = "xft:Iosevka:size=11"
-  , template = " %StdinReader% }{ %KBOS% || %multicpu% | %coretemp% | %memory% | %dynnetwork% | %battery% | %date% "
+  , template = " %battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% } %StdinReader% { %KBOS% || %date% "
    -- plugins
    --   Numbers can be automatically colored according to their value. xmobar
    --   decides color based on a three-tier/two-cutoff system, controlled by
