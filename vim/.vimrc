@@ -61,6 +61,7 @@ augroup vimrc_autocmds
 augroup END
 
 """ Encoding and File Format
+set cryptmethod=blowfish2
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set fileformats=unix,dos
