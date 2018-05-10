@@ -86,12 +86,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 "" File finding
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 "" VCS
 Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
 
 "" File types
 Plug 'ledger/vim-ledger'
@@ -106,14 +106,10 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 colorscheme solarized
 set background=dark
 
-"" don't list VCS ignored files
-let g:ctrlp_user_command = {
-            \ 'types': {
-            \     1: ['.git', 'cd %s && git ls-files -co --exclude-standard'],
-            \     2: ['.hg',  'hg --cwd %s files -I .'],
-            \ },
-            \ 'fallback': 'find %s -type f',
-            \ }
+"" Use ripgrep when possible
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+endif
 
 """ Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -137,12 +133,17 @@ nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F9> :call ToggleTheme("solarized")<CR>
 nnoremap <F10> :call ToggleTheme("zenburn")<CR>
 
-""" CtrlP
+""" FZF
 
+nnoremap <C-P> :Files<CR>
 "" goto buffer
-nnoremap gb :CtrlPBuffer<CR>
-"" list MRU files
-nnoremap gc :CtrlPMRUFiles<CR>
+nnoremap gb :Buffers<CR>
+"" list recent files
+nnoremap gh :History<CR>
+
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+nnoremap gs :Rg<CR>
 
 """ Custom Commands
 
