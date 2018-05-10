@@ -71,20 +71,31 @@ set fileformats=unix,dos
 """ vim-plug declarations
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jnurmine/Zenburn'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'ledger/vim-ledger'
-Plug 'let-def/ocp-indent-vim'
-Plug 'mbbill/undotree'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
+"" Reset defaults
 Plug 'tpope/vim-sensible'
+
+"" Editing
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+
+"" Appearance
+Plug 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+"" File finding
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+"" VCS
+Plug 'mhinz/vim-signify'
+
+"" File types
+Plug 'ledger/vim-ledger'
+Plug 'let-def/ocp-indent-vim'
 
 call plug#end()
 
@@ -157,4 +168,5 @@ function! ToggleTheme(new_colors)
     endif
 endfunction
 
-runtime merlin.vim
+"" This needs to be updated when the switch changes
+set rtp+=~/.opam/4.06.0/share/merlin/vim
