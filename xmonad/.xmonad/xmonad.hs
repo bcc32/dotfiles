@@ -1,5 +1,5 @@
 import XMonad
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicLog (xmobar)
 
 main = xmonad =<< xmobar def
   { modMask = mod1Mask
