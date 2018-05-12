@@ -42,7 +42,7 @@ values."
      (finance :variables
               ledger-default-date-format "%Y-%m-%d"
               ledger-reports
-              '(("reconcile" "%(binary) reg --effective --sort d -d \"d>=[this month]\" -C %(account)")
+              '(("reconcile" "ldg-reconcile %(account)")
                 ("uncleared" "%(binary) reg -U")
                 ("bal" "%(binary) bal")
                 ("payee" "%(binary) reg @%(payee)")
