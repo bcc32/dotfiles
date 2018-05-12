@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ledger reg --effective --sort d -d "d>=[this month]" -C $@
