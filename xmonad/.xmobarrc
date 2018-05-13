@@ -1,6 +1,6 @@
 Config {
     font = "xft:Iosevka:size=11"
-  , template = " %battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% } %StdinReader% { %KBOS% || %date% "
+  , template = " %multicpu% | %coretemp% | %memory% | %swap% | %disku% | %diskio% | %dynnetwork% } %StdinReader% { %KBOS% || %battery% | %date% "
    -- plugins
    --   Numbers can be automatically colored according to their value. xmobar
    --   decides color based on a three-tier/two-cutoff system, controlled by
@@ -57,6 +57,9 @@ Config {
                              , "--high"     , "darkred"
                              ] 10
 
+        -- swap monitor
+        , Run Swap           [] 10
+
         -- battery monitor
         , Run Battery        [ "--template" , "Pwr: <acstatus>"
                              , "--Low"      , "10"        -- units: %
@@ -81,6 +84,16 @@ Config {
         -- , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
         --                      , ("us"         , "<fc=#8B0000>US</fc>")
         --                      ]
+
+        -- disk usage and disk I/O
+        , Run DiskU             [ ("/", "/: <usedp>")
+                                -- , ("/mnt/local/sda1", "~/src: <usedp>")
+                                -- , ("/var", "/var: <usedp>")
+                                ] [] 60
+        , Run DiskIO            [ ("/", "/: <total>")
+                                -- , ("/mnt/local/sda1", "~/src: <total>")
+                                -- , ("/var", "/var: <total>")
+                                ] [] 10
 
         -- current workspace, window title
         , Run StdinReader
