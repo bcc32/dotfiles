@@ -19,7 +19,7 @@ myBindings =
   , ("M-p", shellPrompt def)
   , ("M-x", spawn "gnome-screensaver-command -l")
   , ("M-S-p e", spawn "emacs")
-  , ("M-S-p c", spawn "google-chrome")
+  , ("M-S-p c", spawn "chromium || google-chrome")
   , ("M-S-p f", spawn "firefox")
   ]
 
