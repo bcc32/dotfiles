@@ -26,13 +26,13 @@ myBindings =
 main :: IO ()
 main = do
   spawn "gnome-screensaver"
-  cfg <- xmobar def
+  xmobar def
     { modMask           = mod1Mask
     , terminal          = "urxvtc"
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
     , focusFollowsMouse = False
     }
-  xmonad $ ewmh $ cfg `additionalKeysP` myBindings
+  >>= (xmonad . ewmh . (`additionalKeysP` myBindings))
   where
     myLayoutHook
       =   (named "Split Grid T" . splitGrid) T
