@@ -2,6 +2,24 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(defun if-installed (executable-name &rest pkgs)
+  "Only enable pkgs if EXECUTABLE-NAME is installed in $PATH."
+  (if (executable-find executable-name)
+      pkgs
+    '()))
+
+(defun only-on-host (name &rest pkgs)
+  "Only enable pkgs if SYSTEM-NAME is eq to NAME."
+  (if (eql system-name name)
+      pkgs
+    '()))
+
+(defun only-on-type (type &rest pkgs)
+  "Only enable pkgs if SYSTEM-TYPE is eq to TYPE."
+  (if (eql system-type type)
+      pkgs
+    '()))
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -30,7 +48,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   `(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -49,29 +67,30 @@ values."
                 ("account" "%(binary) reg %(account)")))
      ibuffer
      ivy
-     osx
+     ,@(only-on-type 'darwin 'osx)
      (themes-megapack :variables
                       solarized-distinct-doc-face t
                       solarized-use-more-italic t)
      ;; Text editing
      auto-completion
-     spell-checking
+     ,@(if-installed "ispell" 'spell-checking)
      syntax-checking
      ;; Programmer tools
-     fasd
+     ,@(if-installed "fasd" 'fasd)
      git
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
      ;; Functional
      emacs-lisp
-     haskell
-     ocaml
+     ,@(if-installed "stack" 'haskell)
+     ,@(if-installed "opam" 'ocaml)
      ;; System
      c-c++
-     (go :variables
-         gofmt-command "goimports"
-         go-tab-width 4)
-     rust
+     ,@(if-installed "go"
+                     '(go :variables
+                          gofmt-command "goimports"
+                          go-tab-width 4))
+     ,@(if-installed "cargo" 'rust)
      ;; Web
      html
      javascript
@@ -79,14 +98,15 @@ values."
      typescript
      sql
      ;; Script
-     python
-     ruby
+     ,@(if-installed "python" 'python)
+     ,@(if-installed "ruby" 'ruby)
      ;; Documents/markup
-     bibtex
      csv
-     (latex :variables
-            latex-build-command "latexmk"
-            TeX-engine 'xetex)
+     ,@(if-installed "latex"
+                     'bibtex
+                     '(latex :variables
+                             latex-build-command "latexmk"
+                             TeX-engine 'xetex))
      markdown
      (org :variables
           org-agenda-files '(
