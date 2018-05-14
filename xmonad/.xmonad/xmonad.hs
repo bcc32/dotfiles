@@ -1,17 +1,20 @@
 -- Warnings generated from compiling this module will be written to
 -- ~/.xmonad/xmonad.errors.
 {-# OPTIONS -Wall #-}
+{-# LANGUAGE FlexibleContexts #-}
 
 import XMonad
-import XMonad.Hooks.DynamicLog    (xmobar)
-import XMonad.Hooks.EwmhDesktops  (ewmh)
-import XMonad.Layout.GridVariants (SplitGrid (..), Orientation (..))
-import XMonad.Layout.Named        (named)
-import XMonad.Layout.NoBorders    (smartBorders)
-import XMonad.Layout.Tabbed       (tabbed, shrinkText)
-import XMonad.Layout.WorkspaceDir (changeDir, workspaceDir)
-import XMonad.Prompt.Shell        (shellPrompt)
-import XMonad.Util.EZConfig       (additionalKeysP)
+import XMonad.Hooks.DynamicLog      (statusBar, xmobarPP)
+import XMonad.Hooks.EwmhDesktops    (ewmh)
+import XMonad.Hooks.ManageDocks     (AvoidStruts)
+import XMonad.Layout.GridVariants   (SplitGrid (..), Orientation (..))
+import XMonad.Layout.LayoutModifier (ModifiedLayout)
+import XMonad.Layout.Named          (named)
+import XMonad.Layout.NoBorders      (smartBorders)
+import XMonad.Layout.Tabbed         (tabbed, shrinkText)
+import XMonad.Layout.WorkspaceDir   (changeDir, workspaceDir)
+import XMonad.Prompt.Shell          (shellPrompt)
+import XMonad.Util.EZConfig         (additionalKeysP)
 
 myBindings :: [(String, X ())]
 myBindings =
@@ -23,16 +26,31 @@ myBindings =
   , ("M-S-p f", spawn "firefox")
   ]
 
+toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
+toggleStrutsKey XConfig {modMask = modm} = (modm, xK_b)
+
+-- FIXME doesn't quote rcFile, since that stops the interpolation of "~" in
+-- paths.
+myXmobar :: LayoutClass l Window
+         => String
+         -> XConfig l
+         -> IO (XConfig (ModifiedLayout AvoidStruts l))
+myXmobar rcFile = statusBar ("xmobar " ++ rcFile) xmobarPP toggleStrutsKey
+
+-- TODO investigate MOD-, and MOD-. bindings not functioning
 main :: IO ()
 main = do
   spawn "gnome-screensaver"
-  xmobar def
+  return $ def
     { modMask           = mod1Mask
     , terminal          = "urxvtc"
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
     , focusFollowsMouse = False
-    }
-  >>= (xmonad . ewmh . (`additionalKeysP` myBindings))
+    } `additionalKeysP` myBindings
+  -- FIXME kill both top and bottom xmobar when restarting xmonad
+  >>= myXmobar "~/.xmonad/xmobarrc-top"
+  >>= myXmobar "~/.xmonad/xmobarrc-bottom"
+  >>= xmonad . ewmh
   where
     myLayoutHook
       =   (named "Split Grid T" . splitGrid) T

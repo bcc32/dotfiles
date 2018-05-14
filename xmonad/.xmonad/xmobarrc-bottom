@@ -1,0 +1,31 @@
+Config { font = "xft:Iosevka:size=13"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = BottomW L 100
+       , commands =
+         -- disk usage and disk I/O
+         [ Run DiskU  [ ("/", "/: <usedp>%")
+                   -- , ("/mnt/local/sda1", "~/src: <usedp>%")
+                   -- , ("/var", "/var: <usedp>%")
+                      ] [] 60
+         , Run DiskIO [ ("/", "/: <total>")
+                   -- , ("/mnt/local/sda1", "~/src: <total>")
+                   -- , ("/var", "/var: <total>")
+                      ] [] 10
+         -- weather monitor
+         , Run Weather "KBOS" [ "--template", "KBOS: <skyCondition> | <fc=#4682B4><tempC></fc>°C | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
+                              ] 36000
+         -- network activity monitor (dynamic interface resolution)
+         , Run DynNetwork [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                          , "--Low"      , "1000"       -- units: B/s
+                          , "--High"     , "5000"       -- units: B/s
+                          , "--low"      , "darkgreen"
+                          , "--normal"   , "darkorange"
+                          , "--high"     , "darkred"
+                          ] 10
+         ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %dynnetwork% } %disku% | %diskio% { %KBOS% "
+       }
+
