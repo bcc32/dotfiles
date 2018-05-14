@@ -93,9 +93,6 @@ values."
      ,@(if-installed "cargo" 'rust)
      ;; Web
      html
-     javascript
-     nginx
-     typescript
      sql
      ;; Script
      ,@(if-installed "python" 'python)
