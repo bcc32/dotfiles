@@ -388,20 +388,28 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; toggles
   (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-highlight-long-lines-globally-on)
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
-  (define-key spacemacs-tuareg-mode-map-prefix
-    (kbd "v")
-    'merlin-enclosing-expand)
+
+  ;; bind SPC m v to merlin-enclosing-expand
+  (if (boundp 'spacemacs-tuareg-mode-map-prefix)
+      (define-key spacemacs-tuareg-mode-map-prefix
+        (kbd "v")
+        'merlin-enclosing-expand))
+
   ;; https://github.com/syl20bnr/spacemacs/issues/480
   (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
   (defalias 'perl-mode 'cperl-mode)
+
   ;; https://stackoverflow.com/questions/44796844/switch-off-ivy-use-virtual-buffers-in-spacemacs
   (with-eval-after-load 'recentf
     (setq ivy-use-virtual-buffers nil))
+
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
   (setq cperl-close-paren-offset -2)
