@@ -37,7 +37,6 @@ myXmobar :: LayoutClass l Window
          -> IO (XConfig (ModifiedLayout AvoidStruts l))
 myXmobar rcFile = statusBar ("xmobar " ++ rcFile) xmobarPP toggleStrutsKey
 
--- TODO investigate MOD-, and MOD-. bindings not functioning
 main :: IO ()
 main = do
   spawn "gnome-screensaver"
