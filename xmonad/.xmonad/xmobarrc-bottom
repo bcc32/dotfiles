@@ -23,9 +23,10 @@ Config { font = "xft:Iosevka:size=13"
                           , "--normal"   , "darkorange"
                           , "--high"     , "darkred"
                           ] 10
+         -- contentless pipe from xmonad
+         , Run StdinReader
          ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %dynnetwork% } %disku% | %diskio% { %KBOS% "
+       , template = "%StdinReader% %dynnetwork% } %disku% | %diskio% { %KBOS% "
        }
-

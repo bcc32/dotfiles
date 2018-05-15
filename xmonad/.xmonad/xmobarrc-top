@@ -51,12 +51,15 @@ Config { font = "xft:Iosevka:size=13"
          , Run Date           "<fc=#ABABAB>%F %T%z (%a)</fc>" "date" 10
 
          -- keyboard layout indicator
-         -- , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
-         --                      , ("us"         , "<fc=#8B0000>US</fc>")
-         --                      ]
+         , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
+                              , ("us"         , "<fc=#8B0000>US</fc>")
+                              ]
+
+         -- Display status of caps lock, etc.
+         , Run Locks
 
          -- current workspace, window title
          , Run StdinReader
          ]
-       , template = " %multicpu% | %coretemp% | %memory% | %swap% } %StdinReader% { %battery% | %date% "
+       , template = " %multicpu% | %coretemp% | %memory% | %swap% } %StdinReader% { %locks% | %kbd% | %battery% | %date% "
        }

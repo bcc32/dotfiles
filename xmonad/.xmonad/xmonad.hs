@@ -15,6 +15,7 @@ import XMonad.Layout.Tabbed         (tabbed, shrinkText)
 import XMonad.Layout.WorkspaceDir   (changeDir, workspaceDir)
 import XMonad.Prompt.Shell          (shellPrompt)
 import XMonad.Util.EZConfig         (additionalKeysP)
+import XMonad.Util.Run              (hPutStrLn, spawnPipe)
 
 myBindings :: [(String, X ())]
 myBindings =
@@ -29,26 +30,43 @@ myBindings =
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig {modMask = modm} = (modm, xK_b)
 
--- FIXME doesn't quote rcFile, since that stops the interpolation of "~" in
--- paths.
 myXmobar :: LayoutClass l Window
          => String
          -> XConfig l
          -> IO (XConfig (ModifiedLayout AvoidStruts l))
-myXmobar rcFile = statusBar ("xmobar " ++ rcFile) xmobarPP toggleStrutsKey
+myXmobar cmd = statusBar cmd xmobarPP toggleStrutsKey
 
 main :: IO ()
 main = do
   spawn "gnome-screensaver"
+
+  -- Here, we start a pipe to the bottom xmobar and write exactly one empty
+  -- line to it.  We treat the bottom xmobar differently because:
+  --
+  -- 1. The default statusBar implementation writes the current layout and
+  -- window title to the pipe; if the bottom xmobar doesn't read from the pipe,
+  -- the pipe will fill up and xmonad will become stuck trying to write to it.
+  --
+  -- 2. We don't want the bottom xmobar to actually display anything, but no
+  -- built-in plugins for xmobar read stdin and discard it; since compiling
+  -- xmobar from source to add another plugin seems like a right pain, we
+  -- simply use StdinReader but don't write anything other than a single empty
+  -- line.
+  --
+  -- 3. If we didn't open a pipe at all, and simply `spawn`ed the bottom
+  -- xmobar, reloading the xmonad config with MOD-q will not kill it, and
+  -- instead a second one will be spawned on top of the existing xmobar, which
+  -- is rather inconvenient.
+  h <- spawnPipe "xmobar ~/.xmonad/xmobarrc-bottom"
+
   return $ def
     { modMask           = mod1Mask
     , terminal          = "urxvtc"
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
     , focusFollowsMouse = False
+    , startupHook = liftIO $ hPutStrLn h ""
     } `additionalKeysP` myBindings
-  -- FIXME kill both top and bottom xmobar when restarting xmonad
-  >>= myXmobar "~/.xmonad/xmobarrc-top"
-  >>= myXmobar "~/.xmonad/xmobarrc-bottom"
+  >>= myXmobar "xmobar ~/.xmonad/xmobarrc-top"
   >>= xmonad . ewmh
   where
     myLayoutHook
