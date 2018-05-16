@@ -25,6 +25,7 @@ myBindings =
   , ("M-S-p e", spawn "emacs")
   , ("M-S-p c", spawn "chromium || google-chrome")
   , ("M-S-p f", spawn "firefox")
+  , ("M-`", spawn "$HOME/bin/switch-kbd-layout")
   ]
 
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
