@@ -7,9 +7,12 @@ else
     case $layout in
         us)
             setxkbmap us -variant colemak
+            # set capslock/backspace to repeat
+            xset r 66
             ;;
         *)
             setxkbmap us
+            xset -r 66
             ;;
     esac
 fi
