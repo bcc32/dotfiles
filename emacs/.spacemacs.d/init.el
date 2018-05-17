@@ -110,11 +110,6 @@ values."
           (remove-if-not #'file-exists-p
                          '(
                            "~/blag/TODO.org"
-                           "~/Google Drive/MIT/4/6.813/6_813.org"
-                           "~/Google Drive/MIT/4/6.857/6_857.org"
-                           "~/Google Drive/MIT/4/6.UAP/6_UAP.org"
-                           "~/Google Drive/MIT/4/24.916/24_916.org"
-                           "~/Google Drive/MIT/6.005 TA/6_005-sp18.org"
                            "~/Google Drive/misc.org"
                            ))
           org-html-htmlize-output-type 'css
