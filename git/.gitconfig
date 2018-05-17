@@ -10,7 +10,7 @@
 	dump = cat-file -p
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	lol = log --graph --oneline --decorate --color --all
-	wow = log --graph --oneline --decorate --all --simplify-by-decoration
+	wow = lol --simplify-by-decoration
 [push]
 	default = simple
 [core]
@@ -18,6 +18,6 @@
 	editor = vim
 	excludesfile = ~/.cvsignore
 [diff]
-	tool = vimdiff
-	guitool = gvimdiff
 	algorithm = patience
+	guitool = gvimdiff
+	tool = vimdiff
