@@ -20,3 +20,4 @@
 [diff]
 	tool = vimdiff
 	guitool = gvimdiff
+	algorithm = patience
