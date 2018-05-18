@@ -4,6 +4,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 import XMonad
+import XMonad.Actions.SpawnOn       (manageSpawn, spawnHere)
 import XMonad.Hooks.DynamicLog      (statusBar, xmobarPP)
 import XMonad.Hooks.EwmhDesktops    (ewmh)
 import XMonad.Hooks.ManageDocks     (AvoidStruts)
@@ -22,9 +23,9 @@ myBindings =
   [ ("M-d", changeDir def)
   , ("M-p", shellPrompt def)
   , ("M-x", spawn "gnome-screensaver-command -l")
-  , ("M-S-p e", spawn "emacs")
-  , ("M-S-p c", spawn "chromium || google-chrome")
-  , ("M-S-p f", spawn "firefox")
+  , ("M-S-p e", spawnHere "emacs")
+  , ("M-S-p c", spawnHere "chromium || google-chrome")
+  , ("M-S-p f", spawnHere "firefox")
   , ("M-`", spawn "$HOME/bin/switch-kbd-layout")
   ]
 
@@ -36,6 +37,9 @@ myXmobar :: LayoutClass l Window
          -> XConfig l
          -> IO (XConfig (ModifiedLayout AvoidStruts l))
 myXmobar cmd = statusBar cmd xmobarPP toggleStrutsKey
+
+myManageHook :: ManageHook
+myManageHook = manageSpawn
 
 main :: IO ()
 main = do
@@ -62,6 +66,7 @@ main = do
 
   return $ def
     { modMask           = mod1Mask
+    , manageHook        = myManageHook <+> manageHook def
     , terminal          = "urxvtc"
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
     , focusFollowsMouse = False
