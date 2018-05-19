@@ -24,6 +24,7 @@ myBindings =
   , ("M-p", shellPrompt def)
   , ("M-x", spawn "xscreensaver-command -l")
   , ("M-S-p e", spawnHere "emacs")
+  , ("M-S-p v", spawnHere "gvim")
   , ("M-S-p c", spawnHere "chromium || google-chrome")
   , ("M-S-p f", spawnHere "firefox")
   , ("M-`", spawn "$HOME/bin/switch-kbd-layout")
