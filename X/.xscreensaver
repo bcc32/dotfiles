@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.39 for nomad on Fri May 18 21:43:12 2018.
+# Written by xscreensaver-demo 5.39 for nomad on Fri May 18 21:50:56 2018.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -11,7 +11,7 @@ visualID:	default
 installColormap:    True
 verbose:	False
 timestamp:	True
-splash:		True
+splash:		False
 splashDuration:	0:00:05
 demoCommand:	xscreensaver-demo
 prefsCommand:	xscreensaver-demo -prefs
@@ -144,7 +144,7 @@ programs:								      \
   GL: 				flipscreen3d -root			    \n\
   GL: 				gltext -root				    \n\
   GL: 				menger -root				    \n\
-  GL: 				molecule -root				    \n\
+  GL: 				molecule -root -no-labels -no-shells	    \n\
 				rotzoomer -root				    \n\
 				speedmine -root				    \n\
   GL: 				starwars -root				    \n\
