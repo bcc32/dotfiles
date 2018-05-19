@@ -22,7 +22,7 @@ myBindings :: [(String, X ())]
 myBindings =
   [ ("M-d", changeDir def)
   , ("M-p", shellPrompt def)
-  , ("M-x", spawn "gnome-screensaver-command -l")
+  , ("M-x", spawn "xscreensaver-command -l")
   , ("M-S-p e", spawnHere "emacs")
   , ("M-S-p c", spawnHere "chromium || google-chrome")
   , ("M-S-p f", spawnHere "firefox")
@@ -43,7 +43,7 @@ myManageHook = manageSpawn
 
 main :: IO ()
 main = do
-  spawn "gnome-screensaver"
+  spawn "xscreensaver"
 
   -- Here, we start a pipe to the bottom xmobar and write exactly one empty
   -- line to it.  We treat the bottom xmobar differently because:
