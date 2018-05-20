@@ -4,3 +4,4 @@ xmonad-*-*
 *.hi
 *.o
 xmonad.errors
+prompt-history
