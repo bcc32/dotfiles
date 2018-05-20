@@ -5,7 +5,7 @@ set -eu
 # Ensure certain directories already exist so that stow won't try to create
 # symlinks too high in the file hierarchy, leading to unmanaged files appearing
 # in the repo.
-mkdir -p ~/.config ~/.stack
+mkdir -p ~/.config ~/.ssh ~/.stack
 
 FLAGS=${FLAGS--R}
 DIRS=*/
