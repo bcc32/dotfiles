@@ -120,6 +120,10 @@ let g:airline_theme                      = 'solarized'
 
 """" Key Bindings and Commands
 
+"" quickly edit vimrc
+nnoremap <Leader>re :vsplit $MYVIMRC<CR>
+nnoremap <Leader>rs :source $MYVIMRC<CR>
+
 "" make Y consistent with C, S, D, etc.
 nnoremap Y y$
 
