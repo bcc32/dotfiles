@@ -42,6 +42,7 @@ augroup END
 
 """ Indentation Defaults
 set expandtab
+set shiftround                          " < and > round to nearest shiftwidth
 set shiftwidth=4                        " 4 space indent
 set softtabstop=-1                      " use value of shiftwidth
 
@@ -120,7 +121,7 @@ let g:airline_theme                      = 'solarized'
 """" Key Bindings and Commands
 
 "" make Y consistent with C, S, D, etc.
-map Y y$
+nnoremap Y y$
 
 "" SPC begins commands
 noremap <Space> :
