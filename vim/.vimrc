@@ -120,6 +120,9 @@ let g:airline_theme                      = 'solarized'
 
 """" Key Bindings and Commands
 
+"" map fd to ESC
+inoremap fd <Esc>
+
 "" quickly edit vimrc
 nnoremap <Leader>re :vsplit $MYVIMRC<CR>
 nnoremap <Leader>rs :source $MYVIMRC<CR>
