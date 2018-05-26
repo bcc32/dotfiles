@@ -192,7 +192,7 @@ nnoremap gS :Rg!<CR>
 """ Custom Commands {{{
 
 "" for when you forget to start vim using sudo...
-cmap w!! w !sudo tee % >/dev/null
+cmap ww write !sudo tee % >/dev/null
 
 """ }}}
 
