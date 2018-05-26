@@ -1,6 +1,6 @@
 """ Merlin setup
 "" This needs to be updated when the switch changes
-set rtp+=~/.opam/4.06.0/share/merlin/vim
+set runtimepath+=~/.opam/4.06.0/share/merlin/vim
 
 "" Clear autocmds in case .vimrc is re-run
 augroup vimrc_autocmds
@@ -65,13 +65,13 @@ set softtabstop=-1                      " use value of shiftwidth
 
 """ Indentation Options for Various Filetypes {{{
 augroup vimrc_autocmds
-    autocmd FileType go         :setl noet ts=4
-    autocmd FileType javascript :setl sw=2
-    autocmd FileType make       :setl noet
-    autocmd FileType ocaml      :setl sw=2
-    autocmd FileType perl       :setl sw=2
-    autocmd FileType ruby       :setl sw=2
-    autocmd FileType vim        :setl fdm=marker
+    autocmd FileType go         :setlocal noexpandtab tabstop=4
+    autocmd FileType javascript :setlocal shiftwidth=2
+    autocmd FileType make       :setlocal noexpandtab
+    autocmd FileType ocaml      :setlocal shiftwidth=2
+    autocmd FileType perl       :setlocal shiftwidth=2
+    autocmd FileType ruby       :setlocal shiftwidth=2
+    autocmd FileType vim        :setlocal foldmethod=marker
 augroup END
 """ }}}
 
