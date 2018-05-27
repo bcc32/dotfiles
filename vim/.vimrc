@@ -107,6 +107,8 @@ Plug 'tpope/vim-surround'
 "" Appearance
 Plug 'altercation/vim-colors-solarized'
 Plug 'jnurmine/Zenburn'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -138,6 +140,15 @@ set background=dark
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts            = 1
 let g:airline_theme                      = 'solarized'
+""" }}}
+
+""" Goyo and Limelight {{{
+"" Automatically (de-)activate limelight with Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+let g:limelight_conceal_ctermfg = 'bg'
+let g:limelight_conceal_guifg = 'bg'
 """ }}}
 
 """" }}}
@@ -172,6 +183,9 @@ nnoremap <F5> :UndotreeToggle<CR>
 "" switch between favorite themes
 nnoremap <F9> :call ToggleTheme("solarized")<CR>
 nnoremap <F10> :call ToggleTheme("zenburn")<CR>
+
+"" Activate/deactivate Goyo
+nnoremap <Leader>g :Goyo<CR>
 """ }}}
 
 """ FZF Shortcuts {{{
@@ -205,6 +219,7 @@ function! ToggleBackground()
     else
         set background=dark
     endif
+    call UpdateLimelightColors()
 endfunction
 
 function! ToggleTheme(new_colors)
@@ -215,7 +230,35 @@ function! ToggleTheme(new_colors)
         execute "colorscheme"  a:new_colors
         execute "AirlineTheme" a:new_colors
     endif
+    call UpdateLimelightColors()
 endfunction
+
+""" https://vi.stackexchange.com/a/12305
+function! GetHighlight(group)
+    let output = execute('hi ' . a:group)
+    let list = split(output, '\s\+')
+    let dict = {}
+    for item in list
+        if match(item, '=') > 0
+            let splited = split(item, '=')
+            let dict[splited[0]] = splited[1]
+        endif
+    endfor
+    return dict
+endfunction
+
+""" Update the conceal colors for limelight
+function! UpdateLimelightColors()
+    let l:highlight = GetHighlight('Normal')
+    if has_key(l:highlight, 'ctermbg')
+        let g:limelight_conceal_ctermfg = l:highlight.ctermbg
+    endif
+    if has_key(l:highlight, 'guibg')
+        let g:limelight_conceal_guifg = l:highlight.guibg
+    endif
+endfunction
+
+call UpdateLimelightColors()
 
 """ }}}
 
