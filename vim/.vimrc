@@ -175,6 +175,9 @@ nnoremap Y y$
 nnoremap <Leader>re :vsplit $MYVIMRC<CR>
 nnoremap <Leader>rs :source $MYVIMRC<CR>
 
+"" yank entire buffer to clipboard
+nnoremap <Leader>cc :%yank+<CR>
+
 """ }}}
 
 """ Toggles {{{
