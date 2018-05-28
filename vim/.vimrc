@@ -1,6 +1,6 @@
 """ Merlin setup
 "" This needs to be updated when the switch changes
-let s:opam_switch=4.06.0
+let s:opam_switch='4.06.0'
 execute "set runtimepath+=~/.opam/".s:opam_switch."/share/merlin/vim"
 
 "" Clear autocmds in case .vimrc is re-run
