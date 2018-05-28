@@ -6,18 +6,6 @@
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	shallow = true
-[submodule "tmux/.tmux/plugins/tmux-battery"]
-	path = tmux/.tmux/plugins/tmux-battery
-	url = https://github.com/tmux-plugins/tmux-battery
-	shallow = true
-[submodule "tmux/.tmux/plugins/tmux-sensible"]
-	path = tmux/.tmux/plugins/tmux-sensible
-	url = https://github.com/tmux-plugins/tmux-sensible
-	shallow = true
-[submodule "tmux/.tmux/plugins/tmux-open"]
-	path = tmux/.tmux/plugins/tmux-open
-	url = https://github.com/tmux-plugins/tmux-open
-	shallow = true
 [submodule ".zprezto"]
 	path = zsh/.zprezto
 	url = https://github.com/bcc32/prezto.git
