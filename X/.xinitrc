@@ -29,12 +29,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# set cursor to left pointer
-xsetroot -cursor_name left_ptr
-
-# set keyboard layouts
-setxkbmap us,us -variant ,colemak -option grp:shifts_toggle,compose:ralt
-
 # start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then

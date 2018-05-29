@@ -1,3 +1,10 @@
 #!/bin/sh
 
+# start rxvt-unicode daemon
 urxvtd -q -o -f
+
+# set cursor to left pointer
+xsetroot -cursor_name left_ptr
+
+# set keyboard layouts
+setxkbmap us,us -variant ,colemak -option grp:shifts_toggle,compose:ralt
