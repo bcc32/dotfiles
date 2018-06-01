@@ -79,7 +79,7 @@ augroup END
 """ strip trailing spaces on write {{{
 augroup vimrc_autocmds
     autocmd BufWritePre  *    :%s/\s\+$//e
-    autocmd BufWritePost *.go :silent :!goimports -w %
+    autocmd BufWritePost *.go :silent! !goimports -w % 2>/dev/null
 augroup END
 """ }}}
 
