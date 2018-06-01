@@ -76,9 +76,11 @@ augroup vimrc_autocmds
 augroup END
 """ }}}
 
-""" strip trailing spaces on write {{{
+""" automatic reformatting {{{
 augroup vimrc_autocmds
+    "" strip trailing spaces on write
     autocmd BufWritePre  *    :%s/\s\+$//e
+    "" run goimports
     autocmd BufWritePost *.go :silent! !goimports -w % 2>/dev/null
 augroup END
 """ }}}
