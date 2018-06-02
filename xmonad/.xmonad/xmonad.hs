@@ -3,6 +3,10 @@
 {-# OPTIONS -Wall #-}
 {-# LANGUAGE FlexibleContexts #-}
 
+import Control.Monad (filterM)
+import Data.Maybe (isJust)
+import System.Directory (findExecutable)
+
 import XMonad
 import XMonad.Actions.SpawnOn       (manageSpawn, spawnHere)
 import XMonad.Hooks.DynamicLog      (statusBar, xmobarPP)
@@ -41,9 +45,27 @@ myXmobar cmd = statusBar cmd xmobarPP toggleStrutsKey
 myManageHook :: ManageHook
 myManageHook = manageSpawn
 
+-- List of terminal emulators, in order of preference.
+myTerminals :: [String]
+myTerminals =
+  [ "alacritty"
+  , "urxvtc"
+  , "urxvt"
+  , "xterm"
+  ]
+
+-- Most preferred installed terminal emulator.
+myTerminal :: IO String
+myTerminal = head <$> filterM isInstalled myTerminals
+  where
+    isInstalled = (isJust <$>) . findExecutable
+
 main :: IO ()
 main = do
   spawn "xscreensaver"
+
+  -- favorite installed terminal emulator
+  myTerminal' <- myTerminal
 
   -- Here, we start a pipe to the bottom xmobar and write exactly one empty
   -- line to it.  We treat the bottom xmobar differently because:
@@ -67,7 +89,7 @@ main = do
   return $ def
     { modMask           = mod1Mask
     , manageHook        = myManageHook <+> manageHook def
-    , terminal          = "urxvtc"
+    , terminal          = myTerminal'
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
     , focusFollowsMouse = False
     , startupHook = liftIO $ hPutStrLn h ""
