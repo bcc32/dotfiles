@@ -25,7 +25,7 @@ myBindings =
   , ("M-x", spawn "xscreensaver-command -l")
   , ("M-S-p e", spawnHere "emacs")
   , ("M-S-p v", spawnHere "gvim")
-  , ("M-S-p c", spawnHere "chromium || google-chrome")
+  , ("M-S-p c", spawnHere "chrome")
   , ("M-S-p f", spawnHere "firefox")
   ]
 

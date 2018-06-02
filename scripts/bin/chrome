@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if which chromium >/dev/null 2>&1; then
+    exec chromium
+else
+    exec google-chrome
+fi
