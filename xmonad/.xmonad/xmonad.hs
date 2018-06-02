@@ -3,8 +3,8 @@
 {-# OPTIONS -Wall #-}
 {-# LANGUAGE FlexibleContexts #-}
 
-import Control.Monad (filterM)
-import Data.Maybe (isJust)
+import Control.Monad.Loops (firstM)
+import Data.Maybe (fromJust, isJust)
 import System.Directory (findExecutable)
 
 import XMonad
@@ -22,16 +22,18 @@ import XMonad.Prompt.Shell          (shellPrompt)
 import XMonad.Util.EZConfig         (additionalKeysP)
 import XMonad.Util.Run              (hPutStrLn, spawnPipe)
 
-myBindings :: [(String, X ())]
-myBindings =
-  [ ("M-d", changeDir def)
-  , ("M-p", shellPrompt def)
-  , ("M-x", spawn "xscreensaver-command -l")
-  , ("M-S-p e", spawnHere "emacs")
-  , ("M-S-p v", spawnHere "gvim")
-  , ("M-S-p c", spawnHere "chromium || google-chrome")
-  , ("M-S-p f", spawnHere "firefox")
-  ]
+myBindings :: IO [(String, X ())]
+myBindings = do
+  myChrome <- firstInstalled ["chromium", "google-chrome"]
+  return
+    [ ("M-d", changeDir def)
+    , ("M-p", shellPrompt def)
+    , ("M-x", spawn "xscreensaver-command -l")
+    , ("M-S-p e", spawnHere "emacs")
+    , ("M-S-p v", spawnHere "gvim")
+    , ("M-S-p c", spawnHere myChrome)
+    , ("M-S-p f", spawnHere "firefox")
+    ]
 
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig {modMask = modm} = (modm, xK_b)
@@ -45,20 +47,19 @@ myXmobar cmd = statusBar cmd xmobarPP toggleStrutsKey
 myManageHook :: ManageHook
 myManageHook = manageSpawn
 
--- List of terminal emulators, in order of preference.
-myTerminals :: [String]
-myTerminals =
+-- Most preferred installed terminal emulator.
+myTerminal :: IO String
+myTerminal = firstInstalled
   [ "alacritty"
   , "urxvtc"
   , "urxvt"
   , "xterm"
   ]
 
--- Most preferred installed terminal emulator.
-myTerminal :: IO String
-myTerminal = head <$> filterM isInstalled myTerminals
+firstInstalled :: [String] -> IO String
+firstInstalled cmds = fromJust <$> firstM isInstalled cmds
   where
-    isInstalled = (isJust <$>) . findExecutable
+    isInstalled cmd = isJust <$> findExecutable cmd
 
 main :: IO ()
 main = do
@@ -66,6 +67,7 @@ main = do
 
   -- favorite installed terminal emulator
   myTerminal' <- myTerminal
+  myBindings' <- myBindings
 
   -- Here, we start a pipe to the bottom xmobar and write exactly one empty
   -- line to it.  We treat the bottom xmobar differently because:
@@ -93,7 +95,7 @@ main = do
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
     , focusFollowsMouse = False
     , startupHook = liftIO $ hPutStrLn h ""
-    } `additionalKeysP` myBindings
+    } `additionalKeysP` myBindings'
   >>= myXmobar "xmobar ~/.xmonad/xmobarrc-top"
   >>= xmonad . ewmh
   where
