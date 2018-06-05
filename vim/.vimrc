@@ -68,6 +68,7 @@ set softtabstop=-1                      " use value of shiftwidth
 augroup vimrc_autocmds
     autocmd FileType go         :setlocal noexpandtab tabstop=4
     autocmd FileType javascript :setlocal shiftwidth=2
+    autocmd FileType ledger     :setlocal foldmethod=syntax
     autocmd FileType make       :setlocal noexpandtab
     autocmd FileType ocaml      :setlocal shiftwidth=2
     autocmd FileType perl       :setlocal shiftwidth=2
@@ -153,6 +154,11 @@ autocmd! User GoyoLeave Limelight!
 
 let g:limelight_conceal_ctermfg = 'bg'
 let g:limelight_conceal_guifg = 'bg'
+""" }}}
+
+""" vim-ledger {{{
+let g:ledger_date_format = '%Y-%m-%d'
+let g:ledger_main = '~/journal/journal.ldg'
 """ }}}
 
 """" }}}
