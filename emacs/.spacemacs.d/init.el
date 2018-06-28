@@ -110,7 +110,7 @@ values."
           (remove-if-not #'file-exists-p
                          '(
                            "~/blag/TODO.org"
-                           "~/Dropbox/misc.org"
+                           "~/Dropbox/org/misc.org"
                            ))
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
