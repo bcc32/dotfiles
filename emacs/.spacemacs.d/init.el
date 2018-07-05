@@ -5,20 +5,17 @@
 (defun if-installed (executable-name &rest pkgs)
   "Only enable pkgs if EXECUTABLE-NAME is installed in $PATH."
   (if (executable-find executable-name)
-      pkgs
-    '()))
+      pkgs))
 
 (defun only-on-host (name &rest pkgs)
   "Only enable pkgs if SYSTEM-NAME is eq to NAME."
   (if (eql system-name name)
-      pkgs
-    '()))
+      pkgs))
 
 (defun only-on-type (type &rest pkgs)
   "Only enable pkgs if SYSTEM-TYPE is eq to TYPE."
   (if (eql system-type type)
-      pkgs
-    '()))
+      pkgs))
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
