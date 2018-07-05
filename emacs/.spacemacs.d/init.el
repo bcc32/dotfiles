@@ -2,17 +2,17 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-(defun if-installed (executable-name &rest pkgs)
+(defun when-installed (executable-name &rest pkgs)
   "Only enable pkgs if EXECUTABLE-NAME is installed in $PATH."
   (if (executable-find executable-name)
       pkgs))
 
-(defun only-on-host (name &rest pkgs)
+(defun when-on-host (name &rest pkgs)
   "Only enable pkgs if SYSTEM-NAME is eq to NAME."
   (if (eql system-name name)
       pkgs))
 
-(defun only-on-type (type &rest pkgs)
+(defun when-on-type (type &rest pkgs)
   "Only enable pkgs if SYSTEM-TYPE is eq to TYPE."
   (if (eql system-type type)
       pkgs))
@@ -64,39 +64,39 @@ values."
                 ("account" "%(binary) reg %(account)")))
      ibuffer
      ivy
-     ,@(only-on-type 'darwin 'osx)
+     ,@(when-on-type 'darwin 'osx)
      (themes-megapack :variables
                       solarized-distinct-doc-face t
                       solarized-use-more-italic t)
      ;; Text editing
      auto-completion
-     ,@(if-installed "ispell" 'spell-checking)
+     ,@(when-installed "ispell" 'spell-checking)
      syntax-checking
      ;; Programmer tools
-     ,@(if-installed "fasd" 'fasd)
+     ,@(when-installed "fasd" 'fasd)
      git
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
      ;; Functional
      emacs-lisp
-     ,@(if-installed "stack" 'haskell)
-     ,@(if-installed "opam" 'ocaml)
+     ,@(when-installed "stack" 'haskell)
+     ,@(when-installed "opam" 'ocaml)
      ;; System
      c-c++
-     ,@(if-installed "go"
+     ,@(when-installed "go"
                      '(go :variables
                           gofmt-command "goimports"
                           go-tab-width 4))
-     ,@(if-installed "cargo" 'rust)
+     ,@(when-installed "cargo" 'rust)
      ;; Web
      html
      sql
      ;; Script
-     ,@(if-installed "python" 'python)
-     ,@(if-installed "ruby" 'ruby)
+     ,@(when-installed "python" 'python)
+     ,@(when-installed "ruby" 'ruby)
      ;; Documents/markup
      csv
-     ,@(if-installed "latex"
+     ,@(when-installed "latex"
                      'bibtex
                      '(latex :variables
                              latex-build-command "latexmk"
