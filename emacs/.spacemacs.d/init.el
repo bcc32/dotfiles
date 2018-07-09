@@ -84,9 +84,9 @@ values."
      ;; System
      c-c++
      ,@(when-installed "go"
-                     '(go :variables
-                          gofmt-command "goimports"
-                          go-tab-width 4))
+                       '(go :variables
+                            gofmt-command "goimports"
+                            go-tab-width 4))
      ,@(when-installed "cargo" 'rust)
      ;; Web
      html
@@ -97,10 +97,10 @@ values."
      ;; Documents/markup
      csv
      ,@(when-installed "latex"
-                     'bibtex
-                     '(latex :variables
-                             latex-build-command "latexmk"
-                             TeX-engine 'xetex))
+                       'bibtex
+                       '(latex :variables
+                               latex-build-command "latexmk"
+                               TeX-engine 'xetex))
      markdown
      (org :variables
           org-agenda-files
