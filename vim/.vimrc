@@ -80,6 +80,7 @@ augroup END
 """ automatic reformatting {{{
 augroup vimrc_autocmds
     "" strip trailing spaces on write
+    "" FIXME add an option to configure this
     autocmd BufWritePre  *    :%s/\s\+$//e
     "" run goimports
     autocmd BufWritePost *.go :silent! !goimports -w % 2>/dev/null
@@ -111,6 +112,7 @@ Plug 'tpope/vim-surround'
 
 "" Appearance
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'jnurmine/Zenburn'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -194,8 +196,9 @@ nnoremap <F4> :set list!<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 
 "" switch between favorite themes
-nnoremap <F9> :call ToggleTheme("solarized")<CR>
-nnoremap <F10> :call ToggleTheme("zenburn")<CR>
+nnoremap <F9> :call ToggleTheme("solarized", "solarized")<CR>
+nnoremap <F10> :call ToggleTheme("zenburn", "zenburn")<CR>
+nnoremap <F11> :call ToggleTheme("base16-default-dark", "base16_default")<CR>
 
 "" Activate/deactivate Goyo
 nnoremap <Leader>g :Goyo<CR>
@@ -235,13 +238,13 @@ function! ToggleBackground()
     call UpdateLimelightColors()
 endfunction
 
-function! ToggleTheme(new_colors)
+function! ToggleTheme(new_colors, new_airline_theme)
     if exists("g:colors_name") && g:colors_name ==# a:new_colors
         call ToggleBackground()
     else
         set background=dark
         execute "colorscheme"  a:new_colors
-        execute "AirlineTheme" a:new_colors
+        execute "AirlineTheme" a:new_airline_theme
     endif
     call UpdateLimelightColors()
 endfunction
