@@ -112,9 +112,10 @@ This function should only modify configuration layer settings."
                            "~/blag/TODO.org"
                            "~/Dropbox/org/misc.org"
                            ))
+          org-export-backends '(ascii html icalendar latex org)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
-          org-export-backends '(ascii html icalendar latex org))
+          org-insert-heading-respect-content t)
      yaml
      )
 
