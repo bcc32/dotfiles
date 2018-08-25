@@ -114,7 +114,8 @@ This function should only modify configuration layer settings."
           org-export-backends '(ascii html icalendar latex org)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
-          org-insert-heading-respect-content t)
+          org-insert-heading-respect-content t
+          org-startup-indented t)
      yaml
      )
 
