@@ -76,7 +76,6 @@ This function should only modify configuration layer settings."
      ,@(when-installed "ispell" 'spell-checking)
      syntax-checking
      ;; Programmer tools
-     ,@(when-installed "fasd" 'fasd)
      git
      (shell :variables shell-default-shell 'eshell)
      ;; Programming languages
