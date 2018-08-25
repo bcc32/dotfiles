@@ -1,0 +1,10 @@
+#!/bin/sh
+
+FROM=$1
+TO=$2
+SNAPSHOT_PATH=/mnt/pool/@$FROM/snapshots
+
+snapsend \
+    -delete-extraneous \
+    -from ssh://root@${FROM} -to ssh://root@${TO} \
+    -from-path $SNAPSHOT_PATH -to-path $SNAPSHOT_PATH
