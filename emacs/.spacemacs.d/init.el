@@ -558,6 +558,4 @@ before packages are loaded."
   (setq fill-column 80)
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
-  ;; TODO remove temporary fix for https://github.com/syl20bnr/spacemacs/issues/11152
-  (setq projectile-keymap-prefix (kbd "C-c C-p"))
   (setq sentence-end-double-space t))
