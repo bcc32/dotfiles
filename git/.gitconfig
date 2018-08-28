@@ -21,3 +21,5 @@
 	algorithm = patience
 	guitool = gvimdiff
 	tool = vimdiff
+[merge]
+	conflictStyle = diff3
