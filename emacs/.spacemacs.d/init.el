@@ -55,10 +55,7 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; Emacs
-     ;; FIXME would like to use ledger-iso-date-format here but it's not
-     ;; available until ledger-mode is loaded?
      (finance :variables
-              ledger-default-date-format "%Y-%m-%d"
               ledger-reports
               '(("reconcile" "ldg-reconcile %(account)")
                 ("uncleared" "%(binary) reg -U")
@@ -550,6 +547,9 @@ before packages are loaded."
   ;; https://stackoverflow.com/questions/44796844/switch-off-ivy-use-virtual-buffers-in-spacemacs
   (with-eval-after-load 'recentf
     (setq ivy-use-virtual-buffers nil))
+
+  (with-eval-after-load 'ledger-mode
+    (setq ledger-default-date-format ledger-iso-date-format))
 
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
