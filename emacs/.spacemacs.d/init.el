@@ -108,6 +108,9 @@ This function should only modify configuration layer settings."
                            "~/blag/TODO.org"
                            "~/Dropbox/org/misc.org"
                            ))
+          org-directory "~/Dropbox/org"
+          org-default-notes-file "~/Dropbox/org/misc.org"
+          org-refile-targets '((org-agenda-files :maxlevel . 3))
           org-export-backends '(ascii html icalendar latex org)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
