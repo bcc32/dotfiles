@@ -1,10 +1,16 @@
 #!/bin/sh
 
-FROM=$1
-TO=$2
-SNAPSHOT_PATH=/mnt/pool/@$FROM/snapshots
+set -eu
+
+from=$1
+shift
+to=$1
+shift
+
+snapshot_path="/mnt/pool/@$from/snapshots"
 
 snapsend \
     -delete-extraneous \
-    -from ssh://root@${FROM} -to ssh://root@${TO} \
-    -from-path $SNAPSHOT_PATH -to-path $SNAPSHOT_PATH
+    -from "ssh://root@$from" -to "ssh://root@$to" \
+    -from-path "$snapshot_path" -to-path "$snapshot_path" \
+    $@
