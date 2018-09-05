@@ -561,6 +561,5 @@ before packages are loaded."
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
   (setq fill-column 80)
-  (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
   (setq sentence-end-double-space t))
