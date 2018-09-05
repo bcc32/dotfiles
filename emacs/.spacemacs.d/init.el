@@ -539,14 +539,17 @@ before packages are loaded."
   (spacemacs/toggle-mode-line-org-clock-on)
 
   ;; bind SPC m v to merlin-enclosing-expand
-  (if (boundp 'spacemacs-tuareg-mode-map-prefix)
-      (define-key spacemacs-tuareg-mode-map-prefix
-        (kbd "v")
-        'merlin-enclosing-expand))
+  (with-eval-after-load 'tuareg
+    (define-key spacemacs-tuareg-mode-map-prefix
+      (kbd "v")
+      'merlin-enclosing-expand))
 
   ;; https://github.com/syl20bnr/spacemacs/issues/480
-  (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
-  (defalias 'perl-mode 'cperl-mode)
+  (with-eval-after-load 'cperl-mode
+    (defalias 'perl-mode 'cperl-mode)
+    (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
+    (setq cperl-close-paren-offset -2)
+    (setq cperl-indent-parens-as-block t))
 
   ;; https://stackoverflow.com/questions/44796844/switch-off-ivy-use-virtual-buffers-in-spacemacs
   (with-eval-after-load 'recentf
@@ -557,8 +560,6 @@ before packages are loaded."
 
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
-  (setq cperl-close-paren-offset -2)
-  (setq cperl-indent-parens-as-block t)
   (setq fill-column 80)
   (setq js-indent-level 2)
   (setq powerline-default-separator 'arrow)
