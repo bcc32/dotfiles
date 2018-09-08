@@ -552,6 +552,13 @@ before packages are loaded."
   (with-eval-after-load 'recentf
     (setq ivy-use-virtual-buffers nil))
 
+  (with-eval-after-load 'org
+    (add-hook 'before-save-hook
+              (lambda ()
+                (when (eq major-mode 'org-mode)
+                  (org-update-statistics-cookies)
+                  (org-align-all-tags)))))
+
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format))
 
