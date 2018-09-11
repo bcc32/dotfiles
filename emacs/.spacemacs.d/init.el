@@ -559,7 +559,7 @@ before packages are loaded."
     (add-hook 'before-save-hook
               (lambda ()
                 (when (eq major-mode 'org-mode)
-                  (org-update-statistics-cookies)
+                  (org-update-statistics-cookies t)
                   (org-align-all-tags)))))
 
   (with-eval-after-load 'ledger-mode
