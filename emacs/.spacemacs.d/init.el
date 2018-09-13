@@ -63,7 +63,7 @@ This function should only modify configuration layer settings."
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")))
      ibuffer
-     ivy
+     (ivy :variables ivy-use-virtual-buffers nil)
      ,@(when-on-type 'darwin 'osx)
      (themes-megapack :variables
                       solarized-distinct-doc-face t
@@ -550,10 +550,6 @@ before packages are loaded."
     (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
     (setq cperl-close-paren-offset -2)
     (setq cperl-indent-parens-as-block t))
-
-  ;; https://stackoverflow.com/questions/44796844/switch-off-ivy-use-virtual-buffers-in-spacemacs
-  (with-eval-after-load 'recentf
-    (setq ivy-use-virtual-buffers nil))
 
   (with-eval-after-load 'org
     (add-hook 'before-save-hook
