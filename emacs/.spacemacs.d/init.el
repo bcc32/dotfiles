@@ -110,10 +110,10 @@ This function should only modify configuration layer settings."
           ;; ~/org/default should be a symlink pointing to one of the entries in
           ;; ~/org that represents the default directory for notes.
           org-agenda-files
-          (mapcar #'(lambda (file)
-                      (file-truename
-                       (concat (file-name-as-directory "~/org") file)))
-                  (remove-if #'(lambda (file) (member file '("." ".." "default")))
+          (mapcar (lambda (file)
+                    (file-truename
+                     (concat (file-name-as-directory "~/org") file)))
+                  (remove-if (lambda (file) (member file '("." ".." "default")))
                              (directory-files "~/org" nil nil :nosort)))
           org-default-notes-file "~/org/default/refile.org"
           org-directory "~/org/default"
