@@ -102,16 +102,23 @@ This function should only modify configuration layer settings."
                                TeX-engine 'xetex))
      markdown
      (org :variables
+          ;; org-agenda-files are computed based on the contents of ~/org.
+          ;;
+          ;; ~/org should contain symlinks to org files or directories
+          ;; containing org files.
+          ;;
+          ;; ~/org/default should be a symlink pointing to one of the entries in
+          ;; ~/org that represents the default directory for notes.
           org-agenda-files
-          (remove-if-not #'file-exists-p
-                         '(
-                           "~/blag/TODO.org"
-                           "~/Dropbox/org/misc.org"
-                           "~/Dropbox/org/refile.org"
-                           ))
-          org-directory "~/Dropbox/org"
-          org-default-notes-file "~/Dropbox/org/refile.org"
+          (mapcar #'(lambda (file)
+                      (file-truename
+                       (concat (file-name-as-directory "~/org") file)))
+                  (remove-if #'(lambda (file) (member file '("." ".." "default")))
+                             (directory-files "~/org" nil nil :nosort)))
+          org-default-notes-file "~/org/default/refile.org"
+          org-directory "~/org/default"
           org-refile-targets '((org-agenda-files :maxlevel . 3))
+
           org-export-backends '(ascii html icalendar latex org)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
