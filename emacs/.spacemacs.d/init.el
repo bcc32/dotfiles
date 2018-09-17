@@ -2,9 +2,9 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-(defun when-installed (executable-name &rest pkgs)
+(defun when-any-installed (executable-names &rest pkgs)
   "Only enable pkgs if EXECUTABLE-NAME is installed in $PATH."
-  (if (executable-find executable-name)
+  (if (some #'executable-find executable-names)
       pkgs))
 
 (defun when-on-host (name &rest pkgs)
@@ -71,7 +71,7 @@ This function should only modify configuration layer settings."
                       solarized-use-more-italic t)
      ;; Text editing
      auto-completion
-     ,@(when-installed "ispell" 'spell-checking)
+     ,@(when-any-installed '("aspell" "ispell") 'spell-checking)
      syntax-checking
      ;; Programmer tools
      git
@@ -79,24 +79,24 @@ This function should only modify configuration layer settings."
      ;; Programming languages
      ;; Functional
      emacs-lisp
-     ,@(when-installed "stack" 'haskell)
-     ,@(when-installed "opam" 'ocaml)
+     ,@(when-any-installed '("ghc" "stack") 'haskell)
+     ,@(when-any-installed '("ocamlc" "opam") 'ocaml)
      ;; System
      c-c++
-     ,@(when-installed "go"
+     ,@(when-any-installed '("go")
                        '(go :variables
                             gofmt-command "goimports"
                             go-tab-width 4))
-     ,@(when-installed "cargo" 'rust)
+     ,@(when-any-installed '("rustc" "cargo") 'rust)
      ;; Web
      html
      sql
      ;; Script
-     ,@(when-installed "python" 'python)
-     ,@(when-installed "ruby" 'ruby)
+     ,@(when-any-installed '("python") 'python)
+     ,@(when-any-installed '("ruby") 'ruby)
      ;; Documents/markup
      csv
-     ,@(when-installed "latex"
+     ,@(when-any-installed '("xelatex" "pdflatex" "latexmk")
                        'bibtex
                        '(latex :variables
                                latex-build-command "latexmk"
