@@ -57,9 +57,10 @@ This function should only modify configuration layer settings."
      ;; Emacs
      (finance :variables
               ledger-reports
-              '(("reconcile" "ldg-reconcile %(account)")
+              `(("reconcile" "ldg-reconcile %(account)")
                 ("uncleared" "%(binary) reg -U")
                 ("bal" "%(binary) bal")
+                ("validate" ,(concat "%(binary) source " (getenv "LEDGER_FILE")))
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")))
      ibuffer
