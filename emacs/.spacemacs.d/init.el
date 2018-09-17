@@ -120,6 +120,13 @@ This function should only modify configuration layer settings."
           org-directory "~/org/default"
           org-refile-targets '((org-agenda-files :maxlevel . 3))
 
+          ;; Don't show scheduled items in the global todo list, because
+          ;; presumably you don't want to think about them until the scheduled
+          ;; time.
+          org-agenda-tags-todo-honor-ignore-options t
+          org-agenda-todo-ignore-scheduled 'future
+          org-agenda-todo-ignore-time-comparison-use-seconds t
+
           org-export-backends '(ascii html icalendar latex org)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
