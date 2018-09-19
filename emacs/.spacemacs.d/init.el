@@ -75,7 +75,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; Programmer tools
      git
-     (shell :variables shell-default-shell 'eshell)
+     (shell :variables shell-default-shell 'multi-term)
      ;; Programming languages
      ;; Functional
      emacs-lisp
