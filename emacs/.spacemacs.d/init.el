@@ -64,7 +64,9 @@ This function should only modify configuration layer settings."
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")))
      ibuffer
-     (ivy :variables ivy-use-virtual-buffers nil)
+     (ivy :variables
+          ivy-use-virtual-buffers nil
+          ivy-format-function 'ivy-format-function-arrow)
      ,@(when-on-type 'darwin 'osx)
      (themes-megapack :variables
                       solarized-distinct-doc-face t
