@@ -17,6 +17,13 @@
   (if (eql system-type type)
       pkgs))
 
+;; TODO conditionally reimplement this in Ecaml
+(defun bcc32/ansi-color-buffer ()
+  (interactive)
+  (require 'ansi-color)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -555,6 +562,10 @@ before packages are loaded."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+
+  (define-key spacemacs-cmds
+    (kbd "Ca")
+    'bcc32/ansi-color-buffer)
 
   ;; bind SPC m v to merlin-enclosing-expand
   (with-eval-after-load 'tuareg
