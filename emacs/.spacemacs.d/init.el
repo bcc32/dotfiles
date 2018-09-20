@@ -19,6 +19,7 @@
 
 ;; TODO conditionally reimplement this in Ecaml
 (defun bcc32/ansi-color-buffer ()
+  "Render ANSI SGR color sequences in the current buffer as colored font faces."
   (interactive)
   (require 'ansi-color)
   (let ((inhibit-read-only t))
