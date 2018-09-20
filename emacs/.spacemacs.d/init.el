@@ -579,7 +579,10 @@ before packages are loaded."
   (with-eval-after-load 'tuareg
     (define-key spacemacs-tuareg-mode-map-prefix
       (kbd "v")
-      'merlin-enclosing-expand))
+      'merlin-enclosing-expand)
+    (define-key spacemacs-tuareg-mode-map-prefix
+      (kbd "f")
+      'bcc32/ocamlformat-buffer))
 
   ;; https://github.com/syl20bnr/spacemacs/issues/480
   (with-eval-after-load 'cperl-mode
