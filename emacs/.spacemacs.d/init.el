@@ -24,6 +24,12 @@
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
+(defun bcc32/org-cleanup ()
+  "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
+  (interactive)
+  (org-update-statistics-cookies t)
+  (org-align-all-tags))
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -593,11 +599,9 @@ before packages are loaded."
     (setq cperl-indent-parens-as-block t))
 
   (with-eval-after-load 'org
-    (add-hook 'before-save-hook
+    (add-hook 'org-mode-hook
               (lambda ()
-                (when (eq major-mode 'org-mode)
-                  (org-update-statistics-cookies t)
-                  (org-align-all-tags)))))
+                (add-hook 'before-save-hook 'bcc32/org-cleanup nil :local))))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format))
