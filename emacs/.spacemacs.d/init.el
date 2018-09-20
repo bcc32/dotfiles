@@ -81,7 +81,9 @@ This function should only modify configuration layer settings."
      ;; Text editing
      auto-completion
      ,@(when-any-installed '("aspell" "ispell") 'spell-checking)
-     syntax-checking
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default nil
+                      syntax-checking-use-original-bitmaps t)
      ;; Programmer tools
      git
      (shell :variables shell-default-shell 'multi-term)
