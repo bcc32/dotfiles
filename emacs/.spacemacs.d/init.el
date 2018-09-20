@@ -567,6 +567,12 @@ before packages are loaded."
     (kbd "Ca")
     'bcc32/ansi-color-buffer)
 
+  (advice-add 'magit-diff-setup :after
+              (lambda (&rest r)
+                (let ((was-read-only buffer-read-only))
+                  (bcc32/ansi-color-buffer)
+                  (setq buffer-read-only was-read-only))))
+
   ;; bind SPC m v to merlin-enclosing-expand
   (with-eval-after-load 'tuareg
     (define-key spacemacs-tuareg-mode-map-prefix
