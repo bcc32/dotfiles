@@ -145,7 +145,7 @@ This function should only modify configuration layer settings."
           org-agenda-todo-ignore-scheduled 'future
           org-agenda-todo-ignore-time-comparison-use-seconds t
 
-          org-export-backends '(ascii html icalendar latex org)
+          org-export-backends '(ascii html icalendar latex org texinfo)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
           org-insert-heading-respect-content t
