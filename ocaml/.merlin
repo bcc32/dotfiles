@@ -1,10 +1,6 @@
-PKG async
-PKG bignum
-PKG core
-PKG core_bench
-PKG ounit
+PKG base
 PKG ppx_jane
-PKG re2
+PKG stdio
 FLG -thread
 FLG -w A-4-33-40-41-42-43-34-44
 FLG -warn-error A
