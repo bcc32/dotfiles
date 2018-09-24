@@ -3,7 +3,7 @@
 ;; It must be stored in your home directory.
 
 (defun when-any-installed (executable-names &rest pkgs)
-  "Only enable pkgs if EXECUTABLE-NAME is installed in $PATH."
+  "Only enable pkgs if any of EXECUTABLE-NAMES is installed in $PATH."
   (if (some #'executable-find executable-names)
       pkgs))
 
