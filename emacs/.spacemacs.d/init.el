@@ -136,7 +136,8 @@ This function should only modify configuration layer settings."
                              (directory-files "~/org" nil nil :nosort)))
           org-default-notes-file "~/org/default/refile.org"
           org-directory "~/org/default"
-          org-refile-targets '((org-agenda-files :maxlevel . 3))
+          org-refile-targets '((nil :maxlevel . 3)
+                               (org-agenda-files :maxlevel . 3))
 
           ;; Don't show scheduled items in the global todo list, because
           ;; presumably you don't want to think about them until the scheduled
