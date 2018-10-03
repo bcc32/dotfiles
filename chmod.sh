@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cd "$(dirname "$0")"
+cd "$(git rev-parse --show-toplevel)"
 
 chmod 644 ssh/.ssh/config
