@@ -74,7 +74,8 @@ This function should only modify configuration layer settings."
               `(("reconcile" "ldg-reconcile %(account)")
                 ("uncleared" "%(binary) reg -U")
                 ("bal" "%(binary) bal")
-                ("validate" ,(concat "%(binary) source " (getenv "LEDGER_FILE")))
+                ("validate" ,(concat "%(binary) source "
+                                     (shell-quote-argument (getenv "LEDGER_FILE"))))
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")))
      ibuffer
