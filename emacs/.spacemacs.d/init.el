@@ -74,10 +74,12 @@ This function should only modify configuration layer settings."
               `(("reconcile" "ldg-reconcile %(account)")
                 ("uncleared" "%(binary) reg -U")
                 ("bal" "%(binary) bal")
-                ("validate" ,(concat "%(binary) source "
-                                     (shell-quote-argument (getenv "LEDGER_FILE"))))
                 ("payee" "%(binary) reg @%(payee)")
-                ("account" "%(binary) reg %(account)")))
+                ("account" "%(binary) reg %(account)")
+                ,@(let ((ledger-file (getenv "LEDGER_FILE")))
+                    (and ledger-file
+                      `("validate" ,(concat "%(binary) source "
+                                           (shell-quote-argument ledger-file)))))))
      ibuffer
      (ivy :variables
           ivy-use-virtual-buffers nil
