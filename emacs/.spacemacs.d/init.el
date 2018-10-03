@@ -95,7 +95,6 @@ This function should only modify configuration layer settings."
      ;; Programmer tools
      git
      (shell :variables shell-default-shell 'multi-term)
-     version-control
      ;; Programming languages
      ;; Functional
      emacs-lisp
