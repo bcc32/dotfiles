@@ -3,7 +3,6 @@
 {-# OPTIONS -Wall #-}
 {-# LANGUAGE FlexibleContexts #-}
 
-import Control.Monad.Loops (firstM)
 import Data.Maybe (fromJust, isJust)
 import System.Directory (findExecutable)
 
@@ -59,6 +58,13 @@ myTerminal = firstInstalled
 firstInstalled :: [String] -> IO String
 firstInstalled cmds = fromJust <$> firstM isInstalled cmds
   where
+    firstM f [] = return Nothing
+    firstM f (m:ms) = do
+      ok <- f m
+      if ok then
+        return $ Just m
+      else
+        firstM f ms
     isInstalled cmd = isJust <$> findExecutable cmd
 
 main :: IO ()
