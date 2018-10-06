@@ -95,7 +95,7 @@ main = do
   h <- spawnPipe "xmobar ~/.xmonad/xmobarrc-bottom"
 
   return $ def
-    { modMask           = mod1Mask
+    { modMask           = mod4Mask
     , manageHook        = myManageHook <+> manageHook def
     , terminal          = myTerminal'
     , layoutHook        = (workspaceDir "~" . smartBorders) myLayoutHook
