@@ -78,8 +78,8 @@ This function should only modify configuration layer settings."
                 ("account" "%(binary) reg %(account)")
                 ,@(let ((ledger-file (getenv "LEDGER_FILE")))
                     (and ledger-file
-                      `("validate" ,(concat "%(binary) source "
-                                           (shell-quote-argument ledger-file)))))))
+                         `(("validate" ,(concat "%(binary) source "
+                                                (shell-quote-argument ledger-file))))))))
      ibuffer
      (ivy :variables
           ivy-use-virtual-buffers nil
