@@ -105,9 +105,9 @@ This function should only modify configuration layer settings."
      ;; System
      c-c++
      ,@(when-any-installed '("go")
-                       '(go :variables
-                            gofmt-command "goimports"
-                            go-tab-width 4))
+                           '(go :variables
+                                gofmt-command "goimports"
+                                go-tab-width 4))
      ,@(when-any-installed '("rustc" "cargo") 'rust)
      ;; Web
      html
@@ -118,10 +118,10 @@ This function should only modify configuration layer settings."
      ;; Documents/markup
      csv
      ,@(when-any-installed '("xelatex" "pdflatex" "latexmk")
-                       'bibtex
-                       '(latex :variables
-                               latex-build-command "latexmk"
-                               TeX-engine 'xetex))
+                           'bibtex
+                           '(latex :variables
+                                   latex-build-command "latexmk"
+                                   TeX-engine 'xetex))
      markdown
      (org :variables
           ;; org-agenda-files are computed based on the contents of ~/org.
@@ -155,27 +155,26 @@ This function should only modify configuration layer settings."
           org-insert-heading-respect-content t
           org-startup-indented t
 
-          org-todo-keywords
-          '((sequence "TODO(t)"
-                      "MAYBE(m/!)"
-                      "INPROGRESS(p)"
-                      "BLOCKED(k@/!)"
-                      "INREVIEW(r!)"
-                      "|"
-                      "DONE(d)"
-                      "DELEGATED(g@)"
-                      "DEFERRED(e)"
-                      "NOTDONE(n)")
-            (type "BUG(b/!)"
-                  "CLEANUP(l/!)"
-                  "|"
-                  "FIXED(x)"
-                  "WONTFIX(w)")
-            (type "ENHANCEMENT(h/!)"
-                  "FEATURE(f/!)"
-                  "|"
-                  "RELEASED(s)"
-                  "CANCELED(c)")))
+          org-todo-keywords '((sequence "TODO(t)"
+                                        "MAYBE(m/!)"
+                                        "INPROGRESS(p)"
+                                        "BLOCKED(k@/!)"
+                                        "INREVIEW(r!)"
+                                        "|"
+                                        "DONE(d)"
+                                        "DELEGATED(g@)"
+                                        "DEFERRED(e)"
+                                        "NOTDONE(n)")
+                              (type "BUG(b/!)"
+                                    "CLEANUP(l/!)"
+                                    "|"
+                                    "FIXED(x)"
+                                    "WONTFIX(w)")
+                              (type "ENHANCEMENT(h/!)"
+                                    "FEATURE(f/!)"
+                                    "|"
+                                    "RELEASED(s)"
+                                    "CANCELED(c)")))
      yaml
      )
 
