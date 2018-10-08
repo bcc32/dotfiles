@@ -153,7 +153,29 @@ This function should only modify configuration layer settings."
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
           org-insert-heading-respect-content t
-          org-startup-indented t)
+          org-startup-indented t
+
+          org-todo-keywords
+          '((sequence "TODO(t)"
+                      "MAYBE(m/!)"
+                      "INPROGRESS(p)"
+                      "BLOCKED(k@/!)"
+                      "INREVIEW(r!)"
+                      "|"
+                      "DONE(d)"
+                      "DELEGATED(g@)"
+                      "DEFERRED(e)"
+                      "NOTDONE(n)")
+            (type "BUG(b/!)"
+                  "CLEANUP(l/!)"
+                  "|"
+                  "FIXED(x)"
+                  "WONTFIX(w)")
+            (type "ENHANCEMENT(h/!)"
+                  "FEATURE(f/!)"
+                  "|"
+                  "RELEASED(s)"
+                  "CANCELED(c)")))
      yaml
      )
 
