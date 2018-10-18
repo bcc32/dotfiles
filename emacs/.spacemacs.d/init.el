@@ -597,9 +597,8 @@ before packages are loaded."
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
 
-  (define-key spacemacs-cmds
-    (kbd "Ca")
-    'bcc32/ansi-color-buffer)
+  (spacemacs/set-leader-keys
+    "Ca" 'bcc32/ansi-color-buffer)
 
   (advice-add 'magit-diff-setup :after
               (lambda (&rest r)
