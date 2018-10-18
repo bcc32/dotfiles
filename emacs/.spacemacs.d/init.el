@@ -606,14 +606,10 @@ before packages are loaded."
                   (bcc32/ansi-color-buffer)
                   (setq buffer-read-only was-read-only))))
 
-  ;; bind SPC m v to merlin-enclosing-expand
   (with-eval-after-load 'tuareg
-    (define-key spacemacs-tuareg-mode-map-prefix
-      (kbd "v")
-      'merlin-enclosing-expand)
-    (define-key spacemacs-tuareg-mode-map-prefix
-      (kbd "f")
-      'bcc32/ocamlformat-buffer)
+    (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
+      "v" 'merlin-enclosing-expand
+      "f" 'bcc32/ocamlformat-buffer)
     (add-hook 'tuareg-mode-hook 'prettify-symbols-mode))
 
   ;; https://github.com/syl20bnr/spacemacs/issues/480
