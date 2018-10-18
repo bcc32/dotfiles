@@ -620,6 +620,8 @@ before packages are loaded."
     (setq cperl-indent-parens-as-block t))
 
   (with-eval-after-load 'org
+    (spacemacs/set-leader-keys
+      "aog" 'counsel-org-goto-all)
     (add-hook 'org-mode-hook
               (lambda ()
                 (add-hook 'before-save-hook 'bcc32/org-cleanup nil :local))))
