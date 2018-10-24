@@ -31,6 +31,15 @@
   (org-update-statistics-cookies t)
   (org-align-all-tags))
 
+;; Workaround for org-mode link opening bug (unescapes the URL, which breaks,
+;; e.g., gmail search links).
+(defun bcc32/link-hint-open-link ()
+  (interactive)
+  (if (eq major-mode 'org-mode)
+      (progn (link-hint-copy-link)
+             (browse-url (current-kill 0)))
+    (link-hint-open-link)))
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -621,7 +630,8 @@ before packages are loaded."
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
-      "aog" 'counsel-org-goto-all)
+      "aog" 'counsel-org-goto-all
+      "xo"  'bcc32/link-hint-open-link)
     (add-hook 'org-mode-hook
               (lambda ()
                 (add-hook 'before-save-hook 'bcc32/org-cleanup nil :local))))
