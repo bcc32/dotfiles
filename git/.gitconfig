@@ -17,7 +17,7 @@
 	autocrlf = input
 	excludesfile = ~/.cvsignore
 [diff]
-	algorithm = patience
+	algorithm = histogram
 	guitool = gvimdiff
 	tool = vimdiff
 [merge]
