@@ -94,9 +94,6 @@ This function should only modify configuration layer settings."
           ivy-use-virtual-buffers nil
           ivy-format-function 'ivy-format-function-arrow)
      ,@(when-on-type 'darwin 'osx)
-     (themes-megapack :variables
-                      solarized-distinct-doc-face t
-                      solarized-use-more-italic t)
      ;; Text editing
      auto-completion
      ,@(when-any-installed '("aspell" "ispell") 'spell-checking)
@@ -194,7 +191,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(solarized-theme tao-theme zenburn-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -605,6 +602,10 @@ before packages are loaded."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+
+  ;; theme customization
+  (setq solarized-distinct-doc-face t
+        solarized-use-more-italic t)
 
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-buffer)
