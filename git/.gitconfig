@@ -15,7 +15,6 @@
 	default = simple
 [core]
 	autocrlf = input
-	editor = vim
 	excludesfile = ~/.cvsignore
 [diff]
 	algorithm = patience
