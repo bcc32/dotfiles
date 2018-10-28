@@ -107,7 +107,8 @@ This function should only modify configuration layer settings."
      ;; Functional
      emacs-lisp
      ,@(when-any-installed '("ghc" "stack") 'haskell)
-     ,@(when-any-installed '("ocamlc" "opam") 'ocaml)
+     ,@(when-any-installed '("ocamlc" "opam")
+                           '(ocaml :variables tuareg-prettify-symbols-full t))
      ;; System
      c-c++
      ,@(when-any-installed '("go")
