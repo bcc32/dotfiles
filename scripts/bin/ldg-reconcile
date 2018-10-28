@@ -3,4 +3,4 @@
 echo "Reconciling the following accounts:"
 ledger accounts "$@"
 echo
-ledger reg --effective --sort d -d "d >= today - 28" -C "$@"
+ledger reg --effective --sort d -d "d >= today - 28" -C "$@" | tail
