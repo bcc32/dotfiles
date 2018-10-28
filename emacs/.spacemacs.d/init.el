@@ -120,6 +120,7 @@ This function should only modify configuration layer settings."
      html
      sql
      ;; Script
+     perl5
      ,@(when-any-installed '("python") 'python)
      ,@(when-any-installed '("ruby") 'ruby)
      ;; Documents/markup
