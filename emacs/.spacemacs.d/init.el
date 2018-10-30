@@ -7,9 +7,9 @@
   (if (some #'executable-find executable-names)
       pkgs))
 
-(defun when-on-host (name &rest pkgs)
-  "Only enable pkgs if SYSTEM-NAME is eql to NAME."
-  (if (eql system-name name)
+(defun when-on-hostname (name &rest pkgs)
+  "Only enable pkgs if SYSTEM-NAME is equal to NAME."
+  (if (string= (system-name) name)
       pkgs))
 
 (defun when-on-type (type &rest pkgs)
