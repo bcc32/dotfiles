@@ -624,10 +624,7 @@ before packages are loaded."
       "f" 'bcc32/ocamlformat-buffer)
     (add-hook 'tuareg-mode-hook 'prettify-symbols-mode))
 
-  ;; https://github.com/syl20bnr/spacemacs/issues/480
   (with-eval-after-load 'cperl-mode
-    (defalias 'perl-mode 'cperl-mode)
-    (add-hook 'cperl-mode-hook (lambda () (local-unset-key (kbd "{"))))
     (setq cperl-close-paren-offset -2)
     (setq cperl-indent-parens-as-block t))
 
