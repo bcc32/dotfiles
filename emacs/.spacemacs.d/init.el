@@ -8,12 +8,12 @@
       pkgs))
 
 (defun when-on-host (name &rest pkgs)
-  "Only enable pkgs if SYSTEM-NAME is eq to NAME."
+  "Only enable pkgs if SYSTEM-NAME is eql to NAME."
   (if (eql system-name name)
       pkgs))
 
 (defun when-on-type (type &rest pkgs)
-  "Only enable pkgs if SYSTEM-TYPE is eq to TYPE."
+  "Only enable pkgs if SYSTEM-TYPE is eql to TYPE."
   (if (eql system-type type)
       pkgs))
 
