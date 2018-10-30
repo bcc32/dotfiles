@@ -41,7 +41,7 @@ replace-buffer-contents if available."
   :type 'file)
 
 (defun bcc32/ocamlformat-buffer ()
-  (interactive)
+  (interactive "*")                     ;fail if buffer is read-only
   (let* ((filename (buffer-file-name))
          (extension (and filename (file-name-extension filename)
                          (concat "." (file-name-extension filename))))
@@ -52,6 +52,16 @@ replace-buffer-contents if available."
       (bcc32//replace-buffer-contents tmpbuf)
       (kill-buffer tmpbuf))
     (delete-file tmpfile)))
+
+(define-minor-mode bcc32/ocamlformat-on-save-mode
+  "Minor mode to automatically run ocamlformat before saving OCaml code."
+  (with-eval-after-load 'tuareg
+    (add-hook 'before-save-hook 'bcc32//ocamlformat-on-save)))
+
+(defun bcc32//ocamlformat-on-save ()
+  (when (and bcc32/ocamlformat-on-save-mode
+             (eq major-mode 'tuareg-mode))
+    (bcc32/ocamlformat-buffer)))
 
 (defun bcc32/org-cleanup ()
   "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
