@@ -659,7 +659,8 @@ before packages are loaded."
   (with-eval-after-load 'tuareg
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
-      "f" 'bcc32/ocamlformat-buffer)
+      "f" 'bcc32/ocamlformat-buffer
+      "F" 'bcc32/ocamlformat-on-save-mode)
     (add-hook 'tuareg-mode-hook 'prettify-symbols-mode))
 
   (with-eval-after-load 'cperl-mode
