@@ -55,6 +55,8 @@ replace-buffer-contents if available."
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
   "Minor mode to automatically run ocamlformat before saving OCaml code."
+  :lighter "fmt"
+  :global t
   (with-eval-after-load 'tuareg
     (add-hook 'before-save-hook 'bcc32//ocamlformat-on-save)))
 
