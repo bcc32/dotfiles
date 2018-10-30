@@ -66,8 +66,9 @@ replace-buffer-contents if available."
 (defun bcc32/org-cleanup ()
   "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
   (interactive)
-  (org-update-statistics-cookies t)
-  (org-align-all-tags))
+  (when (eq major-mode 'org-mode)
+    (org-update-statistics-cookies t)
+    (org-align-all-tags)))
 
 ;; Workaround for org-mode link opening bug (unescapes the URL, which breaks,
 ;; e.g., gmail search links).
@@ -671,9 +672,7 @@ before packages are loaded."
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all
       "xo"  'bcc32/link-hint-open-link)
-    (add-hook 'org-mode-hook
-              (lambda ()
-                (add-hook 'before-save-hook 'bcc32/org-cleanup nil :local))))
+    (add-hook 'before-save-hook 'bcc32/org-cleanup))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format))
