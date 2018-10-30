@@ -25,6 +25,34 @@
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
+(defun bcc32//replace-buffer-contents (source)
+  "Replace the current buffer contents with SOURCE, using
+replace-buffer-contents if available."
+  (if (fboundp 'replace-buffer-contents)
+      (replace-buffer-contents source)
+    (let ((old-line (line-number-at-pos)))
+      (delete-region (point-min) (point-max))
+      (insert-buffer-substring source)
+      ;; try to return to approximately where the point used to be
+      (goto-line old-line))))
+
+(defcustom bcc32/ocamlformat-program "ocamlformat"
+  "Path to the ocamlformat program, used in bcc32/ocamlformat-buffer."
+  :type 'file)
+
+(defun bcc32/ocamlformat-buffer ()
+  (interactive)
+  (let* ((filename (buffer-file-name))
+         (extension (and filename (file-name-extension filename)
+                         (concat "." (file-name-extension filename))))
+         (tmpfile (make-temp-file "bcc32-ocamlformat" nil extension)))
+    (write-region nil nil tmpfile nil :nomsg)
+    (let ((tmpbuf (generate-new-buffer " bcc32/ocamlformat-buffer")))
+      (call-process bcc32/ocamlformat-program nil tmpbuf nil tmpfile)
+      (bcc32//replace-buffer-contents tmpbuf)
+      (kill-buffer tmpbuf))
+    (delete-file tmpfile)))
+
 (defun bcc32/org-cleanup ()
   "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
   (interactive)
