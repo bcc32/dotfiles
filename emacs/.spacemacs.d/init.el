@@ -40,7 +40,7 @@ replace-buffer-contents if available."
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
   "Path to the ocamlformat program, used in bcc32/ocamlformat-buffer."
-  :type '(choice file (const nil)))
+  :type '(choice file (const :tag "Disable ocamlformat" nil)))
 
 (defun bcc32//ocamlformat-file-inplace (file)
   (when bcc32/ocamlformat-program
@@ -48,8 +48,8 @@ replace-buffer-contents if available."
                   "--inplace" file)))
 
 (defcustom bcc32/ocp-indent-program "ocp-indent"
-  "Path to the ocamlformat program, used in bcc32/ocamlformat-buffer."
-  :type '(choice file (const nil)))
+  "Path to the ocp-indent program, used in bcc32/ocamlformat-buffer."
+  :type '(choice file (const :tag "Disable ocp-indent" nil)))
 
 (defun bcc32//ocp-indent-file-inplace (file)
   (when bcc32/ocp-indent-program
@@ -57,6 +57,9 @@ replace-buffer-contents if available."
                   "--inplace" file)))
 
 (defun bcc32/ocamlformat-buffer ()
+  "Use ocamlformat and then ocp-indent to reformat the current
+buffer.  See also bcc32/ocamlformat-program and
+bcc32/ocp-indent-program."
   (interactive "*")                     ;fail if buffer is read-only
   (let* ((filename (buffer-file-name))
          (extension (and filename (file-name-extension filename)
