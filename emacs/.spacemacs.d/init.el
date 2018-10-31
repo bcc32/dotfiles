@@ -42,9 +42,19 @@ replace-buffer-contents if available."
   "Path to the ocamlformat program, used in bcc32/ocamlformat-buffer."
   :type '(choice file (const nil)))
 
+(defun bcc32//ocamlformat-file-inplace (file)
+  (when bcc32/ocamlformat-program
+    (call-process bcc32/ocamlformat-program nil t nil
+                  "--inplace" file)))
+
 (defcustom bcc32/ocp-indent-program "ocp-indent"
   "Path to the ocamlformat program, used in bcc32/ocamlformat-buffer."
   :type '(choice file (const nil)))
+
+(defun bcc32//ocp-indent-file-inplace (file)
+  (when bcc32/ocp-indent-program
+    (call-process bcc32/ocp-indent-program nil t nil
+                  "--inplace" file)))
 
 (defun bcc32/ocamlformat-buffer ()
   (interactive "*")                     ;fail if buffer is read-only
@@ -53,12 +63,8 @@ replace-buffer-contents if available."
                          (concat "." (file-name-extension filename))))
          (tmpfile (make-temp-file "bcc32-ocamlformat" nil extension)))
     (write-region nil nil tmpfile nil :nomsg)
-    (when bcc32/ocamlformat-program
-      (call-process bcc32/ocamlformat-program nil t nil
-                    "--inplace" tmpfile))
-    (when bcc32/ocp-indent-program
-      (call-process bcc32/ocp-indent-program nil t nil
-                    "--inplace" tmpfile))
+    (bcc32//ocamlformat-file-inplace tmpfile)
+    (bcc32//ocp-indent-file-inplace tmpfile)
     (let ((tmpbuf (generate-new-buffer " bcc32/ocamlformat-buffer")))
       (with-current-buffer tmpbuf
         (insert-file-contents tmpfile))
