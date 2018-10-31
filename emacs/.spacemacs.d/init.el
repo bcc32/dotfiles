@@ -84,13 +84,13 @@ bcc32/ocp-indent-program."
 
 (defun bcc32//ocamlformat-on-save ()
   (when (and bcc32/ocamlformat-on-save-mode
-             (eq major-mode 'tuareg-mode))
+             (derived-mode-p 'tuareg-mode))
     (bcc32/ocamlformat-buffer)))
 
 (defun bcc32/org-cleanup ()
   "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
   (interactive)
-  (when (eq major-mode 'org-mode)
+  (when (derived-mode-p 'org-mode)
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
 
@@ -98,7 +98,7 @@ bcc32/ocp-indent-program."
 ;; e.g., gmail search links).
 (defun bcc32/link-hint-open-link ()
   (interactive)
-  (if (eq major-mode 'org-mode)
+  (if (derived-mode-p 'org-mode)
       (progn (link-hint-copy-link)
              (browse-url (current-kill 0)))
     (link-hint-open-link)))
