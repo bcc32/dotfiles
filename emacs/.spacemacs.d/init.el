@@ -2,6 +2,8 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(require 'cl)
+
 (defun when-any-installed (executable-names &rest pkgs)
   "Only enable pkgs if any of EXECUTABLE-NAMES is installed in $PATH."
   (if (some #'executable-find executable-names)
@@ -195,8 +197,9 @@ This function should only modify configuration layer settings."
           (mapcar (lambda (file)
                     (file-truename
                      (concat (file-name-as-directory "~/org") file)))
-                  (remove-if (lambda (file) (member file '("." ".." "default")))
-                             (directory-files "~/org" nil nil :nosort)))
+                  (nset-difference (directory-files "~/org" nil nil :nosort)
+                                   '("." ".." "default")
+                                   :test #'equal))
           org-default-notes-file "~/org/default/refile.org"
           org-directory "~/org/default"
           org-refile-targets '((nil :maxlevel . 3)
