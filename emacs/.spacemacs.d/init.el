@@ -10,7 +10,7 @@
       pkgs))
 
 (defun when-on-hostname (name &rest pkgs)
-  "Only enable pkgs if SYSTEM-NAME is equal to NAME."
+  "Only enable pkgs if SYSTEM-NAME is string= to NAME."
   (if (string= (system-name) name)
       pkgs))
 
@@ -208,7 +208,7 @@ This function should only modify configuration layer settings."
                      (concat (file-name-as-directory "~/org") file)))
                   (nset-difference (directory-files "~/org" nil nil :nosort)
                                    '("." ".." "default")
-                                   :test #'equal))
+                                   :test #'string=))
           org-default-notes-file "~/org/default/refile.org"
           org-directory "~/org/default"
           org-refile-targets '((nil :maxlevel . 3)
