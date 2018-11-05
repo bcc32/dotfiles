@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eu
+set -euo pipefail
 
 # Ensure certain directories already exist so that stow won't try to create
 # symlinks too high in the file hierarchy, leading to unmanaged files appearing
@@ -8,10 +8,13 @@ set -eu
 mkdir -p ~/.config ~/.gnupg ~/.ssh ~/.stack
 
 FLAGS=${FLAGS--R}
-DIRS=*/
 
 if which stow >/dev/null 2>&1; then
-    stow $FLAGS $DIRS
+    # shellcheck disable=SC2086
+    # SC2086: Double quote to prevent globbing and word splitting
+    stow $FLAGS ./*/
 else
-    perl -I./.vendor/lib ./.vendor/bin/stow $FLAGS $DIRS
+    # shellcheck disable=SC2086
+    # SC2086: Double quote to prevent globbing and word splitting
+    perl -I./.vendor/lib ./.vendor/bin/stow $FLAGS ./*/
 fi

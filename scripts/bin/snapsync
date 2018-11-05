@@ -13,4 +13,4 @@ snapsend \
     -delete-extraneous \
     -from "ssh://root@$from" -to "ssh://root@$to" \
     -from-path "$snapshot_path" -to-path "$snapshot_path" \
-    $@
+    "$@"

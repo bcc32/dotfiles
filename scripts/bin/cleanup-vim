@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # cleanup ~/.vim/swap and ~/.vim/undo
 
