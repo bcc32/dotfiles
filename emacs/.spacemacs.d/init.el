@@ -44,7 +44,7 @@ replace-buffer-contents if available."
 
 (defun bcc32//ocamlformat-file-inplace (file)
   (when bcc32/ocamlformat-program
-    (call-process bcc32/ocamlformat-program nil t nil
+    (call-process bcc32/ocamlformat-program nil nil nil
                   "--inplace" file)))
 
 (defcustom bcc32/ocp-indent-program "ocp-indent"
@@ -53,7 +53,7 @@ replace-buffer-contents if available."
 
 (defun bcc32//ocp-indent-file-inplace (file)
   (when bcc32/ocp-indent-program
-    (call-process bcc32/ocp-indent-program nil t nil
+    (call-process bcc32/ocp-indent-program nil nil nil
                   "--inplace" file)))
 
 (defun bcc32/ocamlformat-buffer ()
