@@ -11,7 +11,6 @@ import XMonad.Actions.SpawnOn       (manageSpawn, spawnHere)
 import XMonad.Hooks.DynamicLog      (statusBar, xmobarPP)
 import XMonad.Hooks.EwmhDesktops    (ewmh)
 import XMonad.Hooks.ManageDocks     (AvoidStruts)
-import XMonad.Layout.GridVariants   (SplitGrid (..), Orientation (..))
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Layout.Named          (named)
 import XMonad.Layout.NoBorders      (smartBorders)
@@ -20,6 +19,14 @@ import XMonad.Layout.WorkspaceDir   (changeDir, workspaceDir)
 import XMonad.Prompt.Shell          (shellPrompt)
 import XMonad.Util.EZConfig         (additionalKeysP)
 import XMonad.Util.Run              (hPutStrLn, spawnPipe)
+
+import XMonad.Layout.BinarySpacePartition
+  ( emptyBSP
+  , ResizeDirectional(..)
+  , Direction2D(..)
+  , Rotate(..)
+  , Swap(..)
+  )
 
 myBindings :: IO [(String, X ())]
 myBindings = do
@@ -32,6 +39,16 @@ myBindings = do
     , ("M-S-p v", spawnHere "gvim")
     , ("M-S-p c", spawnHere myChrome)
     , ("M-S-p f", spawnHere "firefox")
+    , ("M-M1-l", sendMessage $ ExpandTowards R)
+    , ("M-M1-h", sendMessage $ ExpandTowards L)
+    , ("M-M1-j", sendMessage $ ExpandTowards D)
+    , ("M-M1-k", sendMessage $ ExpandTowards U)
+    , ("M-M1-C-l", sendMessage $ ShrinkFrom R)
+    , ("M-M1-C-h", sendMessage $ ShrinkFrom L)
+    , ("M-M1-C-j", sendMessage $ ShrinkFrom D)
+    , ("M-M1-C-k", sendMessage $ ShrinkFrom U)
+    , ("M-r", sendMessage $ Rotate)
+    , ("M-s", sendMessage $ Swap)
     ]
 
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
@@ -106,14 +123,4 @@ main = do
   >>= xmonad . ewmh
   where
     myLayoutHook
-      =   (named "Split Grid T" . splitGrid) T
-      ||| (named "Split Grid L" . splitGrid) L
-      ||| (named "Tabbed" . tabbed shrinkText) def
-      where
-        masterRows  = 1
-        slaveRows   = 1
-        masterRatio = 5/8
-        aspect      = realToFrac $ (1 + sqrt 5 :: Double) / 2
-        increment   = 1/20
-        splitGrid orientation =
-          SplitGrid orientation masterRows slaveRows masterRatio aspect increment
+      = emptyBSP ||| (named "Tabbed" . tabbed shrinkText) def
