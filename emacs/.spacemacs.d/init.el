@@ -677,12 +677,6 @@ before packages are loaded."
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-buffer)
 
-  (advice-add 'magit-diff-setup :after
-              (lambda (&rest r)
-                (let ((was-read-only buffer-read-only))
-                  (bcc32/ansi-color-buffer)
-                  (setq buffer-read-only was-read-only))))
-
   (with-eval-after-load 'tuareg
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
