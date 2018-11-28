@@ -5,7 +5,8 @@
 (require 'cl)
 
 (defun when-any-installed (executable-names &rest pkgs)
-  "Only enable pkgs if any of EXECUTABLE-NAMES is installed in $PATH."
+  "Only enable pkgs if any of EXECUTABLE-NAMES is installed in
+$PATH."
   (if (some #'executable-find executable-names)
       pkgs))
 
@@ -39,7 +40,8 @@ replace-buffer-contents if available."
       (goto-line old-line))))
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
-  "Path to the ocamlformat program, used in bcc32/ocamlformat-buffer."
+  "Path to the ocamlformat program, used in
+bcc32/ocamlformat-buffer."
   :type '(choice file (const :tag "Disable ocamlformat" nil)))
 
 (defun bcc32//ocamlformat-file-inplace (file)
@@ -48,7 +50,8 @@ replace-buffer-contents if available."
                   "--inplace" file)))
 
 (defcustom bcc32/ocp-indent-program "ocp-indent"
-  "Path to the ocp-indent program, used in bcc32/ocamlformat-buffer."
+  "Path to the ocp-indent program, used in
+bcc32/ocamlformat-buffer."
   :type '(choice file (const :tag "Disable ocp-indent" nil)))
 
 (defun bcc32//ocp-indent-file-inplace (file)
@@ -77,7 +80,8 @@ bcc32/ocp-indent-program."
     (delete-file tmpfile)))
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
-  "Minor mode to automatically run ocamlformat before saving OCaml code."
+  "Minor mode to automatically run ocamlformat before saving
+OCaml code."
   :lighter "fmt"
   :global t
   (with-eval-after-load 'tuareg
@@ -89,7 +93,8 @@ bcc32/ocp-indent-program."
     (bcc32/ocamlformat-buffer)))
 
 (defun bcc32//org-cleanup ()
-  "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
+  "Update org mode statistics cookies (e.g., [2/3]) and align all
+heading tags."
   (when (derived-mode-p 'org-mode)
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
