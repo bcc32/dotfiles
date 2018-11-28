@@ -88,9 +88,8 @@ bcc32/ocp-indent-program."
              (derived-mode-p 'tuareg-mode))
     (bcc32/ocamlformat-buffer)))
 
-(defun bcc32/org-cleanup ()
+(defun bcc32//org-cleanup ()
   "Update org mode statistics cookies (e.g., [2/3]) and align all heading tags."
-  (interactive)
   (when (derived-mode-p 'org-mode)
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
@@ -692,7 +691,7 @@ before packages are loaded."
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all
       "xo"  'bcc32/link-hint-open-link)
-    (add-hook 'before-save-hook 'bcc32/org-cleanup))
+    (add-hook 'before-save-hook 'bcc32//org-cleanup))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format))
