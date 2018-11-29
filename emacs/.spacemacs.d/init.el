@@ -216,6 +216,11 @@ This function should only modify configuration layer settings."
                                    :test #'string=))
           org-default-notes-file "~/org/default/refile.org"
           org-directory "~/org/default"
+          ;; Add file name to org refile target prompt.  This also allows an
+          ;; entry to be refiled under a file's toplevel.
+          ;; https://emacs.stackexchange.com/questions/13353/how-to-use-org-refile-to-move-a-headline-to-a-file-as-a-toplevel-headline
+          org-refile-use-outline-path 'file
+          org-outline-path-complete-in-steps nil
           org-refile-targets '((nil :maxlevel . 3)
                                (org-agenda-files :maxlevel . 3))
 
