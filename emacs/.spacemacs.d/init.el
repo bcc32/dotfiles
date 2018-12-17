@@ -191,6 +191,7 @@ This function should only modify configuration layer settings."
      perl5
      ,@(when-any-installed '("python") 'python)
      ,@(when-any-installed '("ruby") 'ruby)
+     shell-scripts
      ;; Documents/markup
      csv
      ,@(when-any-installed '("xelatex" "pdflatex" "latexmk")
