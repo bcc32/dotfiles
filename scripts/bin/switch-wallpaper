@@ -3,4 +3,4 @@
 default_path=$HOME/wallpaper.png
 path=${1-$default_path}
 
-xloadimage -onroot -fullscreen $path
+xloadimage -onroot -fullscreen "$path"
