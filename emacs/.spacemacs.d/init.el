@@ -215,6 +215,9 @@ This function should only modify configuration layer settings."
                   (nset-difference (directory-files "~/org" nil nil :nosort)
                                    '("." ".." "default")
                                    :test #'string=))
+          org-capture-templates
+          '(("t" "Todo" entry (file "")
+             "* TODO %?\n%U\n%a"))
           org-default-notes-file "~/org/default/refile.org"
           org-directory "~/org/default"
           ;; Add file name to org refile target prompt.  This also allows an
