@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/.xinitrc
 #
@@ -33,6 +33,7 @@ fi
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+        # shellcheck source=/dev/null
         [ -x "$f" ] && . "$f"
     done
     unset f
@@ -61,7 +62,5 @@ get_session() {
         *) dbus_args+=($DEFAULT_SESSION) ;;
     esac
 
-    echo "dbus-launch ${dbus_args[*]}"
+    exec dbus-launch "${dbus_args[@]}"
 }
-
-exec $(get_session)
