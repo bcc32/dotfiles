@@ -12,9 +12,9 @@ FLAGS=${FLAGS--R}
 if which stow >/dev/null 2>&1; then
     # shellcheck disable=SC2086
     # SC2086: Double quote to prevent globbing and word splitting
-    stow $FLAGS */
+    stow $FLAGS ./*/
 else
     # shellcheck disable=SC2086
     # SC2086: Double quote to prevent globbing and word splitting
-    perl -I./.vendor/lib ./.vendor/bin/stow $FLAGS */
+    perl -I./.vendor/lib ./.vendor/bin/stow $FLAGS ./*/
 fi
