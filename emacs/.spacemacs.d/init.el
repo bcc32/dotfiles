@@ -698,8 +698,7 @@ before packages are loaded."
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
       "f" 'bcc32/ocamlformat-buffer
-      "F" 'bcc32/ocamlformat-on-save-mode)
-    (add-hook 'tuareg-mode-hook 'prettify-symbols-mode))
+      "F" 'bcc32/ocamlformat-on-save-mode))
 
   (with-eval-after-load 'cperl-mode
     (setq cperl-close-paren-offset -2)
