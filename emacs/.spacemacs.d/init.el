@@ -677,6 +677,9 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  (global-set-key (kbd "C-x C-c")
+                  (lambda () (interactive) (error "Do not use C-x C-c")))
+
   ;; toggles
   (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-highlight-long-lines-globally-on)
