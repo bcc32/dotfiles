@@ -35,7 +35,7 @@ myBindings = do
     [ ("M-d", changeDir def)
     , ("M-p", shellPrompt def)
     , ("M-x", spawn "xscreensaver-command -l")
-    , ("M-S-p e", spawnHere "emacs")
+    , ("M-S-p e", spawnHere "emacsclient -ca=''")
     , ("M-S-p v", spawnHere "gvim")
     , ("M-S-p c", spawnHere myChrome)
     , ("M-S-p f", spawnHere "firefox")
