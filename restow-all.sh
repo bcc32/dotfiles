@@ -7,14 +7,6 @@ set -euo pipefail
 # in the repo.
 mkdir -p ~/.config ~/.gnupg ~/.ssh ~/.stack
 
-FLAGS=${FLAGS--R}
-
-if which stow >/dev/null 2>&1; then
-    # shellcheck disable=SC2086
-    # SC2086: Double quote to prevent globbing and word splitting
-    stow $FLAGS */
-else
-    # shellcheck disable=SC2086
-    # SC2086: Double quote to prevent globbing and word splitting
-    perl -I./.vendor/lib ./.vendor/bin/stow $FLAGS */
-fi
+# shellcheck disable=SC2035
+# SC2035: Use ./*glob* or -- *glob* so names with dashes won't become options.
+./stow.sh -R "$@" */
