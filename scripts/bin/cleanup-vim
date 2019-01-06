@@ -6,4 +6,5 @@ find ~/.vim/{swap,undo}   \
     -type f               \
     -not -name .gitignore \
     -mtime +28            \
+    -atime +28            \
     -delete
