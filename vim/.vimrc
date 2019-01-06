@@ -188,6 +188,8 @@ nnoremap <Leader>rs :source $MYVIMRC<CR>
 "" yank entire buffer to clipboard
 nnoremap <Leader>cc :%yank+<CR>
 
+inoremap <C-g><C-t> [<C-r>=strftime("%Y-%m-%d %a %H:%M")<cr>]
+
 """ }}}
 
 """ Toggles {{{
