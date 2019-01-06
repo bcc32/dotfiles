@@ -31,6 +31,7 @@ $PATH."
 (defun bcc32//replace-buffer-contents (source)
   "Replace the current buffer contents with SOURCE, using
 replace-buffer-contents if available."
+  ;; FIXME replace-buffer-contents has a bug in 26.1, avoid
   (if (fboundp 'replace-buffer-contents)
       (replace-buffer-contents source)
     (let ((old-line (line-number-at-pos)))
