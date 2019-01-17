@@ -154,6 +154,8 @@ This function should only modify configuration layer settings."
                 ("bal" "%(binary) bal")
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")
+                ;; TODO: Do this dynamically, see [describe-variable
+                ;; ledger-reports].
                 ,@(let ((ledger-file (getenv "LEDGER_FILE")))
                     (and ledger-file
                          `(("validate" ,(concat "%(binary) source "
