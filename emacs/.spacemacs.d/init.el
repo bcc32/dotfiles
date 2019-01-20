@@ -173,6 +173,7 @@ This function should only modify configuration layer settings."
                       syntax-checking-use-original-bitmaps t)
      ;; Programmer tools
      git
+     nixos
      (shell :variables shell-default-shell 'multi-term)
      ;; Programming languages
      ;; Functional
