@@ -150,7 +150,7 @@ This function should only modify configuration layer settings."
      (finance :variables
               ledger-reports
               `(("reconcile" "ldg-reconcile %(account)")
-                ("uncleared" "%(binary) reg -U")
+                ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
                 ("bal" "%(binary) bal")
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")
