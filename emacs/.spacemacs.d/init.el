@@ -109,6 +109,10 @@ heading tags."
              (browse-url (current-kill 0)))
     (link-hint-open-link)))
 
+(defun bcc32//ledger-report-env-ledger-file-format-specifier ()
+  "Return the value of the LEDGER_FILE environment variable."
+  (getenv "LEDGER_FILE"))
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -149,17 +153,12 @@ This function should only modify configuration layer settings."
      ;; Emacs
      (finance :variables
               ledger-reports
-              `(("reconcile" "ldg-reconcile %(account)")
+              '(("reconcile" "ldg-reconcile %(account)")
                 ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
                 ("bal" "%(binary) bal")
                 ("payee" "%(binary) reg @%(payee)")
                 ("account" "%(binary) reg %(account)")
-                ;; TODO: Do this dynamically, see [describe-variable
-                ;; ledger-reports].
-                ,@(let ((ledger-file (getenv "LEDGER_FILE")))
-                    (and ledger-file
-                         `(("validate" ,(concat "%(binary) source "
-                                                (shell-quote-argument ledger-file))))))))
+                ("validate" "%(binary) source %(env-ledger-file)")))
      ibuffer
      (ivy :variables
           ivy-use-virtual-buffers nil
@@ -716,7 +715,9 @@ before packages are loaded."
     (add-hook 'before-save-hook 'bcc32//org-cleanup))
 
   (with-eval-after-load 'ledger-mode
-    (setq ledger-default-date-format ledger-iso-date-format))
+    (setq ledger-default-date-format ledger-iso-date-format)
+    (push '("env-ledger-file" . 'bcc32//ledger-report-env-ledger-file-format-specifier)
+          ledger-report-format-specifiers))
 
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
