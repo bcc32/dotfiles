@@ -173,7 +173,9 @@ This function should only modify configuration layer settings."
      ;; Programmer tools
      git
      nixos
-     (shell :variables shell-default-shell 'multi-term)
+     (shell :variables
+            shell-default-shell 'multi-term
+            multi-term-program "/bin/zsh")
      ;; Programming languages
      ;; Functional
      emacs-lisp
