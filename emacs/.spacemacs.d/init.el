@@ -206,6 +206,8 @@ This function should only modify configuration layer settings."
                                    TeX-engine 'xetex))
      markdown
      (org :variables
+          ;;; Agenda
+
           ;; org-agenda-files are computed based on the contents of ~/org.
           ;;
           ;; ~/org should contain symlinks to org files or directories
@@ -220,6 +222,16 @@ This function should only modify configuration layer settings."
                   (nset-difference (directory-files "~/org" nil nil :nosort)
                                    '("." ".." "default")
                                    :test #'string=))
+
+          ;; Don't show scheduled items in the global todo list, because
+          ;; presumably you don't want to think about them until the scheduled
+          ;; time.
+          org-agenda-tags-todo-honor-ignore-options t
+          org-agenda-todo-ignore-scheduled 'future
+          org-agenda-todo-ignore-time-comparison-use-seconds t
+
+          ;;; Capture and refile
+
           org-capture-templates
           '(("t" "Todo" entry (file "")
              "* TODO %?\n%U\n%a"))
@@ -233,18 +245,18 @@ This function should only modify configuration layer settings."
           org-refile-targets '((nil :maxlevel . 3)
                                (org-agenda-files :maxlevel . 3))
 
-          ;; Don't show scheduled items in the global todo list, because
-          ;; presumably you don't want to think about them until the scheduled
-          ;; time.
-          org-agenda-tags-todo-honor-ignore-options t
-          org-agenda-todo-ignore-scheduled 'future
-          org-agenda-todo-ignore-time-comparison-use-seconds t
+          ;;; Org export
 
           org-export-backends '(ascii html icalendar latex org texinfo)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
+
+          ;;; Editing
+
           org-insert-heading-respect-content t
           org-startup-indented t
+
+          ;;; TODO configuration
 
           org-stuck-projects '("+LEVEL=2/!" ("TODO" "MAYBE" "INPROGRESS") nil "")
           org-todo-keywords '((sequence "TODO(t)"
