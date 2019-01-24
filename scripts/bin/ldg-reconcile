@@ -2,5 +2,15 @@
 
 echo "Reconciling the following accounts:"
 ledger accounts "$@"
+
+echo "--------------------------------"
+echo "Cleared"
+echo "--------------------------------"
 echo
-ledger reg --effective --sort d -d "d >= today - 28" -C "$@" | tail
+ledger reg --cleared --effective --sort d --tail 20 "$@"
+
+echo "--------------------------------"
+echo "Uncleared"
+echo "--------------------------------"
+echo
+ledger reg --uncleared --sort d --tail 20 "$@"
