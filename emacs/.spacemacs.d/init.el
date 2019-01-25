@@ -736,8 +736,8 @@ before packages are loaded."
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)
-    (push '("env-ledger-file" . 'bcc32//ledger-report-env-ledger-file-format-specifier)
-          ledger-report-format-specifiers))
+    (add-to-list 'ledger-report-format-specifiers
+                 '("env-ledger-file" . 'bcc32//ledger-report-env-ledger-file-format-specifier)))
 
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
