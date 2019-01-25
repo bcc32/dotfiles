@@ -732,6 +732,7 @@ before packages are loaded."
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all
       "xo"  'bcc32/link-hint-open-link)
+    (add-hook 'before-save-hook 'org-update-all-dblocks)
     (add-hook 'before-save-hook 'bcc32//org-cleanup))
 
   (with-eval-after-load 'ledger-mode
