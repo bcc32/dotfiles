@@ -741,6 +741,6 @@ before packages are loaded."
 
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
-  (setq fill-column 80)
+  (setq-default fill-column 80)
   (setq powerline-default-separator 'arrow)
-  (setq sentence-end-double-space t))
+  (setq-default sentence-end-double-space t))
