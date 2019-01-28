@@ -92,8 +92,14 @@ See also `bcc32/ocamlformat-program' and
     (bcc32/ocamlformat-buffer)))
 
 (defun bcc32//org-cleanup ()
+  "Run some cleanup on the current buffer, if it's an org buffer.
+
+- Update dynamic blocks (e.g., clock reports)
+- Update statistics cookies (e.g., [2/3])
+- Align heading tags"
   "Update org mode statistics cookies and align all heading tags."
   (when (derived-mode-p 'org-mode)
+    (org-update-all-dblocks)
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
 
@@ -729,7 +735,6 @@ before packages are loaded."
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all
       "xo"  'bcc32/link-hint-open-link)
-    (add-hook 'before-save-hook 'org-update-all-dblocks)
     (add-hook 'before-save-hook 'bcc32//org-cleanup))
 
   (with-eval-after-load 'ledger-mode
