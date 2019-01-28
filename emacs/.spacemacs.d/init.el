@@ -5,18 +5,18 @@
 (require 'cl)
 
 (defun when-any-installed (executable-names &rest pkgs)
-  "Only enable pkgs if any of EXECUTABLE-NAMES is installed in
-$PATH."
+  "Only enable PKGS if any of EXECUTABLE-NAMES is installed in
+`exec-path'."
   (if (some #'executable-find executable-names)
       pkgs))
 
 (defun when-on-hostname (name &rest pkgs)
-  "Only enable pkgs if SYSTEM-NAME is string= to NAME."
+  "Only enable PKGS if the function `system-name' returns NAME."
   (if (string= (system-name) name)
       pkgs))
 
 (defun when-on-type (type &rest pkgs)
-  "Only enable pkgs if SYSTEM-TYPE is eql to TYPE."
+  "Only enable PKGS if `system-type' is `eql' to TYPE."
   (if (eql system-type type)
       pkgs))
 
@@ -30,7 +30,7 @@ $PATH."
 
 (defun bcc32//replace-buffer-contents (source)
   "Replace the current buffer contents with SOURCE, using
-replace-buffer-contents if available."
+`replace-buffer-contents' if available."
   ;; FIXME replace-buffer-contents has a bug in 26.1, avoid
   (if (fboundp 'replace-buffer-contents)
       (replace-buffer-contents source)
@@ -42,7 +42,7 @@ replace-buffer-contents if available."
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
   "Path to the ocamlformat program, used in
-bcc32/ocamlformat-buffer."
+`bcc32/ocamlformat-buffer'."
   :type '(choice file (const :tag "Disable ocamlformat" nil)))
 
 (defun bcc32//ocamlformat-file-inplace (file)
@@ -52,7 +52,7 @@ bcc32/ocamlformat-buffer."
 
 (defcustom bcc32/ocp-indent-program "ocp-indent"
   "Path to the ocp-indent program, used in
-bcc32/ocamlformat-buffer."
+`bcc32/ocamlformat-buffer'."
   :type '(choice file (const :tag "Disable ocp-indent" nil)))
 
 (defun bcc32//ocp-indent-file-inplace (file)
@@ -62,8 +62,8 @@ bcc32/ocamlformat-buffer."
 
 (defun bcc32/ocamlformat-buffer ()
   "Use ocamlformat and then ocp-indent to reformat the current
-buffer.  See also bcc32/ocamlformat-program and
-bcc32/ocp-indent-program."
+buffer.  See also `bcc32/ocamlformat-program' and
+`bcc32/ocp-indent-program'."
   (interactive "*")                     ;fail if buffer is read-only
   (let* ((filename (buffer-file-name))
          (extension (and filename (file-name-extension filename)
@@ -114,8 +114,8 @@ heading tags."
   (getenv "LEDGER_FILE"))
 
 (defun dotspacemacs/layers ()
-  "Layer configuration:
-This function should only modify configuration layer settings."
+  "Layer configuration: This function should only modify
+configuration layer settings."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
