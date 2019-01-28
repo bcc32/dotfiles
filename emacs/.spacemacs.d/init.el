@@ -5,8 +5,7 @@
 (require 'cl)
 
 (defun when-any-installed (executable-names &rest pkgs)
-  "Only enable PKGS if any of EXECUTABLE-NAMES is installed in
-`exec-path'."
+  "Only enable PKGS if any of EXECUTABLE-NAMES is installed in `exec-path'."
   (if (some #'executable-find executable-names)
       pkgs))
 
@@ -22,15 +21,16 @@
 
 ;; TODO conditionally reimplement this in Ecaml
 (defun bcc32/ansi-color-buffer ()
-  "Render ANSI SGR color sequences in the current buffer as colored font faces."
+  "Render ANSI SGR color sequences in the current buffer."
   (interactive)
   (require 'ansi-color)
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
 (defun bcc32//replace-buffer-contents (source)
-  "Replace the current buffer contents with SOURCE, using
-`replace-buffer-contents' if available."
+  "Replace the current buffer contents with SOURCE.
+
+Uses `replace-buffer-contents' if available."
   ;; FIXME replace-buffer-contents has a bug in 26.1, avoid
   (if (fboundp 'replace-buffer-contents)
       (replace-buffer-contents source)
@@ -41,8 +41,7 @@
       (goto-line old-line))))
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
-  "Path to the ocamlformat program, used in
-`bcc32/ocamlformat-buffer'."
+  "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer'."
   :type '(choice file (const :tag "Disable ocamlformat" nil)))
 
 (defun bcc32//ocamlformat-file-inplace (file)
@@ -51,8 +50,7 @@
                   "--inplace" file)))
 
 (defcustom bcc32/ocp-indent-program "ocp-indent"
-  "Path to the ocp-indent program, used in
-`bcc32/ocamlformat-buffer'."
+  "Path to the ocp-indent program, used in `bcc32/ocamlformat-buffer'."
   :type '(choice file (const :tag "Disable ocp-indent" nil)))
 
 (defun bcc32//ocp-indent-file-inplace (file)
@@ -61,8 +59,9 @@
                   "--inplace" file)))
 
 (defun bcc32/ocamlformat-buffer ()
-  "Use ocamlformat and then ocp-indent to reformat the current
-buffer.  See also `bcc32/ocamlformat-program' and
+  "Use ocamlformat and then ocp-indent to reformat the current buffer.
+
+See also `bcc32/ocamlformat-program' and
 `bcc32/ocp-indent-program'."
   (interactive "*")                     ;fail if buffer is read-only
   (let* ((filename (buffer-file-name))
@@ -81,8 +80,7 @@ buffer.  See also `bcc32/ocamlformat-program' and
     (delete-file tmpfile)))
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
-  "Minor mode to automatically run ocamlformat before saving
-OCaml code."
+  "Minor mode to automatically run ocamlformat before saving OCaml code."
   :lighter "fmt"
   :global t
   (with-eval-after-load 'tuareg
@@ -94,8 +92,7 @@ OCaml code."
     (bcc32/ocamlformat-buffer)))
 
 (defun bcc32//org-cleanup ()
-  "Update org mode statistics cookies (e.g., [2/3]) and align all
-heading tags."
+  "Update org mode statistics cookies and align all heading tags."
   (when (derived-mode-p 'org-mode)
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
