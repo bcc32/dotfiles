@@ -259,8 +259,10 @@ configuration layer settings."
           org-insert-heading-respect-content t
           org-startup-indented t
 
-          ;;; TODO configuration
+          ;;; Org TODO configuration
 
+          ;; Log state change notes and time stamps into LOGBOOK drawer.
+          org-log-into-drawer t
           org-stuck-projects '("+LEVEL=2/!" ("TODO" "MAYBE" "INPROGRESS") nil "")
           org-todo-keywords '((sequence "TODO(t)"
                                         "MAYBE(m/!)"
