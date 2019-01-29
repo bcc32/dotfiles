@@ -266,7 +266,7 @@ configuration layer settings."
           org-stuck-projects '("+LEVEL=2/!" ("TODO" "MAYBE" "INPROGRESS") nil "")
           org-todo-keywords '((sequence "TODO(t)"
                                         "MAYBE(m/!)"
-                                        "INPROGRESS(p)"
+                                        "INPROGRESS(p!)"
                                         "STALLED(a)"
                                         "BLOCKED(k@/!)"
                                         "INREVIEW(r!)"
