@@ -431,6 +431,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-themes '(
                          zenburn
                          leuven
+                         base16-material
                          tao-yin
                          tao-yang
                          solarized-light
