@@ -279,7 +279,7 @@ configuration layer settings."
                                     "CLEANUP(l/!)"
                                     "|"
                                     "FIXED(x)"
-                                    "WONTFIX(w)")
+                                    "WONTFIX(w@)")
                               (type "ENHANCEMENT(h/!)"
                                     "FEATURE(f/!)"
                                     "|"
