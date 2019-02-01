@@ -2,16 +2,16 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-(require 'cl)
+(require 'cl-lib)
 
 (defun when-any-installed (executable-names &rest pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed in `exec-path'."
-  (if (some #'executable-find executable-names)
+  (if (cl-some #'executable-find executable-names)
       pkgs))
 
 (defun when-on-hostname (name &rest pkgs)
   "Only enable PKGS if the function `system-name' returns NAME."
-  (if (string= (system-name) name)
+  (if (string-equal (system-name) name)
       pkgs))
 
 (defun when-on-type (type &rest pkgs)
@@ -222,9 +222,9 @@ configuration layer settings."
           (mapcar (lambda (file)
                     (file-truename
                      (concat (file-name-as-directory "~/org") file)))
-                  (nset-difference (directory-files "~/org" nil nil :nosort)
-                                   '("." ".." "default")
-                                   :test #'string=))
+                  (cl-nset-difference (directory-files "~/org" nil nil :nosort)
+                                      '("." ".." "default")
+                                      :test #'string=))
 
           ;; Don't show scheduled items in the global todo list, because
           ;; presumably you don't want to think about them until the scheduled
