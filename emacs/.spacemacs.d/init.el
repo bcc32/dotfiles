@@ -12,7 +12,7 @@
 
 (defun when-on-hostname (name &rest pkgs)
   "Only enable PKGS if the function `system-name' returns NAME."
-  (if (string-equal (system-name) name)
+  (if (string= (system-name) name)
       pkgs))
 
 (defun when-on-type (type &rest pkgs)
