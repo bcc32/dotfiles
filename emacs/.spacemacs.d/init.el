@@ -39,7 +39,8 @@ Uses `replace-buffer-contents' if available."
       (delete-region (point-min) (point-max))
       (insert-buffer-substring source)
       ;; try to return to approximately where the point used to be
-      (goto-line old-line))))
+      (goto-char (point-min))
+      (forward-line (1- old-line)))))
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
   "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer'."
