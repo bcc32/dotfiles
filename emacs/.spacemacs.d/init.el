@@ -1,17 +1,23 @@
-;; -*- mode: emacs-lisp; lexical-binding: t -*-
+;;; init.el --- bcc32's Spacemacs configuration  -*- lexical-binding: t -*-
+
+;; https://github.com/bcc32/dotfiles
+
+;;; Commentary:
+
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-;; TODO: Use dash or seq instead?
-(require 'cl-lib)
+;;; Code:
+
+(require 'seq)
 
 (defun when-any-installed (executable-names &rest pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed in `exec-path'."
-  (if (cl-some #'executable-find executable-names)
+  (if (seq-some #'executable-find executable-names)
       pkgs))
 
 (defun when-on-hostname (name &rest pkgs)
-  "Only enable PKGS if the function `system-name' returns NAME."
+  "Only enable PKGS if current machine's hostname is NAME."
   (if (string= (system-name) name)
       pkgs))
 
@@ -42,11 +48,16 @@ Uses `replace-buffer-contents' if available."
       (goto-char (point-min))
       (forward-line (1- old-line)))))
 
+(defgroup bcc32 nil
+  "Bcc32's customization options."
+  :group 'emacs)
+
 (defcustom bcc32/ocamlformat-program "ocamlformat"
   "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer'."
   :type '(choice file (const :tag "Disable ocamlformat" nil)))
 
 (defun bcc32//ocamlformat-file-inplace (file)
+  "Run `bcc32/ocamlformat-program' in-place on FILE."
   (when bcc32/ocamlformat-program
     (call-process bcc32/ocamlformat-program nil nil nil
                   "--inplace" file)))
@@ -56,6 +67,7 @@ Uses `replace-buffer-contents' if available."
   :type '(choice file (const :tag "Disable ocp-indent" nil)))
 
 (defun bcc32//ocp-indent-file-inplace (file)
+  "Run `bcc32/ocp-indent-program' in-place on FILE."
   (when bcc32/ocp-indent-program
     (call-process bcc32/ocp-indent-program nil nil nil
                   "--inplace" file)))
@@ -86,9 +98,12 @@ See also `bcc32/ocamlformat-program' and
   :lighter "fmt"
   :global t
   (with-eval-after-load 'tuareg
-    (add-hook 'before-save-hook 'bcc32//ocamlformat-on-save)))
+    (add-hook 'before-save-hook 'bcc32//ocamlformat-on-save-hook)))
 
-(defun bcc32//ocamlformat-on-save ()
+(defun bcc32//ocamlformat-on-save-hook ()
+  "Run ocamlformat on the current buffer.
+
+Suitable for use with `before-save-hook'."
   (when (and bcc32/ocamlformat-on-save-mode
              (derived-mode-p 'tuareg-mode))
     (bcc32/ocamlformat-buffer)))
@@ -108,6 +123,7 @@ See also `bcc32/ocamlformat-program' and
 ;; Workaround for org-mode link opening bug (unescapes the URL, which breaks,
 ;; e.g., gmail search links).
 (defun bcc32/link-hint-open-link ()
+  "Use avy to open a visible link."
   (interactive)
   (if (derived-mode-p 'org-mode)
       (progn (link-hint-copy-link)
@@ -224,9 +240,8 @@ configuration layer settings."
           (mapcar (lambda (file)
                     (file-truename
                      (concat (file-name-as-directory "~/org") file)))
-                  (cl-nset-difference (directory-files "~/org" nil nil :nosort)
-                                      '("." ".." "default")
-                                      :test #'string=))
+                  (seq-difference (directory-files "~/org" nil nil :nosort)
+                                  '("." ".." "default")))
 
           ;; Don't show scheduled items in the global todo list, because
           ;; presumably you don't want to think about them until the scheduled
@@ -756,3 +771,5 @@ before packages are loaded."
   (setq-default fill-column 80)
   (setq powerline-default-separator 'arrow)
   (setq-default sentence-end-double-space t))
+
+;;; init.el ends here
