@@ -54,7 +54,8 @@ Uses `replace-buffer-contents' if available."
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
   "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer'."
-  :type '(choice file (const :tag "Disable ocamlformat" nil)))
+  :type '(choice file (const :tag "Disable ocamlformat" nil))
+  :group 'bcc32)
 
 (defun bcc32//ocamlformat-file-inplace (file)
   "Run `bcc32/ocamlformat-program' in-place on FILE."
@@ -64,7 +65,8 @@ Uses `replace-buffer-contents' if available."
 
 (defcustom bcc32/ocp-indent-program "ocp-indent"
   "Path to the ocp-indent program, used in `bcc32/ocamlformat-buffer'."
-  :type '(choice file (const :tag "Disable ocp-indent" nil)))
+  :type '(choice file (const :tag "Disable ocp-indent" nil))
+  :group 'bcc32)
 
 (defun bcc32//ocp-indent-file-inplace (file)
   "Run `bcc32/ocp-indent-program' in-place on FILE."
@@ -97,6 +99,7 @@ See also `bcc32/ocamlformat-program' and
   "Minor mode to automatically run ocamlformat before saving OCaml code."
   :lighter "fmt"
   :global t
+  :group 'bcc32
   (with-eval-after-load 'tuareg
     (add-hook 'before-save-hook 'bcc32//ocamlformat-on-save-hook)))
 
