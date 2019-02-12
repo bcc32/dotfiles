@@ -123,16 +123,6 @@ Suitable for use with `before-save-hook'."
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
 
-;; Workaround for org-mode link opening bug (unescapes the URL, which breaks,
-;; e.g., gmail search links).
-(defun bcc32/link-hint-open-link ()
-  "Use avy to open a visible link."
-  (interactive)
-  (if (derived-mode-p 'org-mode)
-      (progn (link-hint-copy-link)
-             (browse-url (current-kill 0)))
-    (link-hint-open-link)))
-
 (defun bcc32//ledger-report-env-ledger-file-format-specifier ()
   "Return the value of the LEDGER_FILE environment variable."
   (getenv "LEDGER_FILE"))
@@ -761,8 +751,7 @@ before packages are loaded."
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
-      "aog" 'counsel-org-goto-all
-      "xo"  'bcc32/link-hint-open-link)
+      "aog" 'counsel-org-goto-all)
     (add-hook 'before-save-hook 'bcc32//org-cleanup))
 
   (with-eval-after-load 'ledger-mode
