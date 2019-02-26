@@ -111,13 +111,13 @@ Suitable for use with `before-save-hook'."
              (derived-mode-p 'tuareg-mode))
     (bcc32/ocamlformat-buffer)))
 
-(defun bcc32//org-cleanup ()
+(defun bcc32/org-cleanup ()
   "Run some cleanup on the current buffer, if it's an org buffer.
 
 - Update dynamic blocks (e.g., clock reports)
 - Update statistics cookies (e.g., [2/3])
 - Align heading tags"
-  "Update org mode statistics cookies and align all heading tags."
+  (interactive "*")
   (when (derived-mode-p 'org-mode)
     (org-update-all-dblocks)
     (org-update-statistics-cookies t)
@@ -752,7 +752,7 @@ before packages are loaded."
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all)
-    (add-hook 'before-save-hook 'bcc32//org-cleanup))
+    (add-hook 'before-save-hook 'bcc32/org-cleanup))
 
   (with-eval-after-load 'ledger-mode
     (defvar ledger-default-date-format)
