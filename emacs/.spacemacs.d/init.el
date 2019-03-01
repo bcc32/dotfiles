@@ -319,6 +319,7 @@ configuration layer settings."
    dotspacemacs-excluded-packages '(helm
                                     helm-core
                                     helm-make
+                                    smeargle
                                     smex
                                     treemacs
                                     treemacs-evil
