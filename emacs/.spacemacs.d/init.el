@@ -118,7 +118,11 @@ Suitable for use with `before-save-hook'."
 - Update statistics cookies (e.g., [2/3])
 - Align heading tags"
   (interactive "*")
-  (when (derived-mode-p 'org-mode)
+  ;; TODO Move this into a package and use dash to clean this up.
+  (when (and (derived-mode-p 'org-mode)
+             (not (and (buffer-file-name)
+                       (string= "org_archive"
+                                (file-name-extension (buffer-file-name))))))
     (org-update-all-dblocks)
     (org-update-statistics-cookies t)
     (org-align-all-tags)))
