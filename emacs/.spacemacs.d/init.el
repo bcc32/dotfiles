@@ -131,9 +131,9 @@ Suitable for use with `before-save-hook'."
   "Return the value of the LEDGER_FILE environment variable."
   (getenv "LEDGER_FILE"))
 
-(defun bcc32//set-fill-column-in-prog-mode-hook ()
-  "Set `fill-column' to 80 characters in derived modes of `prog-mode'."
-  (setq fill-column 80))
+(defun bcc32//set-fill-column-in-text-mode-hook ()
+  "Set `fill-column' to 70 characters in derived modes of `text-mode'."
+  (setq-local fill-column 70))
 
 (defun dotspacemacs/layers ()
   "Layer configuration: This function should only modify
@@ -772,7 +772,7 @@ before packages are loaded."
     (add-to-list 'ledger-report-format-specifiers
                  '("env-ledger-file" . bcc32//ledger-report-env-ledger-file-format-specifier)))
 
-  (add-hook 'prog-mode-hook 'bcc32//set-fill-column-in-prog-mode-hook)
+  (add-hook 'text-mode-hook 'bcc32//set-fill-column-in-text-mode-hook)
 
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
