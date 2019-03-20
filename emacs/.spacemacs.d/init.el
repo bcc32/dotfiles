@@ -265,8 +265,8 @@ configuration layer settings."
           ;; https://emacs.stackexchange.com/questions/13353/how-to-use-org-refile-to-move-a-headline-to-a-file-as-a-toplevel-headline
           org-refile-use-outline-path 'file
           org-outline-path-complete-in-steps nil
-          org-refile-targets '((nil :maxlevel . 3)
-                               (org-agenda-files :maxlevel . 3))
+          org-refile-targets '((nil :maxlevel . 10)
+                               (org-agenda-files :maxlevel . 10))
 
           ;;; Org export
 
