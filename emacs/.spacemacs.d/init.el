@@ -466,7 +466,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator arrow-fade :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(all-the-icons :separator arrow :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -474,8 +474,8 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Iosevka"
-                               :size 15
+   dotspacemacs-default-font '("Fantasque Sans Mono"
+                               :size 14
                                :weight normal
                                :width normal)
 
@@ -715,6 +715,14 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
+  ;; HACK: Workaround for issue in spaceline-all-the-icons.el
+  ;; https://github.com/syl20bnr/spacemacs/issues/11784#issuecomment-452633754
+  (add-to-list 'configuration-layer-elpa-archives '("melpa-stable" . "stable.melpa.org/packages/"))
+  (add-to-list 'package-pinned-packages '(spaceline . "melpa-stable"))
+  (add-to-list 'package-pinned-packages '(spaceline-all-the-icons . "melpa-stable"))
+  (add-to-list 'package-pinned-packages '(all-the-icons . "melpa-stable"))
+
   (setq custom-file "~/.spacemacs.d/custom.el")
   (load custom-file))
 
