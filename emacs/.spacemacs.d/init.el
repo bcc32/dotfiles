@@ -782,6 +782,8 @@ before packages are loaded."
 
   (add-hook 'text-mode-hook 'bcc32//set-fill-column-in-text-mode-hook)
 
+  (add-hook 'dired-mode-hook 'dired-omit-mode)
+
   (setq comment-style 'multi-line)
   (setq company-idle-delay 1.0)
   (setq powerline-default-separator 'arrow)
