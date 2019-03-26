@@ -781,6 +781,7 @@ before packages are loaded."
                  '("env-ledger-file" . bcc32//ledger-report-env-ledger-file-format-specifier)))
 
   (add-hook 'text-mode-hook 'bcc32//set-fill-column-in-text-mode-hook)
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   (add-hook 'dired-mode-hook 'dired-omit-mode)
 
