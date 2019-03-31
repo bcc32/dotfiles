@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # A shim for ocamlformat followed by ocp-indent, compatible with how dune calls
 # ocamlformat.
