@@ -156,8 +156,8 @@ bindsym $mod+r mode "resize"
 
 # open programs
 mode "programs" {
-        bindsym c      exec "google-chrome"   ; mode "default"
-        bindsym e      exec "emacsclient -ca="; mode "default"
+        bindsym c      exec "google-chrome"     ; mode "default"
+        bindsym e      exec "emacsclient -ca ''"; mode "default"
 
         bindsym Escape mode "default"
 }
