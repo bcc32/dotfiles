@@ -173,14 +173,16 @@ configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; Emacs
-     (finance :variables
-              ledger-reports
-              '(("reconcile" "ldg-reconcile %(account)")
-                ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
-                ("bal" "%(binary) bal")
-                ("payee" "%(binary) reg @%(payee)")
-                ("account" "%(binary) reg %(account)")
-                ("validate" "%(binary) source %(env-ledger-file)")))
+     ,@(when-any-installed
+        '("ledger" "hledger")
+        '(finance :variables
+                  ledger-reports
+                  '(("reconcile" "ldg-reconcile %(account)")
+                    ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
+                    ("bal" "%(binary) bal")
+                    ("payee" "%(binary) reg @%(payee)")
+                    ("account" "%(binary) reg %(account)")
+                    ("validate" "%(binary) source %(env-ledger-file)"))))
      ibuffer
      (ivy :variables
           ivy-use-virtual-buffers nil
