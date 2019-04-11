@@ -787,7 +787,6 @@ before packages are loaded."
 
   (add-hook 'dired-mode-hook 'dired-omit-mode)
 
-  (setq company-idle-delay 1.0)
   (setq-default sentence-end-double-space t))
 
 ;;; init.el ends here
