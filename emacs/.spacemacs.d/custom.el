@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-idle-delay 1.0)
+ '(evil-want-Y-yank-to-eol t)
  '(midnight-mode t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(sentence-end-double-space t)
