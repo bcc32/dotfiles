@@ -6,6 +6,7 @@
  '(company-idle-delay 1.0)
  '(midnight-mode t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
+ '(sentence-end-double-space t)
  '(spaceline-all-the-icons-flycheck-alternate t)
  '(spaceline-all-the-icons-hide-long-buffer-path t)
  '(spaceline-all-the-icons-highlight-file-name t))
