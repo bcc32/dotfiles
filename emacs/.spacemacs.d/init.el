@@ -189,7 +189,8 @@ configuration layer settings."
           ivy-format-function 'ivy-format-function-arrow)
      ,@(when-on-type 'darwin 'osx)
      ;; Text editing
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-idle-delay 1.0)
      ,@(when-any-installed '("aspell" "ispell") 'spell-checking)
      (syntax-checking :variables
                       syntax-checking-enable-by-default nil
