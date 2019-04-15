@@ -226,7 +226,7 @@ configuration layer settings."
      shell-scripts
      ;; Documents/markup
      csv
-     ,@(when-any-installed '("xelatex" "pdflatex" "latexmk")
+     ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            'bibtex
                            '(latex :variables
                                    latex-build-command "latexmk"
