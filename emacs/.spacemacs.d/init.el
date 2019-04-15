@@ -136,7 +136,7 @@ Suitable for use with `before-save-hook'."
   (setq-local fill-column 70))
 
 (defun bcc32//try-smerge-hook ()
-  "Enable smerge-mode if there are conflict markers in the buffer.
+  "Enable `smerge-mode' if there are conflict markers in the buffer.
 
 This function is intended to be used with some hook like `find-file-hook' or
 `after-revert-hook'."
