@@ -780,9 +780,6 @@ before packages are loaded."
     (add-hook 'before-save-hook 'bcc32/org-cleanup))
 
   (with-eval-after-load 'ledger-mode
-    (defvar ledger-default-date-format)
-    (defvar ledger-iso-date-format)
-    (defvar ledger-report-format-specifiers)
     (setq ledger-default-date-format ledger-iso-date-format)
     (add-to-list 'ledger-report-format-specifiers
                  '("env-ledger-file" . bcc32//ledger-report-env-ledger-file-format-specifier)))
