@@ -6,6 +6,8 @@
  '(midnight-mode t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(sentence-end-double-space t)
+ '(solarized-distinct-doc-face t)
+ '(solarized-use-more-italic t)
  '(spaceline-all-the-icons-flycheck-alternate t)
  '(spaceline-all-the-icons-hide-long-buffer-path t)
  '(spaceline-all-the-icons-highlight-file-name t)

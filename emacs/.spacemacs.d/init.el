@@ -765,10 +765,6 @@ before packages are loaded."
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
 
-  ;; theme customization
-  (setq solarized-distinct-doc-face t
-        solarized-use-more-italic t)
-
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-buffer)
 
