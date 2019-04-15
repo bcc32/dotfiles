@@ -774,10 +774,6 @@ before packages are loaded."
       "f" 'bcc32/ocamlformat-buffer
       "F" 'bcc32/ocamlformat-on-save-mode))
 
-  (with-eval-after-load 'cperl-mode
-    (setq cperl-close-paren-offset -2)
-    (setq cperl-indent-parens-as-block t))
-
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all)
