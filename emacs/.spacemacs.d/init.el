@@ -135,6 +135,16 @@ Suitable for use with `before-save-hook'."
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (setq-local fill-column 70))
 
+(defun bcc32//try-smerge-hook ()
+  "Enable smerge-mode if there are conflict markers in the buffer.
+
+This function is intended to be used with some hook like `find-file-hook' or
+`after-revert-hook'."
+  (save-excursion
+    (goto-char (point-min))
+    (when (re-search-forward "^<<<<<<< " nil t)
+      (smerge-mode +1))))
+
 (defun dotspacemacs/layers ()
   "Layer configuration: This function should only modify
 configuration layer settings."
@@ -789,6 +799,9 @@ before packages are loaded."
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   (add-hook 'dired-mode-hook 'dired-omit-mode)
+
+  (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
+  (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
 
   (setq-default sentence-end-double-space t))
 
