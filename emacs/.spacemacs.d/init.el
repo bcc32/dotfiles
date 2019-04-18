@@ -34,66 +34,40 @@
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
-(defun bcc32//replace-buffer-contents (source)
-  "Replace the current buffer contents with SOURCE.
-
-Uses `replace-buffer-contents' if available."
-  ;; FIXME replace-buffer-contents has a bug in 26.1, avoid
-  (if (fboundp 'replace-buffer-contents)
-      (replace-buffer-contents source)
-    (let ((old-line (line-number-at-pos)))
-      (delete-region (point-min) (point-max))
-      (insert-buffer-substring source)
-      ;; try to return to approximately where the point used to be
-      (goto-char (point-min))
-      (forward-line (1- old-line)))))
-
 (defgroup bcc32 nil
-  "Bcc32's customization options."
+  "bcc32's customization options."
   :group 'emacs)
 
 (defcustom bcc32/ocamlformat-program "ocamlformat"
-  "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer'."
+  "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer-or-region'."
   :type '(choice file (const :tag "Disable ocamlformat" nil))
   :group 'bcc32)
 
-(defun bcc32//ocamlformat-file-inplace (file)
-  "Run `bcc32/ocamlformat-program' in-place on FILE."
-  (when bcc32/ocamlformat-program
-    (call-process bcc32/ocamlformat-program nil nil nil
-                  "--inplace" file)))
-
 (defcustom bcc32/ocp-indent-program "ocp-indent"
-  "Path to the ocp-indent program, used in `bcc32/ocamlformat-buffer'."
+  "Path to the ocp-indent program, used in `bcc32/ocamlformat-buffer-or-region'."
   :type '(choice file (const :tag "Disable ocp-indent" nil))
   :group 'bcc32)
 
-(defun bcc32//ocp-indent-file-inplace (file)
-  "Run `bcc32/ocp-indent-program' in-place on FILE."
-  (when bcc32/ocp-indent-program
-    (call-process bcc32/ocp-indent-program nil nil nil
-                  "--inplace" file)))
-
-(defun bcc32/ocamlformat-buffer ()
+(defun bcc32/ocamlformat-buffer-or-region ()
   "Use ocamlformat and then ocp-indent to reformat the current buffer.
 
-See also `bcc32/ocamlformat-program' and
-`bcc32/ocp-indent-program'."
+See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
   (interactive "*")                     ;fail if buffer is read-only
-  (let* ((filename (buffer-file-name))
-         (extension (and filename (file-name-extension filename)
-                         (concat "." (file-name-extension filename))))
-         (temporary-file-directory default-directory)
-         (tmpfile (make-temp-file "bcc32_ocamlformat" nil extension)))
-    (write-region nil nil tmpfile nil :nomsg)
-    (bcc32//ocamlformat-file-inplace tmpfile)
-    (bcc32//ocp-indent-file-inplace tmpfile)
-    (let ((tmpbuf (generate-new-buffer " bcc32/ocamlformat-buffer")))
-      (with-current-buffer tmpbuf
-        (insert-file-contents tmpfile))
-      (bcc32//replace-buffer-contents tmpbuf)
-      (kill-buffer tmpbuf))
-    (delete-file tmpfile)))
+  (let ((old-line (line-number-at-pos)))
+    ;; TODO: Try using replace-buffer-contents
+    (save-restriction
+      (when (use-region-p)
+        (narrow-to-region (region-beginning) (region-end)))
+      (when bcc32/ocamlformat-program
+        (call-process-region (point-min) (point-max) bcc32/ocamlformat-program
+                             :delete t nil
+                             "-" "--name" (buffer-file-name)))
+      (when bcc32/ocp-indent-program
+        (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
+                             :delete t nil)))
+    ;; try to return to approximately where the point used to be
+    (goto-char (point-min))
+    (forward-line (1- old-line))))
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
   "Minor mode to automatically run ocamlformat before saving OCaml code."
@@ -109,7 +83,7 @@ See also `bcc32/ocamlformat-program' and
 Suitable for use with `before-save-hook'."
   (when (and bcc32/ocamlformat-on-save-mode
              (derived-mode-p 'tuareg-mode))
-    (bcc32/ocamlformat-buffer)))
+    (bcc32/ocamlformat-buffer-or-region)))
 
 (defun bcc32/org-cleanup ()
   "Run some cleanup on the current buffer, if it's an org buffer.
@@ -771,7 +745,7 @@ before packages are loaded."
   (with-eval-after-load 'tuareg
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
-      "f" 'bcc32/ocamlformat-buffer
+      "f" 'bcc32/ocamlformat-buffer-or-region
       "F" 'bcc32/ocamlformat-on-save-mode))
 
   (with-eval-after-load 'org
