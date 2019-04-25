@@ -53,21 +53,30 @@
 
 See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
   (interactive "*")                     ;fail if buffer is read-only
-  (let ((old-line (line-number-at-pos)))
+  (let ((old-line (line-number-at-pos))
+        (old-buffer-contents (buffer-string))
+        (old-scroll (window-start)))
     ;; TODO: Try using replace-buffer-contents
-    (save-restriction
-      (when (use-region-p)
-        (narrow-to-region (region-beginning) (region-end)))
-      (when bcc32/ocamlformat-program
-        (call-process-region (point-min) (point-max) bcc32/ocamlformat-program
-                             :delete t nil
-                             "-" "--name" (buffer-file-name)))
-      (when bcc32/ocp-indent-program
-        (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
-                             :delete t nil)))
+    (condition-case error
+        (progn (save-restriction
+                 (when (use-region-p)
+                   (narrow-to-region (region-beginning) (region-end)))
+                 (when bcc32/ocamlformat-program
+                   (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocamlformat-program
+                                                    :delete t nil
+                                                    "-" "--name" (buffer-file-name)))
+                     (error "Error running ocamlformat: %s" (buffer-string))))
+                 (when bcc32/ocp-indent-program
+                   (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
+                                                    :delete t nil))
+                     (error "Error running ocp-indent: %s" (buffer-string))))))
+      (error (warn "%S" error)
+             (delete-region (point-min) (point-max))
+             (insert old-buffer-contents)))
     ;; try to return to approximately where the point used to be
     (goto-char (point-min))
-    (forward-line (1- old-line))))
+    (forward-line (1- old-line))
+    (set-window-start nil old-scroll)))
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
   "Minor mode to automatically run ocamlformat before saving OCaml code."
