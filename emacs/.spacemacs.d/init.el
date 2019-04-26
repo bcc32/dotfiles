@@ -129,8 +129,8 @@ This function is intended to be used with some hook like `find-file-hook' or
       (smerge-mode +1))))
 
 (defun dotspacemacs/layers ()
-  "Layer configuration: This function should only modify
-configuration layer settings."
+  "Layer configuration:
+This function should only modify configuration layer settings."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
