@@ -12,6 +12,7 @@ augroup END
 
 """ Basics {{{
 set clipboard=unnamed
+set cpoptions+=J                        " Sentences end with two spaces
 set directory=~/.vim/swap//             " centralized swapfile directory
 set hidden                              " keep undo history for hidden buffers
 set nomodeline
