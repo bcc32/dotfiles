@@ -195,6 +195,8 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-shell 'multi-term
             multi-term-program "/bin/zsh")
+     (version-control :variables
+                      version-control-global-margin nil)
      ;; Programming languages
      ;; Functional
      emacs-lisp
