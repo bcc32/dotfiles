@@ -11,7 +11,6 @@
  '(evil-want-Y-yank-to-eol t)
  '(midnight-mode t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
- '(sentence-end-double-space t)
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
  '(spaceline-all-the-icons-flycheck-alternate t)
