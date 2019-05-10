@@ -316,9 +316,7 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(base16-theme
-     solarized-theme
-     tao-theme
-     zenburn-theme)
+     solarized-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -452,10 +450,7 @@ It should only modify the values of Spacemacs settings."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          base16-material
-                         zenburn
                          leuven
-                         tao-yin
-                         tao-yang
                          solarized-light
                          solarized-dark
                          )
