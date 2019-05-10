@@ -451,8 +451,6 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-themes '(
                          base16-material
                          leuven
-                         solarized-light
-                         solarized-dark
                          )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
