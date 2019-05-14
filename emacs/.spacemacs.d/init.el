@@ -58,18 +58,18 @@ See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
         (old-scroll (window-start)))
     ;; TODO: Try using replace-buffer-contents
     (condition-case error
-        (progn (save-restriction
-                 (when (use-region-p)
-                   (narrow-to-region (region-beginning) (region-end)))
-                 (when bcc32/ocamlformat-program
-                   (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocamlformat-program
-                                                    :delete t nil
-                                                    "-" "--name" (buffer-file-name)))
-                     (error "Error running ocamlformat: %s" (buffer-string))))
-                 (when bcc32/ocp-indent-program
-                   (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
-                                                    :delete t nil))
-                     (error "Error running ocp-indent: %s" (buffer-string))))))
+        (save-restriction
+          (when (use-region-p)
+            (narrow-to-region (region-beginning) (region-end)))
+          (when bcc32/ocamlformat-program
+            (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocamlformat-program
+                                             :delete t nil
+                                             "-" "--name" (buffer-file-name)))
+              (error "Error running ocamlformat: %s" (buffer-string))))
+          (when bcc32/ocp-indent-program
+            (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
+                                             :delete t nil))
+              (error "Error running ocp-indent: %s" (buffer-string)))))
       (error (warn "%S" error)
              (delete-region (point-min) (point-max))
              (insert old-buffer-contents)))
