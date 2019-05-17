@@ -169,6 +169,9 @@ This function should only modify configuration layer settings."
      ,@(when-any-installed
         '("ledger" "hledger")
         '(finance :variables
+                  ledger-accounts-file
+                  (concat (file-name-as-directory (getenv "LEDGER_PATH"))
+                          "declarations.ldg")
                   ledger-reports
                   '(("reconcile" "ldg-reconcile %(account)")
                     ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
