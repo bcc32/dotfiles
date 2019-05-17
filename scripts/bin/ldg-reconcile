@@ -1,16 +1,25 @@
 #!/bin/sh
 
-echo "Reconciling the following accounts:"
-ledger accounts "$@"
+reconcile() {
+    echo "Reconciling the following accounts:"
+    ledger accounts "$@"
 
-echo "--------------------------------"
-echo "Cleared"
-echo "--------------------------------"
-echo
-ledger reg --cleared --effective --sort d --tail 20 "$@"
+    echo "--------------------------------"
+    echo "Cleared"
+    echo "--------------------------------"
+    echo
+    ledger reg --cleared --effective --sort d --tail 20 "$@"
 
-echo "--------------------------------"
-echo "Uncleared"
-echo "--------------------------------"
-echo
-ledger reg --uncleared --sort d --tail 20 "$@"
+    echo "--------------------------------"
+    echo "Uncleared"
+    echo "--------------------------------"
+    echo
+    ledger reg --uncleared --sort d --tail 20 "$@"
+}
+
+self=$BASH_SOURCE
+if [ $# -lt 1 ]; then
+    reconcile "$(ledger accounts | fzf)"
+else
+    reconcile "$@"
+fi
