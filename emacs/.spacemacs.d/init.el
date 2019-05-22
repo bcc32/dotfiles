@@ -356,7 +356,9 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(base16-theme
-     solarized-theme)
+     solarized-theme
+     (bcc32-org :location (recipe :fetcher file
+                                  :path "~/.spacemacs.d/bcc32-org.el")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -812,6 +814,9 @@ before packages are loaded."
     (org-defkey org-mode-map [(meta return)] 'org-meta-return)
     (org-clock-persistence-insinuate)
     (autoload 'org-attach-expand-link "org-attach")
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode
+      "St" 'bcc32-org-sort-by-closed
+      "Sa" 'bcc32-org-sort-entire-agenda)
     (add-hook 'before-save-hook 'bcc32/org-cleanup))
 
   (with-eval-after-load 'ledger-mode
