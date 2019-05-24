@@ -1,4 +1,13 @@
 #!/bin/sh
 
 set -euo pipefail
-locate '' | fzf -m --print0
+
+locate_fzf() {
+    locate "$@" | fzf --multi --print0
+}
+
+if [ $# -lt 1 ]; then
+    locate_fzf ''
+else
+    locate_fzf "$@"
+fi
