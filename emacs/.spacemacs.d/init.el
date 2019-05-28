@@ -253,6 +253,7 @@ This function should only modify configuration layer settings."
           org-agenda-tags-todo-honor-ignore-options t
           org-agenda-todo-ignore-scheduled 'future
           org-agenda-todo-ignore-time-comparison-use-seconds t
+          org-clock-persist t
 
           ;;; Capture and refile
 
@@ -747,6 +748,8 @@ before packages are loaded."
       "v" 'merlin-enclosing-expand
       "f" 'bcc32/ocamlformat-buffer-or-region
       "F" 'bcc32/ocamlformat-on-save-mode))
+
+  (org-clock-persistence-insinuate)
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
