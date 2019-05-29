@@ -184,6 +184,7 @@ This function should only modify configuration layer settings."
           ivy-use-virtual-buffers nil
           ivy-format-function 'ivy-format-function-arrow)
      ,@(when-on-type 'darwin 'osx)
+     command-log
      ;; Text editing
      (auto-completion :variables
                       auto-completion-idle-delay 1.0)
