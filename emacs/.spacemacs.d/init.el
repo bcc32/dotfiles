@@ -302,13 +302,13 @@ This function should only modify configuration layer settings."
                               (type "BUG(b/!)"
                                     "CLEANUP(l/!)"
                                     "|"
-                                    "FIXED(x)"
-                                    "WONTFIX(w@)")
+                                    "FIXED(x/@)"
+                                    "WONTFIX(w@/@)")
                               (type "ENHANCEMENT(h/!)"
                                     "FEATURE(f/!)"
                                     "|"
-                                    "RELEASED(s)"
-                                    "CANCELED(c)")))
+                                    "RELEASED(s/@)"
+                                    "CANCELED(c/@)")))
      yaml
      )
 
