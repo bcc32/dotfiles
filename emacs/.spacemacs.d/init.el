@@ -181,8 +181,7 @@ This function should only modify configuration layer settings."
                     ("validate" "%(binary) source %(env-ledger-file)"))))
      ibuffer
      (ivy :variables
-          ivy-use-virtual-buffers nil
-          ivy-format-function 'ivy-format-function-arrow)
+          ivy-use-virtual-buffers nil)
      ,@(when-on-type 'darwin 'osx)
      command-log
      ;; Text editing
@@ -740,6 +739,9 @@ before packages are loaded."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+
+  (setf (cdr (assoc t ivy-format-functions-alist))
+        'ivy-format-function-arrow)
 
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-buffer)
