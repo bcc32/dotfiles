@@ -189,7 +189,7 @@ This function should only modify configuration layer settings."
                       auto-completion-idle-delay 1.0)
      ,@(when-any-installed '("aspell" "ispell") 'spell-checking)
      (syntax-checking :variables
-                      syntax-checking-enable-by-default nil
+                      syntax-checking-enable-by-default t
                       syntax-checking-use-original-bitmaps t
                       flycheck-idle-change-delay 1.0)
      ;; Programmer tools
