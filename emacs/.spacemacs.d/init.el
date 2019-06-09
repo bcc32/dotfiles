@@ -211,7 +211,7 @@ This function should only modify configuration layer settings."
      ,@(when-any-installed '("go")
                            '(go :variables
                                 gofmt-command "goimports"
-                                go-format-on-before-save t
+                                go-format-before-save t
                                 go-tab-width 4))
      ,@(when-any-installed '("rustc" "cargo") 'rust)
      ;; Web
