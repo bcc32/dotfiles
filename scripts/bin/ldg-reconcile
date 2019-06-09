@@ -14,7 +14,7 @@ reconcile() {
     echo "Uncleared"
     echo "--------------------------------"
     echo
-    ledger reg --uncleared --sort d --tail 20 "$@"
+    ledger reg --uncleared --sort d "$@"
 }
 
 self=$BASH_SOURCE
