@@ -22,3 +22,8 @@
 	tool = vimdiff
 [merge]
 	conflictStyle = diff3
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = zeng.aaron.l@gmail.com
