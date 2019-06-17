@@ -10,3 +10,7 @@
 	path = zsh/.zprezto
 	url = https://github.com/bcc32/prezto.git
 	shallow = true
+[submodule "emacs/.emacs.d"]
+	path = emacs/.emacs.d
+	url = https://github.com/syl20bnr/spacemacs.git
+	branch = develop
