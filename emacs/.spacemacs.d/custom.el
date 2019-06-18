@@ -13,14 +13,6 @@
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
- '(spaceline-all-the-icons-flycheck-alternate t)
- '(spaceline-all-the-icons-hide-long-buffer-path t)
- '(spaceline-all-the-icons-highlight-file-name t)
- '(spaceline-all-the-icons-icon-set-eyebrowse-slot (quote square))
- '(spaceline-all-the-icons-icon-set-window-numbering (quote string))
- '(spaceline-all-the-icons-separator-type (quote arrow))
- '(spaceline-all-the-icons-slim-render nil)
- '(spaceline-all-the-icons-window-number-always-visible t)
  '(spaceline-info-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
