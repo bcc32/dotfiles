@@ -2,10 +2,6 @@
 	path = vim/.vim/ocp-indent-vim
 	url = https://github.com/let-def/ocp-indent-vim
 	shallow = true
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-	shallow = true
 [submodule ".zprezto"]
 	path = zsh/.zprezto
 	url = https://github.com/bcc32/prezto.git
@@ -14,3 +10,6 @@
 	path = emacs/.emacs.d
 	url = https://github.com/syl20bnr/spacemacs.git
 	branch = develop
+[submodule "tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
