@@ -1,7 +1,3 @@
-[submodule "vim/.vim/ocp-indent-vim"]
-	path = vim/.vim/ocp-indent-vim
-	url = https://github.com/let-def/ocp-indent-vim
-	shallow = true
 [submodule ".zprezto"]
 	path = zsh/.zprezto
 	url = https://github.com/bcc32/prezto.git
