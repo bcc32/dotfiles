@@ -40,6 +40,7 @@ set cursorcolumn
 set cursorline
 set incsearch
 set hlsearch
+set lazyredraw                          " do not redraw screen during macro
 set list                                " show certain whitespace chars
 set number
 set relativenumber
@@ -182,6 +183,9 @@ inoremap fd <Esc>
 "" make Y consistent with C, S, D, etc.
 nnoremap Y y$
 
+"" repeat last macro instead of starting ex mode
+nnoremap Q @@
+
 "" quickly edit vimrc
 nnoremap <Leader>re :vsplit $MYVIMRC<CR>
 nnoremap <Leader>rs :source $MYVIMRC<CR>
@@ -190,6 +194,16 @@ nnoremap <Leader>rs :source $MYVIMRC<CR>
 nnoremap <Leader>cc :%yank+<CR>
 
 inoremap <C-g><C-t> [<C-r>=strftime("%Y-%m-%d %a %H:%M")<cr>]
+
+""" }}}
+
+""" Windows {{{
+
+"" move between windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 """ }}}
 
