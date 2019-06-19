@@ -70,8 +70,7 @@ See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
             (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
                                              :delete t nil))
               (error "Error running ocp-indent: %s" (buffer-string)))))
-      (error (warn "%S" error)
-             (delete-region (point-min) (point-max))
+      (error (delete-region (point-min) (point-max))
              (insert old-buffer-contents)))
     ;; try to return to approximately where the point used to be
     (goto-char (point-min))
