@@ -630,7 +630,7 @@ It should only modify the values of Spacemacs settings."
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
    dotspacemacs-line-numbers
-   '(:relative t
+   '(:visual t
      :enabled-for-modes prog-mode
                         text-mode
                         tuareg-mode
