@@ -288,6 +288,8 @@ This function should only modify configuration layer settings."
           ;; Log state change notes and time stamps into LOGBOOK drawer.
           org-log-into-drawer t
           org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil "")
+          org-enforce-todo-dependencies t
+          org-enforce-todo-checkbox-dependencies t
           org-todo-keywords '((sequence "TODO(t)"
                                         "MAYBE(m/!)"
                                         "INPROGRESS(p!)"
