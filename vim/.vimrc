@@ -229,8 +229,7 @@ nnoremap gb :Buffers<CR>
 "" list recent files
 nnoremap gh :History<CR>
 
-command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-
+"" search using rg
 nnoremap gs :Rg<CR>
 nnoremap gS :Rg!<CR>
 
