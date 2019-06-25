@@ -124,7 +124,7 @@ This function is intended to be used with some hook like `find-file-hook' or
 `after-revert-hook'."
   (save-excursion
     (goto-char (point-min))
-    (when (re-search-forward "^<<<<<<< " nil t)
+    (when (save-match-data (re-search-forward "^<<<<<<< " nil t))
       (smerge-mode +1))))
 
 (defun dotspacemacs/layers ()
