@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -euo pipefail
+
+tmpfile=$(mktemp --tmpdir strace.XXXXXXXXXX)
+
+echo "$tmpfile"
+
+flags=()
+
+flags+=(-C)                     # Count time, calls, and errors for each system
+                                # call and print summary.  Continue to print
+                                # program output.
+
+flags+=(-f)                     # Trace child processes.
+
+flags+=(-v)                     # Get full struct of environment, stat, etc.
+
+flags+=(-tt)                    # Prefix each line with time of day, with
+                                # microseconds.
+
+flags+=(-T)                     # Record the time spent in each system call.
+
+flags+=(-x)                     # Print all non-ASCII strings in hex format.
+
+exec strace "${flags[@]}" -o "$tmpfile" "$@"
