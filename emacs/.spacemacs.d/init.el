@@ -54,6 +54,7 @@
 See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
   (interactive "*")                     ;fail if buffer is read-only
   (let ((old-line (line-number-at-pos))
+        (old-column (current-column))
         (old-buffer-contents (buffer-string))
         (old-scroll (window-start)))
     ;; TODO: Try using replace-buffer-contents
@@ -75,6 +76,7 @@ See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
     ;; try to return to approximately where the point used to be
     (goto-char (point-min))
     (forward-line (1- old-line))
+    (move-to-column old-column)
     (set-window-start nil old-scroll)))
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
