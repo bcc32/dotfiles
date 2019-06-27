@@ -3,7 +3,7 @@
 set -euo pipefail
 
 if [ $# -ne 1 ]; then
-    echo 'Usage: $0 <folder>'
+    echo "Usage: $0 <folder>"
     exit 2
 fi
 
