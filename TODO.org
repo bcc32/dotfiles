@@ -1,1 +1,5 @@
 * TODO copy .xinitrc on macOS, or disable it; it breaks XQuartz
+* TODO Add a directory or something for site files
+- E.g., .spacemacs.env file
+- It shouldn't get blown away when the dotfiles repo is recloned or
+  anything.  Should just live in $HOME directly.
