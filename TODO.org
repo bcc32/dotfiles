@@ -3,3 +3,5 @@
 - E.g., .spacemacs.env file
 - It shouldn't get blown away when the dotfiles repo is recloned or
   anything.  Should just live in $HOME directly.
+* TODO Enable ~org-enable-hugo-support~
+* MAYBE Enable ~org-want-todo-bindings~
