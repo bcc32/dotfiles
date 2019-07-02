@@ -280,6 +280,7 @@ This function should only modify configuration layer settings."
 
           ;;; Editing
 
+          org-attach-commit nil
           org-insert-heading-respect-content t
           org-startup-indented t
 
