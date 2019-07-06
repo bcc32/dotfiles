@@ -129,6 +129,28 @@ This function is intended to be used with some hook like `find-file-hook' or
     (when (save-match-data (re-search-forward "^<<<<<<< " nil t))
       (smerge-mode +1))))
 
+(defun bcc32//set-ansi-term-color-vector-back-to-default (&rest _)
+  "Workaround for bug in base16-theme.el.
+
+base16-theme sets `ansi-term-color-vector' with face
+`unspecified', which breaks multi-term."
+  (when (seq-contains ansi-term-color-vector 'unspecified)
+    (custom-set-variables
+     '(ansi-term-color-vector
+       [term
+        term-color-black
+        term-color-red
+        term-color-green
+        term-color-yellow
+        term-color-blue
+        term-color-magenta
+        term-color-cyan
+        term-color-white]))))
+
+(defun bcc32//workaround-for-base16-theme-ansi-term ()
+  "Prevent base16-theme.el from breaking multi-term."
+  (advice-add 'enable-theme :after 'bcc32//set-ansi-term-color-vector-back-to-default))
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -788,7 +810,9 @@ before packages are loaded."
   (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
   (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
 
-  (setq-default sentence-end-double-space t))
+  (setq-default sentence-end-double-space t)
+
+  (bcc32//workaround-for-base16-theme-ansi-term))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
