@@ -1,4 +1,5 @@
-personal_ws-1.1 en 78 
+personal_ws-1.1 en 87 
+symlink
 mentorship
 healthcare
 discoverable
@@ -19,6 +20,8 @@ analyse
 resampling
 rebalance
 UTC
+StackOverflow
+config
 ciphertext
 playtesting
 gemstone
@@ -27,22 +30,26 @@ Wikipedia
 JetBlue
 metadata
 diff
+untracked
+symlinks
 SQLite
 adversarial
+dotfiles
 nonce
 bidirectionally
 mochi
 aesthetics
 diffs
-playtest
 pita
+playtest
 analysing
 TODO
-Unicode
 smoothie
+Unicode
 Devany
 website
 epiphanies
+zsh
 distinguishability
 anime
 admin
@@ -62,9 +69,11 @@ macOS
 WiFi
 latte
 webpage
+dotfile
 polyglot
 gamers
 plaintext
+repo
 learnability
 macchiato
 app
