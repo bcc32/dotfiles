@@ -198,7 +198,7 @@ This function should only modify configuration layer settings."
      nixos
      (shell :variables
             shell-default-shell 'multi-term
-            multi-term-program "/bin/zsh")
+            multi-term-program "zsh")
      (version-control :variables
                       version-control-global-margin nil)
      ;; Programming languages
