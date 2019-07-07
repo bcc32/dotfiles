@@ -7,6 +7,7 @@
  '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
  '(cperl-close-paren-offset -2 t)
  '(cperl-indent-parens-as-block t t)
+ '(dired-async-mode t)
  '(enable-recursive-minibuffers t)
  '(evil-want-Y-yank-to-eol t)
  '(midnight-mode t)
