@@ -11,6 +11,7 @@
  '(enable-recursive-minibuffers t)
  '(evil-want-Y-yank-to-eol t)
  '(midnight-mode t)
+ '(rust-format-on-save t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
