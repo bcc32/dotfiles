@@ -15,7 +15,8 @@
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
- '(spaceline-info-mode t))
+ '(spaceline-info-mode t)
+ '(tuareg-prettify-symbols-full t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
