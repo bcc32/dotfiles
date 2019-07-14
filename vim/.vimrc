@@ -106,6 +106,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
 "" Editing
+Plug 'airblade/vim-rooter'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
