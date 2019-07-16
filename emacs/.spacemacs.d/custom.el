@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-engine (quote xetex))
  '(calc-context-sensitive-enter t)
  '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
  '(cperl-close-paren-offset -2 t)
@@ -10,7 +11,10 @@
  '(dired-async-mode t)
  '(enable-recursive-minibuffers t)
  '(evil-want-Y-yank-to-eol t)
+ '(flycheck-idle-change-delay 1.0)
+ '(gofmt-command "goimports")
  '(midnight-mode t)
+ '(multi-term-program "zsh")
  '(rust-format-on-save t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(solarized-distinct-doc-face t)

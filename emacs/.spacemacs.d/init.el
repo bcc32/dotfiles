@@ -182,6 +182,9 @@ This function should only modify configuration layer settings."
                     ("validate" "%(binary) source %(env-ledger-file)"))))
      ibuffer
      (ivy :variables
+          ;; Disable recent files in ivy-switch-buffer.  ivy-use-virtual-buffers
+          ;; must be set here rather than in customize because the ivy layer
+          ;; setq's it.
           ivy-use-virtual-buffers nil)
      ,@(when-on-type 'darwin 'osx)
      command-log
@@ -191,14 +194,12 @@ This function should only modify configuration layer settings."
      ,@(when-any-installed '("aspell" "ispell") 'spell-checking)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
-                      syntax-checking-use-original-bitmaps t
-                      flycheck-idle-change-delay 1.0)
+                      syntax-checking-use-original-bitmaps t)
      ;; Programmer tools
      git
      nixos
      (shell :variables
-            shell-default-shell 'multi-term
-            multi-term-program "zsh")
+            shell-default-shell 'multi-term)
      (version-control :variables
                       version-control-global-margin nil)
      ;; Programming languages
@@ -210,7 +211,6 @@ This function should only modify configuration layer settings."
      c-c++
      ,@(when-any-installed '("go")
                            '(go :variables
-                                gofmt-command "goimports"
                                 go-format-before-save t
                                 go-tab-width 4))
      ,@(when-any-installed '("rustc" "cargo") 'rust)
@@ -227,8 +227,7 @@ This function should only modify configuration layer settings."
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            'bibtex
                            '(latex :variables
-                                   latex-build-command "latexmk"
-                                   TeX-engine 'xetex))
+                                   latex-build-command "latexmk"))
      markdown
      (org :variables
           ;;; Agenda
