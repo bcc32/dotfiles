@@ -8,18 +8,4 @@ set -euo pipefail
 original_ocamlformat_path=$(opam var bin)/ocamlformat
 OCAMLFORMAT_PATH=${OCAMLFORMAT_PATH:-$original_ocamlformat_path}
 
-"$OCAMLFORMAT_PATH" "$@"
-
-args=("$@")
-
-for i in "${!args[@]}"; do
-    if [ "${args[$i]}" == "-o" ]; then
-        output_file="${args[$i+1]}"
-    fi
-done
-
-if [ -z "$output_file" ]; then
-    exit 2
-fi
-
-ocp-indent --inplace "$output_file"
+"$OCAMLFORMAT_PATH" "$@" | ocp-indent
