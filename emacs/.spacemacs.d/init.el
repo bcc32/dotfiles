@@ -774,6 +774,8 @@ before packages are loaded."
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all)
+    ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
+    (org-defkey org-mode-map [(meta return)] 'org-meta-return)
     (add-hook 'before-save-hook 'bcc32/org-cleanup))
 
   (with-eval-after-load 'ledger-mode
@@ -788,10 +790,6 @@ before packages are loaded."
 
   (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
   (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
-
-  ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
-  (with-eval-after-load 'org
-    (org-defkey org-mode-map [(meta return)] 'org-meta-return))
 
   (setq-default sentence-end-double-space t))
 
