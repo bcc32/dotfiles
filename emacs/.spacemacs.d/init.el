@@ -789,6 +789,10 @@ before packages are loaded."
   (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
   (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
 
+  ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
+  (with-eval-after-load 'org
+    (org-defkey org-mode-map [(meta return)] 'org-meta-return))
+
   (setq-default sentence-end-double-space t))
 
 ;;; init.el ends here
