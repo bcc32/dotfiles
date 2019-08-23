@@ -58,7 +58,7 @@ See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
         (old-buffer-contents (buffer-string))
         (old-scroll (window-start)))
     ;; TODO: Try using replace-buffer-contents
-    (condition-case error
+    (condition-case _
         (save-restriction
           (when (use-region-p)
             (narrow-to-region (region-beginning) (region-end)))
@@ -713,7 +713,7 @@ It should only modify the values of Spacemacs settings."
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
-This function defines the environment variables for your Emacs session. By
+This function defines the environment variables for your Emacs session.  By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
@@ -730,7 +730,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
-This function is called only while dumping Spacemacs configuration. You can
+This function is called only while dumping Spacemacs configuration.  You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
   )
