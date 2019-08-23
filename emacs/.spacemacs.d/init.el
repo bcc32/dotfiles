@@ -791,4 +791,8 @@ before packages are loaded."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
+;; Local Variables:
+;; byte-compile-warnings: (not free-vars unresolved)
+;; End:
+
 ;;; init.el ends here
