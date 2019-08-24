@@ -204,8 +204,10 @@ This function should only modify configuration layer settings."
      ;; Programming languages
      ;; Functional
      emacs-lisp
+     ,@(when-any-installed '("sbcl") 'common-lisp)
      ,@(when-any-installed '("ghc" "stack") 'haskell)
      ,@(when-any-installed '("ocamlc" "opam") 'ocaml)
+     ,@(when-any-installed '("chicken" "guile") 'scheme)
      ;; System
      c-c++
      ,@(when-any-installed '("go")
