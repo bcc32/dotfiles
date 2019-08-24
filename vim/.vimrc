@@ -130,8 +130,8 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
 "" File types
-Plug 'ledger/vim-ledger'
-Plug 'let-def/ocp-indent-vim'
+Plug 'ledger/vim-ledger', { 'for': 'ledger' }
+Plug 'let-def/ocp-indent-vim', { 'for': 'ocaml' }
 
 call plug#end()
 """ }}}
