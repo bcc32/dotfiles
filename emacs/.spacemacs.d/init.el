@@ -247,6 +247,7 @@ This function should only modify configuration layer settings."
      shell-scripts
      ;; Documents/markup
      csv
+     json
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            'bibtex
                            '(latex :variables
