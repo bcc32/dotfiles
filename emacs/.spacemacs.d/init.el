@@ -254,6 +254,10 @@ This function should only modify configuration layer settings."
                                    latex-build-command "latexmk"))
      markdown
      (org :variables
+          ;; Enable additional org bindings in evil normal state (e.g., "td" to
+          ;; mark done).
+          org-want-todo-bindings t
+
           ;;; Agenda
 
           ;; org-agenda-files are computed based on the contents of ~/org.
