@@ -18,7 +18,7 @@
  '(org-habit-show-habits-only-for-today nil)
  '(org-modules
    (quote
-    (org-bibtex org-docview org-habit org-info org-tempo org-eshell)))
+    (org-bibtex org-docview org-habit org-info org-tempo org-eshell org-man)))
  '(rust-format-on-save t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(solarized-distinct-doc-face t)
