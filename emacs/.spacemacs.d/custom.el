@@ -10,6 +10,9 @@
  '(cperl-indent-parens-as-block t t)
  '(dired-async-mode t)
  '(enable-recursive-minibuffers t)
+ '(eshell-visual-commands
+   (quote
+    ("ncdu" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
  '(evil-want-Y-yank-to-eol t)
  '(flycheck-idle-change-delay 1.0)
  '(gofmt-command "goimports")
