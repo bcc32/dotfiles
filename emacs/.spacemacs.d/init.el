@@ -158,7 +158,7 @@ This function should only modify configuration layer settings."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs
+   dotspacemacs-distribution 'spacemacs-base
 
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
@@ -188,6 +188,21 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;; Spacemacs distribution layers
+     spacemacs-completion
+     spacemacs-layouts
+     spacemacs-editing
+     spacemacs-editing-visual
+     spacemacs-evil
+     spacemacs-language
+     spacemacs-misc
+     spacemacs-modeline
+     spacemacs-navigation
+     spacemacs-org
+     spacemacs-project
+     spacemacs-purpose
+     spacemacs-visual
+
      ;; Emacs
      ,@(when-any-installed
         '("ledger" "hledger")
@@ -357,14 +372,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(helm
-                                    helm-core
-                                    helm-make
-                                    smeargle
-                                    smex
-                                    treemacs
-                                    treemacs-evil
-                                    treemacs-projectile)
+   dotspacemacs-excluded-packages '(smeargle
+                                    smex)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
