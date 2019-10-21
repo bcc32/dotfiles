@@ -308,7 +308,7 @@ This function should only modify configuration layer settings."
           ;; Add file name to org refile target prompt.  This also allows an
           ;; entry to be refiled under a file's toplevel.
           ;; https://emacs.stackexchange.com/questions/13353/how-to-use-org-refile-to-move-a-headline-to-a-file-as-a-toplevel-headline
-          org-refile-use-outline-path 'file
+          org-refile-use-outline-path 'buffer-name
           org-outline-path-complete-in-steps nil
           org-projectile-file "TODO.org"
           org-refile-targets '((nil :maxlevel . 10)
