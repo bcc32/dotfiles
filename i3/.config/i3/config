@@ -172,3 +172,5 @@ bindsym --release Print exec gnome-screenshot --interactive
 bar {
         status_command i3status
 }
+
+new_window 1pixel
