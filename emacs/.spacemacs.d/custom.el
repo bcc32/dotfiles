@@ -18,6 +18,7 @@
  '(gofmt-command "goimports")
  '(midnight-mode t)
  '(multi-term-program "zsh")
+ '(org-agenda-span (quote day))
  '(org-habit-show-habits-only-for-today nil)
  '(org-modules
    (quote
