@@ -38,41 +38,25 @@
   "bcc32's customization options."
   :group 'emacs)
 
-(defcustom bcc32/ocamlformat-program "ocamlformat"
-  "Path to the ocamlformat program, used in `bcc32/ocamlformat-buffer-or-region'."
-  :type '(choice file (const :tag "Disable ocamlformat" nil))
-  :group 'bcc32)
-
-(defcustom bcc32/ocp-indent-program "ocp-indent"
-  "Path to the ocp-indent program, used in `bcc32/ocamlformat-buffer-or-region'."
-  :type '(choice file (const :tag "Disable ocp-indent" nil))
-  :group 'bcc32)
-
 (defun bcc32/ocamlformat-buffer-or-region ()
-  "Use ocamlformat and then ocp-indent to reformat the current buffer.
-
-See also `bcc32/ocamlformat-program' and `bcc32/ocp-indent-program'."
+  "Use ocamlformat to reformat the current buffer."
   (interactive "*")                     ;fail if buffer is read-only
   (let ((old-line (line-number-at-pos))
         (old-column (current-column))
         (old-buffer-contents (buffer-string))
         (old-scroll (window-start)))
     ;; TODO: Try using replace-buffer-contents
-    (condition-case _
+    (condition-case err
         (save-restriction
           (when (use-region-p)
             (narrow-to-region (region-beginning) (region-end)))
-          (when bcc32/ocamlformat-program
-            (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocamlformat-program
-                                             :delete t nil
-                                             "-" "--name" (buffer-file-name)))
-              (error "Error running ocamlformat: %s" (buffer-string))))
-          (when bcc32/ocp-indent-program
-            (when (/= 0 (call-process-region (point-min) (point-max) bcc32/ocp-indent-program
-                                             :delete t nil))
-              (error "Error running ocp-indent: %s" (buffer-string)))))
+          (when (/= 0 (call-process-region (point-min) (point-max) "ocamlformat"
+                                           :delete t nil
+                                           "-" "--name" (buffer-file-name)))
+            (error "%s" (string-trim (buffer-string)))))
       (error (delete-region (point-min) (point-max))
-             (insert old-buffer-contents)))
+             (insert old-buffer-contents)
+             (signal (car err) (cdr err))))
     ;; try to return to approximately where the point used to be
     (goto-char (point-min))
     (forward-line (1- old-line))
