@@ -15,6 +15,7 @@
     ("ncdu" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
  '(evil-want-Y-yank-to-eol t)
  '(flycheck-idle-change-delay 1.0)
+ '(geiser-default-implementation (quote chicken))
  '(gofmt-command "goimports")
  '(midnight-mode t)
  '(multi-term-program "zsh")
