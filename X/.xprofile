@@ -7,4 +7,10 @@ urxvtd -q -o -f
 xsetroot -cursor_name left_ptr
 
 # set keyboard layouts
-setxkbmap us,us -variant ,colemak -option grp:shifts_toggle,compose:ralt
+setxkbmap us,us -variant ,colemak -option grp:shifts_toggle,compose:ralt,caps:backspace
+
+# prevent caps lock from *also* functioning as capslock
+xmodmap -e "clear Lock"
+
+# increase key repeat rate
+xset r rate 200 50
