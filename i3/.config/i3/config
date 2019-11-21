@@ -174,3 +174,4 @@ bar {
 }
 
 new_window 1pixel
+exec ~/.xprofile
