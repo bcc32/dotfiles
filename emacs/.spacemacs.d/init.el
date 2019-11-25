@@ -811,9 +811,11 @@ before packages are loaded."
   (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
   (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
 
-  (setq-default sentence-end-double-space t)
+  (bcc32//workaround-for-base16-theme-ansi-term)
 
-  (bcc32//workaround-for-base16-theme-ansi-term))
+  ;; Make sure my customizations take precedence over settings that Spacemacs
+  ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
+  (load custom-file))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
