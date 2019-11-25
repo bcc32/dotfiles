@@ -202,11 +202,7 @@ This function should only modify configuration layer settings."
                     ("account" "%(binary) reg %(account)")
                     ("validate" "%(binary) source %(env-ledger-file)"))))
      ibuffer
-     (ivy :variables
-          ;; Disable recent files in ivy-switch-buffer.  ivy-use-virtual-buffers
-          ;; must be set here rather than in customize because the ivy layer
-          ;; setq's it.
-          ivy-use-virtual-buffers nil)
+     ivy
      ,@(when-on-type 'darwin 'osx)
      command-log
      ;; Text editing

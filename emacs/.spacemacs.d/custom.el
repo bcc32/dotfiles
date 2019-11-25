@@ -17,6 +17,7 @@
  '(flycheck-idle-change-delay 1.0)
  '(geiser-default-implementation (quote chicken))
  '(gofmt-command "goimports")
+ '(ivy-use-virtual-buffers nil)
  '(midnight-mode t)
  '(multi-term-program "zsh")
  '(org-agenda-span (quote day))
