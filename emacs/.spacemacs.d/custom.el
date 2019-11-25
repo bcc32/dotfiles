@@ -22,6 +22,7 @@
  '(multi-term-program "zsh")
  '(org-agenda-span (quote day))
  '(org-habit-show-habits-only-for-today nil)
+ '(org-link-abbrev-alist (quote (("att" . org-attach-expand-link))))
  '(org-modules
    (quote
     (org-bibtex org-docview org-habit org-info org-tempo org-eshell org-checklist org-man)))
