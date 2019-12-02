@@ -786,6 +786,7 @@ before packages are loaded."
       "F" 'bcc32/ocamlformat-on-save-mode))
 
   (org-clock-persistence-insinuate)
+  (autoload 'org-attach-expand-link "org-attach")
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
