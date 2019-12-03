@@ -79,6 +79,12 @@ Suitable for use with `before-save-hook'."
              (derived-mode-p 'tuareg-mode))
     (bcc32/ocamlformat-buffer-or-region)))
 
+(defun bcc32//prepend-home-bin-to-exec-path ()
+  "Prepend $HOME/bin to `exec-path' and the PATH variable in `process-environment'."
+  (let ((home-bin (expand-file-name "~/bin")))
+    (push home-bin exec-path)
+    (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
+
 (defun bcc32/org-cleanup ()
   "Run some cleanup on the current buffer, if it's an org buffer.
 
@@ -783,7 +789,13 @@ before packages are loaded."
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
       "f" 'bcc32/ocamlformat-buffer-or-region
-      "F" 'bcc32/ocamlformat-on-save-mode))
+      "F" 'bcc32/ocamlformat-on-save-mode)
+
+    ;; tuareg-opam-update-env adds the ocamlformat binary in the selected opam
+    ;; switch to the front of PATH.  I want $HOME/bin to come before that.
+    (advice-add 'tuareg-opam-update-env
+                :after
+                (lambda (&rest _) (bcc32//prepend-home-bin-to-exec-path))))
 
   (org-clock-persistence-insinuate)
   (autoload 'org-attach-expand-link "org-attach")
