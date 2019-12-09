@@ -27,6 +27,12 @@
  '(org-modules
    (quote
     (org-bibtex org-docview org-habit org-info org-tempo org-eshell org-checklist org-man)))
+ '(polymode-mode-name-aliases
+   (quote
+    ((elisp . emacs-lisp)
+     (el . emacs-lisp)
+     (bash . sh-mode)
+     (ocaml . tuareg))))
  '(rust-format-on-save t)
  '(safe-local-variable-values (quote ((bcc32/ocamlformat-on-save-mode . t))))
  '(sentence-end-double-space t)
