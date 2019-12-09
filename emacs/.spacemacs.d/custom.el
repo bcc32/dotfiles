@@ -19,6 +19,7 @@
  '(gofmt-command "goimports")
  '(ivy-use-virtual-buffers nil)
  '(midnight-mode t)
+ '(minibuffer-depth-indicate-mode t)
  '(multi-term-program "zsh")
  '(org-agenda-span (quote day))
  '(org-habit-show-habits-only-for-today nil)
