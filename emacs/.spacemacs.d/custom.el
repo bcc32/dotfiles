@@ -17,6 +17,7 @@
  '(flycheck-idle-change-delay 1.0)
  '(geiser-default-implementation (quote chicken))
  '(gofmt-command "goimports")
+ '(helm-make-nproc 0)
  '(ivy-use-virtual-buffers nil)
  '(merlin-locate-preference (quote mli))
  '(merlin-type-after-locate t)
