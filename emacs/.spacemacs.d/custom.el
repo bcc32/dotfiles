@@ -18,6 +18,8 @@
  '(geiser-default-implementation (quote chicken))
  '(gofmt-command "goimports")
  '(ivy-use-virtual-buffers nil)
+ '(merlin-locate-preference (quote mli))
+ '(merlin-type-after-locate t)
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(multi-term-program "zsh")
