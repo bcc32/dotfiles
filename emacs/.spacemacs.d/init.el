@@ -797,14 +797,13 @@ before packages are loaded."
                 :after
                 (lambda (&rest _) (bcc32//prepend-home-bin-to-exec-path))))
 
-  (org-clock-persistence-insinuate)
-  (autoload 'org-attach-expand-link "org-attach")
-
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
       "aog" 'counsel-org-goto-all)
     ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
     (org-defkey org-mode-map [(meta return)] 'org-meta-return)
+    (org-clock-persistence-insinuate)
+    (autoload 'org-attach-expand-link "org-attach")
     (add-hook 'before-save-hook 'bcc32/org-cleanup))
 
   (with-eval-after-load 'ledger-mode
