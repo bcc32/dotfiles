@@ -779,6 +779,7 @@ before packages are loaded."
   (spacemacs/toggle-indent-guide-globally-on)
   (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
+  (spacemacs/toggle-mode-line-version-control-off)
 
   (setf (cdr (assoc t ivy-format-functions-alist))
         'ivy-format-function-arrow)
