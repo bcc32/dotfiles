@@ -207,6 +207,7 @@ This function should only modify configuration layer settings."
                     ("payee" "%(binary) reg @%(payee)")
                     ("account" "%(binary) reg %(account)")
                     ("validate" "%(binary) source %(env-ledger-file)"))))
+     helpful
      ibuffer
      (ivy :variables
           ivy-enable-advanced-buffer-information t)
