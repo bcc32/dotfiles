@@ -208,7 +208,8 @@ This function should only modify configuration layer settings."
                     ("account" "%(binary) reg %(account)")
                     ("validate" "%(binary) source %(env-ledger-file)"))))
      ibuffer
-     ivy
+     (ivy :variables
+          ivy-enable-advanced-buffer-information t)
      ,@(when-on-type 'darwin 'osx)
      command-log
      ;; Text editing
