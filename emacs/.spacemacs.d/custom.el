@@ -41,6 +41,7 @@
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
  '(spaceline-info-mode t)
+ '(tab-width 8)
  '(tuareg-prettify-symbols-full t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
