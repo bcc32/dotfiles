@@ -791,13 +791,13 @@ before packages are loaded."
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
       "f" 'bcc32/ocamlformat-buffer-or-region
-      "F" 'bcc32/ocamlformat-on-save-mode)
+      "F" 'bcc32/ocamlformat-on-save-mode))
 
-    ;; tuareg-opam-update-env adds the ocamlformat binary in the selected opam
-    ;; switch to the front of PATH.  I want $HOME/bin to come before that.
-    (advice-add 'tuareg-opam-update-env
-                :after
-                (lambda (&rest _) (bcc32//prepend-home-bin-to-exec-path))))
+  ;; tuareg-opam-update-env adds the ocamlformat binary in the selected opam
+  ;; switch to the front of PATH.  I want $HOME/bin to come before that.
+  (advice-add 'tuareg-opam-update-env
+              :after
+              (lambda (&rest _) (bcc32//prepend-home-bin-to-exec-path)))
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
