@@ -773,6 +773,12 @@ before packages are loaded."
   (global-set-key (kbd "C-x C-c")
                   (lambda () (interactive) (error "Do not use C-x C-c")))
 
+  ;; Superword mode, for evil
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol)
+    ;; make evil-search-word look for symbol rather than word boundaries
+    (setq-default evil-symbol-word-search t))
+
   ;; toggles
   (spacemacs/toggle-display-time-on)
   (spacemacs/toggle-highlight-long-lines-globally-on)
