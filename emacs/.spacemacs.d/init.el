@@ -645,7 +645,6 @@ It should only modify the values of Spacemacs settings."
    '(:visual t
      :enabled-for-modes prog-mode
                         text-mode
-                        tuareg-mode
      :disabled-for-modes org-mode)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
