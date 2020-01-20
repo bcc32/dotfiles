@@ -85,22 +85,6 @@ Suitable for use with `before-save-hook'."
     (push home-bin exec-path)
     (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
 
-(defun bcc32/org-cleanup ()
-  "Run some cleanup on the current buffer, if it's an org buffer.
-
-- Update dynamic blocks (e.g., clock reports)
-- Update statistics cookies (e.g., [2/3])
-- Align heading tags"
-  (interactive "*")
-  ;; TODO Move this into a package and use dash to clean this up.
-  (when (and (derived-mode-p 'org-mode)
-             (not (and (buffer-file-name)
-                       (string= "org_archive"
-                                (file-name-extension (buffer-file-name))))))
-    (org-update-all-dblocks)
-    (org-update-statistics-cookies t)
-    (org-align-all-tags)))
-
 (defun bcc32//ledger-report-env-ledger-file-format-specifier ()
   "Return the value of the LEDGER_FILE environment variable."
   (getenv "LEDGER_FILE"))
@@ -817,7 +801,7 @@ before packages are loaded."
     (spacemacs/set-leader-keys-for-major-mode 'org-mode
       "St" 'bcc32-org-sort-by-closed
       "Sa" 'bcc32-org-sort-entire-agenda)
-    (add-hook 'before-save-hook 'bcc32/org-cleanup))
+    (add-hook 'before-save-hook 'bcc32-org-cleanup))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)

@@ -16,6 +16,11 @@
 (require 'flycheck)
 (require 'org)
 (require 'seq)
+(require 'subr-x)
+
+(defun bcc32-org--archive-file-p (file-name)
+  "Return t if FILE-NAME refers to an *.org_archive file."
+  (string= "org_archive" (file-name-extension file-name)))
 
 ;;;###autoload
 (defun bcc32-org-cleanup ()
@@ -25,7 +30,9 @@
 - Update statistics cookies (e.g., [2/3])
 - Align heading tags"
   (interactive "*")
-  (when (derived-mode-p 'org-mode)
+  (when (and (derived-mode-p 'org-mode)
+             (not (when-let (file-name (buffer-file-name))
+                    (bcc32-org--archive-file-p file-name))))
     (org-update-all-dblocks)
     (org-update-statistics-cookies t)
     (org-align-tags :all)))
