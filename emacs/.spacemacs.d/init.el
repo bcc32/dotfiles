@@ -290,7 +290,7 @@ This function should only modify configuration layer settings."
 
           ;;; Org export
 
-          org-export-backends '(ascii html icalendar latex org texinfo)
+          org-export-backends '(ascii html icalendar latex md org texinfo)
           org-html-htmlize-output-type 'css
           org-html-htmlize-font-prefix "org-"
 
