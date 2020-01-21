@@ -795,6 +795,7 @@ before packages are loaded."
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
+      "aob" 'org-switchb
       "aog" 'counsel-org-goto-all)
     ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
     (org-defkey org-mode-map [(meta return)] 'org-meta-return)
