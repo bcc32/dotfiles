@@ -341,6 +341,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(base16-theme
      solarized-theme
+     dash
+     flycheck
      (bcc32-org :location (recipe :fetcher file
                                   :path "~/.spacemacs.d/bcc32-org.el")))
 
