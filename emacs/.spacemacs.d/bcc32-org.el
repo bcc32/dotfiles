@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (emacs "25.1") (flycheck "31") (org "9.1.0"))
+;; Package-Requires: ((dash "2.16.0") (emacs "25.1") (f "0.20.0") (flycheck "31") (org "9.1.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -14,12 +14,13 @@
 ;;; Code:
 
 (require 'dash)
+(require 'f)
 (require 'flycheck)
 (require 'org)
 
 (defun bcc32-org--archive-file-p (file-name)
   "Return t if FILE-NAME refers to an *.org_archive file."
-  (string= "org_archive" (file-name-extension file-name)))
+  (f-ext? file-name "org_archive"))
 
 ;;;###autoload
 (defun bcc32-org-cleanup ()

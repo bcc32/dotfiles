@@ -342,6 +342,7 @@ This function should only modify configuration layer settings."
    '(base16-theme
      solarized-theme
      dash
+     f
      flycheck
      (bcc32-org :location (recipe :fetcher file
                                   :path "~/.spacemacs.d/bcc32-org.el")))
