@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((emacs "25.1") (flycheck "31") (org "9.1.0"))
+;; Package-Requires: ((dash "2.16.0") (emacs "25.1") (flycheck "31") (org "9.1.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -13,10 +13,9 @@
 
 ;;; Code:
 
+(require 'dash)
 (require 'flycheck)
 (require 'org)
-(require 'seq)
-(require 'subr-x)
 
 (defun bcc32-org--archive-file-p (file-name)
   "Return t if FILE-NAME refers to an *.org_archive file."
@@ -31,7 +30,7 @@
 - Align heading tags"
   (interactive "*")
   (when (and (derived-mode-p 'org-mode)
-             (not (when-let (file-name (buffer-file-name))
+             (not (-when-let (file-name (buffer-file-name))
                     (bcc32-org--archive-file-p file-name))))
     (org-update-all-dblocks)
     (org-update-statistics-cookies t)
@@ -51,7 +50,7 @@ Collect the values returned by PROC into a list."
 
 (defun bcc32-org--entry-has-todo-children-p ()
   "Return non-nil if the current entry has a child with any TODO state."
-  (seq-some #'identity (bcc32-org--map-entry-children #'org-get-todo-state)))
+  (-some #'identity (bcc32-org--map-entry-children #'org-get-todo-state)))
 
 (defconst bcc32-org--statistics-cookie-re
   (rx "[" (0+ digit) (or "%" (: "/" (0+ digit))) "]")
