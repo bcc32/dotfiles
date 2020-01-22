@@ -250,19 +250,17 @@ This function should only modify configuration layer settings."
 
           ;;; Agenda
 
-          ;; org-agenda-files are computed based on the contents of ~/org.
+          ;; org-agenda-files is computed based on the contents of ~/org.
           ;;
-          ;; ~/org should contain symlinks to org files or directories
-          ;; containing org files.
+          ;; ~/org should contain at least two files:
           ;;
-          ;; ~/org/default should be a symlink pointing to one of the entries in
-          ;; ~/org that represents the default directory for notes.
-          org-agenda-files
-          (mapcar (lambda (file)
-                    (file-truename
-                     (concat (file-name-as-directory "~/org") file)))
-                  (seq-difference (directory-files "~/org" nil nil :nosort)
-                                  '("." ".." "default")))
+          ;; - agenda-files: a newline-delimited list of agenda files or
+          ;; directories (see help for the variable `org-agenda-files').
+          ;;
+          ;; - refile.org: a default location for captures.  May be a symlink.
+          org-agenda-files "~/org/agenda-files"
+          org-default-notes-file "~/org/refile.org"
+          org-directory "~/org"
 
           ;; Don't show scheduled items in the global todo list, because
           ;; presumably you don't want to think about them until the scheduled
@@ -277,8 +275,6 @@ This function should only modify configuration layer settings."
           org-capture-templates
           '(("t" "Todo" entry (file "")
              "* TODO %?\n%U\n%a"))
-          org-default-notes-file "~/org/default/refile.org"
-          org-directory "~/org/default"
           ;; Add file name to org refile target prompt.  This also allows an
           ;; entry to be refiled under a file's toplevel.
           ;; https://emacs.stackexchange.com/questions/13353/how-to-use-org-refile-to-move-a-headline-to-a-file-as-a-toplevel-headline
