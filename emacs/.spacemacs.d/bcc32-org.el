@@ -148,6 +148,17 @@ else +INF for entries with a todo keyword, -INF otherwise."
       (when (> (buffer-size) 0)
         (throw 'found-error t)))))
 
+(defun bcc32-org--auto-ingest-init-org-hook ()
+  "Ingest an org file if it is named init.org."
+  (-when-let (file-name (buffer-file-name))
+    (when (string= (f-filename file-name) "init.org")
+      (org-babel-lob-ingest file-name))))
+
+;;;###autoload
+(defun bcc32-org-auto-ingest-init-org ()
+  "Enable automatic Library of Babel ingestion of files named \"init.org\"."
+  (add-hook 'org-mode-hook 'bcc32-org--auto-ingest-init-org-hook))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here

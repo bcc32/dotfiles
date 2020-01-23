@@ -799,7 +799,8 @@ before packages are loaded."
     (spacemacs/set-leader-keys-for-major-mode 'org-mode
       "St" 'bcc32-org-sort-by-closed
       "Sa" 'bcc32-org-sort-entire-agenda)
-    (add-hook 'before-save-hook 'bcc32-org-cleanup))
+    (add-hook 'before-save-hook 'bcc32-org-cleanup)
+    (bcc32-org-auto-ingest-init-org))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)
