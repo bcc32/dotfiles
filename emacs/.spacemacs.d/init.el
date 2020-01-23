@@ -260,7 +260,6 @@ This function should only modify configuration layer settings."
           ;; - refile.org: a default location for captures.  May be a symlink.
           org-agenda-files "~/org/agenda-files"
           org-default-notes-file "~/org/refile.org"
-          org-directory "~/org"
 
           ;; Don't show scheduled items in the global todo list, because
           ;; presumably you don't want to think about them until the scheduled
