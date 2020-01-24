@@ -35,7 +35,9 @@
                     (bcc32-org--archive-file-p file-name))))
     (org-update-all-dblocks)
     (org-update-statistics-cookies t)
-    (org-align-tags :all)))
+    (org-save-outline-visibility :use-markers
+      (org-show-all)
+      (org-align-tags :all))))
 
 (defun bcc32-org--map-entry-children (proc)
   "Call PROC with point at each child of the current entry.
