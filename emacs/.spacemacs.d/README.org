@@ -1,0 +1,10 @@
+#+TITLE: bcc32's Spacemacs config
+
+* Org Mode
+
+[[help:org-agenda-files][org-agenda-files]] is computed based on the contents of =~/org=, which
+should contain at least two files:
+
+- =agenda-files=: a newline-delimited list of agenda files or
+  directories (see help for [[help:org-agenda-files]]).
+- =refile.org=: a default location for captures.  May be a symlink.

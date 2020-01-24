@@ -178,19 +178,7 @@ This function should only modify configuration layer settings."
      spacemacs-visual
 
      ;; Emacs
-     ,@(when-any-installed
-        '("ledger" "hledger")
-        '(finance :variables
-                  ledger-accounts-file
-                  (concat (file-name-as-directory (getenv "LEDGER_PATH"))
-                          "declarations.ldg")
-                  ledger-reports
-                  '(("reconcile" "ldg-reconcile %(account)")
-                    ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
-                    ("bal" "%(binary) bal")
-                    ("payee" "%(binary) reg @%(payee)")
-                    ("account" "%(binary) reg %(account)")
-                    ("validate" "%(binary) source %(env-ledger-file)"))))
+     ,@(when-any-installed '("ledger" "hledger") 'finance)
      helpful
      ibuffer
      (ivy :variables
@@ -244,85 +232,8 @@ This function should only modify configuration layer settings."
                                    latex-build-command "latexmk"))
      markdown
      (org :variables
-          ;; Enable additional org bindings in evil normal state (e.g., "td" to
-          ;; mark done).
-          org-want-todo-bindings t
-
-          ;;; Agenda
-
-          ;; org-agenda-files is computed based on the contents of ~/org.
-          ;;
-          ;; ~/org should contain at least two files:
-          ;;
-          ;; - agenda-files: a newline-delimited list of agenda files or
-          ;; directories (see help for the variable `org-agenda-files').
-          ;;
-          ;; - refile.org: a default location for captures.  May be a symlink.
-          org-agenda-files "~/org/agenda-files"
-          org-default-notes-file "~/org/refile.org"
-
-          ;; Don't show scheduled items in the global todo list, because
-          ;; presumably you don't want to think about them until the scheduled
-          ;; time.
-          org-agenda-tags-todo-honor-ignore-options t
-          org-agenda-todo-ignore-scheduled 'future
-          org-agenda-todo-ignore-time-comparison-use-seconds t
-          org-clock-persist t
-
-          ;;; Capture and refile
-
-          org-capture-templates
-          '(("t" "Todo" entry (file "")
-             "* TODO %?\n%U\n%a"))
-          ;; Add file name to org refile target prompt.  This also allows an
-          ;; entry to be refiled under a file's toplevel.
-          ;; https://emacs.stackexchange.com/questions/13353/how-to-use-org-refile-to-move-a-headline-to-a-file-as-a-toplevel-headline
-          org-refile-use-outline-path 'buffer-name
-          org-outline-path-complete-in-steps nil
           org-projectile-file "TODO.org"
-          org-refile-targets '((nil :maxlevel . 10)
-                               (org-agenda-files :maxlevel . 10))
-
-          ;;; Org export
-
-          org-export-backends '(ascii html icalendar latex md org texinfo)
-          org-html-htmlize-output-type 'css
-          org-html-htmlize-font-prefix "org-"
-
-          ;;; Editing
-
-          org-attach-commit nil
-          org-insert-heading-respect-content t
-          org-startup-indented t
-
-          ;;; Org TODO configuration
-
-          ;; Log state change notes and time stamps into LOGBOOK drawer.
-          org-log-into-drawer t
-          org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil "")
-          org-enforce-todo-dependencies t
-          org-enforce-todo-checkbox-dependencies t
-          org-todo-keywords '((sequence "TODO(t)"
-                                        "MAYBE(m/!)"
-                                        "INPROGRESS(p!)"
-                                        "STALLED(a)"
-                                        "BLOCKED(k@/!)"
-                                        "INREVIEW(r!)"
-                                        "|"
-                                        "DONE(d/@)"
-                                        "DELEGATED(g@)"
-                                        "DEFERRED(e!)"
-                                        "NOTDONE(n)")
-                              (type "BUG(b/!)"
-                                    "CLEANUP(l/!)"
-                                    "|"
-                                    "FIXED(x/@)"
-                                    "WONTFIX(w@/@)")
-                              (type "ENHANCEMENT(h/!)"
-                                    "FEATURE(f/!)"
-                                    "|"
-                                    "RELEASED(s/@)"
-                                    "CANCELED(c/@)")))
+          org-want-todo-bindings t)
      yaml
      )
 
