@@ -46,7 +46,7 @@
 %U
 %a"))))
  '(org-clock-persist t)
- '(org-default-notes-file (expand-file-name "refile.org"))
+ '(org-default-notes-file (expand-file-name "refile.org" org-directory))
  '(org-default-priority 67)
  '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
