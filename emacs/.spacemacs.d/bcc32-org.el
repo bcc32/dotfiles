@@ -35,6 +35,17 @@
                     (bcc32-org--archive-file-p file-name))))
     (org-update-all-dblocks)
     (org-update-statistics-cookies t)
+    ;; FIXME: This workaround for incorrect alignment in org headings containing
+    ;; links doesn't work.  The key point is that `current-column' returns a
+    ;; different result when the point is visible (and the link is rendered like
+    ;; so) vs. when the point is not visible (and the link is rendered as raw
+    ;; org markup).
+    ;;
+    ;; I also noticed that `current-column' has spooky side effects: if you
+    ;; place point at the end of a heading with a link, then call "M-:
+    ;; (current-column)", you get some small-ish number.  Press S-tab to hide
+    ;; all entries, then evaluate `current-column' again.  You get a different,
+    ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
     (org-save-outline-visibility :use-markers
       (org-show-all)
       (org-align-tags :all))))
