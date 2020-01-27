@@ -51,7 +51,6 @@
  '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
  '(org-export-backends (quote (ascii html icalendar latex md org texinfo)))
- '(org-extend-today-until 2)
  '(org-habit-show-habits-only-for-today nil)
  '(org-html-htmlize-output-type (quote css))
  '(org-insert-heading-respect-content t)
