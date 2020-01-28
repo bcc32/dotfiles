@@ -13,6 +13,7 @@
  '(eshell-visual-commands
    (quote
     ("ncdu" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
+ '(eshell-visual-subcommands (quote (("git" "log" "diff" "show"))))
  '(evil-want-Y-yank-to-eol t)
  '(flycheck-idle-change-delay 1.0)
  '(geiser-default-implementation (quote chicken))
