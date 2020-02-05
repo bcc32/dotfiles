@@ -18,6 +18,9 @@
  '(flycheck-idle-change-delay 1.0)
  '(geiser-default-implementation (quote chicken))
  '(gofmt-command "goimports")
+ '(grep-find-ignored-directories
+   (quote
+    ("_build" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}")))
  '(helm-make-nproc 0)
  '(ivy-use-virtual-buffers nil)
  '(ledger-accounts-file
