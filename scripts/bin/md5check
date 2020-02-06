@@ -1,18 +1,7 @@
-#!/usr/bin/env perl
-use 5.016;
-use strict;
-use warnings;
+#!/bin/bash
 
-use File::Spec qw(splitpath);
+set -euo pipefail
 
-open my $find, 'find . -type f |';
-open my $md5sum, '| md5sum -c --quiet';
-
-while (my $path = <$find>) {
-    chomp $path;
-    my (undef, undef, $basename) = File::Spec->splitpath($path);
-    if ($basename =~ /^([[:xdigit:]]{32})\.\w+$/) {
-        my $expected = $1;
-        say $md5sum $expected, '  ', $path;
-    }
-}
+find . -type f |
+    sed --regexp-extended 's/.*([[:xdigit:]]{32})[.]\w+$/\1  \0/; t; d' |
+    parallel --block-size 1K --pipe --line-buffer md5sum -c --quiet
