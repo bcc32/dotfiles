@@ -1,80 +1,22 @@
-#!/usr/bin/env perl
-use v5.16;
-use warnings;
+#!/bin/bash
 
-use Digest::MD5;
-use File::Find;
+set -euo pipefail
 
-sub digest_file {
-  my ($name) = @_;
+digests_file=$(mktemp)
+duplicates_file=$(mktemp)
 
-  my $digest = Digest::MD5->new;
-  open my $fh, '<', $name;
-  $digest->addfile($fh);
+echo 'digesting...'
 
-  $digest->hexdigest;
-}
+find . -type f |
+    parallel --bar -X md5sum |
+    sort \
+        > "$digests_file"
 
-sub find_and_digest_files {
-  my %files_with;
+echo 'digesting... done'
 
-  my $count = 0;
+sed 's/  /\t/' "$digests_file" |
+    cut -f 1 |
+    uniq -d \
+         > "$duplicates_file"
 
-  my $work = Work->new('digesting');
-
-  my $handle_file = sub {
-    return unless -f;
-    my $digest = digest_file($_);
-    push @{$files_with{$digest}}, $File::Find::name;
-    $work->progress;
-  };
-
-  $work->begin;
-  find($handle_file, '.');
-  $work->end;
-
-  \%files_with;
-}
-
-sub main {
-  my $href = find_and_digest_files();
-
-  while (my ($digest, $files_ref) = each %$href) {
-    if (@$files_ref > 1) {
-      say $digest;
-      say "  $_" for @$files_ref;
-    }
-  }
-}
-
-exit main();
-
-package Work;
-
-sub new {
-  my ($class, $task) = @_;
-
-  bless {
-    name  => $task,
-    count => 0,
-  } => $class;
-}
-
-sub begin {
-  my ($self) = @_;
-
-  local $| = 1;
-  print "$self->{name}...";
-}
-
-sub progress {
-  my ($self) = @_;
-
-  local $| = 1;
-  print '.' if ++$self->{count} % 100 == 0;
-}
-
-sub end {
-  local $| = 1;
-  say 'done';
-}
+join "$duplicates_file" "$digests_file"
