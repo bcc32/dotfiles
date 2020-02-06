@@ -5,14 +5,14 @@ set -euo pipefail
 digests_file=$(mktemp)
 duplicates_file=$(mktemp)
 
-echo 'digesting...'
+echo >&2 'digesting...'
 
 find . -type f |
     parallel --bar -X md5sum |
     sort \
         > "$digests_file"
 
-echo 'digesting... done'
+echo >&2 'digesting... done'
 
 sed 's/  /\t/' "$digests_file" |
     cut -f 1 |
