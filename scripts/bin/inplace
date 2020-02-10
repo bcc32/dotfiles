@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eu
+
+F=$1
+shift
+
+dir=$(dirname -- "$F")
+tmp_f=$(mktemp --tmpdir="$dir")
+trap 'rm -- "$tmp_f"' EXIT
+"$@" < "$F" > "$tmp_f"
+mv -f -T -- "$tmp_f" "$F"
+trap '' EXIT
