@@ -41,6 +41,7 @@
  '(minibuffer-depth-indicate-mode t)
  '(multi-term-program "zsh")
  '(org-agenda-files (expand-file-name "agenda-files" org-directory))
+ '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-span (quote day))
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-scheduled (quote future))
@@ -60,6 +61,7 @@
  '(org-insert-heading-respect-content t)
  '(org-link-abbrev-alist (quote (("att" . org-attach-expand-link))))
  '(org-log-into-drawer t)
+ '(org-log-reschedule (quote time))
  '(org-modules
    (quote
     (org-bibtex org-docview org-habit org-info org-tempo org-eshell org-checklist org-man)))
