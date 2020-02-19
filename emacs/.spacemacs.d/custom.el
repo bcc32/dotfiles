@@ -72,6 +72,7 @@
      (org-agenda-files :maxlevel . 10))))
  '(org-refile-use-outline-path (quote buffer-name))
  '(org-startup-indented t)
+ '(org-startup-shrink-all-tables t)
  '(org-stuck-projects
    (quote
     ("+LEVEL<=2/!"
