@@ -37,7 +37,6 @@
      ("payee" "%(binary) reg @%(payee)")
      ("account" "%(binary) reg %(account)")
      ("validate" "%(binary) source %(env-ledger-file)"))))
- '(merlin-locate-preference (quote mli))
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mode-line-bell-mode t)
