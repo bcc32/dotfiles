@@ -251,6 +251,7 @@ This function should only modify configuration layer settings."
      dash
      f
      flycheck
+     magit
      (bcc32-org :location (recipe :fetcher file
                                   :path "~/.spacemacs.d/bcc32-org.el")))
 
@@ -712,7 +713,8 @@ before packages are loaded."
       "St" 'bcc32-org-sort-by-closed
       "Sa" 'bcc32-org-sort-entire-agenda)
     (add-hook 'before-save-hook 'bcc32-org-cleanup)
-    (bcc32-org-auto-ingest-init-org))
+    (bcc32-org-auto-ingest-init-org)
+    (define-key org-mode-map (kbd "<f9>") 'bcc32-org-commit-and-push-all))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)

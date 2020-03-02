@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (emacs "25.1") (f "0.20.0") (flycheck "31") (org "9.1.0"))
+;; Package-Requires: ((dash "2.16.0") (emacs "25.1") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -16,6 +16,7 @@
 (require 'dash)
 (require 'f)
 (require 'flycheck)
+(require 'magit)
 (require 'org)
 
 (defun bcc32-org--archive-file-p (file-name)
@@ -171,6 +172,17 @@ else +INF for entries with a todo keyword, -INF otherwise."
 (defun bcc32-org-auto-ingest-init-org ()
   "Enable automatic Library of Babel ingestion of files named \"init.org\"."
   (add-hook 'org-mode-hook 'bcc32-org--auto-ingest-init-org-hook))
+
+;;;###autoload
+(defun bcc32-org-commit-and-push-all ()
+  "Commit all changes, pull --rebase, and push the current repo."
+  (interactive)
+  (message "Committing and pushing...")
+  (when (magit-git-string-p "status" "--porcelain")
+    (magit-run-git "commit" "-am" "_"))
+  (magit-run-git "pull" "--rebase")
+  (magit-run-git "push")
+  (message "Committing and pushing... done"))
 
 (provide 'bcc32-org)
 
