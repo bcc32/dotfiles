@@ -6,6 +6,7 @@
  '(TeX-engine (quote xetex))
  '(calc-context-sensitive-enter t)
  '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
+ '(counsel-find-file-at-point nil)
  '(cperl-close-paren-offset -2 t)
  '(cperl-indent-parens-as-block t t)
  '(dired-async-mode t)
