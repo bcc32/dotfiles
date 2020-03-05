@@ -242,6 +242,7 @@ This function should only modify configuration layer settings."
      f
      flycheck
      magit
+     mode-line-bell
      (bcc32-org :location (recipe :fetcher file
                                   :path "~/.spacemacs.d/bcc32-org.el")))
 
