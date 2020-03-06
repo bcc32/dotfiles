@@ -100,7 +100,7 @@ This function is intended to be used with some hook like `find-file-hook' or
 `after-revert-hook'."
   (save-excursion
     (goto-char (point-min))
-    (when (save-match-data (re-search-forward "^<<<<<<< " nil t))
+    (when (save-match-data (re-search-forward "^<<<<<<< " (* 1000 1000) t))
       (smerge-mode +1))))
 
 (defun bcc32//set-ansi-term-color-vector-back-to-default (&rest _)
