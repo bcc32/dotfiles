@@ -9,11 +9,11 @@
 
 ;;; Code:
 
-(require 'seq)
+(eval-when-compile (require 'dash))
 
 (defun when-any-installed (executable-names &rest pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed in `exec-path'."
-  (if (seq-some #'executable-find executable-names)
+  (if (-some #'executable-find executable-names)
       pkgs))
 
 (defun when-on-hostname (name &rest pkgs)
@@ -109,7 +109,7 @@ This function is intended to be used with some hook like `find-file-hook' or
 base16-theme sets `ansi-term-color-vector' with face
 `unspecified', which breaks multi-term."
   (when (and (boundp 'ansi-term-color-vector)
-             (seq-contains ansi-term-color-vector 'unspecified))
+             (-contains? ansi-term-color-vector 'unspecified))
     (custom-set-variables
      '(ansi-term-color-vector
        [term
