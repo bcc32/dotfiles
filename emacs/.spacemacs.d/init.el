@@ -109,7 +109,7 @@ This function is intended to be used with some hook like `find-file-hook' or
 base16-theme sets `ansi-term-color-vector' with face
 `unspecified', which breaks multi-term."
   (when (and (boundp 'ansi-term-color-vector)
-             (-contains? ansi-term-color-vector 'unspecified))
+             (seq-contains ansi-term-color-vector 'unspecified))
     (custom-set-variables
      '(ansi-term-color-vector
        [term
