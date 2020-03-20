@@ -79,12 +79,6 @@ Suitable for use with `before-save-hook'."
              (derived-mode-p 'tuareg-mode))
     (bcc32/ocamlformat-buffer-or-region)))
 
-(defun bcc32//prepend-home-bin-to-exec-path ()
-  "Prepend $HOME/bin to `exec-path' and the PATH variable in `process-environment'."
-  (let ((home-bin (expand-file-name "~/bin")))
-    (push home-bin exec-path)
-    (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
-
 (defun bcc32//ledger-report-env-ledger-file-format-specifier ()
   "Return the value of the LEDGER_FILE environment variable."
   (getenv "LEDGER_FILE"))
@@ -103,7 +97,7 @@ This function is intended to be used with some hook like `find-file-hook' or
     (when (save-match-data (re-search-forward "^<<<<<<< " (* 1000 1000) t))
       (smerge-mode +1))))
 
-(defun bcc32//set-ansi-term-color-vector-back-to-default (&rest _)
+(define-advice enable-theme (:after (&rest _) workaround-for-base16-theme-ansi-term)
   "Workaround for bug in base16-theme.el.
 
 base16-theme sets `ansi-term-color-vector' with face
@@ -121,10 +115,6 @@ base16-theme sets `ansi-term-color-vector' with face
         term-color-magenta
         term-color-cyan
         term-color-white]))))
-
-(defun bcc32//workaround-for-base16-theme-ansi-term ()
-  "Prevent base16-theme.el from breaking multi-term."
-  (advice-add 'enable-theme :after 'bcc32//set-ansi-term-color-vector-back-to-default))
 
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -697,9 +687,13 @@ before packages are loaded."
 
   ;; tuareg-opam-update-env adds the ocamlformat binary in the selected opam
   ;; switch to the front of PATH.  I want $HOME/bin to come before that.
-  (advice-add 'tuareg-opam-update-env
-              :after
-              (lambda (&rest _) (bcc32//prepend-home-bin-to-exec-path)))
+  (define-advice tuareg-opam-update-env (:after (&rest _) prepend-home-bin-to-exec-path)
+    "Prepend $HOME/bin to `exec-path' and the PATH variable in `process-environment'.
+
+This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
+    (let ((home-bin (expand-file-name "~/bin")))
+      (push home-bin exec-path)
+      (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
 
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys
