@@ -723,8 +723,6 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
   (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
   (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
 
-  (bcc32//workaround-for-base16-theme-ansi-term)
-
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
   (load custom-file))
