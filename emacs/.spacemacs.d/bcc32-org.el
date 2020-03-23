@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (emacs "25.1") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0"))
+;; Package-Requires: ((dash "2.16.0") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
