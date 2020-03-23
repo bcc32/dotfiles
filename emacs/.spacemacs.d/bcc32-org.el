@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0"))
+;; Package-Requires: ((dash "2.16.0") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (s "1.12.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -18,6 +18,7 @@
 (require 'flycheck)
 (require 'magit)
 (require 'org)
+(require 's)
 
 (defun bcc32-org--archive-file-p (file-name)
   "Return t if FILE-NAME refers to an *.org_archive file."
@@ -173,15 +174,21 @@ else +INF for entries with a todo keyword, -INF otherwise."
   "Enable automatic Library of Babel ingestion of files named \"init.org\"."
   (add-hook 'org-mode-hook 'bcc32-org--auto-ingest-init-org-hook))
 
+(defun bcc32-org--magit-call-git (&rest args)
+  "Similar to `magit-call-git', but signal an error when git exits non-zero."
+  (unless (zerop (apply #'magit-call-git args))
+    (magit-process-buffer)
+    (error "git exited non-zero: git %s" (s-join " " args))))
+
 ;;;###autoload
 (defun bcc32-org-commit-and-push-all ()
   "Commit all changes, pull --rebase, and push the current repo."
   (interactive)
   (message "Committing and pushing...")
   (when (magit-git-string-p "status" "--porcelain")
-    (magit-run-git "commit" "-am" "_"))
-  (magit-run-git "pull" "--rebase")
-  (magit-run-git "push")
+    (bcc32-org--magit-call-git "commit" "-am" "_"))
+  (bcc32-org--magit-call-git "pull" "--rebase")
+  (bcc32-org--magit-call-git "push")
   (message "Committing and pushing... done"))
 
 (provide 'bcc32-org)
