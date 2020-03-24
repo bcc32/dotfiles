@@ -658,8 +658,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (global-set-key (kbd "C-x C-c")
-                  (lambda () (interactive) (error "Do not use C-x C-c")))
+  (bind-key "C-x C-c" (lambda () (interactive) (error "Do not use C-x C-c")))
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
@@ -710,7 +709,7 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
       "Sa" 'bcc32-org-sort-entire-agenda)
     (add-hook 'before-save-hook 'bcc32-org-cleanup)
     (bcc32-org-auto-ingest-init-org)
-    (define-key org-mode-map (kbd "<f9>") 'bcc32-org-commit-and-push-all))
+    (bind-key "<f9>" 'bcc32-org-commit-and-push-all org-mode-map))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)
