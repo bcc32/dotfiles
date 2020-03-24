@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-(eval-when-compile (require 'dash))
+(require 'dash)
 
 (defun when-any-installed (executable-names &rest pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed in `exec-path'."
