@@ -2,17 +2,15 @@
 	email = me@bcc32.com
 	name = Aaron L. Zeng
 [alias]
-	co = checkout
-	ci = commit
-	st = status -s
 	br = branch
-	type = cat-file -t
+	ci = commit
+	co = checkout
+	st = status -s
 	dump = cat-file -p
+	type = cat-file -t
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	lol = log --graph --oneline --decorate --color --all
 	wow = log --graph --oneline --decorate --color --all --simplify-by-decoration
-[push]
-	default = simple
 [core]
 	autocrlf = input
 	excludesfile = ~/.cvsignore
@@ -22,11 +20,16 @@
 	tool = vimdiff
 [merge]
 	conflictStyle = diff3
+[push]
+	default = simple
+[rerere]
+	autoUpdate = true
+	enabled = true
 [sendemail]
+	smtpencryption = tls
 	smtpserver = smtp.gmail.com
 	smtpserverport = 587
-	smtpencryption = tls
 	smtpuser = zeng.aaron.l@gmail.com
-[rerere]
-	enabled = true
-	autoUpdate = true
+[user]
+	email = me@bcc32.com
+	name = Aaron L. Zeng
