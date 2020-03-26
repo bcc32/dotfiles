@@ -4,4 +4,4 @@ set -euo pipefail
 
 # Use logname instead of whoami so that the real user is used when called with
 # sudo.
-exec chown -R $(logname) "$@"
+exec chown -R "$(logname)" "$@"

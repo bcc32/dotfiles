@@ -17,7 +17,6 @@ reconcile() {
     ledger reg --uncleared --sort d "$@"
 }
 
-self=$BASH_SOURCE
 if [ $# -lt 1 ]; then
     reconcile "$(ledger accounts | fzf)"
 else
