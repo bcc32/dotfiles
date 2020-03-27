@@ -726,6 +726,9 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
+  ;;
+  ;; This would not be necessary if my customizations were in this file instead
+  ;; of a separate file.
   (load custom-file))
 
 ;; Do not write anything past this comment. This is where Emacs will
