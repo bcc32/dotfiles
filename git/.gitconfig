@@ -17,7 +17,6 @@
 	tool = vimdiff
 [fetch]
 	prune = true
-	pruneTags = true
 [merge]
 	conflictStyle = diff3
 [push]
