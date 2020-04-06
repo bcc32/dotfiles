@@ -189,7 +189,7 @@ This function should only modify configuration layer settings."
             shell-default-shell 'multi-term
             shell-enable-smart-eshell t)
      (version-control :variables
-                      version-control-global-margin nil)
+                      version-control-diff-tool nil)
      ;; Programming languages
      ;; Functional
      emacs-lisp
