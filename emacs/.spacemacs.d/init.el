@@ -696,10 +696,11 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
       (push home-bin exec-path)
       (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
 
+  (spacemacs/set-leader-keys
+    "aob" 'org-switchb
+    "aog" 'counsel-org-goto-all)
+
   (with-eval-after-load 'org
-    (spacemacs/set-leader-keys
-      "aob" 'org-switchb
-      "aog" 'counsel-org-goto-all)
     ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
     (org-defkey org-mode-map [(meta return)] 'org-meta-return)
     (org-clock-persistence-insinuate)
