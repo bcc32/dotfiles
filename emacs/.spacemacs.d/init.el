@@ -707,8 +707,6 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
     "aog" 'counsel-org-goto-all)
 
   (with-eval-after-load 'org
-    ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/9603
-    (org-defkey org-mode-map [(meta return)] 'org-meta-return)
     (org-clock-persistence-insinuate)
     (autoload 'org-attach-expand-link "org-attach")
     (spacemacs/set-leader-keys-for-major-mode 'org-mode
