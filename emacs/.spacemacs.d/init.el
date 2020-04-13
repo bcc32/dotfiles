@@ -185,7 +185,6 @@ This function should only modify configuration layer settings."
      git
      nixos
      (shell :variables
-            shell-default-shell 'multi-term
             shell-enable-smart-eshell t)
      (version-control :variables
                       version-control-diff-tool nil)

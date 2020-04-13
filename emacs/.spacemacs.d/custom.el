@@ -40,7 +40,6 @@
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mode-line-bell-mode t)
- '(multi-term-program "zsh")
  '(org-agenda-dim-blocked-tasks (quote invisible))
  '(org-agenda-files (expand-file-name "agenda-files" org-directory))
  '(org-agenda-skip-scheduled-if-done t)
