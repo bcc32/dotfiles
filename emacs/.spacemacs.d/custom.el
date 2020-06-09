@@ -66,7 +66,7 @@
  '(org-log-reschedule (quote time))
  '(org-modules
    (quote
-    (org-bibtex org-docview org-habit org-info org-tempo org-eshell org-checklist org-man)))
+    (ol-bibtex ol-docview org-habit ol-info org-tempo ol-eshell org-checklist ol-man)))
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-targets
    (quote
