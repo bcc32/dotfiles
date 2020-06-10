@@ -3,5 +3,5 @@
 set -euo pipefail
 
 id=$1
-md5=$(curl --user "$DANBOORU_AUTH" "https://danbooru.donmai.us/posts/$id.json" | jq -r .md5)
+md5=$(curl -sSL --user "$DANBOORU_AUTH" "https://danbooru.donmai.us/posts/$id.json" | jq -r .md5)
 find . -name "$md5*"
