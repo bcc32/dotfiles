@@ -173,7 +173,7 @@ This function should only modify configuration layer settings."
      ibuffer
      (ivy :variables
           ivy-enable-advanced-buffer-information t)
-     ,@(when-on-type 'darwin 'osx)
+     osx
      command-log
      ;; Text editing
      (auto-completion :variables
