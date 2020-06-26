@@ -721,7 +721,6 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
 
   (with-eval-after-load 'org
     (org-clock-persistence-insinuate)
-    (autoload 'org-attach-expand-link "org-attach")
     (spacemacs/set-leader-keys-for-major-mode 'org-mode
       "St" 'bcc32-org-sort-by-closed
       "Sa" 'bcc32-org-sort-entire-agenda)

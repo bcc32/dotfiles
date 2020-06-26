@@ -60,7 +60,6 @@
  '(org-habit-show-habits-only-for-today nil)
  '(org-html-htmlize-output-type (quote css))
  '(org-insert-heading-respect-content t)
- '(org-link-abbrev-alist (quote (("att" . org-attach-expand-link))))
  '(org-log-into-drawer t)
  '(org-log-redeadline (quote note))
  '(org-log-reschedule (quote time))
