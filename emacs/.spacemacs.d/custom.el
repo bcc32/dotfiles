@@ -11,6 +11,7 @@
  '(cperl-indent-parens-as-block t t)
  '(dired-async-mode t)
  '(enable-recursive-minibuffers t)
+ '(epa-pinentry-mode (quote loopback))
  '(eshell-visual-commands
    (quote
     ("ncdu" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
