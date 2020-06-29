@@ -142,7 +142,7 @@ This function should only modify configuration layer settings."
 
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
@@ -226,6 +226,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-projectile-file "TODO.org"
           org-want-todo-bindings t)
+     bcc32-org
      yaml
      )
 
@@ -239,14 +240,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(base16-theme
      solarized-theme
-     dash
-     f
-     flycheck
-     magit
-     mode-line-bell
-     s
-     (bcc32-org :location (recipe :fetcher file
-                                  :path "~/.spacemacs.d/bcc32-org.el")))
+     mode-line-bell)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -717,19 +711,6 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
     (let ((home-bin (expand-file-name "~/bin")))
       (push home-bin exec-path)
       (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
-
-  (spacemacs/set-leader-keys
-    "aob" 'org-switchb
-    "aog" 'counsel-org-goto-all)
-
-  (with-eval-after-load 'org
-    (org-clock-persistence-insinuate)
-    (spacemacs/set-leader-keys-for-major-mode 'org-mode
-      "St" 'bcc32-org-sort-by-closed
-      "Sa" 'bcc32-org-sort-entire-agenda)
-    (add-hook 'before-save-hook 'bcc32-org-cleanup)
-    (bcc32-org-auto-ingest-init-org)
-    (bind-key "<f9>" 'bcc32-org-commit-and-push-all org-mode-map))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)

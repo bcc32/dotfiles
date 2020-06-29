@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (s "1.12.0"))
+;; Package-Requires: ((dash "2.16.0") (emacs "24.1") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (s "1.12.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -52,76 +52,6 @@
       (org-show-all)
       (org-align-tags :all))))
 
-(defun bcc32-org--map-entry-children (proc)
-  "Call PROC with point at each child of the current entry.
-
-Collect the values returned by PROC into a list."
-  (save-excursion
-    (let (results)
-      (when (org-goto-first-child)
-        (push (funcall proc) results)
-        (while (org-goto-sibling)
-          (push (funcall proc) results)))
-      (nreverse results))))
-
-(defun bcc32-org--entry-has-todo-children-p ()
-  "Return non-nil if the current entry has a child with any TODO state."
-  (-some #'identity (bcc32-org--map-entry-children #'org-get-todo-state)))
-
-(defconst bcc32-org--statistics-cookie-re
-  (rx "[" (0+ digit) (or "%" (: "/" (0+ digit))) "]")
-  "Pattern that matches `org-mode' statistics cookies.
-
-Copied from `org-element-statistics-cookie-parser'.")
-
-(defun bcc32-org--flycheck-lint-headline-statistics-cookie (checker)
-  "Lint the current headline for statistics cookies using CHECKER."
-  (let ((heading (org-get-heading :no-tags :no-todo)))
-    (when (and (bcc32-org--entry-has-todo-children-p)
-               (not (string-match-p bcc32-org--statistics-cookie-re heading)))
-      (flycheck-error-new-at (line-number-at-pos)
-                             nil
-                             'error
-                             "heading has no statistics cookie"
-                             :checker checker))))
-
-(defun bcc32-org--flycheck-lint-buffer (checker)
-  "Lint the current buffer for statistics cookies using CHECKER."
-  (delq nil
-        (org-map-entries
-         (lambda ()
-           (bcc32-org--flycheck-lint-headline-statistics-cookie checker)))))
-
-(defun bcc32-org--org-mode-use-flycheck-as-next-error-function ()
-  "Use `flycheck-next-error' as the `next-error-function'.
-
-This is so that `next-error-function' in `org-mode' buffers is
-set correctly."
-  (setq next-error-function 'flycheck-next-error))
-
-;;;###autoload
-(defun bcc32-org-flycheck-start (checker callback)
-  "Start linting an org buffer for syntax checker CHECKER.
-
-CALLBACK should be a flycheck checker callback."
-  (condition-case err
-      (let ((errors (bcc32-org--flycheck-lint-buffer checker)))
-        (funcall callback 'finished errors))
-    (error (funcall callback 'errored (error-message-string err)))))
-
-;; CR azeng: This should be defined in some autoload or use-package somewhere?
-(flycheck-define-generic-checker 'org-lint
-  "An org linter to enforce statistics cookies where appropriate."
-  :start #'bcc32-org-flycheck-start
-  :modes 'org-mode
-  :predicate #'org-agenda-file-p)
-(add-to-list 'flycheck-checkers 'org-lint)
-;; CR azeng: This doesn't actually work because org loads the agenda files
-;; before this file gets required.
-;;
-;; It should be moved to a spacemacs layer post-init function or something.
-(add-hook 'org-mode-hook 'bcc32-org--org-mode-use-flycheck-as-next-error-function)
-
 (defun bcc32-org--sort-by-closed-getkey ()
   "Return the CLOSED property of the org entry at point.
 
@@ -168,11 +98,6 @@ else +INF for entries with a todo keyword, -INF otherwise."
   (-when-let (file-name (buffer-file-name))
     (when (string= (f-filename file-name) "init.org")
       (org-babel-lob-ingest file-name))))
-
-;;;###autoload
-(defun bcc32-org-auto-ingest-init-org ()
-  "Enable automatic Library of Babel ingestion of files named \"init.org\"."
-  (add-hook 'org-mode-hook 'bcc32-org--auto-ingest-init-org-hook))
 
 (defun bcc32-org--magit-call-git (&rest args)
   "Similar to `magit-call-git', but signal an error when git exits non-zero."
