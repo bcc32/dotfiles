@@ -213,8 +213,6 @@ This function should only modify configuration layer settings."
      ,@(when-any-installed '("python") 'python)
      ,@(when-any-installed '("ruby") 'ruby)
      shell-scripts
-     ;; Statistical
-     ,@(when-any-installed '("R") 'ess)
      ;; Documents/markup
      csv
      json
