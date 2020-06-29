@@ -204,6 +204,9 @@ This function should only modify configuration layer settings."
      ,@(when-any-installed '("rustc" "cargo") 'rust)
      ;; Web
      html
+     (javascript :variables
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t)
      sql
      ;; Script
      perl5
