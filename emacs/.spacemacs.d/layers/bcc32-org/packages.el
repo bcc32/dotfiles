@@ -23,8 +23,7 @@
         :start #'bcc32-org/flycheck-start
         :modes 'org-mode
         :predicate #'org-agenda-file-p)
-      (add-to-list 'flycheck-checkers 'org-lint)
-      (add-hook 'org-mode-hook 'bcc32-org//org-mode-use-flycheck-as-next-error-function))))
+      (add-to-list 'flycheck-checkers 'org-lint))))
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org

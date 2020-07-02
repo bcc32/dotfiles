@@ -39,13 +39,6 @@ Copied from `org-element-statistics-cookie-parser'.")
            (lambda ()
              (bcc32-org//flycheck-lint-headline-statistics-cookie checker)))))
 
-  (defun bcc32-org//org-mode-use-flycheck-as-next-error-function ()
-    "Use `flycheck-next-error' as the `next-error-function'.
-
-This is so that `next-error-function' in `org-mode' buffers is
-set correctly."
-    (setq next-error-function 'flycheck-next-error))
-
   (defun bcc32-org/flycheck-start (checker callback)
     "Start linting an org buffer for syntax checker CHECKER.
 
