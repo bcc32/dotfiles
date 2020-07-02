@@ -174,6 +174,7 @@ This function should only modify configuration layer settings."
      (ivy :variables
           ivy-enable-advanced-buffer-information t)
      osx
+     spotify
      command-log
      ;; Text editing
      (auto-completion :variables
