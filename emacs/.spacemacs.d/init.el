@@ -152,6 +152,64 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+
+     ;; Checkers
+     spell-checking
+     (syntax-checking :variables
+                      syntax-checking-use-original-bitmaps t)
+
+     ;; Completion
+     (auto-completion :variables
+                      auto-completion-idle-delay 1.0)
+     (ivy :variables
+          ivy-enable-advanced-buffer-information t)
+
+     ;; Emacs
+     helpful
+     ibuffer
+     (org :variables
+          org-projectile-file "TODO.org"
+          org-want-todo-bindings t)
+
+     ;; Programming and markup languages
+     c-c++
+     csv
+     ,@(when-any-installed '("sbcl") 'common-lisp)
+     emacs-lisp
+     ,@(when-any-installed '("go")
+                           '(go :variables
+                                go-format-before-save t
+                                go-tab-width 4))
+     ,@(when-any-installed '("ghc" "stack") 'haskell)
+     html
+     (javascript :variables
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t)
+     json
+     ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
+                           'bibtex
+                           '(latex :variables
+                                   latex-build-command "latexmk"))
+     markdown
+     ,@(when-any-installed '("ocamlc" "opam") 'ocaml)
+     perl5
+     ,@(when-any-installed '("python") 'python)
+     ,@(when-any-installed '("ruby") 'ruby)
+     ,@(when-any-installed '("rustc" "cargo") 'rust)
+     ,@(when-any-installed '("chicken" "guile") 'scheme)
+     shell-scripts
+     sql
+     yaml
+
+     ;; Operating systems
+     nixos
+     osx
+
+     ;; Source control
+     git
+     (version-control :variables
+                      version-control-diff-tool nil)
+
      ;; Spacemacs distribution layers
      spacemacs-completion
      spacemacs-layouts
@@ -167,67 +225,18 @@ This function should only modify configuration layer settings."
      spacemacs-purpose
      spacemacs-visual
 
-     ;; Emacs
+     ;; Tools
+     command-log
      fasd
      ,@(when-any-installed '("ledger" "hledger") 'finance)
-     helpful
-     ibuffer
-     (ivy :variables
-          ivy-enable-advanced-buffer-information t)
-     osx
-     spotify
-     command-log
-     ;; Text editing
-     (auto-completion :variables
-                      auto-completion-idle-delay 1.0)
-     spell-checking
-     (syntax-checking :variables
-                      syntax-checking-use-original-bitmaps t)
-     ;; Programmer tools
-     git
-     nixos
      (shell :variables
             shell-enable-smart-eshell t)
-     (version-control :variables
-                      version-control-diff-tool nil)
-     ;; Programming languages
-     ;; Functional
-     emacs-lisp
-     ,@(when-any-installed '("sbcl") 'common-lisp)
-     ,@(when-any-installed '("ghc" "stack") 'haskell)
-     ,@(when-any-installed '("ocamlc" "opam") 'ocaml)
-     ,@(when-any-installed '("chicken" "guile") 'scheme)
-     ;; System
-     c-c++
-     ,@(when-any-installed '("go")
-                           '(go :variables
-                                go-format-before-save t
-                                go-tab-width 4))
-     ,@(when-any-installed '("rustc" "cargo") 'rust)
-     ;; Web
-     html
-     (javascript :variables
-                 javascript-fmt-tool 'prettier
-                 javascript-fmt-on-save t)
-     sql
-     ;; Script
-     perl5
-     ,@(when-any-installed '("python") 'python)
-     ,@(when-any-installed '("ruby") 'ruby)
-     shell-scripts
-     ;; Documents/markup
-     csv
-     json
-     ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
-                           'bibtex
-                           '(latex :variables
-                                   latex-build-command "latexmk"))
-     markdown
-     (org :variables
-          org-projectile-file "TODO.org"
-          org-want-todo-bindings t)
+
+     ;; Web services
+     spotify
+
+     ;; User layers
      bcc32-org
-     yaml
      )
 
    ;; List of additional packages that will be installed without being
