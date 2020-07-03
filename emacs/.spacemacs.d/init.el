@@ -168,6 +168,7 @@ This function should only modify configuration layer settings."
      spacemacs-visual
 
      ;; Emacs
+     fasd
      ,@(when-any-installed '("ledger" "hledger") 'finance)
      helpful
      ibuffer
