@@ -97,25 +97,6 @@ This function is intended to be used with some hook like `find-file-hook' or
     (when (save-match-data (re-search-forward "^<<<<<<< " (* 1000 1000) t))
       (smerge-mode +1))))
 
-(define-advice enable-theme (:after (&rest _) workaround-for-base16-theme-ansi-term)
-  "Workaround for bug in base16-theme.el.
-
-base16-theme sets `ansi-term-color-vector' with face
-`unspecified', which breaks multi-term."
-  (when (and (boundp 'ansi-term-color-vector)
-             (seq-contains ansi-term-color-vector 'unspecified))
-    (custom-set-variables
-     '(ansi-term-color-vector
-       [term
-        term-color-black
-        term-color-red
-        term-color-green
-        term-color-yellow
-        term-color-blue
-        term-color-magenta
-        term-color-cyan
-        term-color-white]))))
-
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
