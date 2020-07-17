@@ -153,6 +153,7 @@ This function should only modify configuration layer settings."
           org-want-todo-bindings t)
 
      ;; Programming and markup languages
+     autohotkey
      c-c++
      csv
      ,@(when-any-installed '("sbcl") 'common-lisp)
