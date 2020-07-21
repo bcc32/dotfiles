@@ -157,13 +157,13 @@ This function should only modify configuration layer settings."
      autohotkey
      c-c++
      csv
-     ,@(when-any-installed '("sbcl") 'common-lisp)
+     ,(when-any-installed '("sbcl") 'common-lisp)
      emacs-lisp
-     ,@(when-any-installed '("go")
-                           '(go :variables
-                                go-format-before-save t
-                                go-tab-width 4))
-     ,@(when-any-installed '("ghc" "stack") 'haskell)
+     ,(when-any-installed '("go")
+                          '(go :variables
+                               go-format-before-save t
+                               go-tab-width 4))
+     ,(when-any-installed '("ghc" "stack") 'haskell)
      html
      (javascript :variables
                  javascript-fmt-tool 'prettier
@@ -174,12 +174,12 @@ This function should only modify configuration layer settings."
                            '(latex :variables
                                    latex-build-command "latexmk"))
      markdown
-     ,@(when-any-installed '("ocamlc" "opam") 'ocaml)
+     ,(when-any-installed '("ocamlc" "opam") 'ocaml)
      perl5
-     ,@(when-any-installed '("python") 'python)
-     ,@(when-any-installed '("ruby") 'ruby)
-     ,@(when-any-installed '("rustc" "cargo") 'rust)
-     ,@(when-any-installed '("chicken" "guile") 'scheme)
+     ,(when-any-installed '("python") 'python)
+     ,(when-any-installed '("ruby") 'ruby)
+     ,(when-any-installed '("rustc" "cargo") 'rust)
+     ,(when-any-installed '("chicken" "guile") 'scheme)
      shell-scripts
      sql
      yaml
