@@ -40,6 +40,20 @@ Otherwise, render sequences in the current buffer."
       (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
+(defun bcc32/add-link (url tags)
+  "Add URL from clipboard to pocket reader, prompting for TAGS."
+  (interactive
+   (let* ((url (progn
+                 (require 'org-web-tools)
+                 (or (org-web-tools--get-first-url)
+                     (user-error "No URL found in kill-ring"))))
+          (tags (read-from-minibuffer (format "Tags for %s: " url) nil nil nil
+                                      'bcc32/add-link-history)))
+     (list url tags)))
+  (require 'pocket-lib)
+  (when (pocket-lib-add-urls (list url) :tags tags)
+    (message "Added %s" url)))
+
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
   "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
 
