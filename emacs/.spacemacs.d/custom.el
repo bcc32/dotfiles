@@ -25,11 +25,7 @@
     ("_build" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}")))
  '(helm-make-nproc 0)
  '(ivy-use-virtual-buffers nil)
- '(ledger-accounts-file
-   (concat
-    (file-name-as-directory
-     (getenv "LEDGER_PATH"))
-    "declarations.ldg"))
+ '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-reports
    (quote
     (("reconcile" "ldg-reconcile %(account)")
