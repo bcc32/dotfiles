@@ -77,10 +77,9 @@ else +INF for entries with a todo keyword, -INF otherwise."
     (dolist (buf (org-buffer-list 'agenda))
       (set-buffer buf)
       (goto-char (point-min))
-      (ignore-errors (bcc32-org-sort-by-closed))
-      (org-map-entries (lambda () (ignore-errors (bcc32-org-sort-by-closed)))
-                       t
-                       nil))))
+      (with-demoted-errors "Error: %S"
+        (bcc32-org-sort-by-closed)
+        (org-map-entries #'bcc32-org-sort-by-closed)))))
 
 ;;;###autoload
 (defun bcc32-org-lint-all-open-buffers ()
