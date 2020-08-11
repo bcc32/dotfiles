@@ -16,7 +16,7 @@
 (require 'dash)
 (require 'f)
 (require 'flycheck)
-(require 'magit)
+(require 'magit-core)
 (require 'org)
 (require 's)
 
