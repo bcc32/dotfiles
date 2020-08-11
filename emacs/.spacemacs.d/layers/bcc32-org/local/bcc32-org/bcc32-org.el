@@ -98,23 +98,17 @@ else +INF for entries with a todo keyword, -INF otherwise."
     (when (string= (f-filename file-name) "init.org")
       (org-babel-lob-ingest file-name))))
 
-(defun bcc32-org--magit-call-git (&rest args)
-  "Similar to `magit-call-git', but signal an error when git exits non-zero."
-  (unless (zerop (apply #'magit-call-git args))
-    (magit-process-buffer)
-    (error "git exited non-zero: git %s" (s-join " " args))))
-
 ;;;###autoload
 (defun bcc32-org-commit-and-push-all ()
   "Commit all changes, pull --rebase, and push the current repo."
   (interactive)
   (message "Committing and pushing...")
   (when (magit-git-string-p "status" "--porcelain")
-    (bcc32-org--magit-call-git "commit" "-am" "_"))
+    (magit-git "commit" "-am" "_"))
   (let (head-before head-after)
     (setq head-before (magit-rev-parse (magit-headish)))
-    (bcc32-org--magit-call-git "pull" "--rebase")
-    (bcc32-org--magit-call-git "push")
+    (magit-git "pull" "--rebase")
+    (magit-git "push")
     (setq head-after (magit-rev-parse (magit-headish)))
     (unless (magit-rev-eq head-before head-after)
       (org-revert-all-org-buffers)))
