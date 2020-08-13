@@ -102,6 +102,9 @@ else +INF for entries with a todo keyword, -INF otherwise."
 (defun bcc32-org-commit-and-push-all ()
   "Commit all changes, pull --rebase, and push the current repo."
   (interactive)
+  (when (or (magit-merge-in-progress-p)
+            (magit-rebase-in-progress-p))
+    (user-error "Merge or rebase in progress; aborting"))
   (message "Committing and pushing...")
   (when (magit-git-string-p "status" "--porcelain")
     (magit-git "commit" "-am" "_"))
