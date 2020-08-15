@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-engine (quote xetex))
+ '(browse-url-browser-function (quote bcc32/browse-url-on-ssh-client-if-exists))
  '(calc-context-sensitive-enter t)
  '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
  '(counsel-find-file-at-point nil)

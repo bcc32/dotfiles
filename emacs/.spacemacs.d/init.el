@@ -34,6 +34,20 @@
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
+(defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
+  "Browse on the selected frame's $SSH_CONNECTION, if it exists.
+
+Fall back to `browse-url-default-browser' if SSH_CONNECTION is
+unset in the selected frame.
+"
+  (-if-let (ssh-conn (getenv "SSH_CONNECTION" (selected-frame)))
+      (let ((process-environment (append (frame-parameter nil 'environment)
+                                         process-environment)))
+        (call-process (expand-file-name "~/bin/browse-on-ssh-client")
+                      nil nil nil
+                      url))
+    (apply 'browse-url-default-browser url args)))
+
 (defgroup bcc32 nil
   "bcc32's customization options."
   :group 'emacs)
