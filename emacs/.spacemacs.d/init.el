@@ -97,6 +97,11 @@ Suitable for use with `before-save-hook'."
   "Return the value of the LEDGER_FILE environment variable."
   (getenv "LEDGER_FILE"))
 
+(defun bcc32/projectile-ignored-project-function (project-root)
+  "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
+  (or (file-remote-p project-root)
+      (string-prefix-p "/nix/store/" project-root)))
+
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (setq-local fill-column 70))
