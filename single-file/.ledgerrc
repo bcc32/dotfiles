@@ -1,0 +1,5 @@
+--file ~/journal/journal.ldg
+--price-db ~/journal/pricedb.ldg
+--explicit
+--strict
+--date-format %Y-%m-%d
