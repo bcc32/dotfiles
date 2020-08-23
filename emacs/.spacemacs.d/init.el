@@ -748,6 +748,9 @@ before packages are loaded."
 
   (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
 
+  (define-advice org-web-tools-read-url-as-org (:after (&rest _) disable-org-indent-mode)
+    (org-indent-mode -1))
+
   (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
   (add-hook 'text-mode-hook #'turn-on-auto-fill)
 
