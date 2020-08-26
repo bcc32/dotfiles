@@ -12,7 +12,9 @@
 (require 'dash)
 
 (defun when-any-installed (executable-names &rest pkgs)
-  "Only enable PKGS if any of EXECUTABLE-NAMES is installed in `exec-path'."
+  "Only enable PKGS if any of EXECUTABLE-NAMES is installed.
+
+A name is considered installed if `executable-find' returns non-nil."
   (if (-some #'executable-find executable-names)
       pkgs))
 
@@ -35,11 +37,10 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
-  "Browse on the selected frame's $SSH_CONNECTION, if it exists.
+  "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
 
 Fall back to `browse-url-default-browser' if SSH_CONNECTION is
-unset in the selected frame.
-"
+unset in the selected frame, passing ARGS."
   (-if-let (ssh-conn (getenv "SSH_CONNECTION" (selected-frame)))
       (let ((process-environment (append (frame-parameter nil 'environment)
                                          process-environment)))
