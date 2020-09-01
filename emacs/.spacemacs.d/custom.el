@@ -79,7 +79,8 @@
  '(spaceline-info-mode t)
  '(tab-width 8)
  '(tuareg-prettify-symbols-full t)
- '(vc-follow-symlinks t))
+ '(vc-follow-symlinks t)
+ '(what-cursor-show-names t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
