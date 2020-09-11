@@ -41,7 +41,7 @@ A name is considered installed if `executable-find' returns non-nil."
 
 Fall back to `browse-url-default-browser' if SSH_CONNECTION is
 unset in the selected frame, passing ARGS."
-  (-if-let (ssh-conn (getenv "SSH_CONNECTION" (selected-frame)))
+  (if (getenv "SSH_CONNECTION" (selected-frame))
       (let ((process-environment (append (frame-parameter nil 'environment)
                                          process-environment)))
         (call-process (expand-file-name "~/bin/browse-on-ssh-client")
