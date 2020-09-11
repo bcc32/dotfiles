@@ -11,19 +11,19 @@
 
 (require 'dash)
 
-(defun when-any-installed (executable-names &rest pkgs)
+(defun when-any-installed (executable-names pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed.
 
 A name is considered installed if `executable-find' returns non-nil."
   (if (-some #'executable-find executable-names)
       pkgs))
 
-(defun when-on-hostname (name &rest pkgs)
+(defun when-on-hostname (name pkgs)
   "Only enable PKGS if current machine's hostname is NAME."
   (if (string= (system-name) name)
       pkgs))
 
-(defun when-on-type (type &rest pkgs)
+(defun when-on-type (type pkgs)
   "Only enable PKGS if `system-type' is `eql' to TYPE."
   (if (eql system-type type)
       pkgs))
@@ -190,9 +190,9 @@ This function should only modify configuration layer settings."
                  javascript-fmt-on-save t)
      json
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
-                           'bibtex
-                           '(latex :variables
-                                   latex-build-command "latexmk"))
+                           '(bibtex
+                             (latex :variables
+                                    latex-build-command "latexmk")))
      markdown
      ,(when-any-installed '("ocamlc" "opam") 'ocaml)
      perl5
