@@ -231,7 +231,7 @@ This function should only modify configuration layer settings."
      ;; Tools
      command-log
      fasd
-     ,@(when-any-installed '("ledger" "hledger") 'finance)
+     ,(when-any-installed '("ledger" "hledger") 'finance)
      (shell :variables
             shell-enable-smart-eshell t)
 
