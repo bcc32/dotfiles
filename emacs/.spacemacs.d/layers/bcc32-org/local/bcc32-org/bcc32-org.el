@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (emacs "24.1") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (s "1.12.0"))
+;; Package-Requires: ((dash "2.16.0") (emacs "24.3") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (s "1.12.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -97,6 +97,9 @@ else +INF for entries with a todo keyword, -INF otherwise."
   (-when-let (file-name (buffer-file-name))
     (when (string= (f-filename file-name) "init.org")
       (org-babel-lob-ingest file-name))))
+
+(autoload 'magit-merge-in-progress-p "magit-merge")
+(autoload 'magit-rebase-in-progress-p "magit-sequence")
 
 ;;;###autoload
 (defun bcc32-org-commit-and-push-all ()
