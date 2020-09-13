@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (emacs "24.3") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (s "1.12.0"))
+;; Package-Requires: ((dash "2.16.0") (emacs "24.3") (f "0.20.0") (flycheck "31") (magit "2.11.0") (org "9.1.0") (projectile "2.2.0") (s "1.12.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -18,6 +18,7 @@
 (require 'flycheck)
 (require 'magit-core)
 (require 'org)
+(require 'projectile)
 (require 's)
 
 (defun bcc32-org--archive-file-p (file-name)
@@ -103,7 +104,10 @@ else +INF for entries with a todo keyword, -INF otherwise."
 
 ;;;###autoload
 (defun bcc32-org-commit-and-push-all ()
-  "Commit all changes, pull --rebase, and push the current repo."
+  "Commit all changes, pull --rebase, and push the current repo.
+
+If pulling moved the HEAD to a different revision, prompt to revert all buffers
+in the current repo."
   (interactive)
   (when (or (magit-merge-in-progress-p)
             (magit-rebase-in-progress-p))
@@ -116,8 +120,12 @@ else +INF for entries with a todo keyword, -INF otherwise."
     (magit-git "pull" "--rebase")
     (magit-git "push")
     (setq head-after (magit-rev-parse (magit-headish)))
-    (unless (magit-rev-eq head-before head-after)
-      (org-revert-all-org-buffers)))
+    (when (and (not (magit-rev-eq head-before head-after))
+               (y-or-n-p "Revert all project buffers? "))
+      (save-excursion
+        (dolist (b (projectile-buffers-with-file (projectile-project-buffers)))
+          (set-buffer b)
+          (revert-buffer :ignore-auto :no-confirm)))))
   (message "Committing and pushing... done"))
 
 (provide 'bcc32-org)
