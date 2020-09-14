@@ -113,7 +113,7 @@ in the current repo."
             (magit-rebase-in-progress-p))
     (user-error "Merge or rebase in progress; aborting"))
   (message "Committing and pushing...")
-  (when (magit-git-string-p "status" "--porcelain")
+  (when (magit-anything-modified-p)
     (magit-git "commit" "-am" "_"))
   (let (head-before head-after)
     (setq head-before (magit-rev-parse (magit-headish)))
