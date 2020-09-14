@@ -122,10 +122,9 @@ in the current repo."
     (setq head-after (magit-rev-parse (magit-headish)))
     (when (and (not (magit-rev-eq head-before head-after))
                (y-or-n-p "Revert all project buffers? "))
-      (save-excursion
-        (dolist (b (projectile-buffers-with-file (projectile-project-buffers)))
-          (set-buffer b)
-          (revert-buffer :ignore-auto :no-confirm)))))
+      (dolist (b (projectile-buffers-with-file (projectile-project-buffers)))
+        (set-buffer b)
+        (revert-buffer :ignore-auto :no-confirm))))
   (message "Committing and pushing... done"))
 
 (provide 'bcc32-org)
