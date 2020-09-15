@@ -14,7 +14,7 @@
  '(enable-recursive-minibuffers t)
  '(epg-pinentry-mode 'loopback)
  '(eshell-visual-commands
-   '("ncdu" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm"))
+   '("ncdu" "vi" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-want-Y-yank-to-eol t)
  '(flycheck-idle-change-delay 1.0)
