@@ -1,5 +1,6 @@
 (require 'ert)
 
+;; Adapted from https://emacs.stackexchange.com/questions/3022/reset-custom-variable-to-default-value-programmatically
 (defun custom-variable-default-value (var)
   (eval (car (get var 'standard-value))))
 
