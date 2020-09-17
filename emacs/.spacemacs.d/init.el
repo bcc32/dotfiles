@@ -741,6 +741,8 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
                  '("env-ledger-file" . bcc32//ledger-report-env-ledger-file-format-specifier))
     (bind-key "<f9>" 'bcc32-org-commit-and-push-all ledger-mode-map))
 
+  (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
+
   (add-hook 'text-mode-hook 'bcc32//set-fill-column-in-text-mode-hook)
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
