@@ -680,6 +680,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (define-advice package--save-selected-packages (:around (&rest _) dont-save-to-custom-file 100)
+    "Don't save `package-selected-packages' to `custom-file'.")
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   (load custom-file))
 
