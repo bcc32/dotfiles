@@ -39,6 +39,7 @@
    '("_build" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
  '(helm-make-nproc 0)
  '(ivy-use-virtual-buffers nil)
+ '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-reports
    '(("reconcile" "ldg-reconcile %(account)")
