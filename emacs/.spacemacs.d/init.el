@@ -47,7 +47,7 @@ unset in the selected frame, passing ARGS."
         (call-process (expand-file-name "~/bin/browse-on-ssh-client")
                       nil nil nil
                       url))
-    (apply 'browse-url-default-browser url args)))
+    (apply #'browse-url-default-browser url args)))
 
 (defgroup bcc32 nil
   "bcc32's customization options."
@@ -84,7 +84,7 @@ unset in the selected frame, passing ARGS."
   :global t
   :group 'bcc32
   (with-eval-after-load 'tuareg
-    (add-hook 'before-save-hook 'bcc32//ocamlformat-on-save-hook)))
+    (add-hook 'before-save-hook #'bcc32//ocamlformat-on-save-hook)))
 
 (defun bcc32//ocamlformat-on-save-hook ()
   "Run ocamlformat on the current buffer.
@@ -703,7 +703,7 @@ before packages are loaded."
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
-    (defalias #'forward-evil-word #'forward-evil-symbol)
+    (defalias 'forward-evil-word #'forward-evil-symbol)
     ;; make evil-search-word look for symbol rather than word boundaries
     (setq-default evil-symbol-word-search t))
 
@@ -716,7 +716,7 @@ before packages are loaded."
   (spacemacs/toggle-mode-line-version-control-off)
 
   (setf (cdr (assoc t ivy-format-functions-alist))
-        'ivy-format-function-arrow)
+        #'ivy-format-function-arrow)
 
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-buffer)
@@ -745,13 +745,13 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
 
   (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
 
-  (add-hook 'text-mode-hook 'bcc32//set-fill-column-in-text-mode-hook)
-  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
+  (add-hook 'text-mode-hook #'turn-on-auto-fill)
 
-  (add-hook 'dired-mode-hook 'dired-omit-mode)
+  (add-hook 'dired-mode-hook #'dired-omit-mode)
 
-  (add-hook 'after-revert-hook 'bcc32//try-smerge-hook)
-  (add-hook 'find-file-hook 'bcc32//try-smerge-hook)
+  (add-hook 'after-revert-hook #'bcc32//try-smerge-hook)
+  (add-hook 'find-file-hook #'bcc32//try-smerge-hook)
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
