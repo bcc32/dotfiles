@@ -33,7 +33,7 @@ A name is considered installed if `executable-find' returns non-nil."
   "Render ANSI SGR color sequences in the current buffer."
   (interactive)
   (require 'ansi-color)
-  (let ((inhibit-read-only t))
+  (with-silent-modifications
     (ansi-color-apply-on-region (point-min) (point-max))))
 
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
