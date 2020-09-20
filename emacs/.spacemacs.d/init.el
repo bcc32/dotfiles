@@ -174,7 +174,7 @@ This function should only modify configuration layer settings."
           org-want-todo-bindings t)
      (unicode-fonts :variables
                     unicode-fonts-enable-ligatures t
-                    unicode-fonts-ligature-modes '(prog-mode text-mode))
+                    unicode-fonts-ligature-modes '(prog-mode))
 
      ;; Programming and markup languages
      autohotkey
