@@ -95,6 +95,7 @@
  '(spaceline-info-mode t)
  '(tab-width 8)
  '(tuareg-prettify-symbols-full t)
+ '(typescript-indent-level 2)
  '(vc-follow-symlinks t)
  '(what-cursor-show-names t))
 (custom-set-faces

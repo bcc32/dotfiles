@@ -188,6 +188,9 @@ This function should only modify configuration layer settings."
      (javascript :variables
                  javascript-fmt-tool 'prettier
                  javascript-fmt-on-save t)
+     (typescript :variables
+                 typescript-fmt-tool 'prettier
+                 typescript-fmt-on-save t)
      json
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            '(bibtex
