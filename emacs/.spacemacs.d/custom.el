@@ -77,6 +77,7 @@
  '(org-modules
    '(ol-bibtex ol-docview org-habit ol-info org-tempo ol-eshell org-checklist ol-man))
  '(org-outline-path-complete-in-steps nil)
+ '(org-priority-default 67)
  '(org-refile-targets '((nil :maxlevel . 10) (org-agenda-files :maxlevel . 10)))
  '(org-refile-use-outline-path 'buffer-name)
  '(org-startup-indented t)
