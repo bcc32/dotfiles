@@ -117,35 +117,6 @@ This function is intended to be used with some hook like `find-file-hook' or
     (when (save-match-data (re-search-forward "^<<<<<<< " (* 1000 1000) t))
       (smerge-mode +1))))
 
-(defun bcc32//configure-ligature ()
-  ;; Copied from https://github.com/mickeynp/ligature.el#cascadia-code
-
-  (use-package ligature
-    :load-path "path-to-ligature-repo"
-    :config
-    ;; Enable the "www" ligature in every possible major mode
-    (ligature-set-ligatures 't '("www"))
-    ;; Enable traditional ligature support in eww-mode, if the
-    ;; `variable-pitch' face supports it
-    (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-    ;; Enable all Cascadia Code ligatures in programming modes
-    (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                                         ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                                         "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                                         "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                                         "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                                         "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                         "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                                         "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                                         ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                                         "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                                         "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                         "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                         "\\" "://"))
-    ;; Enables ligature checks globally in all buffers. You can also do it
-    ;; per mode with `ligature-mode'.
-    (global-ligature-mode t)))
-
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -201,6 +172,8 @@ This function should only modify configuration layer settings."
      (org :variables
           org-projectile-file "TODO.org"
           org-want-todo-bindings t)
+     (unicode-fonts :variables
+                    unicode-fonts-enable-ligatures t)
 
      ;; Programming and markup languages
      autohotkey
@@ -284,9 +257,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(base16-theme
      solarized-theme
-     mode-line-bell
-     (ligature :location (recipe :fetcher github
-                                 :repo "mickeynp/ligature.el")))
+     mode-line-bell)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -787,8 +758,6 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
 
   (add-hook 'after-revert-hook #'bcc32//try-smerge-hook)
   (add-hook 'find-file-hook #'bcc32//try-smerge-hook)
-
-  (bcc32//configure-ligature)
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
