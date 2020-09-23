@@ -731,7 +731,7 @@ before packages are loaded."
   (spacemacs/toggle-mode-line-version-control-off)
 
   (setf (cdr (assoc t ivy-format-functions-alist))
-        #'ivy-format-function-arrow)
+        #'ivy-format-function-line)
 
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-region-or-buffer)
