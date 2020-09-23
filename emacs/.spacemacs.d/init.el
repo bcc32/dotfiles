@@ -716,6 +716,8 @@ before packages are loaded."
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
+    ;; FIXME: Should also change the syntax table in tuareg because it affects
+    ;; (describe-function 'capitalize), which affects [qmli] abbrev.
     (defalias 'forward-evil-word #'forward-evil-symbol)
     ;; make evil-search-word look for symbol rather than word boundaries
     (setq-default evil-symbol-word-search t))
