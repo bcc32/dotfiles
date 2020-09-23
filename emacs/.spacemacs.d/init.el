@@ -29,12 +29,16 @@ A name is considered installed if `executable-find' returns non-nil."
       pkgs))
 
 ;; TODO conditionally reimplement this in Ecaml
-(defun bcc32/ansi-color-buffer ()
-  "Render ANSI SGR color sequences in the current buffer."
+(defun bcc32/ansi-color-region-or-buffer ()
+  "Render ANSI SGR color sequences in the current region if it is active.
+
+Otherwise, render sequences in the current buffer."
   (interactive)
   (require 'ansi-color)
   (with-silent-modifications
-    (ansi-color-apply-on-region (point-min) (point-max))))
+    (save-restriction
+      (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
+      (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
   "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
@@ -728,7 +732,7 @@ before packages are loaded."
         #'ivy-format-function-arrow)
 
   (spacemacs/set-leader-keys
-    "Ca" 'bcc32/ansi-color-buffer)
+    "Ca" 'bcc32/ansi-color-region-or-buffer)
 
   (with-eval-after-load 'tuareg
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
