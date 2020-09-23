@@ -115,6 +115,7 @@ in the current repo."
             (magit-rebase-in-progress-p))
     (user-error "Merge or rebase in progress; aborting"))
   (message "Committing and pushing...")
+  (magit-maybe-save-repository-buffers)
   (when (magit-anything-modified-p)
     (magit-git "commit" "-am" "_"))
   (let (head-before head-after)
