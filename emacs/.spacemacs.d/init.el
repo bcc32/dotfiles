@@ -87,7 +87,9 @@ unset in the selected frame, passing ARGS."
 Suitable for use with `before-save-hook'."
   (when (and bcc32/ocamlformat-on-save-mode
              (derived-mode-p 'tuareg-mode))
-    (bcc32/ocamlformat-buffer-or-region)))
+    (save-mark-and-excursion
+      (deactivate-mark)
+      (bcc32/ocamlformat-buffer-or-region))))
 
 (defun bcc32//ledger-report-env-ledger-file-format-specifier ()
   "Return the value of the LEDGER_FILE environment variable."
