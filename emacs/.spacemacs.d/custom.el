@@ -11,14 +11,17 @@
  '(cperl-close-paren-offset -2 t)
  '(cperl-indent-parens-as-block t t)
  '(dired-async-mode t)
+ '(display-time-mode t)
  '(enable-recursive-minibuffers t)
  '(epg-pinentry-mode 'loopback)
  '(eshell-visual-commands
    '("ncdu" "vi" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-want-Y-yank-to-eol t)
+ '(fancy-battery-mode t)
  '(flycheck-idle-change-delay 1.0)
  '(geiser-default-implementation 'chicken)
+ '(global-column-enforce-mode t)
  '(gofmt-command "goimports")
  '(grep-files-aliases
    '(("ocaml" . "*.ml *.mli *.mll *.mly")
@@ -38,6 +41,7 @@
  '(grep-find-ignored-directories
    '("_build" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
  '(helm-make-nproc 0)
+ '(indent-guide-global-mode t)
  '(ivy-use-virtual-buffers nil)
  '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))

@@ -723,10 +723,6 @@ before packages are loaded."
     (setq-default evil-symbol-word-search t))
 
   ;; toggles
-  (spacemacs/toggle-display-time-on)
-  (spacemacs/toggle-highlight-long-lines-globally-on)
-  (spacemacs/toggle-indent-guide-globally-on)
-  (spacemacs/toggle-mode-line-battery-on)
   (spacemacs/toggle-mode-line-org-clock-on)
   (spacemacs/toggle-mode-line-version-control-off)
 
