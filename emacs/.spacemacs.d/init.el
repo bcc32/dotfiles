@@ -60,27 +60,18 @@ unset in the selected frame, passing ARGS."
 (defun bcc32/ocamlformat-buffer-or-region ()
   "Use ocamlformat to reformat the current buffer."
   (interactive "*")                     ;fail if buffer is read-only
-  (let ((old-line (line-number-at-pos))
-        (old-column (current-column))
-        (old-buffer-contents (buffer-string))
-        (old-scroll (window-start)))
-    ;; TODO: Try using replace-buffer-contents
-    (condition-case err
+  (let ((buffer (current-buffer)))
+    (with-temp-buffer
+      (let ((temp-buf (current-buffer)))
+        (set-buffer buffer)
         (save-restriction
           (when (use-region-p)
             (narrow-to-region (region-beginning) (region-end)))
           (when (/= 0 (call-process-region (point-min) (point-max) "ocamlformat"
-                                           :delete t nil
+                                           nil temp-buf nil
                                            "-" "--name" (buffer-file-name)))
-            (error "%s" (string-trim (buffer-string)))))
-      (error (delete-region (point-min) (point-max))
-             (insert old-buffer-contents)
-             (signal (car err) (cdr err))))
-    ;; try to return to approximately where the point used to be
-    (goto-char (point-min))
-    (forward-line (1- old-line))
-    (move-to-column old-column)
-    (set-window-start nil old-scroll)))
+            (error "%s" (string-trim (buffer-string))))
+          (replace-buffer-contents temp-buf))))))
 
 (define-minor-mode bcc32/ocamlformat-on-save-mode
   "Minor mode to automatically run ocamlformat before saving OCaml code."
