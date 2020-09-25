@@ -17,6 +17,7 @@
  '(eshell-visual-commands
    '("ncdu" "vi" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
+ '(evil-symbol-word-search t)
  '(evil-want-Y-yank-to-eol t)
  '(fancy-battery-mode t)
  '(flycheck-idle-change-delay 1.0)
