@@ -6,6 +6,7 @@
 
 (ert-deftest test-eshell-visual-commands ()
   "`eshell-visual-commands' default value has not changed."
+  (require 'em-term)
   (should (equal (custom-variable-default-value 'eshell-visual-commands)
                  '("vi"
                    "screen" "tmux" "top" "htop"
@@ -15,11 +16,13 @@
 
 (ert-deftest test-eshell-visual-subcommands ()
   "`eshell-visual-subcommands' default value has not changed."
-  (should (equal (custom-variable-default-value 'eshell-visual-commands)
+  (require 'em-term)
+  (should (equal (custom-variable-default-value 'eshell-visual-subcommands)
                  nil)))
 
 (ert-deftest test-grep-files-aliases ()
   "`grep-files-aliases' default value has not changed."
+  (require 'grep)
   (should (equal (custom-variable-default-value 'grep-files-aliases)
                  '(("all" .   "* .[!.]* ..?*")
                    ("el" .    "*.el")
@@ -37,6 +40,7 @@
 
 (ert-deftest test-grep-find-ignored-directories ()
   "`grep-find-ignored-directories' default value has not changed."
+  (require 'grep)
   (should (equal (custom-variable-default-value 'grep-find-ignored-directories)
                  '("SCCS" "RCS" "CVS" "MCVS"
                    ".src" ".svn" ".git" ".hg" ".bzr"
@@ -44,6 +48,7 @@
 
 (ert-deftest test-org-modules ()
   "`org-modules' default value has not changed."
+  (require 'org)
   (should (equal (custom-variable-default-value 'org-modules)
                  '(ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-eww))))
 
