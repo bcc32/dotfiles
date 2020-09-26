@@ -53,44 +53,6 @@ unset in the selected frame, passing ARGS."
                       url))
     (apply #'browse-url-default-browser url args)))
 
-(defgroup bcc32 nil
-  "bcc32's customization options."
-  :group 'emacs)
-
-(defun bcc32/ocamlformat-buffer-or-region ()
-  "Use ocamlformat to reformat the current buffer."
-  (interactive "*")                     ;fail if buffer is read-only
-  (let ((buffer (current-buffer)))
-    (with-temp-buffer
-      (let ((temp-buf (current-buffer)))
-        (set-buffer buffer)
-        (save-restriction
-          (when (use-region-p)
-            (narrow-to-region (region-beginning) (region-end)))
-          (when (/= 0 (call-process-region (point-min) (point-max) "ocamlformat"
-                                           nil temp-buf nil
-                                           "-" "--name" (buffer-file-name)))
-            (error "%s" (string-trim (buffer-string))))
-          (replace-buffer-contents temp-buf))))))
-
-(define-minor-mode bcc32/ocamlformat-on-save-mode
-  "Minor mode to automatically run ocamlformat before saving OCaml code."
-  :lighter "fmt"
-  :global t
-  :group 'bcc32
-  (with-eval-after-load 'tuareg
-    (add-hook 'before-save-hook #'bcc32//ocamlformat-on-save-hook)))
-
-(defun bcc32//ocamlformat-on-save-hook ()
-  "Run ocamlformat on the current buffer.
-
-Suitable for use with `before-save-hook'."
-  (when (and bcc32/ocamlformat-on-save-mode
-             (derived-mode-p 'tuareg-mode))
-    (save-mark-and-excursion
-      (deactivate-mark)
-      (bcc32/ocamlformat-buffer-or-region))))
-
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
   (or (file-remote-p project-root)
@@ -190,7 +152,9 @@ This function should only modify configuration layer settings."
                              (latex :variables
                                     latex-build-command "latexmk")))
      markdown
-     ,(when-any-installed '("ocamlc" "opam") 'ocaml)
+     ,(when-any-installed '("ocamlc" "opam")
+                          '(ocaml :variables
+                                  ocaml-format-before-save t))
      perl5
      ,(when-any-installed '("python") 'python)
      ,(when-any-installed '("ruby") 'ruby)
@@ -720,18 +684,10 @@ before packages are loaded."
   (with-eval-after-load 'tuareg
     (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
       "v" 'merlin-enclosing-expand
-      "f" 'bcc32/ocamlformat-buffer-or-region
-      "F" 'bcc32/ocamlformat-on-save-mode))
+      "f" 'ocamlformat))
 
-  ;; tuareg-opam-update-env adds the ocamlformat binary in the selected opam
-  ;; switch to the front of PATH.  I want $HOME/bin to come before that.
-  (define-advice tuareg-opam-update-env (:after (&rest _) prepend-home-bin-to-exec-path)
-    "Prepend $HOME/bin to `exec-path' and the PATH variable in `process-environment'.
-
-This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
-    (let ((home-bin (expand-file-name "~/bin")))
-      (push home-bin exec-path)
-      (setenv "PATH" (concat home-bin path-separator (getenv "PATH")))))
+  (define-advice ocamlformat (:after () run-ocp-indent)
+    (ocp-indent-buffer))
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)
