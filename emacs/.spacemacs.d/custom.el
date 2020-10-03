@@ -40,7 +40,7 @@
      ("texi" . "*.texi")
      ("asm" . "*.[sS]")))
  '(grep-find-ignored-directories
-   '("_build" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
+   '("_build" "_opam" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
  '(helm-make-nproc 0)
  '(indent-guide-global-mode t)
  '(ivy-use-virtual-buffers nil)
