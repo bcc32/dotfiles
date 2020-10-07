@@ -91,10 +91,6 @@ Suitable for use with `before-save-hook'."
       (deactivate-mark)
       (bcc32/ocamlformat-buffer-or-region))))
 
-(defun bcc32//ledger-report-env-ledger-file-format-specifier ()
-  "Return the value of the LEDGER_FILE environment variable."
-  (getenv "LEDGER_FILE"))
-
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
   (or (file-remote-p project-root)
@@ -741,8 +737,6 @@ This is a workaround to have ~/bin/ocamlformat always be first in $PATH."
 
   (with-eval-after-load 'ledger-mode
     (setq ledger-default-date-format ledger-iso-date-format)
-    (add-to-list 'ledger-report-format-specifiers
-                 '("env-ledger-file" . bcc32//ledger-report-env-ledger-file-format-specifier))
     (bind-key "<f9>" 'bcc32-org-commit-and-push-all ledger-mode-map))
 
   (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
