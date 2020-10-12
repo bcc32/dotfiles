@@ -52,6 +52,7 @@
      ("bal" "%(binary) bal")
      ("payee" "%(binary) reg @%(payee)")
      ("account" "%(binary) reg %(account)")))
+ '(magit-clone-default-directory "~/src/")
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mode-line-bell-mode t)
