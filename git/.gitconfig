@@ -36,3 +36,6 @@
 	name = Aaron L. Zeng
 [github]
 	user = bcc32
+[rebase]
+	autoSquash = true
+	autoStash = true
