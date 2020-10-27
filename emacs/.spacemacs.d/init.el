@@ -54,6 +54,18 @@ Otherwise, render sequences in the current buffer."
   (when (pocket-lib-add-urls (list url) :tags tags)
     (message "Added %s" url)))
 
+;; TODO: Perhaps this should be upstreamed?
+(defun bcc32/pocket-reader-browse ()
+  "Open marked or current items in external browser.
+The `browse-url' function is used."
+  (interactive)
+  (pocket-reader-open-url
+   :fn (lambda (&rest args)
+         (apply #'browse-url args)
+         ;; Return t because the browsing function may not return non-nil
+         ;; when it succeeds, preventing the item from being archived
+         t)))
+
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
   "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
 
@@ -750,6 +762,9 @@ before packages are loaded."
 
   (define-advice org-web-tools-read-url-as-org (:after (&rest _) disable-org-indent-mode)
     (org-indent-mode -1))
+
+  (with-eval-after-load 'pocket-reader
+    (bind-key "b" 'bcc32/pocket-reader-browse pocket-reader-mode-map))
 
   (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
   (add-hook 'text-mode-hook #'turn-on-auto-fill)
