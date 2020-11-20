@@ -544,7 +544,7 @@ It should only modify the values of Spacemacs settings."
                         text-mode
      :disabled-for-modes org-mode)
 
-   ;; Code folding method. Possible values are `evil' and `origami'.
+   ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
 
