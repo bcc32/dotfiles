@@ -48,7 +48,7 @@
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-reports
    '(("reconcile" "ldg-reconcile %(account)")
-     ("uncleared" "%(binary) reg -U '^Assets' '^Equity' '^Liabilities'")
+     ("uncleared" "%(binary) reg -U --group-by account '^Assets' '^Equity' '^Liabilities'")
      ("bal" "%(binary) bal")
      ("payee" "%(binary) reg @%(payee)")
      ("account" "%(binary) reg %(account)")))
