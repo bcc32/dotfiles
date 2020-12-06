@@ -1,3 +1,3 @@
 #!/bin/sh
 
-youtube-dl -o '%(playlist_title)s [%(playlist_id)s]/%(playlist_index)02d - (title)s [%(id)s].%(ext)s' "$@"
+youtube-dl -o '%(playlist_title)s [%(playlist_id)s]/%(playlist_index)02d - %(title)s [%(id)s].%(ext)s' "$@"
