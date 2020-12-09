@@ -128,8 +128,7 @@ This function should only modify configuration layer settings."
           org-projectile-file "TODO.org"
           org-want-todo-bindings t)
      (unicode-fonts :variables
-                    unicode-fonts-enable-ligatures t
-                    unicode-fonts-ligature-modes '(prog-mode))
+                    unicode-fonts-enable-ligatures t)
 
      ;; Programming and markup languages
      autohotkey
@@ -205,12 +204,13 @@ This function should only modify configuration layer settings."
      bcc32-org
      )
 
-   ;; List of additional packages that will be installed without being
-   ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
-   ;; configuration in `dotspacemacs/user-config'.
-   ;; To use a local version of a package, use the `:location' property:
-   ;; '(your-package :location "~/path/to/your-package/")
+   ;; List of additional packages that will be installed without being wrapped
+   ;; in a layer (generally the packages are installed only and should still be
+   ;; loaded using load/require/use-package in the user-config section below in
+   ;; this file). If you need some configuration for these packages, then
+   ;; consider creating a layer. You can also put the configuration in
+   ;; `dotspacemacs/user-config'. To use a local version of a package, use the
+   ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(base16-theme
@@ -382,7 +382,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
-   ;; Default font or prioritized list of fonts.
+   ;; Default font or prioritized list of fonts. The `:size' can be specified as
+   ;; a non-negative integer (pixel size), or a floating-point (point size).
+   ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font `("Iosevka"
                                :size ,(if (eq system-type 'darwin) 14 10.5)
                                :weight normal
