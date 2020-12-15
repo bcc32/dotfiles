@@ -43,6 +43,7 @@
    '("_build" "_opam" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
  '(helm-make-nproc 0)
  '(indent-guide-global-mode t)
+ '(ivy-magic-tilde nil)
  '(ivy-use-virtual-buffers nil)
  '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
