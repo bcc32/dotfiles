@@ -1,3 +1,5 @@
 #!/bin/sh
 
-youtube-dl -o '%(playlist_title)s [%(playlist_id)s]/%(playlist_index)s - %(title)s [%(id)s].%(ext)s' "$@"
+youtube-dl --merge-output-format mp4 \
+           -o '%(playlist_title)s [%(playlist_id)s]/%(playlist_index)s - %(title)s [%(id)s].%(ext)s' \
+           "$@"
