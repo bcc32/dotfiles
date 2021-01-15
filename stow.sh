@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if command -v stow >/dev/null 2>&1; then
-    stow "$@"
+    exec stow "$@"
 else
-    perl -I ./.vendor/lib -- ./.vendor/bin/stow "$@"
+    exec perl -I ./.vendor/lib -- ./.vendor/bin/stow "$@"
 fi
