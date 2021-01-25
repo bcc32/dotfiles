@@ -7,6 +7,7 @@
  '(browse-url-browser-function 'bcc32/browse-url-on-ssh-client-if-exists)
  '(calc-context-sensitive-enter t)
  '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
+ '(column-enforce-column nil)
  '(counsel-find-file-at-point nil)
  '(cperl-close-paren-offset -2)
  '(cperl-indent-parens-as-block t)
