@@ -27,4 +27,3 @@ left_meters=AllCPUs2 Tasks Blank Memory Swap
 left_meter_modes=1 2 2 1 1
 right_meters=Clock Hostname Battery Uptime LoadAverage Memory
 right_meter_modes=4 2 1 2 2 2
-vim_mode=0
