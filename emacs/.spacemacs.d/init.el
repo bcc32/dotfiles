@@ -9,13 +9,13 @@
 
 ;;; Code:
 
-(require 'dash)
+(require 'seq)
 
 (defun when-any-installed (executable-names pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed.
 
 A name is considered installed if `executable-find' returns non-nil."
-  (if (-some #'executable-find executable-names)
+  (if (seq-some #'executable-find executable-names)
       pkgs))
 
 (defun when-on-hostname (name pkgs)
