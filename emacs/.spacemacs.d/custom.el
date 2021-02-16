@@ -61,6 +61,7 @@
  '(mode-line-bell-mode t)
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files (expand-file-name "agenda-files" org-directory))
+ '(org-agenda-prefer-last-repeat t)
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-span 'day)
  '(org-agenda-tags-todo-honor-ignore-options t)
