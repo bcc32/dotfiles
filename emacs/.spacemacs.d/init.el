@@ -216,6 +216,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(base16-theme
      solarized-theme
+     tao-theme
+     zenburn-theme
      mode-line-bell)
 
    ;; A list of packages that cannot be updated.
