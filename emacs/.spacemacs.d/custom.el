@@ -9,8 +9,6 @@
  '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
  '(column-enforce-column nil)
  '(counsel-find-file-at-point nil)
- '(cperl-close-paren-offset -2)
- '(cperl-indent-parens-as-block t)
  '(dired-async-mode t)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
