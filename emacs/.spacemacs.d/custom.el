@@ -14,6 +14,7 @@
  '(dired-async-mode t)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
+ '(enable-remote-dir-locals t)
  '(epg-pinentry-mode 'loopback)
  '(eshell-visual-commands
    '("ncdu" "vi" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
