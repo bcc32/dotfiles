@@ -108,6 +108,7 @@
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
  '(spaceline-info-mode t)
+ '(sql-product 'sqlite)
  '(tab-width 8)
  '(tuareg-prettify-symbols-full t)
  '(typescript-indent-level 2)
