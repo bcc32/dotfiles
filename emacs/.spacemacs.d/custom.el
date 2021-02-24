@@ -49,7 +49,18 @@
  '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-reports
-   '(("reconcile" "ldg-reconcile %(account)")
+   '(("reconcile" "
+query='/^%(account)$/'
+echo -----------------
+echo | Cleared       |
+echo -----------------
+%(binary) reg --cleared --current --effective --sort d -d \"d>=[90 days ago]\" --tail 20 \"$query\" \"$@\"
+echo
+
+echo -----------------
+echo | Uncleared     |
+echo -----------------
+%(binary) reg --uncleared --current --sort d \"$query\" \"$@\"")
      ("uncleared" "%(binary) reg -U --group-by account '^Assets' '^Equity' '^Liabilities'")
      ("bal" "%(binary) bal")
      ("payee" "%(binary) reg @%(payee)")
