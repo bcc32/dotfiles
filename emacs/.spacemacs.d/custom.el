@@ -48,6 +48,7 @@
  '(ivy-use-virtual-buffers nil)
  '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
+ '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("reconcile" "
 query='/^%(account)$/'
