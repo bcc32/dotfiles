@@ -51,7 +51,7 @@
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-report-use-header-line t)
  '(ledger-reports
-   '(("reconcile" "%(binary) reg --current --effective --sort '(X ? 1 : 0), -d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\"")
+   '(("reconcile" "%(binary) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
      ("uncleared" "%(binary) reg -U --group-by account '^Assets' '^Equity' '^Liabilities'")
      ("bal" "%(binary) bal")
      ("payee" "%(binary) reg @%(payee)")
