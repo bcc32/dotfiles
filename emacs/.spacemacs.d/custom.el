@@ -6,7 +6,8 @@
  '(TeX-engine 'xetex)
  '(browse-url-browser-function 'bcc32/browse-url-on-ssh-client-if-exists)
  '(calc-context-sensitive-enter t)
- '(calc-settings-file "~/.spacemacs.d/calc-settings.el")
+ '(calc-settings-file
+   (expand-file-name "calc-settings.el" dotspacemacs-directory))
  '(column-enforce-column nil)
  '(counsel-find-file-at-point nil)
  '(dired-async-mode t)
@@ -50,18 +51,8 @@
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-report-use-header-line t)
  '(ledger-reports
-   '(("reconcile" "
-query='/^%(account)$/'
-echo -----------------
-echo | Cleared       |
-echo -----------------
-%(binary) reg --cleared --current --effective --sort d -d \"d>=[90 days ago]\" --tail 20 \"$query\" \"$@\"
-echo
-
-echo -----------------
-echo | Uncleared     |
-echo -----------------
-%(binary) reg --uncleared --current --sort d \"$query\" \"$@\"")
+   `(("reconcile" ,(bcc32//ledger-read-report-script-from-file
+                    (expand-file-name "ledger-reports/reconcile.sh" dotspacemacs-directory)))
      ("uncleared" "%(binary) reg -U --group-by account '^Assets' '^Equity' '^Liabilities'")
      ("bal" "%(binary) bal")
      ("payee" "%(binary) reg @%(payee)")
