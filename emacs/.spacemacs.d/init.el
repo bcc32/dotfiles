@@ -134,7 +134,6 @@ This function should only modify configuration layer settings."
      helpful
      ibuffer
      (org :variables
-          org-enable-valign t
           org-projectile-file "TODO.org"
           org-want-todo-bindings t)
      (unicode-fonts :variables
