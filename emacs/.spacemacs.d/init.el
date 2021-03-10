@@ -226,6 +226,7 @@ This function should only modify configuration layer settings."
      solarized-theme
      tao-theme
      zenburn-theme
+     direnv
      mode-line-bell)
 
    ;; A list of packages that cannot be updated.
