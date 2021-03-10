@@ -160,9 +160,8 @@ This function should only modify configuration layer settings."
                              (latex :variables
                                     latex-build-command "latexmk")))
      markdown
-     ,(when-any-installed '("ocamlc" "opam")
-                          '(ocaml :variables
-                                  ocaml-format-before-save t))
+     (ocaml :variables
+            ocaml-format-before-save t)
      perl5
      ,(when-any-installed '("python") 'python)
      ,(when-any-installed '("ruby") 'ruby)
