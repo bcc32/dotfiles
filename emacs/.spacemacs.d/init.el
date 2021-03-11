@@ -725,6 +725,10 @@ before packages are loaded."
     (setq ledger-default-date-format ledger-iso-date-format)
     (bind-key "<f9>" 'bcc32-org-commit-and-push-all ledger-mode-map))
 
+  ;; Workaround for https://github.com/syl20bnr/spacemacs/pull/14070
+  (with-eval-after-load 'magit
+    (setq magit-git-executable "git"))
+
   (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
 
   (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
