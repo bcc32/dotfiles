@@ -115,6 +115,7 @@
  '(spaceline-info-mode t)
  '(sql-product 'sqlite)
  '(tab-width 8)
+ '(tramp-use-ssh-controlmaster-options nil t nil "NOW is set as a workaround for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=47063")
  '(tuareg-prettify-symbols-full t)
  '(typescript-indent-level 2)
  '(valign-fancy-bar t)
