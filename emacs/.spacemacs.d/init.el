@@ -225,7 +225,7 @@ This function should only modify configuration layer settings."
      solarized-theme
      tao-theme
      zenburn-theme
-     direnv
+     (direnv :toggle (executable-find "direnv"))
      mode-line-bell)
 
    ;; A list of packages that cannot be updated.
