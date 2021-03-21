@@ -23,6 +23,8 @@
  '(evil-want-Y-yank-to-eol t)
  '(fancy-battery-mode t)
  '(flycheck-idle-change-delay 1.0)
+ '(flycheck-ledger-explicit t)
+ '(flycheck-ledger-pedantic t)
  '(garbage-collection-messages t)
  '(geiser-default-implementation 'chicken)
  '(global-column-enforce-mode t)
