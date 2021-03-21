@@ -52,6 +52,7 @@
  '(ivy-use-virtual-buffers nil)
  '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
+ '(ledger-default-date-format ledger-iso-date-format)
  '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("reconcile" "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")

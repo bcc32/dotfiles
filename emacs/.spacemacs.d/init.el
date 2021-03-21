@@ -728,7 +728,6 @@ before packages are loaded."
     (ocp-indent-buffer))
 
   (with-eval-after-load 'ledger-mode
-    (setq ledger-default-date-format ledger-iso-date-format)
     (bind-key "<f9>" 'bcc32-org-commit-and-push-all ledger-mode-map))
 
   ;; Workaround for https://github.com/syl20bnr/spacemacs/pull/14070
