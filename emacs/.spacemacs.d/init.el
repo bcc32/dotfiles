@@ -727,9 +727,6 @@ before packages are loaded."
   (define-advice ocamlformat (:after () run-ocp-indent)
     (ocp-indent-buffer))
 
-  (with-eval-after-load 'ledger-mode
-    (bind-key "<f9>" 'bcc32-org-commit-and-push-all ledger-mode-map))
-
   ;; Workaround for https://github.com/syl20bnr/spacemacs/pull/14070
   (with-eval-after-load 'magit
     (setq magit-git-executable "git"))

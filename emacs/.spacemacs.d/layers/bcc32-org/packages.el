@@ -10,9 +10,7 @@
 (defun bcc32-org/init-bcc32-org ()
   (use-package bcc32-org
     :hook (before-save . bcc32-org//cleanup-before-save-hook)
-    :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)
-    :bind (:map org-mode-map
-                ("<f9>" . bcc32-org-commit-and-push-all))))
+    :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)))
 
 (defun bcc32-org/post-init-flycheck ()
   (with-eval-after-load 'org
