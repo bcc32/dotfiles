@@ -53,15 +53,6 @@ unset in the selected frame, passing ARGS."
                       url))
     (apply #'browse-url-default-browser url args)))
 
-(defun bcc32//ledger-read-report-script-from-file (file)
-  "Read a shell script from FILE, turning it into a ledger report."
-  (with-temp-buffer
-    (insert-file-contents file)
-    (goto-char (point-min))
-    (while (re-search-forward (rx bow "BINARY" eow) nil t)
-      (replace-match "%(binary)" :fixedcase :literal))
-    (buffer-string)))
-
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
   (or (file-remote-p project-root)
