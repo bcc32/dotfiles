@@ -116,6 +116,8 @@ This function should only modify configuration layer settings."
      ibuffer
      (org :variables
           org-enable-appear-support t
+          org-enable-notifications t
+          org-start-notification-daemon-on-startup t
           org-projectile-file "TODO.org"
           org-want-todo-bindings t)
      (unicode-fonts :variables
@@ -208,7 +210,12 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
      (direnv :toggle (executable-find "direnv"))
-     mode-line-bell)
+     mode-line-bell
+     ;; Fix for org-agenda-files set to a string
+     ;; TODO: Remove when merged upstream.
+     (org-wild-notifier :location (recipe :fetcher github
+                                          :repo "bcc32/org-wild-notifier.el"
+                                          :branch "org-agenda-files-function")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
