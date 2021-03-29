@@ -118,6 +118,7 @@ This function should only modify configuration layer settings."
           org-enable-appear-support t
           org-enable-notifications t
           org-start-notification-daemon-on-startup t
+          org-enable-github-support t
           org-projectile-file "TODO.org"
           org-want-todo-bindings t)
      (unicode-fonts :variables

@@ -88,7 +88,7 @@
  '(org-default-priority 67)
  '(org-enforce-todo-checkbox-dependencies t)
  '(org-enforce-todo-dependencies t)
- '(org-export-backends '(ascii html icalendar latex md org texinfo))
+ '(org-export-backends '(ascii gfm html icalendar latex md org texinfo))
  '(org-habit-show-habits-only-for-today nil)
  '(org-html-htmlize-output-type 'css)
  '(org-insert-heading-respect-content t)
