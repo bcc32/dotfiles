@@ -108,6 +108,7 @@
    '((sequence "TODO(t)" "MAYBE(m/!)" "INPROGRESS(p!)" "STALLED(a)" "BLOCKED(k@/!)" "INREVIEW(r!)" "|" "DONE(d/@)" "DELEGATED(g@)" "DEFERRED(e!)" "NOTDONE(n)")
      (type "BUG(b/!)" "CLEANUP(l/!)" "|" "FIXED(x/@)" "WONTFIX(w@/@)")
      (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
+ '(org-wild-notifier-alert-time '(10 2))
  '(paradox-github-token t)
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rust-format-on-save t)
