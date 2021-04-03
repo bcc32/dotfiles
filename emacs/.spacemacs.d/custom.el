@@ -110,6 +110,7 @@
      (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
  '(org-wild-notifier-alert-time '(10 2))
  '(paradox-github-token t)
+ '(pocket-reader-archive-on-open nil)
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rust-format-on-save t)
  '(safe-local-variable-values '((bcc32/ocamlformat-on-save-mode . t)))
