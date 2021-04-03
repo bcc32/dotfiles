@@ -53,6 +53,8 @@
  '(js-indent-level 2)
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-default-date-format ledger-iso-date-format)
+ '(ledger-reconcile-default-commodity "USD")
+ '(ledger-reconcile-insert-effective-date t)
  '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("reconcile" "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
