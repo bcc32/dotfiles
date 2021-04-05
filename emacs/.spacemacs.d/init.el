@@ -214,10 +214,7 @@ This function should only modify configuration layer settings."
              :location (recipe :fetcher github
                                :repo "bcc32/emacs-direnv"
                                :branch "dont-require-direnv-in-minor-mode"))
-     mode-line-bell
-     (window-purpose :location (recipe :fetcher github
-                                       :repo "bmag/emacs-purpose"
-                                       :branch "fix-debug-recursion")))
+     mode-line-bell)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
