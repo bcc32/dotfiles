@@ -191,6 +191,7 @@ This function should only modify configuration layer settings."
             shell-enable-smart-eshell t)
 
      ;; Web services
+     pocket
      spotify
 
      ;; User layers
@@ -214,7 +215,10 @@ This function should only modify configuration layer settings."
              :location (recipe :fetcher github
                                :repo "bcc32/emacs-direnv"
                                :branch "dont-require-direnv-in-minor-mode"))
-     mode-line-bell)
+     mode-line-bell
+     (pocket-reader :location (recipe :fetcher github
+                                      :repo "bcc32/pocket-reader.el"
+                                      :branch "working")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
