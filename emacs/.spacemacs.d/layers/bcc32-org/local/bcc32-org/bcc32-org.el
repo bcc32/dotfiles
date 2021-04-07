@@ -85,11 +85,11 @@ else +INF for entries with a todo keyword, -INF otherwise."
                        nil))))
 
 ;;;###autoload
-(defun bcc32-org-lint-all-open-buffers ()
-  "Run `org-lint' on all org buffers, stopping at the first error."
+(defun bcc32-org-lint-agenda-buffers ()
+  "Run `org-lint' in all org buffers visiting agenda files, stopping at the first error."
   (interactive)
   (catch 'found-error
-    (dolist (buf (org-buffer-list))
+    (dolist (buf (org-buffer-list 'agenda))
       (set-buffer buf)
       (call-interactively 'org-lint)
       (when (> (buffer-size) 0)
