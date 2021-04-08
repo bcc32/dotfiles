@@ -32,6 +32,7 @@
 	autoUpdate = true
 	enabled = true
 [sendemail]
+	annotate = yes
 	smtpencryption = tls
 	smtpserver = smtp.gmail.com
 	smtpserverport = 587
