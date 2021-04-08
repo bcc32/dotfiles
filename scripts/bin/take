@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 # Use logname instead of whoami so that the real user is used when called with
 # sudo.
