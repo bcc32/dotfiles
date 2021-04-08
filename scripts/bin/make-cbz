@@ -1,11 +1,12 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
-if [ $# -ne 1 ]; then
+if [ $# -lt 1 ]; then
     echo "Usage: $0 <folder>"
     exit 2
 fi
 
-f="$1"
-zip -r "$f.cbz" "$f"
+for folder; do
+    zip -r "${folder}.cbz" "$folder"
+done
