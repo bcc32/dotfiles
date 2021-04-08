@@ -1,2 +1,0 @@
-#!/bin/sh
-youtube-dl -k --convert-subs srt --all-subs "$@"
