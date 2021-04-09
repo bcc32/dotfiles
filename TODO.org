@@ -1,7 +1,9 @@
 * DONE copy .xinitrc on macOS, or disable it; it breaks XQuartz
 CLOSED: [2021-04-08 Thu 22:37]
-* TODO Add a directory or something for site files
+* NOTDONE Add a directory or something for site files
+CLOSED: [2021-04-08 Thu 22:39]
 - E.g., .spacemacs.env file
 - It shouldn't get blown away when the dotfiles repo is recloned or
   anything.  Should just live in $HOME directly.
-* TODO Enable ~org-enable-hugo-support~
+* NOTDONE Enable ~org-enable-hugo-support~
+CLOSED: [2021-04-08 Thu 22:39]
