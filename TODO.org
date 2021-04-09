@@ -1,4 +1,5 @@
-* TODO copy .xinitrc on macOS, or disable it; it breaks XQuartz
+* DONE copy .xinitrc on macOS, or disable it; it breaks XQuartz
+CLOSED: [2021-04-08 Thu 22:37]
 * TODO Add a directory or something for site files
 - E.g., .spacemacs.env file
 - It shouldn't get blown away when the dotfiles repo is recloned or

@@ -1,12 +1,28 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set -euo pipefail
+set -eu
 
 # Ensure certain directories already exist so that stow won't try to create
 # symlinks too high in the file hierarchy, leading to unmanaged files appearing
 # in the repo.
 mkdir -p ~/.config ~/.gnupg ~/.ssh ~/.stack
 
-# shellcheck disable=SC2035
-# SC2035: Use ./*glob* or -- *glob* so names with dashes won't become options.
-./stow.sh -R "$@" */
+packages=(*/)
+filtered_packages=()
+
+for package in "${packages[@]}"; do
+    skip=0
+
+    if [ "$package" = "X/" ]; then
+        case "$(uname -s)" in
+        Darwin*) skip=1 ;;
+        *) ;;
+        esac
+    fi
+
+    if ! ((skip)); then
+        filtered_packages+=("$package")
+    fi
+done
+
+./stow.sh -R "$@" "${filtered_packages[@]}"
