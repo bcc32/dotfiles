@@ -237,10 +237,7 @@ This function should only modify configuration layer settings."
      solarized-theme
      tao-theme
      zenburn-theme
-     (direnv :toggle (executable-find "direnv")
-             :location (recipe :fetcher github
-                               :repo "bcc32/emacs-direnv"
-                               :branch "dont-require-direnv-in-minor-mode"))
+     (direnv :toggle (executable-find "direnv"))
      mode-line-bell
      (pocket-reader :location (recipe :fetcher github
                                       :repo "bcc32/pocket-reader.el"
