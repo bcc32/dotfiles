@@ -176,7 +176,9 @@ This function should only modify configuration layer settings."
      ,(when-any-installed '("python") 'python)
      ,(when-any-installed '("ruby") 'ruby)
      ,(when-any-installed '("rustc" "cargo") 'rust)
-     ,(when-any-installed '("chicken" "guile") 'scheme)
+     ,(when-any-installed '("chicken" "guile")
+                          '(scheme :variables
+                                   scheme-implementations '(chicken guile)))
      shell-scripts
      sql
      (typescript :variables
