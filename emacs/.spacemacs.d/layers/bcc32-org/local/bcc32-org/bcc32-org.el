@@ -9,7 +9,7 @@
 
 ;;; Commentary:
 
-;; TODO commentary
+;; A personal package for various org-mode customizations.
 
 ;;; Code:
 
