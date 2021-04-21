@@ -106,7 +106,7 @@ else +INF for entries with a todo keyword, -INF otherwise."
 
 ;;;###autoload
 (defun bcc32-org-commit-and-push-all ()
-  "Commit all changes, pull --rebase, and push the current repo.
+  "Commit all changed files, pull --rebase, and push the current repo.
 
 If pulling moved the HEAD to a different revision, prompt to revert all buffers
 in the current repo."
