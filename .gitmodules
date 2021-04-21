@@ -4,7 +4,7 @@
 	shallow = true
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
-	url = https://github.com/syl20bnr/spacemacs.git
+	url = https://github.com/bcc32/spacemacs.git
 	branch = develop
 [submodule "tpm"]
 	path = tmux/.tmux/plugins/tpm
