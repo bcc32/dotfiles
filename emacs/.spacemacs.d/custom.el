@@ -114,8 +114,8 @@
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rust-format-on-save t)
  '(safe-local-variable-values
-   '((magit-todos-exclude-globs "*")
-     (magit-todos-depth . 0)))
+   '((magit-todos-depth . 0)
+     (magit-todos-exclude-globs "*")))
  '(sentence-end-double-space t)
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
