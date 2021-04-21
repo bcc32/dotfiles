@@ -114,7 +114,10 @@
  '(pocket-reader-archive-on-open nil)
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rust-format-on-save t)
- '(safe-local-variable-values '((bcc32/ocamlformat-on-save-mode . t)))
+ '(safe-local-variable-values
+   '((magit-todos-mode)
+     (magit-todos-depth . 0)
+     (bcc32/ocamlformat-on-save-mode . t)))
  '(sentence-end-double-space t)
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
