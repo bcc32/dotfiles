@@ -241,7 +241,10 @@ This function should only modify configuration layer settings."
      mode-line-bell
      (pocket-reader :location (recipe :fetcher github
                                       :repo "bcc32/pocket-reader.el"
-                                      :branch "working")))
+                                      :branch "working"))
+     (window-purpose :location (recipe :fetcher github
+                                       :repo "bcc32/emacs-purpose"
+                                       :branch "fix-next-error-window-dedicated")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
