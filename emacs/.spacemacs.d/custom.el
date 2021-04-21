@@ -115,8 +115,7 @@
  '(rust-format-on-save t)
  '(safe-local-variable-values
    '((magit-todos-exclude-globs "*")
-     (magit-todos-depth . 0)
-     (bcc32/ocamlformat-on-save-mode . t)))
+     (magit-todos-depth . 0)))
  '(sentence-end-double-space t)
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
