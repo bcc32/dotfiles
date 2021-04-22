@@ -62,6 +62,7 @@
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
  '(magit-clone-default-directory "~/src/")
+ '(magit-todos-exclude-globs '("*.org_archive"))
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mode-line-bell-flash-time 0.2)
