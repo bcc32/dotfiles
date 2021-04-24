@@ -742,7 +742,7 @@ before packages are loaded."
   (spacemacs/toggle-mode-line-org-clock-on)
   (spacemacs/toggle-mode-line-version-control-off)
 
-  (setf (cdr (assoc t ivy-format-functions-alist))
+  (setf (alist-get t ivy-format-functions-alist)
         #'ivy-format-function-line)
 
   (spacemacs/set-leader-keys
