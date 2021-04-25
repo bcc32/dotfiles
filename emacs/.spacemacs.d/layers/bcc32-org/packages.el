@@ -25,4 +25,5 @@
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org
-    (org-clock-persistence-insinuate)))
+    (org-clock-persistence-insinuate)
+    (set-face-attribute 'org-headline-done nil :strike-through t)))
