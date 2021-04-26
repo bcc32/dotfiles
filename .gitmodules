@@ -1,11 +1,11 @@
 [submodule ".zprezto"]
 	path = zsh/.zprezto
-	url = https://github.com/bcc32/prezto.git
+	url = git@github.com:bcc32/prezto.git
 	shallow = true
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
-	url = https://github.com/bcc32/spacemacs.git
+	url = git@github.com:bcc32/spacemacs.git
 	branch = develop
 [submodule "tpm"]
 	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
