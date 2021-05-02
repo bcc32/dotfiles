@@ -141,10 +141,10 @@ This function should only modify configuration layer settings."
      ibuffer
      (org :variables
           org-enable-appear-support t
-          org-enable-notifications t
-          org-start-notification-daemon-on-startup t
           org-enable-github-support t
+          org-enable-notifications t
           org-projectile-file "TODO.org"
+          org-start-notification-daemon-on-startup t
           org-want-todo-bindings t)
      (unicode-fonts :variables
                     unicode-fonts-enable-ligatures t)
@@ -162,8 +162,8 @@ This function should only modify configuration layer settings."
      ,(when-any-installed '("ghc" "stack") 'haskell)
      html
      (javascript :variables
-                 javascript-fmt-tool 'prettier
-                 javascript-fmt-on-save t)
+                 javascript-fmt-on-save t
+                 javascript-fmt-tool 'prettier)
      json
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            '(bibtex
@@ -182,8 +182,8 @@ This function should only modify configuration layer settings."
      shell-scripts
      sql
      (typescript :variables
-                 typescript-fmt-tool 'prettier
-                 typescript-fmt-on-save t)
+                 typescript-fmt-on-save t
+                 typescript-fmt-tool 'prettier)
      yaml
 
      ;; Operating systems
