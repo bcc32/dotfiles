@@ -171,7 +171,7 @@ This function should only modify configuration layer settings."
                                     latex-build-command "latexmk")))
      markdown
      (ocaml :variables
-            ocaml-format-before-save t)
+            ocaml-format-on-save t)
      perl5
      ,(when-any-installed '("python") 'python)
      ,(when-any-installed '("ruby") 'ruby)
