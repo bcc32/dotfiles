@@ -51,7 +51,8 @@
     ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
     (org-save-outline-visibility :use-markers
       (org-show-all)
-      (org-align-tags :all))))
+      (let (org-indent-mode)
+        (org-align-tags :all)))))
 
 (defun bcc32-org--sort-by-closed-getkey ()
   "Return the CLOSED property of the org entry at point.
