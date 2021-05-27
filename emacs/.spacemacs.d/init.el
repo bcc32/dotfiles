@@ -750,10 +750,9 @@ before packages are loaded."
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-region-or-buffer)
 
-  (with-eval-after-load 'tuareg
-    (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
-      "v" 'merlin-enclosing-expand
-      "f" 'ocamlformat))
+  (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
+    "v" 'merlin-enclosing-expand
+    "f" 'ocamlformat)
 
   (define-advice ocamlformat (:after () run-ocp-indent)
     (ocp-indent-buffer))
