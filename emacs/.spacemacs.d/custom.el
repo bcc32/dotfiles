@@ -7,6 +7,7 @@
  '(calc-context-sensitive-enter t)
  '(calc-settings-file
    (expand-file-name "calc-settings.el" dotspacemacs-directory))
+ '(calendar-week-start-day 1)
  '(column-enforce-column nil)
  '(counsel-find-file-at-point nil)
  '(dired-async-mode t)
