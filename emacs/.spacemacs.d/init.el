@@ -175,6 +175,7 @@ This function should only modify configuration layer settings."
      perl5
      ,(when-any-installed '("python") '(python :variables
                                                python-format-on-save t
+                                               python-formatter 'black
                                                python-sort-imports-on-save t))
      ,(when-any-installed '("ruby") 'ruby)
      ,(when-any-installed '("rustc" "cargo") 'rust)
