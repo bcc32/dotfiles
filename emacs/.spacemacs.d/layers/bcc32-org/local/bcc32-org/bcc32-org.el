@@ -36,7 +36,10 @@
   (when (and (derived-mode-p 'org-mode)
              (not (-when-let (file-name (buffer-file-name))
                     (bcc32-org--archive-file-p file-name))))
-    (org-update-all-dblocks)
+    (org-map-dblocks
+     (lambda ()
+       (unless (member "ARCHIVE" (org-get-tags))
+         (org-update-dblock))))
     (org-update-statistics-cookies t)
     ;; FIXME: This workaround for incorrect alignment in org headings containing
     ;; links doesn't work.  The key point is that `current-column' returns a
