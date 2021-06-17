@@ -1,5 +1,5 @@
 (defconst bcc32-org-packages
-  '((bcc32-org :location local)
+  '((bcc32-org :location (recipe :fetcher local))
     flycheck
     org))
 
@@ -9,6 +9,7 @@
 
 (defun bcc32-org/init-bcc32-org ()
   (use-package bcc32-org
+    :defer t
     :hook (before-save . bcc32-org//cleanup-before-save-hook)
     :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)))
 
