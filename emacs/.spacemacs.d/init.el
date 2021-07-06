@@ -40,6 +40,23 @@ Otherwise, render sequences in the current buffer."
       (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
+(defconst bcc32/ledger-posting-effective-date-regexp
+  (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]")
+  "A comment containing an effective date for a posting")
+
+(defun bcc32/ledger-promote-effective-date ()
+  (interactive)
+  (let ((end (ledger-navigate-end-of-xact)))
+    (ledger-navigate-beginning-of-xact)
+    (unless (re-search-forward bcc32/ledger-posting-effective-date-regexp end t)
+      (error "No effective date in transaction"))
+    (let ((effective-date (match-string 1)))
+      (delete-region (match-beginning 0) (match-end 0))
+      (ledger-navigate-beginning-of-xact)
+      (re-search-forward ledger-iso-date-regexp)
+      (insert "=" effective-date)
+      (ledger-toggle-current))))
+
 (defun bcc32/add-link (url tags)
   "Add URL from clipboard to pocket reader, prompting for TAGS."
   (interactive
@@ -752,6 +769,9 @@ before packages are loaded."
 
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-region-or-buffer)
+
+  (spacemacs/set-leader-keys-for-major-mode 'ledger-mode
+    "j" 'bcc32/ledger-promote-effective-date)
 
   (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
     "v" 'merlin-enclosing-expand
