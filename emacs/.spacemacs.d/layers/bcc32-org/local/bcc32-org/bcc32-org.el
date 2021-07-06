@@ -21,6 +21,13 @@
 (require 'projectile)
 (require 's)
 
+(defvar org-indent-mode)
+
+(define-advice org-align-tags (:around (f &rest args) bcc32-org--disable-org-indent-mode)
+  "Ignore the value of `org-indent-mode' while aligning tags."
+  (let (org-indent-mode)
+    (apply f args)))
+
 (defun bcc32-org--archive-file-p (file-name)
   "Return t if FILE-NAME refers to an *.org_archive file."
   (f-ext? file-name "org_archive"))
@@ -54,8 +61,7 @@
     ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
     (org-save-outline-visibility :use-markers
       (org-show-all)
-      (let (org-indent-mode)
-        (org-align-tags :all)))))
+      (org-align-tags :all))))
 
 (defun bcc32-org--sort-by-closed-getkey ()
   "Return the CLOSED property of the org entry at point.
