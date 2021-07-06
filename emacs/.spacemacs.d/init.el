@@ -42,9 +42,10 @@ Otherwise, render sequences in the current buffer."
 
 (defconst bcc32/ledger-posting-effective-date-regexp
   (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]")
-  "A comment containing an effective date for a posting")
+  "A comment containing an effective date for a posting.")
 
 (defun bcc32/ledger-promote-effective-date ()
+  "Move the effective date for a posting in this transaction to the transaction."
   (interactive)
   (let ((end (ledger-navigate-end-of-xact)))
     (ledger-navigate-beginning-of-xact)
