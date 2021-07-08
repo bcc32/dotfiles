@@ -267,11 +267,7 @@ This function should only modify configuration layer settings."
                                       :branch "working")))
 
    ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages
-   '(
-     ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/14880
-     auto-highlight-symbol
-     )
+   dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
