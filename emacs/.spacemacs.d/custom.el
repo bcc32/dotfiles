@@ -116,6 +116,8 @@
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rust-format-on-save t)
  '(sentence-end-double-space t)
+ '(sh-basic-offset 2)
+ '(shfmt-arguments '("-i" "2" "-bn" "-s"))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
  '(spaceline-info-mode t)

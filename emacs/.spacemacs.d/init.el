@@ -201,7 +201,8 @@ This function should only modify configuration layer settings."
      ,(when-any-installed '("chicken" "guile")
                           '(scheme :variables
                                    scheme-implementations '(chicken guile)))
-     shell-scripts
+     (shell-scripts :variables
+                    shell-scripts-format-on-save t)
      sql
      (typescript :variables
                  typescript-fmt-on-save t
