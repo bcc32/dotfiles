@@ -57,7 +57,8 @@
  '(ledger-reconcile-insert-effective-date t)
  '(ledger-report-use-header-line t)
  '(ledger-reports
-   '(("reconcile" "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
+   '(("reimbursement" "%(binary) -f %(ledger-file) --group-by payee reg '^Assets:Reimbursable Expenses' -p 'last week'")
+     ("reconcile" "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
      ("uncleared" "%(binary) -f %(ledger-file) reg -U --group-by account '^Assets' '^Equity' '^Liabilities'")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
