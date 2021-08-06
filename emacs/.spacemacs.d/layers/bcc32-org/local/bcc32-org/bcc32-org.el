@@ -21,6 +21,9 @@
 (require 'projectile)
 (require 's)
 
+(defgroup bcc32-org nil "Bcc32's org-mode customizations."
+  :group 'emacs)
+
 (defvar org-indent-mode)
 
 (define-advice org-align-tags (:around (f &rest args) bcc32-org--disable-org-indent-mode)
@@ -139,6 +142,26 @@ in the current repo."
         (set-buffer b)
         (revert-buffer :ignore-auto :no-confirm))))
   (message "Committing and pushing... done"))
+
+(defcustom bcc32-org-always-skip-weekends nil
+  "If non-nil, always reschedule events to the next weekday."
+  :type 'boolean
+  :group 'bcc32-org)
+
+;;;###autoload
+(defun bcc32-org-todo-repeat-maybe-skip-weekends ()
+  "Reschedule the current org entry to the next weekday.
+
+Only affects entries with the SKIP_WEEKENDS property set to
+non-nil.  Suggested usage is to add this function to
+`org-todo-repeat-hook'."
+  (when (or bcc32-org-always-skip-weekends (org-entry-get nil "SKIP_WEEKENDS" :inherit))
+    (org-back-to-heading)
+    (re-search-forward org-scheduled-time-regexp (org-entry-end-position))
+    (goto-char (match-beginning 1))
+    (while (member (nth 6 (parse-time-string (org-entry-get nil "SCHEDULED")))
+                   '(0 6))
+      (org-timestamp-change 1 'day))))
 
 (provide 'bcc32-org)
 

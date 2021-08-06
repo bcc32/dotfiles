@@ -11,7 +11,8 @@
   (use-package bcc32-org
     :defer t
     :hook (before-save . bcc32-org//cleanup-before-save-hook)
-    :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)))
+    :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)
+    :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends)))
 
 (defun bcc32-org/post-init-flycheck ()
   (with-eval-after-load 'org
