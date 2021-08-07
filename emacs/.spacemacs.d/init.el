@@ -184,6 +184,7 @@ This function should only modify configuration layer settings."
                  javascript-fmt-on-save t
                  javascript-fmt-tool 'prettier)
      json
+     jsonnet
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            '(bibtex
                              (latex :variables
