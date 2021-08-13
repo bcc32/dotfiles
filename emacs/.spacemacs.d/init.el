@@ -777,6 +777,9 @@ before packages are loaded."
   (spacemacs/set-leader-keys-for-major-mode 'ledger-mode
     "j" 'bcc32/ledger-promote-effective-date)
 
+  (with-eval-after-load 'ledger-mode
+    (add-hook 'ledger-mode-hook #'turn-off-auto-fill))
+
   (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
     "v" 'merlin-enclosing-expand
     "f" 'ocamlformat)
