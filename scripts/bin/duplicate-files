@@ -4,7 +4,7 @@ set -euo pipefail
 
 export LC_ALL=C
 
-tmpdir=$(mktemp -d duplicate-files.XXXXXX)
+tmpdir=$(mktemp --tmpdir -d duplicate-files.XXXXXX)
 
 sizes_with_files=$tmpdir/sizes-with-files
 duplicate_sizes=$tmpdir/duplicate-sizes
