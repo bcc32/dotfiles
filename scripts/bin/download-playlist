@@ -1,12 +1,12 @@
 #!/bin/sh
 
 youtube-dl -f 'bestvideo[vcodec=vp9]+bestaudio[acodec=opus]' \
-           --merge-output-format webm \
-           --write-info-json \
-           --write-description \
-           --add-metadata \
-           --write-all-thumbnails \
-           --embed-subs \
-           --all-subs \
-           -o '%(playlist_title)s [%(playlist_id)s]/%(playlist_index)s - %(title)s [%(id)s].%(ext)s' \
-           "$@"
+  --merge-output-format webm \
+  --write-info-json \
+  --write-description \
+  --add-metadata \
+  --write-all-thumbnails \
+  --embed-subs \
+  --all-subs \
+  -o '%(playlist_title)s [%(playlist_id)s]/%(playlist_index)s - %(title)s [%(id)s].%(ext)s' \
+  "$@"

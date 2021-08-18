@@ -2,10 +2,10 @@
 
 # cleanup ~/.vim/swap and ~/.vim/undo
 
-find ~/.vim/{swap,undo}   \
-    -type f               \
-    -not -name .gitignore \
-    -mtime +28            \
-    -atime +28            \
-    -print                \
-    -delete
+find ~/.vim/{swap,undo} \
+  -type f \
+  -not -name .gitignore \
+  -mtime +28 \
+  -atime +28 \
+  -print \
+  -delete

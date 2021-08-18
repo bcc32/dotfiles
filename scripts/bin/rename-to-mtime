@@ -3,24 +3,24 @@
 set -eu
 
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 FILE"
-    exit 2
+  echo "Usage: $0 FILE"
+  exit 2
 fi
 
 file=$1
 ext=
 case "$file" in
-    *.*)
-        ext="${file#*.}"
-        ;;
+*.*)
+  ext="${file#*.}"
+  ;;
 esac
 dir=$(dirname "$file")
 
 date=$(date -u +%Y-%m-%d_%H-%M-%S --date="@$(stat --format=%Y "$file")")
 if [ -n "$ext" ]; then
-    new_name="$date.$ext"
+  new_name="$date.$ext"
 else
-    new_name="$date"
+  new_name="$date"
 fi
 
 mv -i "$file" "$dir/$new_name"

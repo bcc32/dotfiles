@@ -6,26 +6,26 @@
 set -euo pipefail
 
 original_command() {
-    local IFS -
-    IFS=':'
+  local IFS -
+  IFS=':'
 
-    script_dir=${0%/*}
-    command_name=${0##*/}
+  script_dir=${0%/*}
+  command_name=${0##*/}
 
-    set -f
-    for dir in $PATH; do
-        if [ "$dir" = "$script_dir" ]; then
-            continue
-        fi
+  set -f
+  for dir in $PATH; do
+    if [ "$dir" = "$script_dir" ]; then
+      continue
+    fi
 
-        if [ -x "$dir/$command_name" ]; then
-            printf "%s" "$dir/$command_name"
-            return 0
-        fi
-    done
+    if [ -x "$dir/$command_name" ]; then
+      printf "%s" "$dir/$command_name"
+      return 0
+    fi
+  done
 
-    echo >&2 "$command_name: No $command_name found in \$PATH."
-    return 1
+  echo >&2 "$command_name: No $command_name found in \$PATH."
+  return 1
 }
 original_command=$(original_command)
 

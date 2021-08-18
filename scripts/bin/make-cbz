@@ -3,10 +3,10 @@
 set -eu
 
 if [ $# -lt 1 ]; then
-    echo "Usage: $0 <folder>"
-    exit 2
+  echo "Usage: $0 <folder>"
+  exit 2
 fi
 
 for folder; do
-    zip -r "${folder}.cbz" "$folder"
+  zip -r "${folder}.cbz" "$folder"
 done
