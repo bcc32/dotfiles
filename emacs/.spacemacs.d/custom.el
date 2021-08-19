@@ -86,6 +86,7 @@
       "* TODO %?
 %U
 %a")))
+ '(org-clock-history-length 35)
  '(org-clock-persist t)
  '(org-default-notes-file (expand-file-name "refile.org" org-directory))
  '(org-enforce-todo-checkbox-dependencies t)
