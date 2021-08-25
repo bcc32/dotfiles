@@ -8,5 +8,5 @@ if [ $# -lt 1 ]; then
 fi
 
 for folder; do
-  zip -r "${folder}.cbz" "$folder"
+  zip --quiet -r "${folder}.cbz" "$folder"
 done
