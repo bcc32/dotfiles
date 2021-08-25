@@ -98,6 +98,29 @@ unset in the selected frame, passing ARGS."
                       url))
     (apply #'browse-url-default-browser url args)))
 
+(defun bcc32/copy-region-as-kill-refill-for-web (beg end &optional region)
+  "Copy the region to the kill ring, refilling the text for web use.
+
+When pasting into web forms, newlines separate paragraphs, unlike
+in Emacs where paragraphs are delimited by empty lines.  This
+command fills the copied text with no newlines within paragraphs.
+
+Use the region between BEG and END.  When called from Lisp and
+REGION is non-nil, use the current region instead of BEG and
+END."
+  (interactive (list (mark) (point) (prefix-numeric-value current-prefix-arg)))
+  (let ((filter-buffer-substring-function
+         (lambda (beg end delete)
+           (let ((contents (if delete
+                               (delete-and-extract-region beg end)
+                             (buffer-substring beg end))))
+             (with-temp-buffer
+               (insert contents)
+               (setq fill-column 1000)
+               (fill-region (point-min) (point-max))
+               (buffer-string))))))
+    (copy-region-as-kill beg end region)))
+
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
   (string-prefix-p "/nix/store/" project-root))
