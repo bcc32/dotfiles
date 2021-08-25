@@ -204,6 +204,7 @@ This function should only modify configuration layer settings."
      ,(when-any-installed '("ghc" "stack") 'haskell)
      html
      (javascript :variables
+                 javascript-backend 'tide
                  javascript-fmt-on-save t
                  javascript-fmt-tool 'prettier)
      json
@@ -229,6 +230,7 @@ This function should only modify configuration layer settings."
                     shell-scripts-format-on-save t)
      sql
      (typescript :variables
+                 typescript-backend 'tide
                  typescript-fmt-on-save t
                  typescript-fmt-tool 'prettier)
      yaml
