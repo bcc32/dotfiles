@@ -117,6 +117,7 @@ END."
              (with-temp-buffer
                (insert contents)
                (setq fill-column 1000)
+               (indent-region (point-min) (point-max))
                (fill-region (point-min) (point-max))
                (buffer-string))))))
     (copy-region-as-kill beg end region)))
