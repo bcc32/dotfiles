@@ -212,8 +212,7 @@ This function should only modify configuration layer settings."
      jsonnet
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            '(bibtex
-                             (latex :variables
-                                    latex-build-command "latexmk")))
+                             latex))
      markdown
      (ocaml :variables
             ocaml-format-on-save t)
