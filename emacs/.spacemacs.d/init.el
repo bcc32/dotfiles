@@ -116,7 +116,7 @@ END."
                              (buffer-substring beg end))))
              (with-temp-buffer
                (insert contents)
-               (setq fill-column 1000)
+               (setq fill-column most-positive-fixnum)
                (indent-region (point-min) (point-max))
                (fill-region (point-min) (point-max))
                (buffer-string))))))
