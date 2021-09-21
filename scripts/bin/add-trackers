@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 INFO-HASH"
+  exit 2
+fi
+
+info_hash=$1
+export info_hash
+
+add_tracker() {
+  tracker=$1
+  transmission-remote -t "$info_hash" -td "$tracker"
+}
+export -f add_tracker
+
+curl -fsSL https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt \
+  | grep -v '^$' \
+  | parallel -tj1 add_tracker
