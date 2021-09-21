@@ -16,6 +16,11 @@ add_tracker() {
 }
 export -f add_tracker
 
+if [ -z "$(transmission-remote -t "$info_hash" -i)" ]; then
+  echo "No torrent with info hash: '$info_hash'"
+  exit 1
+fi
+
 curl -fsSL https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt \
   | grep -v '^$' \
   | parallel -tj1 add_tracker
