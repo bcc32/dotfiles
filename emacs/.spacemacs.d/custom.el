@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(after-save-hook '(executable-make-buffer-file-executable-if-script-p))
  '(browse-url-browser-function 'bcc32/browse-url-on-ssh-client-if-exists)
  '(calc-context-sensitive-enter t)
  '(calc-settings-file
