@@ -5,6 +5,11 @@ set -eu
 F=$1
 shift
 
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 FILE COMMAND [ARGS]..."
+  exit 2
+fi
+
 dir=$(dirname -- "$F")
 tmp_f=$(mktemp -p "$dir" inplace.XXXXXX)
 trap 'rm -- "$tmp_f"' EXIT
