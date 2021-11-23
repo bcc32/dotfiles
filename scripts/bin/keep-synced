@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+
+src = ARGV[0]
+dst = ARGV[1]
+
+src = "#{src}/" unless src.end_with?("/")
+dst = "#{dst}/" unless dst.end_with?("/")
+
+src = Pathname.new(src)
+dst = Pathname.new(dst)
+
+RSYNC_OPTS = %w[
+  -ai
+  --del
+  --stats
+]
+
+def rsync src, dst
+  system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
+end
+
+mutex = Mutex.new
+cond = ConditionVariable.new
+has_pending_changes = true
+
+io = IO.popen(['fswatch', '-or', src.to_s])
+
+th1 = Thread.new do
+  while io.gets
+    mutex.synchronize do
+      has_pending_changes = true
+      cond.signal
+    end
+  end
+end
+
+th2 = Thread.new do
+  loop do
+    mutex.synchronize do
+      until has_pending_changes do
+        cond.wait(mutex)
+      end
+
+      puts "Detected changes, rsyncing '#{src}' to '#{dst}'"
+
+      has_pending_changes = false
+      if File.directory?(src)
+        rsync src, dst
+      else
+        puts "'#{src}' not found; skipping"
+      end
+    end
+  end
+end
+
+th1.join
+th2.join
