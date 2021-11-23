@@ -2,14 +2,64 @@
 
 require 'pathname'
 
-src = ARGV[0]
-dst = ARGV[1]
+# DirWatcher calls the block supplied to #each when a batch of change events is
+# detected within the watched directory.
+class DirWatcher
+  FSWATCH_OPTS = %w[
+    --one-per-batch
+    --recursive
+  ]
 
-src = "#{src}/" unless src.end_with?("/")
-dst = "#{dst}/" unless dst.end_with?("/")
+  def initialize(dir)
+    @io = IO.popen(['fswatch', *FSWATCH_OPTS, dir.to_s])
+  end
 
-src = Pathname.new(src)
-dst = Pathname.new(dst)
+  def each
+    @io.each { yield }
+  end
+end
+
+# ChangeTracker calls sync when there are changes to be synchronized.  It
+# assumes that: if sync is called, and there are no changes detected during the
+# call to sync, then sync does not need to be called again to ensure
+# synchronization.
+#
+# sync is called once at the beginning of #run_forever.
+class ChangeTracker
+  def initialize(watcher, &sync)
+    @watcher = watcher
+    @sync = sync
+    @mutex = Mutex.new
+    @cond = ConditionVariable.new
+    @has_pending_changes = true
+  end
+
+  def run_forever
+    thread1 = Thread.new do
+      @watcher.each do
+        @mutex.synchronize do
+          @has_pending_changes = true
+          @cond.signal
+        end
+      end
+    end
+
+    thread2 = Thread.new do
+      loop do
+        @mutex.synchronize do
+          until @has_pending_changes
+            @cond.wait(@mutex)
+          end
+          @has_pending_changes = false
+        end
+
+        @sync.call
+      end
+    end
+
+    [thread1, thread2].each(&:join)
+  end
+end
 
 RSYNC_OPTS = %w[
   -ai
@@ -17,43 +67,26 @@ RSYNC_OPTS = %w[
   --stats
 ]
 
-def rsync src, dst
-  system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
-end
+def keep_synced(src, dst)
+  src = "#{src}/" unless src.end_with?("/")
+  dst = "#{dst}/" unless dst.end_with?("/")
 
-mutex = Mutex.new
-cond = ConditionVariable.new
-has_pending_changes = true
+  src = Pathname.new(src)
+  dst = Pathname.new(dst)
 
-io = IO.popen(['fswatch', '-or', src.to_s])
+  ChangeTracker.new(DirWatcher.new(src)) do
+    puts "Detected changes, rsyncing '#{src}' to '#{dst}'"
 
-th1 = Thread.new do
-  while io.gets
-    mutex.synchronize do
-      has_pending_changes = true
-      cond.signal
+    if File.directory?(src)
+      system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
+    else
+      puts "'#{src}' not found; skipping"
     end
-  end
+  end.run_forever
 end
 
-th2 = Thread.new do
-  loop do
-    mutex.synchronize do
-      until has_pending_changes do
-        cond.wait(mutex)
-      end
-
-      puts "Detected changes, rsyncing '#{src}' to '#{dst}'"
-
-      has_pending_changes = false
-      if File.directory?(src)
-        rsync src, dst
-      else
-        puts "'#{src}' not found; skipping"
-      end
-    end
-  end
+if $PROGRAM_NAME == __FILE__
+  src = ARGV[0]
+  dst = ARGV[1]
+  keep_synced src, dst
 end
-
-th1.join
-th2.join
