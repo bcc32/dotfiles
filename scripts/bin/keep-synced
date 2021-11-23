@@ -30,8 +30,6 @@ class ChangeTracker
   end
 
   def run_forever
-    # FIXME: This can get blocked and so build up a bunch of changes in a row,
-    # thus calling sync more than necessary.
     thread1 = Thread.new do
       @watcher.each do
         @mutex.synchronize do
@@ -47,10 +45,10 @@ class ChangeTracker
           until @has_pending_changes
             @cond.wait(@mutex)
           end
-
-          @sync.call
           @has_pending_changes = false
         end
+
+        @sync.call
       end
     end
 
