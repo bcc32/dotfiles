@@ -61,27 +61,32 @@ class ChangeTracker
   end
 end
 
-src = ARGV[0]
-dst = ARGV[1]
-
-src = "#{src}/" unless src.end_with?("/")
-dst = "#{dst}/" unless dst.end_with?("/")
-
-src = Pathname.new(src)
-dst = Pathname.new(dst)
-
 RSYNC_OPTS = %w[
   -ai
   --del
   --stats
 ]
 
-ChangeTracker.new(DirWatcher.new(src)) do
-  puts "Detected changes, rsyncing '#{src}' to '#{dst}'"
+def keep_synced(src, dst)
+  src = "#{src}/" unless src.end_with?("/")
+  dst = "#{dst}/" unless dst.end_with?("/")
 
-  if File.directory?(src)
-    system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
-  else
-    puts "'#{src}' not found; skipping"
-  end
-end.run_forever
+  src = Pathname.new(src)
+  dst = Pathname.new(dst)
+
+  ChangeTracker.new(DirWatcher.new(src)) do
+    puts "Detected changes, rsyncing '#{src}' to '#{dst}'"
+
+    if File.directory?(src)
+      system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
+    else
+      puts "'#{src}' not found; skipping"
+    end
+  end.run_forever
+end
+
+if $PROGRAM_NAME == __FILE__
+  src = ARGV[0]
+  dst = ARGV[1]
+  keep_synced src, dst
+end
