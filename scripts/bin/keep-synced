@@ -2,6 +2,18 @@
 
 require 'pathname'
 
+# DirWatcher calls the block supplied to #each when a batch of change events is
+# detected within the watched directory.
+class DirWatcher
+  def initialize(dir)
+    @io = IO.popen(['fswatch', '-or', dir.to_s])
+  end
+
+  def each
+    @io.each { yield }
+  end
+end
+
 src = ARGV[0]
 dst = ARGV[1]
 
@@ -25,10 +37,10 @@ mutex = Mutex.new
 cond = ConditionVariable.new
 has_pending_changes = true
 
-io = IO.popen(['fswatch', '-or', src.to_s])
+watcher = DirWatcher.new(src)
 
 th1 = Thread.new do
-  while io.gets
+  watcher.each do
     mutex.synchronize do
       has_pending_changes = true
       cond.signal
