@@ -5,8 +5,13 @@ require 'pathname'
 # DirWatcher calls the block supplied to #each when a batch of change events is
 # detected within the watched directory.
 class DirWatcher
+  FSWATCH_OPTS = %w[
+    --one-per-batch
+    --recursive
+  ]
+
   def initialize(dir)
-    @io = IO.popen(['fswatch', '-or', dir.to_s])
+    @io = IO.popen(['fswatch', *FSWATCH_OPTS, dir.to_s])
   end
 
   def each
