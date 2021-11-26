@@ -84,9 +84,10 @@ def RetryLimiter.try_until_success(&block)
 end
 
 RSYNC_OPTS = %w[
-  -ai
+  --archive
   --compress
   --del
+  --itemize-changes
   --stats
 ]
 
