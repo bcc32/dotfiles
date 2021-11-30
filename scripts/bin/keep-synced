@@ -61,6 +61,28 @@ class ChangeTracker
   end
 end
 
+class RetryLimiter
+  MAX_RETRIES = 10
+end
+
+def RetryLimiter.try_until_success(&block)
+  retries_remaining = RetryLimiter::MAX_RETRIES
+  delay = 1
+  while retries_remaining.positive?
+    if block.call
+      return true
+    else
+      puts "Failed.  Retrying after #{delay} seconds..."
+      sleep delay
+      delay *= 2
+      retries_remaining -= 1
+    end
+  end
+
+  puts "No more retries remaining.  Giving up."
+  false
+end
+
 RSYNC_OPTS = %w[
   -ai
   --compress
@@ -79,7 +101,9 @@ def keep_synced(src, dst)
     puts "Detected changes, rsyncing '#{src}' to '#{dst}'"
 
     if File.directory?(src)
-      system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
+      RetryLimiter.try_until_success do
+        system 'rsync', *RSYNC_OPTS, src.to_s, dst.to_s
+      end
     else
       puts "'#{src}' not found; skipping"
     end
