@@ -86,7 +86,7 @@ end
 RSYNC_OPTS = %w[
   --archive
   --compress
-  --del
+  --delete
   --itemize-changes
   --stats
 ]
