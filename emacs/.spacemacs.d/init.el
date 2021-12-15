@@ -283,7 +283,9 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(base16-theme
+   '((advent-of-code :location (recipe :fetcher github
+                                       :repo "bcc32/advent-of-code.el"))
+     base16-theme
      solarized-theme
      tao-theme
      zenburn-theme
