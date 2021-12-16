@@ -284,7 +284,8 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '((advent-of-code :location (recipe :fetcher github
-                                       :repo "bcc32/advent-of-code.el"))
+                                       :repo "bcc32/advent-of-code"
+                                       :files ("elisp/advent-of-code.el")))
      base16-theme
      solarized-theme
      tao-theme
