@@ -57,7 +57,18 @@ Otherwise, render sequences in the current buffer."
         (ledger-navigate-beginning-of-xact)
         (re-search-forward ledger-iso-date-regexp)
         (insert "=" effective-date)
-        (ledger-toggle-current)))))
+        (ledger-toggle-current))))
+
+  (defun bcc32/ledger-yank-code ()
+    "Insert a code for the current transaction from the kill ring."
+    (interactive)
+    (save-excursion
+      (ledger-navigate-beginning-of-xact)
+      (unless (looking-at ledger-iterate-regexp)
+        (user-error "Not at regexp line"))
+      (goto-char (match-beginning ledger-regex-iterate-group-payee))
+      (let ((code (current-kill 0)))
+        (insert (format "(%s) " (string-trim code)))))))
 
 (defun bcc32/add-link (url tags)
   "Add URL from clipboard to pocket reader, prompting for TAGS."
@@ -803,7 +814,8 @@ before packages are loaded."
     "Ca" 'bcc32/ansi-color-region-or-buffer)
 
   (spacemacs/set-leader-keys-for-major-mode 'ledger-mode
-    "j" 'bcc32/ledger-promote-effective-date)
+    "j" 'bcc32/ledger-promote-effective-date
+    "y" 'bcc32/ledger-yank-code)
 
   (with-eval-after-load 'ledger-mode
     (add-hook 'ledger-mode-hook #'turn-off-auto-fill))
