@@ -794,7 +794,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (define-advice package--save-selected-packages (:around (&rest _) dont-save-to-custom-file 100)
     "Don't save `package-selected-packages' to `custom-file'.")
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
-  (load custom-file))
+  (load custom-file)
+  (add-to-list 'load-path dotspacemacs-directory))
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -856,6 +857,9 @@ before packages are loaded."
   (add-hook 'text-mode-hook #'turn-on-auto-fill)
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
+
+  (require 'bcc32-abbrev)
+  (bcc32-ocaml-abbrevs)
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
