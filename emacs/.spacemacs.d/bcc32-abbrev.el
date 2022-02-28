@@ -106,7 +106,7 @@ match%optional " _ " with
                  ("qsdd"   "[@sexp_drop_default]"                                        )
                  ("qside"  "(*_ This signature is deliberately empty. *)"                )
                  ("qso"    "[%sexp_of:" _ "]"                                            )
-                 ("qp"    "|> [%sexp_of:" _ "] |> print_s;"                                            )
+                 ("qp"    "|> [%sexp_of:" _ "] |> print_s;"                              )
                  ("qte"    "[%test_eq:" _ "] ? ?"                                        )
                  ("qto"    "[%typerep_of:" _ "]"                                         )
                  ("qtp"    "[%test_pred:" _ "] ? ?"                                      )
@@ -146,21 +146,22 @@ match%optional " _ " with
      (("s" "sexp") ("so" "sexp_of") ("os" "of_sexp"))
      (("t" "typerep"))
      (("v" "variants"))))
+  ;; TODO: Figure out why this line is here.
   (dolist (abbrev '("qdv"))
     (define-abbrev global-abbrev-table abbrev nil nil :case-fixed t)))
 
 (defun bcc32--define-deriving-abbrevs-helper (include consider)
-  (if (not (null consider))
-      (let ((choices (car consider))
-            (consider (cdr consider)))
-        (bcc32--define-deriving-abbrevs-helper include consider)
-        (dolist (choice choices)
-          (bcc32--define-deriving-abbrevs-helper (cons choice include) consider)))
-    (when (not (null include))
-      (let* ((include (reverse include))
-             (abbrev (apply 'concat (cons "qd" (mapcar 'car include))))
-             (expansion
-              (concat "[@@deriving "
-                      (mapconcat 'cadr include ", ")
-                      "]")))
-        (define-abbrev global-abbrev-table abbrev expansion nil :case-fixed t)))))
+  (pcase consider
+    (`(,choices . ,consider)
+     (bcc32--define-deriving-abbrevs-helper include consider)
+     (dolist (choice choices)
+       (bcc32--define-deriving-abbrevs-helper (cons choice include) consider)))
+    ('()
+     (when include
+       (let* ((include (reverse include))
+              (abbrev (apply 'concat (cons "qd" (mapcar #'first include))))
+              (expansion
+               (concat "[@@deriving "
+                       (mapconcat #'second include ", ")
+                       "]")))
+         (define-abbrev global-abbrev-table abbrev expansion nil :case-fixed t))))))
