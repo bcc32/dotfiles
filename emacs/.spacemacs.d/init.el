@@ -212,7 +212,8 @@ This function should only modify configuration layer settings."
           org-start-notification-daemon-on-startup t
           org-want-todo-bindings t)
      (unicode-fonts :variables
-                    unicode-fonts-enable-ligatures t)
+                    ;; https://github.com/mickeynp/ligature.el/issues/28
+                    unicode-fonts-enable-ligatures (>= emacs-major-version 28))
 
      ;; Programming and markup languages
      autohotkey
