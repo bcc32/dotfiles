@@ -109,6 +109,17 @@ unset in the selected frame, passing ARGS."
                       url))
     (apply #'browse-url-default-browser url args)))
 
+(defun bcc32/browse-url-on-wsl (url &rest args)
+  "Browse URL on the host Windows machine, if running in WSL.
+
+Fall back to `browse-url-default-browser' if cmd.exe is not
+found, passing ARGS."
+  (if-let (cmd (executable-find "cmd.exe"))
+      (call-process cmd nil nil nil
+                    "/c"
+                    (format "start /wait /b %s" url))
+    (apply #'browse-url-default-browser url args)))
+
 (defun bcc32/copy-region-as-kill-refill-for-web (beg end &optional region)
   "Copy the region to the kill ring, refilling the text for web use.
 
