@@ -58,6 +58,7 @@ If not in an [.mli] file, insert [qmli]."
                   comment-start "CR " ,user " for " ,user ": re-enable \"unused\" warnings" comment-end "\n"
                   "[@@@disable_unused_warnings]")
                  ("qe"     "[%expect {| |}];"                                            )
+                 ("qeo"    "[%expect.output]"                                            )
                  ("qh"     "[%here]"                                                     )
                  ("qhh"    "~here:[%here]"                                               )
                  ("qim"    "[@@immediate]"                                               )
@@ -108,6 +109,7 @@ match%optional " _ " with
                  ("qsdd"   "[@sexp_drop_default]"                                        )
                  ("qside"  "(*_ This signature is deliberately empty. *)"                )
                  ("qso"    "[%sexp_of:" _ "]"                                            )
+                 ("qstr"   "[%string " _ "]"                                             )
                  ("qp"    "|> [%sexp_of:" _ "] |> print_s;"                              )
                  ("qte"    "[%test_eq:" _ "] ? ?"                                        )
                  ("qto"    "[%typerep_of:" _ "]"                                         )
