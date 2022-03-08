@@ -15,11 +15,12 @@
 
 (require 'dash)
 (require 'f)
-(require 'flycheck)
 (require 'magit-core)
 (require 'org)
 (require 'projectile)
 (require 's)
+
+(require 'bcc32-org-flycheck)
 
 (defgroup bcc32-org nil "Bcc32's org-mode customizations."
   :group 'emacs)

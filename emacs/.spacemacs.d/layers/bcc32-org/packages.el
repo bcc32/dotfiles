@@ -17,13 +17,12 @@
 (defun bcc32-org/post-init-flycheck ()
   (with-eval-after-load 'org
     (with-eval-after-load 'flycheck
-      ;; TODO: Rename this checker to include bcc32- prefix
-      (flycheck-define-generic-checker 'org-lint
+      (flycheck-define-generic-checker 'bcc32-org-lint
         "An org linter to enforce statistics cookies where appropriate."
-        :start #'bcc32-org/flycheck-start
+        :start #'bcc32-org-flycheck-start
         :modes 'org-mode
         :predicate #'org-agenda-file-p)
-      (add-to-list 'flycheck-checkers 'org-lint))))
+      (add-to-list 'flycheck-checkers 'bcc32-org-lint))))
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org
