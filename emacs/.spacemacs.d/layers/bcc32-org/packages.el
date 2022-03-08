@@ -15,14 +15,8 @@
     :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends)))
 
 (defun bcc32-org/post-init-flycheck ()
-  (with-eval-after-load 'org
-    (with-eval-after-load 'flycheck
-      (flycheck-define-generic-checker 'bcc32-org-lint
-        "An org linter to enforce statistics cookies where appropriate."
-        :start #'bcc32-org-flycheck-start
-        :modes 'org-mode
-        :predicate #'org-agenda-file-p)
-      (add-to-list 'flycheck-checkers 'bcc32-org-lint))))
+  (with-eval-after-load 'flycheck
+    (require 'bcc32-org-flycheck)))
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org

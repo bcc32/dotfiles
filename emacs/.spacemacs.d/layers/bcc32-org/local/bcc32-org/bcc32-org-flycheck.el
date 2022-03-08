@@ -41,7 +41,7 @@ Copied from `org-element-statistics-cookie-parser'.")
          (lambda ()
            (bcc32-org-flycheck--lint-headline-statistics-cookie checker)))))
 
-(defun bcc32-org-flycheck-start (checker callback)
+(defun bcc32-org-flycheck--start (checker callback)
   "Start linting an org buffer for syntax checker CHECKER.
 
 CALLBACK should be a flycheck checker callback."
@@ -49,5 +49,13 @@ CALLBACK should be a flycheck checker callback."
       (let ((errors (bcc32-org-flycheck--lint-buffer checker)))
         (funcall callback 'finished errors))
     (error (funcall callback 'errored (error-message-string err)))))
+
+(flycheck-define-generic-checker 'bcc32-org-lint
+  "An org linter to enforce statistics cookies where appropriate."
+  :start #'bcc32-org-flycheck--start
+  :modes 'org-mode
+  :predicate #'org-agenda-file-p)
+
+(add-to-list 'flycheck-checkers 'bcc32-org-lint)
 
 (provide 'bcc32-org-flycheck)
