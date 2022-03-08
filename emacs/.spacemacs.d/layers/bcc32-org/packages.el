@@ -12,7 +12,11 @@
     :defer t
     :hook (before-save . bcc32-org//cleanup-before-save-hook)
     :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)
-    :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends)))
+    :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends))
+  ;; This is honestly redundant due to the org-mode-hook defined above, but it
+  ;; doesn't hurt, and it's clearer what the intention of this package is.
+  (with-eval-after-load 'org
+    (require 'bcc32-org)))
 
 (defun bcc32-org/post-init-flycheck ()
   (with-eval-after-load 'flycheck
