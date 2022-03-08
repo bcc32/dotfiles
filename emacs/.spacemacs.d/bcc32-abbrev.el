@@ -169,3 +169,5 @@ match%optional " _ " with
                        (mapconcat #'second include ", ")
                        "]")))
          (define-abbrev global-abbrev-table abbrev expansion nil :case-fixed t))))))
+
+(provide 'bcc32-abbrev)
