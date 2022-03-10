@@ -4,5 +4,16 @@ set -eu
 
 url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
-exec >/dev/null 2>&1
-printf "open %q || xdg-open %q || start %q" "$url" "$url" "$url" | ssh "$ssh_client_ip"
+
+uuid=$(uuid -v4)
+command=$(
+  cat <<EOF
+set -eu
+mkdir -p .links-to-open/
+cd .links-to-open
+cat >$uuid.tmp
+mv $uuid.tmp $uuid.url
+EOF
+)
+
+ssh "$ssh_client_ip" "$command" <<<"$url"
