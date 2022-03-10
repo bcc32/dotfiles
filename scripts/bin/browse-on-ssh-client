@@ -5,18 +5,10 @@ set -eu
 url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
 
-uuid=$(uuid -v4)
+file=$(mktemp --tmpdir --suffix="$(uuid -v4)".url)
+trap 'rm -f "$file"' EXIT
+echo "$url" >"$file"
 
-# Do this rather than use scp because BitVise SSH server always drops scp in the
-# root dir to start, whereas I want to start from $HOME.
-command=$(
-  cat <<EOF
-set -eu
-mkdir -p .links-to-open/
-cd .links-to-open
-cat >$uuid.tmp
-mv $uuid.tmp $uuid.url
-EOF
-)
-
-ssh "$ssh_client_ip" "$command" <<<"$url"
+# On Windows, the ssh shell might be PowerShell, so invoke sh explicitly.
+ssh "$ssh_client_ip" 'sh -c "mkdir -p .links-to-open/"'
+scp "$file" "$ssh_client_ip:.links-to-open/"
