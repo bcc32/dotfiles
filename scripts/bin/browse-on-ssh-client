@@ -6,6 +6,9 @@ url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
 
 uuid=$(uuid -v4)
+
+# Do this rather than use scp because BitVise SSH server always drops scp in the
+# root dir to start, whereas I want to start from $HOME.
 command=$(
   cat <<EOF
 set -eu
