@@ -5,10 +5,10 @@ set -eu
 url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
 
-file=$(mktemp --tmpdir --suffix="$(uuid -v4)".url)
+file=$(mktemp)
 trap 'rm -f "$file"' EXIT
 echo "$url" >"$file"
 
 # On Windows, the ssh shell might be PowerShell, so invoke sh explicitly.
 ssh "$ssh_client_ip" 'sh -c "mkdir -p .links-to-open/"'
-scp "$file" "$ssh_client_ip:.links-to-open/"
+scp "$file" "$ssh_client_ip:.links-to-open/$(uuid -v4).url"
