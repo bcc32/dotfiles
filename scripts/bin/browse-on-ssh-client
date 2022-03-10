@@ -11,4 +11,4 @@ echo "$url" >"$file"
 
 # On Windows, the ssh shell might be PowerShell, so invoke sh explicitly.
 ssh "$ssh_client_ip" 'sh -c "mkdir -p .links-to-open/"'
-scp "$file" "$ssh_client_ip:.links-to-open/$(uuid -v4).url"
+scp -q "$file" "$ssh_client_ip:.links-to-open/$(uuid -v4).url"
