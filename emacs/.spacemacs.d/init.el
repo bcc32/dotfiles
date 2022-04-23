@@ -261,7 +261,8 @@ This function should only modify configuration layer settings."
      yaml
 
      ;; Operating systems
-     nixos
+     (nixos :variables
+            nixos-format-on-save t)
      osx
 
      ;; Source control
