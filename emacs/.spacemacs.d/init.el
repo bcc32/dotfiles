@@ -241,10 +241,11 @@ This function should only modify configuration layer settings."
      (ocaml :variables
             ocaml-format-on-save t)
      perl5
-     ,(when-any-installed '("python") '(python :variables
-                                               python-format-on-save t
-                                               python-formatter 'black
-                                               python-sort-imports-on-save t))
+     ,(when-any-installed '("python" "python3")
+                          '(python :variables
+                                   python-format-on-save t
+                                   python-formatter 'black
+                                   python-sort-imports-on-save t))
      ,(when-any-installed '("ruby") 'ruby)
      ,(when-any-installed '("rustc" "cargo") 'rust)
      ,(when-any-installed '("chicken" "guile")
