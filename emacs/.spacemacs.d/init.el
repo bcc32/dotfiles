@@ -52,6 +52,8 @@ Otherwise, render sequences in the current buffer."
       (ledger-navigate-beginning-of-xact)
       (unless (re-search-forward bcc32/ledger-posting-effective-date-regexp end t)
         (error "No effective date in transaction"))
+      (when (re-search-forward bcc32/ledger-posting-effective-date-regexp end t)
+        (error "Multiple effective dates in transaction"))
       (let ((effective-date (match-string 1)))
         (delete-region (match-beginning 0) (match-end 0))
         (ledger-navigate-beginning-of-xact)
