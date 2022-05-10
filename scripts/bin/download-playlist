@@ -1,6 +1,6 @@
 #!/bin/sh
 
-youtube-dl -f 'bestvideo[vcodec=vp9]+bestaudio[acodec=opus]' \
+yt-dlp -f 'bestvideo[vcodec=vp9]+bestaudio[acodec=opus]' \
   --merge-output-format webm \
   --write-info-json \
   --write-description \
