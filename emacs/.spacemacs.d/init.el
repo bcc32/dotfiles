@@ -65,8 +65,11 @@ Otherwise, render sequences in the current buffer."
     (save-excursion
       (ledger-navigate-beginning-of-xact)
       (unless (looking-at ledger-iterate-regexp)
-        (user-error "Not at regexp line"))
+        (user-error "Not inside xact"))
       (goto-char (match-beginning ledger-regex-iterate-group-payee))
+      (when (ledger-regex-iterate-code)
+        (delete-region (1- (match-beginning ledger-regex-iterate-group-code))
+                       (point)))
       (let ((code (current-kill 0)))
         (insert (format "(%s) " (string-trim code)))))))
 
