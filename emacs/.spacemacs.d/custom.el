@@ -56,7 +56,7 @@
  '(ledger-accounts-file (expand-file-name "declarations.ldg" "~/journal"))
  '(ledger-default-date-format ledger-iso-date-format)
  '(ledger-reconcile-default-commodity "USD")
- '(ledger-reconcile-insert-effective-date t)
+ '(ledger-reconcile-insert-effective-date 'bcc32-ledger-should-insert-effective-date)
  '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("cleared" "%(binary) -f %(ledger-file) bal --current -C %(account)")
