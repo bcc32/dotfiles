@@ -879,6 +879,10 @@ before packages are loaded."
   (require 'bcc32-abbrev)
   (bcc32-ocaml-abbrevs)
 
+  (define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
+    "Clean up `file-name-history' after cleaning up recentf lists."
+    (setq file-name-history (cl-delete-if-not #'file-exists-p file-name-history)))
+
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
   ;;
