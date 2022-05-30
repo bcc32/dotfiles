@@ -6,7 +6,7 @@
 --write-annotations
 --write-description
 --write-info-json
---write-link
+--write-url-link
 --embed-chapters
 --embed-metadata
 --embed-thumbnail --write-all-thumbnails
