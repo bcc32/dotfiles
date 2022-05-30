@@ -1,0 +1,18 @@
+# Most likely to be playable without transcoding in Plex
+--format 'bestvideo[vcodec=vp9]+bestaudio[acodec=opus]/best'
+--merge-output-format webm
+
+# Write all auxiliary files and embed all available metadata
+--write-annotations
+--write-description
+--write-info-json
+--write-link
+--embed-chapters
+--embed-metadata
+--embed-thumbnail --write-all-thumbnails
+--embed-subs --write-subs --sub-langs all
+
+--no-continue
+
+# Don't fool mtime, just leave it as downloaded time
+--no-mtime
