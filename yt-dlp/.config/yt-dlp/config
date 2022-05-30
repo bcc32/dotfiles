@@ -9,7 +9,7 @@
 --write-url-link
 --embed-chapters
 --embed-metadata
---embed-thumbnail --write-all-thumbnails
+--write-thumbnail
 --embed-subs --write-subs --sub-langs all
 
 --no-continue
