@@ -881,7 +881,10 @@ before packages are loaded."
 
   (define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
     "Clean up `file-name-history' after cleaning up recentf lists."
-    (setq file-name-history (cl-delete-if-not #'file-exists-p file-name-history)))
+    (setq file-name-history
+          (cl-delete-if (lambda (file)
+                          (or (file-remote-p file) (not (file-exists-p file))))
+                        file-name-history)))
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
