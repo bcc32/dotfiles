@@ -46,13 +46,18 @@ Otherwise, render sequences in the current buffer."
     "A comment containing an effective date for a posting.")
 
   (defun bcc32-ledger-should-insert-effective-date ()
-    (ledger-navigate-beginning-of-xact)
     (let ((end (save-excursion (ledger-navigate-end-of-xact) (point)))
-          accounts)
+          accounts
+          account)
+      (beginning-of-line)
+      (when (ledger-next-account end)
+        (setq account (match-string 1)))
+      (ledger-navigate-beginning-of-xact)
       (while (ledger-next-account end)
         (push (match-string 1) accounts))
-      (not (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
-                     accounts))))
+      (not (or (string= account "Assets:Cash:Wallet")
+               (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
+                         accounts)))))
 
   (defun bcc32/ledger-promote-effective-date ()
     "Move the effective date for a posting in this transaction to the transaction."
