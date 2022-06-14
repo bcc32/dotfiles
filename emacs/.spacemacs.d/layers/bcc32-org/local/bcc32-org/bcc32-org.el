@@ -164,6 +164,13 @@ non-nil.  Suggested usage is to add this function to
                    '(0 6))
       (org-timestamp-change 1 'day))))
 
+;;;###autoload
+(defun bcc32-org-agenda-babel-execute-subtree ()
+  "Execute babel source blocks in the subtree of the heading in this agenda buffer."
+  (interactive)
+  (org-agenda-with-point-at-orig-entry nil
+                                       (org-babel-execute-subtree)))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here
