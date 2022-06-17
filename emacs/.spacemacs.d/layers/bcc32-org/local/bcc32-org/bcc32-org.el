@@ -102,12 +102,11 @@ else +INF for entries with a todo keyword, -INF otherwise."
 (defun bcc32-org-lint-agenda-buffers ()
   "Run `org-lint' in all org buffers visiting agenda files, stopping at the first error."
   (interactive)
-  (catch 'found-error
-    (dolist (buf (org-buffer-list 'agenda))
-      (set-buffer buf)
-      (call-interactively 'org-lint)
-      (when (> (buffer-size) 0)
-        (throw 'found-error t)))))
+  (dolist (buf (org-buffer-list 'agenda))
+    (set-buffer buf)
+    (call-interactively 'org-lint)
+    (when (> (buffer-size) 0)
+      (error "Lint found errors in buffer"))))
 
 (defun bcc32-org--auto-ingest-init-org-hook ()
   "Ingest an org file if it is named init.org."
