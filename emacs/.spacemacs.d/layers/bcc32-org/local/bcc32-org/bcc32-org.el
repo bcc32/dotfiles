@@ -17,6 +17,7 @@
 (require 'f)
 (require 'magit-core)
 (require 'org)
+(require 'org-agenda)
 (require 'projectile)
 (require 's)
 

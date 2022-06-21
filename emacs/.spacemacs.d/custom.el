@@ -24,6 +24,7 @@
  '(evil-symbol-word-search t)
  '(evil-want-Y-yank-to-eol t)
  '(fancy-battery-mode t)
+ '(flycheck-emacs-lisp-initialize-packages t)
  '(flycheck-idle-change-delay 1.0)
  '(flycheck-ledger-explicit t)
  '(flycheck-ledger-pedantic t)

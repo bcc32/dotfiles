@@ -9,7 +9,11 @@
 
 ;;; Code:
 
+(require 'browse-url)
+(require 'cl-lib)
+(require 'dired-x)
 (require 'seq)
+(eval-when-compile (require 'subr-x))
 
 (defun when-any-installed (executable-names pkgs)
   "Only enable PKGS if any of EXECUTABLE-NAMES is installed.
@@ -29,6 +33,7 @@ A name is considered installed if `executable-find' returns non-nil."
       pkgs))
 
 ;; TODO conditionally reimplement this in Ecaml
+(declare-function ansi-color-apply-on-region "ansi-color" (begin end))
 (defun bcc32/ansi-color-region-or-buffer ()
   "Render ANSI SGR color sequences in the current region if it is active.
 
@@ -41,6 +46,15 @@ Otherwise, render sequences in the current buffer."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (with-eval-after-load 'ledger-mode
+  (defvar ledger-iso-date-regexp)
+  (defvar ledger-iterate-regexp)
+  (defvar ledger-regex-iterate-group-code)
+  (defvar ledger-regex-iterate-group-payee)
+  (declare-function ledger-navigate-end-of-xact       "ext:ledger-mode")
+  (declare-function ledger-next-account               "ext:ledger-mode")
+  (declare-function ledger-navigate-beginning-of-xact "ext:ledger-mode")
+  (declare-function ledger-toggle-current             "ext:ledger-mode")
+  (declare-function ledger-regex-iterate-code         "ext:ledger-mode")
   (defconst bcc32/ledger-posting-effective-date-regexp
     (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]")
     "A comment containing an effective date for a posting.")
@@ -89,6 +103,8 @@ Otherwise, render sequences in the current buffer."
       (let ((code (current-kill 0)))
         (insert (format "(%s) " (string-trim code)))))))
 
+(declare-function org-web-tools--get-first-url "org-web-tools")
+(declare-function pocket-lib-add-urls "pocket-lib")
 (defun bcc32/add-link (url tags)
   "Add URL from clipboard to pocket reader, prompting for TAGS."
   (interactive
@@ -103,7 +119,12 @@ Otherwise, render sequences in the current buffer."
   (when (pocket-lib-add-urls (list url) :tags tags)
     (message "Added %s" url)))
 
+(define-advice org-web-tools-read-url-as-org (:after (&rest _) disable-org-indent-mode)
+  (when (fboundp 'org-indent-mode)
+    (org-indent-mode -1)))
+
 ;; TODO: Perhaps this should be upstreamed?
+(declare-function pocket-reader-open-url "pocket-reader")
 (defun bcc32/pocket-reader-browse ()
   "Open marked or current items in external browser.
 The `browse-url' function is used."
@@ -133,7 +154,7 @@ unset in the selected frame, passing ARGS."
 
 Fall back to `browse-url-default-browser' if cmd.exe is not
 found, passing ARGS."
-  (if-let (cmd (executable-find "cmd.exe"))
+  (if-let ((cmd (executable-find "cmd.exe")))
       (call-process cmd nil nil nil
                     "/c"
                     (format "start /wait /b %s" url))
@@ -171,6 +192,7 @@ END."
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (setq-local fill-column 70))
 
+(defvar dotspacemacs-directory)
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -803,6 +825,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then byte-compile some of Spacemacs files.
    dotspacemacs-byte-compile nil))
 
+(declare-function spacemacs/load-spacemacs-env "core-env")
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
 This function defines the environment variables for your Emacs session.  By
@@ -812,6 +835,21 @@ See the header of this file for more information."
   (when (eq system-type 'darwin)
     (spacemacs/load-spacemacs-env)))
 
+(declare-function ocp-indent-buffer "ocp-indent" ())
+(define-advice ocamlformat (:after () run-ocp-indent)
+  (ocp-indent-buffer))
+
+(define-advice package--save-selected-packages (:around (&rest _) dont-save-to-custom-file 100)
+  "Don't save `package-selected-packages' to `custom-file'.")
+
+;; TODO: Perhaps this should be added to recentf-load-hook instead.
+(define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
+  "Clean up `file-name-history' after cleaning up recentf lists."
+  (setq file-name-history
+        (cl-delete-if (lambda (file)
+                        (or (file-remote-p file) (not (file-exists-p file))))
+                      file-name-history)))
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
@@ -819,8 +857,6 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq source-directory (expand-file-name "~/src/emacs/"))
-  (define-advice package--save-selected-packages (:around (&rest _) dont-save-to-custom-file 100)
-    "Don't save `package-selected-packages' to `custom-file'.")
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   (load custom-file)
   (add-to-list 'load-path dotspacemacs-directory))
@@ -839,20 +875,29 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  (declare-function spacemacs/set-leader-keys "core-keybindings")
+  (declare-function spacemacs/set-leader-keys-for-major-mode "core-keybindings")
+
   (put 'list-timers 'disabled nil)
 
   (bind-key "C-x C-c" (lambda () (interactive) (error "Do not use C-x C-c")))
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
+    (declare-function forward-evil-symbol "evil-common")
     (defalias 'forward-evil-word #'forward-evil-symbol))
 
   ;; toggles
-  (spacemacs/toggle-mode-line-org-clock-on)
-  (spacemacs/toggle-mode-line-version-control-off)
+  (when (fboundp 'spacemacs/toggle-mode-line-org-clock-on)
+    (spacemacs/toggle-mode-line-org-clock-on))
+  (when (fboundp 'spacemacs/toggle-mode-line-version-control-off)
+    (spacemacs/toggle-mode-line-version-control-off))
 
-  (setf (alist-get t ivy-format-functions-alist)
-        #'ivy-format-function-line)
+  (with-eval-after-load 'ivy
+    (defvar ivy-format-functions-alist)
+    (declare-function ivy-format-function-line "ivy")
+    (setf (alist-get t ivy-format-functions-alist)
+          #'ivy-format-function-line))
 
   (spacemacs/set-leader-keys
     "Ca" 'bcc32/ansi-color-region-or-buffer)
@@ -868,19 +913,15 @@ before packages are loaded."
     "v" 'merlin-enclosing-expand
     "f" 'ocamlformat)
 
-  (define-advice ocamlformat (:after () run-ocp-indent)
-    (ocp-indent-buffer))
-
   ;; Workaround for TRAMP issue in https://github.com/syl20bnr/spacemacs/pull/14070
   (with-eval-after-load 'magit
+    (defvar magit-git-executable)
     (setq magit-git-executable "git"))
 
   (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
 
-  (define-advice org-web-tools-read-url-as-org (:after (&rest _) disable-org-indent-mode)
-    (org-indent-mode -1))
-
   (with-eval-after-load 'pocket-reader
+    (defvar pocket-reader-mode-map)
     (bind-key "b" 'bcc32/pocket-reader-browse pocket-reader-mode-map))
 
   (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
@@ -888,15 +929,8 @@ before packages are loaded."
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
-  (require 'bcc32-abbrev)
+  (eval-and-compile (require 'bcc32-abbrev))
   (bcc32-ocaml-abbrevs)
-
-  (define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
-    "Clean up `file-name-history' after cleaning up recentf lists."
-    (setq file-name-history
-          (cl-delete-if (lambda (file)
-                          (or (file-remote-p file) (not (file-exists-p file))))
-                        file-name-history)))
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
@@ -907,9 +941,5 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-
-;; Local Variables:
-;; byte-compile-warnings: (not free-vars unresolved)
-;; End:
 
 ;;; init.el ends here

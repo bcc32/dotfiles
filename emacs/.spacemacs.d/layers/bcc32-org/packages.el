@@ -10,6 +10,7 @@
 (defun bcc32-org/init-bcc32-org ()
   (use-package bcc32-org
     :defer t
+    :commands (bcc32-org-cleanup)
     :init
     (with-eval-after-load 'org-agenda
       (add-to-list 'org-agenda-bulk-custom-functions '(?x bcc32-org-agenda-babel-execute-subtree-and-done)))
