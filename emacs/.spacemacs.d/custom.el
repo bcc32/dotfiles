@@ -24,7 +24,7 @@
  '(evil-symbol-word-search t)
  '(evil-want-Y-yank-to-eol t)
  '(fancy-battery-mode t)
- '(flycheck-emacs-lisp-initialize-packages t)
+ '(flycheck-emacs-lisp-initialize-packages t nil nil "Set so that ~/.spacemacs.d/init.el is checked properly")
  '(flycheck-idle-change-delay 1.0)
  '(flycheck-ledger-explicit t)
  '(flycheck-ledger-pedantic t)
