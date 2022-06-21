@@ -871,7 +871,7 @@ before packages are loaded."
   (define-advice ocamlformat (:after () run-ocp-indent)
     (ocp-indent-buffer))
 
-  ;; Workaround for https://github.com/syl20bnr/spacemacs/pull/14070
+  ;; Workaround for TRAMP issue in https://github.com/syl20bnr/spacemacs/pull/14070
   (with-eval-after-load 'magit
     (setq magit-git-executable "git"))
 
