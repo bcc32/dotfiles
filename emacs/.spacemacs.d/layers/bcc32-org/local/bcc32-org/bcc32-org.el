@@ -169,9 +169,15 @@ non-nil.  Suggested usage is to add this function to
 (defun bcc32-org-agenda-babel-execute-subtree-and-done ()
   "Execute babel source blocks in the subtree of the heading in this agenda buffer."
   (interactive)
-  (org-agenda-with-point-at-orig-entry nil
-    (org-babel-execute-subtree))
-  (org-agenda-todo 'done))
+  (let* ((blocks-executed 0)
+         (org-babel-after-execute-hook
+          (cons (lambda () (cl-incf blocks-executed))
+                org-babel-after-execute-hook)))
+    (org-agenda-with-point-at-orig-entry nil
+      (org-babel-execute-subtree))
+    (if (cl-plusp blocks-executed)
+        (org-agenda-todo 'done)
+      (user-error "No blocks executed, so not marking DONE"))))
 
 (provide 'bcc32-org)
 
