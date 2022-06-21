@@ -163,12 +163,15 @@ non-nil.  Suggested usage is to add this function to
                    '(0 6))
       (org-timestamp-change 1 'day))))
 
+;; TODO: Remove this when upstream merges the fix.
+(put 'org-agenda-with-point-at-orig-entry 'lisp-indent-function 'defun)
 ;;;###autoload
-(defun bcc32-org-agenda-babel-execute-subtree ()
+(defun bcc32-org-agenda-babel-execute-subtree-and-done ()
   "Execute babel source blocks in the subtree of the heading in this agenda buffer."
   (interactive)
   (org-agenda-with-point-at-orig-entry nil
-                                       (org-babel-execute-subtree)))
+    (org-babel-execute-subtree))
+  (org-agenda-todo 'done))
 
 (provide 'bcc32-org)
 

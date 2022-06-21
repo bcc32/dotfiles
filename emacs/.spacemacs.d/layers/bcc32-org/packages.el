@@ -12,7 +12,7 @@
     :defer t
     :init
     (with-eval-after-load 'org-agenda
-      (add-to-list 'org-agenda-bulk-custom-functions '(?x bcc32-org-agenda-babel-execute-subtree)))
+      (add-to-list 'org-agenda-bulk-custom-functions '(?x bcc32-org-agenda-babel-execute-subtree-and-done)))
     :hook (before-save . bcc32-org//cleanup-before-save-hook)
     :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)
     :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends))
