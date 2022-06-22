@@ -33,7 +33,7 @@ A name is considered installed if `executable-find' returns non-nil."
       pkgs))
 
 ;; TODO conditionally reimplement this in Ecaml
-(declare-function ansi-color-apply-on-region "ansi-color" (begin end))
+(declare-function ansi-color-apply-on-region "ansi-color")
 (defun bcc32/ansi-color-region-or-buffer ()
   "Render ANSI SGR color sequences in the current region if it is active.
 
@@ -50,11 +50,11 @@ Otherwise, render sequences in the current buffer."
   (defvar ledger-iterate-regexp)
   (defvar ledger-regex-iterate-group-code)
   (defvar ledger-regex-iterate-group-payee)
-  (declare-function ledger-navigate-end-of-xact       "ext:ledger-mode")
-  (declare-function ledger-next-account               "ext:ledger-mode")
-  (declare-function ledger-navigate-beginning-of-xact "ext:ledger-mode")
-  (declare-function ledger-toggle-current             "ext:ledger-mode")
-  (declare-function ledger-regex-iterate-code         "ext:ledger-mode")
+  (declare-function ledger-navigate-beginning-of-xact "ext:ledger-navigate")
+  (declare-function ledger-navigate-end-of-xact       "ext:ledger-navigate")
+  (declare-function ledger-next-account               "ext:ledger-post")
+  (declare-function ledger-regex-iterate-code         "ext:ledger-regex" t t)
+  (declare-function ledger-toggle-current             "ext:ledger-state")
   (defconst bcc32/ledger-posting-effective-date-regexp
     (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]")
     "A comment containing an effective date for a posting.")
@@ -929,7 +929,8 @@ before packages are loaded."
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
-  (eval-and-compile (require 'bcc32-abbrev))
+  (require 'bcc32-abbrev)
+  (declare-function bcc32-ocaml-abbrevs "bcc32-abbrev" ())
   (bcc32-ocaml-abbrevs)
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
