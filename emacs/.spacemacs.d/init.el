@@ -913,10 +913,12 @@ before packages are loaded."
     "v" 'merlin-enclosing-expand
     "f" 'ocamlformat)
 
-  ;; Workaround for TRAMP issue in https://github.com/syl20bnr/spacemacs/pull/14070
   (with-eval-after-load 'magit
     (defvar magit-git-executable)
-    (setq magit-git-executable "git"))
+    ;; Hack to force usage of native ARM git executable on macOS, which is much
+    ;; faster than the x86 version from nixpkgs.
+    (when (eq system-type 'darwin)
+      (setq magit-git-executable "/usr/bin/git")))
 
   (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
 
