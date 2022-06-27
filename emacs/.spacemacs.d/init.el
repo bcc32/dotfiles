@@ -904,9 +904,6 @@ before packages are loaded."
     (setf (alist-get t ivy-format-functions-alist)
           #'ivy-format-function-line))
 
-  (spacemacs/set-leader-keys
-    "Ca" 'bcc32/ansi-color-region-or-buffer)
-
   (spacemacs/set-leader-keys-for-major-mode 'ledger-mode
     "j" 'bcc32/ledger-promote-effective-date
     "y" 'bcc32/ledger-yank-code)
