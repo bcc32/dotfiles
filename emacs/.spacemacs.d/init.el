@@ -872,6 +872,9 @@ This function is called only while dumping Spacemacs configuration.  You can
 dump."
   )
 
+(defvar spaceline-org-clock-p)
+(defvar spaceline-version-control-p)
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -891,11 +894,9 @@ before packages are loaded."
     (declare-function forward-evil-symbol "evil-common")
     (defalias 'forward-evil-word #'forward-evil-symbol))
 
-  ;; toggles
-  (when (fboundp 'spacemacs/toggle-mode-line-org-clock-on)
-    (spacemacs/toggle-mode-line-org-clock-on))
-  (when (fboundp 'spacemacs/toggle-mode-line-version-control-off)
-    (spacemacs/toggle-mode-line-version-control-off))
+  ;; mode line segments
+  (setq spaceline-org-clock-p t)
+  (setq spaceline-version-control-p nil)
 
   (with-eval-after-load 'ivy
     (defvar ivy-format-functions-alist)
