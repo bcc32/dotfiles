@@ -921,8 +921,6 @@ before packages are loaded."
     (when (eq system-type 'darwin)
       (setq magit-git-executable "/usr/bin/git")))
 
-  (spacemacs/set-leader-keys "gy" 'bcc32-org-commit-and-push-all)
-
   (with-eval-after-load 'pocket-reader
     (defvar pocket-reader-mode-map)
     (bind-key "b" 'bcc32/pocket-reader-browse pocket-reader-mode-map))
