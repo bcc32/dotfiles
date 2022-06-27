@@ -910,8 +910,7 @@ before packages are loaded."
     "j" 'bcc32/ledger-promote-effective-date
     "y" 'bcc32/ledger-yank-code)
 
-  (with-eval-after-load 'ledger-mode
-    (add-hook 'ledger-mode-hook #'turn-off-auto-fill))
+  (add-hook 'ledger-mode-hook #'turn-off-auto-fill)
 
   (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
     "v" 'merlin-enclosing-expand
