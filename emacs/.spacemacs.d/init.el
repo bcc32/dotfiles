@@ -22,16 +22,6 @@ A name is considered installed if `executable-find' returns non-nil."
   (if (seq-some #'executable-find executable-names)
       pkgs))
 
-(defun when-on-hostname (name pkgs)
-  "Only enable PKGS if current machine's hostname is NAME."
-  (if (string= (system-name) name)
-      pkgs))
-
-(defun when-on-type (type pkgs)
-  "Only enable PKGS if `system-type' is `eql' to TYPE."
-  (if (eql system-type type)
-      pkgs))
-
 ;; TODO conditionally reimplement this in Ecaml
 (declare-function ansi-color-apply-on-region "ansi-color")
 (defun bcc32/ansi-color-region-or-buffer ()
