@@ -91,7 +91,21 @@ Otherwise, render sequences in the current buffer."
         (delete-region (1- (match-beginning ledger-regex-iterate-group-code))
                        (point)))
       (let ((code (current-kill 0)))
-        (insert (format "(%s) " (string-trim code)))))))
+        (insert (format "(%s) " (string-trim code))))))
+
+  (flycheck-define-command-checker 'bcc32-ledger-lint
+    "Lint by running `bin/check.sh' with no arguments."
+    :command '("bin/check.sh")
+    :error-patterns
+    '((error line-start "sort: " (file-name) ":" line ":" (message))
+      (error line-start (file-name) ":" line ":"
+             (message (one-or-more (or not-newline "\n " (seq "\n" line-end)))))
+      (error line-start "While parsing file \"" (file-name) "\", line " line ":"
+             (message (+\? anychar) line-start "Error:" (one-or-more nonl) line-end)))
+    :modes 'ledger-mode
+    :next-checkers '(ledger))
+
+  (cl-pushnew 'bcc32-ledger-lint flycheck-checkers))
 
 (declare-function org-web-tools--get-first-url "org-web-tools")
 (declare-function pocket-lib-add-urls "pocket-lib")
