@@ -101,7 +101,7 @@ Otherwise, render sequences in the current buffer."
       (error line-start (file-name) ":" line ":"
              (message (one-or-more (or not-newline "\n " (seq "\n" line-end)))))
       (error line-start "While parsing file \"" (file-name) "\", line " line ":"
-             (message (+\? anychar) line-start "Error:" (one-or-more nonl) line-end)))
+             (message (+? anychar) line-start "Error:" (one-or-more nonl) line-end)))
     :modes 'ledger-mode
     :next-checkers '(ledger))
 
