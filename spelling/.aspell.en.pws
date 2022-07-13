@@ -1,4 +1,4 @@
-personal_ws-1.1 en 110 
+personal_ws-1.1 en 112 
 Android
 Elisp
 JetBlue
@@ -7,6 +7,7 @@ NYC
 OCaml
 PDF
 RDP
+SIGABRT
 SQLite
 Spotify
 StackExchange
@@ -95,6 +96,7 @@ repositioned
 resampling
 smoothie
 soundtrack
+subcommand
 symlink
 symlinks
 tad
