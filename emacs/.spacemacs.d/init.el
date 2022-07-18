@@ -256,6 +256,7 @@ This function should only modify configuration layer settings."
           org-projectile-file "TODO.org"
           org-start-notification-daemon-on-startup t
           org-want-todo-bindings t)
+     pdf
      (unicode-fonts :variables
                     ;; https://github.com/mickeynp/ligature.el/issues/10
                     ;; https://github.com/mickeynp/ligature.el/issues/28
