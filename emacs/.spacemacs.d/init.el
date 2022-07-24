@@ -60,6 +60,7 @@ Otherwise, render sequences in the current buffer."
       (while (ledger-next-account end)
         (push (match-string 1) xact-accounts))
       (not (or (string= account "Assets:Cash:Wallet")
+               (string= account "Assets:Venmo")
                (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
                          xact-accounts)))))
 
