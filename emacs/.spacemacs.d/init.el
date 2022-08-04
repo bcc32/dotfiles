@@ -36,6 +36,7 @@ Otherwise, render sequences in the current buffer."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (with-eval-after-load 'ledger-mode
+  (defvar flycheck-checkers)
   (defvar ledger-iso-date-regexp)
   (defvar ledger-iterate-regexp)
   (defvar ledger-regex-iterate-group-code)
