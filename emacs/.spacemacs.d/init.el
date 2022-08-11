@@ -905,6 +905,14 @@ before packages are loaded."
 
   (bind-key "C-x C-c" (lambda () (interactive) (error "Do not use C-x C-c")))
 
+  ;; Replace `spacemacs/kill-emacs' and `spacemacs/prompt-kill-emacs' with
+  ;; `spacemacs/save-buffers-kill-emacs'.  The former functions do not properly
+  ;; run `kill-emacs-query-functions' and so will kill buffers that have
+  ;; processes running.
+  (spacemacs/set-leader-keys
+    "qq" #'spacemacs/save-buffers-kill-emacs
+    "qQ" #'spacemacs/save-buffers-kill-emacs)
+
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
     (declare-function forward-evil-symbol "evil-common")
