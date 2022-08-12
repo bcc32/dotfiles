@@ -60,8 +60,9 @@ Otherwise, render sequences in the current buffer."
       (ledger-navigate-beginning-of-xact)
       (while (ledger-next-account end)
         (push (match-string 1) xact-accounts))
-      (not (or (string= account "Assets:Cash:Wallet")
-               (string= account "Assets:Venmo")
+      (not (or (member account '("Assets:Cash:Wallet"
+                                 "Assets:Venmo"
+                                 "Assets:eBay:Pending Payouts"))
                (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
                          xact-accounts)))))
 
