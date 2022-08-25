@@ -901,6 +901,7 @@ before packages are loaded."
 
   (declare-function spacemacs/set-leader-keys "core-keybindings")
   (declare-function spacemacs/set-leader-keys-for-major-mode "core-keybindings")
+  (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
 
   (put 'list-timers 'disabled nil)
 
