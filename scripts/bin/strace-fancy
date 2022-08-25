@@ -25,6 +25,13 @@ flags=(
 
   # Print all non-ASCII strings in hex format.
   -x
+
+  # Print paths associated with file descriptor arguments
+  -y
+
+  # Print protocol specific information associated with socket file descriptors,
+  # and block/character device number associated with device file descriptors.
+  -yy
 )
 
 echo "${flags[@]}"
