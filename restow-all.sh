@@ -2,11 +2,6 @@
 
 set -eu
 
-# Ensure certain directories already exist so that stow won't try to create
-# symlinks too high in the file hierarchy, leading to unmanaged files appearing
-# in the repo.
-mkdir -p ../.config ../.gnupg ../.ssh ../.stack
-
 packages=(*/)
 filtered_packages=()
 
@@ -25,4 +20,4 @@ for package in "${packages[@]}"; do
   fi
 done
 
-./stow.sh -R "$@" "${filtered_packages[@]}"
+./stow.sh --no-folding -R "$@" "${filtered_packages[@]}"
