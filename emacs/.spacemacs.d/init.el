@@ -35,6 +35,20 @@ Otherwise, render sequences in the current buffer."
       (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
+(defun bcc32-dired-do-take (&optional arg)
+  "Take (cp --reflink=always) marked files into a target directory."
+  (interactive "P")
+  (let ((was-dired-async-mode dired-async-mode))
+    (dired-async-mode -1)
+    (dired-do-create-files 'take #'bcc32-dired-take-file "Take" arg t)
+    (when was-dired-async-mode
+      (dired-async-mode))))
+
+(defun bcc32-dired-take-file (file1 file2 &optional arg)
+  (call-process-shell-command
+   (format "cp --reflink=always -r -T %s %s"
+           (shell-quote-argument file1) (shell-quote-argument file2))))
+
 (with-eval-after-load 'ledger-mode
   (defvar flycheck-checkers)
   (defvar ledger-iso-date-regexp)
