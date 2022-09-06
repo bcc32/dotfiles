@@ -80,6 +80,7 @@
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-scheduled 'future)
  '(org-agenda-todo-ignore-time-comparison-use-seconds t)
+ '(org-appear-autolinks nil)
  '(org-attach-commit nil t nil "This variable is obsolete but has effect in some older versions of org-mode.")
  '(org-capture-templates
    '(("g" "Groceries" entry
