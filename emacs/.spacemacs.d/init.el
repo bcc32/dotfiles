@@ -36,7 +36,7 @@ Otherwise, render sequences in the current buffer."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (defun bcc32-dired-do-take (&optional arg)
-  "Take (cp --reflink=always) marked files into a target directory."
+  "Take (cp --reflink=always) marked files (or next ARG files) into target directory."
   (interactive "P")
   (let ((was-dired-async-mode dired-async-mode))
     (dired-async-mode -1)
@@ -44,7 +44,8 @@ Otherwise, render sequences in the current buffer."
     (when was-dired-async-mode
       (dired-async-mode))))
 
-(defun bcc32-dired-take-file (file1 file2 &optional arg)
+(defun bcc32-dired-take-file (file1 file2 &optional _)
+  "Internal to `bcc32-dired-do-take'.  Copy FILE1 to FILE2 with reflinks."
   (call-process-shell-command
    (format "cp --reflink=always -r -T %s %s"
            (shell-quote-argument file1) (shell-quote-argument file2))))
@@ -53,6 +54,7 @@ Otherwise, render sequences in the current buffer."
   (defvar flycheck-checkers)
   (defvar ledger-iso-date-regexp)
   (defvar ledger-iterate-regexp)
+  (defvar ledger-mode-map)
   (defvar ledger-regex-iterate-group-code)
   (defvar ledger-regex-iterate-group-payee)
   (declare-function ledger-navigate-beginning-of-xact "ext:ledger-navigate")
