@@ -64,6 +64,10 @@ Otherwise, render sequences in the current buffer."
     (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]")
     "A comment containing an effective date for a posting.")
 
+  ;; Emacs 28 fixes a bug where newline-and-indent incorrectly indents the
+  ;; original line, but I actually like this behavior for ledger-mode.
+  (bind-key "RET" #'reindent-then-newline-and-indent ledger-mode-map)
+
   (defun bcc32-ledger-should-insert-effective-date ()
     (let ((end (save-excursion (ledger-navigate-end-of-xact) (point)))
           xact-accounts
