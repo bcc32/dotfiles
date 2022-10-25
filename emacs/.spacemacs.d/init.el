@@ -315,7 +315,7 @@ This function should only modify configuration layer settings."
                                    python-formatter 'black
                                    python-sort-imports-on-save t))
      ,(when-any-installed '("ruby") 'ruby)
-     ,(when-any-installed '("rustc" "cargo") 'rust)
+     rust
      ,(when-any-installed '("chicken" "guile")
                           '(scheme :variables
                                    scheme-implementations '(chicken guile)))
