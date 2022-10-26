@@ -285,6 +285,8 @@ This function should only modify configuration layer settings."
                     unicode-fonts-enable-ligatures (>= emacs-major-version 28))
 
      ;; Programming and markup languages
+     (lsp :variables
+          lsp-rust-server 'rust-analyzer)
      autohotkey
      c-c++
      csv
@@ -315,7 +317,8 @@ This function should only modify configuration layer settings."
                                    python-formatter 'black
                                    python-sort-imports-on-save t))
      ,(when-any-installed '("ruby") 'ruby)
-     rust
+     (rust :variables
+           rust-backend 'lsp)
      ,(when-any-installed '("chicken" "guile")
                           '(scheme :variables
                                    scheme-implementations '(chicken guile)))
