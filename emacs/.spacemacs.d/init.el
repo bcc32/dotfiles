@@ -302,7 +302,8 @@ This function should only modify configuration layer settings."
                  javascript-backend 'tide
                  javascript-fmt-on-save t
                  javascript-fmt-tool 'prettier)
-     json
+     (json :variables
+           json-backend 'company-json)
      jsonnet
      ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
                            '(bibtex
