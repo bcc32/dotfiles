@@ -123,6 +123,7 @@
  '(pocket-reader-archive-on-open nil)
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rust-format-on-save t)
+ '(rust-format-show-buffer nil)
  '(save-abbrevs 'silently)
  '(sentence-end-double-space t)
  '(sh-basic-offset 2)
