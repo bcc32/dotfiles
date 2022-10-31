@@ -36,7 +36,9 @@ Otherwise, render sequences in the current buffer."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (defun bcc32-dired-do-take (&optional arg)
-  "Take (cp --reflink=always) marked files (or next ARG files) into target directory."
+  "Take (cp --reflink=always) marked files into target directory.
+
+If ARG is non-nil, take next ARG files instead."
   (interactive "P")
   (let ((was-dired-async-mode dired-async-mode))
     (dired-async-mode -1)
@@ -219,14 +221,15 @@ END."
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (setq-local fill-column 70))
 
+(declare-function sp-local-pair "smartparens")
+(declare-function sp-update-local-pairs "smartparens")
 (defun bcc32--work-around-smartparens-1036 ()
   "Work around Fuco1/smartparens#1036.
 
 `smartparens-strict-mode' has the wrong behavior for
 `eval-expression'.
 
-Intended to be added to `eval-expression-minibuffer-setup-hook'.
-"
+Intended to be added to `eval-expression-minibuffer-setup-hook'."
   (sp-local-pair 'eval-expression-minibuffer "'" nil :actions nil)
   (sp-local-pair 'eval-expression-minibuffer "`" nil :actions nil)
   (sp-update-local-pairs 'eval-expression-minibuffer))
