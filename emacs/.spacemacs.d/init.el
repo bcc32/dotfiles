@@ -219,6 +219,18 @@ END."
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (setq-local fill-column 70))
 
+(defun bcc32--work-around-smartparens-1036 ()
+  "Work around Fuco1/smartparens#1036.
+
+`smartparens-strict-mode' has the wrong behavior for
+`eval-expression'.
+
+Intended to be added to `eval-expression-minibuffer-setup-hook'.
+"
+  (sp-local-pair 'eval-expression-minibuffer "'" nil :actions nil)
+  (sp-local-pair 'eval-expression-minibuffer "`" nil :actions nil)
+  (sp-update-local-pairs 'eval-expression-minibuffer))
+
 (defvar dotspacemacs-directory)
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -928,6 +940,8 @@ before packages are loaded."
   (declare-function spacemacs/set-leader-keys "core-keybindings")
   (declare-function spacemacs/set-leader-keys-for-major-mode "core-keybindings")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
+
+  (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
 
   (put 'list-timers 'disabled nil)
 
