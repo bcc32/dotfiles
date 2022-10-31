@@ -336,6 +336,7 @@ This function should only modify configuration layer settings."
                           '(scheme :variables
                                    scheme-implementations '(chicken guile)))
      (shell-scripts :variables
+                    shell-scripts-backend nil
                     shell-scripts-format-on-save t)
      sql
      (typescript :variables
