@@ -1,0 +1,4 @@
+#!/bin/sh
+
+torrent=$1
+transmission-remote -t "$torrent" --move '/srv/share/var/transmission/Downloads/delete-when-done/'
