@@ -67,6 +67,7 @@
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
+ '(lsp-enable-suggest-server-download nil)
  '(magit-clone-default-directory "~/src/")
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
