@@ -906,7 +906,6 @@ See the header of this file for more information."
 (define-advice package--save-selected-packages (:around (&rest _) dont-save-to-custom-file 100)
   "Don't save `package-selected-packages' to `custom-file'.")
 
-;; TODO: Perhaps this should be added to recentf-load-hook instead.
 (define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
   "Clean up `file-name-history' after cleaning up recentf lists."
   (setq file-name-history
