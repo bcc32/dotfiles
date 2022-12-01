@@ -120,7 +120,7 @@ If ARG is non-nil, take next ARG files instead."
 
   (flycheck-define-command-checker 'bcc32-ledger-lint
     "Lint by running `bin/check.sh' with no arguments."
-    :command '("bin/check.sh")
+    :command '("bin/check.sh" source-inplace)
     :error-patterns
     '((error line-start "sort: " (file-name) ":" line ":" (message))
       (error line-start (file-name) ":" line ":"
