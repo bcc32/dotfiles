@@ -128,7 +128,8 @@
  '(rust-format-on-save t)
  '(rust-format-show-buffer nil)
  '(safe-local-variable-values
-   '((diff-add-log-use-relative-names . t)
+   '((vc-prepare-patches-separately)
+     (diff-add-log-use-relative-names . t)
      (vc-git-annotate-switches . "-w")
      (typescript-backend . tide)
      (typescript-backend . lsp)
