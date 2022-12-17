@@ -15,7 +15,6 @@
  '(counsel-find-file-at-point nil)
  '(dired-async-mode t)
  '(dired-omit-verbose nil)
- '(direnv-mode t)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
  '(enable-remote-dir-locals t)
