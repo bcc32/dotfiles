@@ -65,7 +65,7 @@
     ;; all entries, then evaluate `current-column' again.  You get a different,
     ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
     (org-save-outline-visibility :use-markers
-      (org-show-all)
+      (org-fold-show-all)
       (org-align-tags :all))))
 
 (defun bcc32-org--sort-by-closed-getkey ()
