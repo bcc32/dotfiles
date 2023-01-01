@@ -1,3 +1,0 @@
-#!/bin/sh
-
-ledger register --by-payee 'Personal Debts'
