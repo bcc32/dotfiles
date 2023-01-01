@@ -406,6 +406,8 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
      (direnv :toggle (executable-find "direnv"))
+     (explain-pause-mode :location (recipe :fetcher github
+                                           :repo "lastquestion/explain-pause-mode"))
      mode-line-bell
      (pocket-reader :location (recipe :fetcher github
                                       :repo "bcc32/pocket-reader.el"
@@ -949,6 +951,12 @@ before packages are loaded."
   (declare-function spacemacs/set-leader-keys "core-keybindings")
   (declare-function spacemacs/set-leader-keys-for-major-mode "core-keybindings")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
+
+  (declare-function explain-pause-mode "explain-pause-mode")
+  (use-package explain-pause-mode
+    :config
+    (explain-pause-mode)
+    (setf (second (assoc 'explain-pause-mode minor-mode-alist)) ""))
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
 
