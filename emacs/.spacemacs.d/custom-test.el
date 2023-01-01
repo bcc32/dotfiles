@@ -56,6 +56,6 @@
   :tags '(bcc32 custom)
   (require 'org)
   (should (equal (custom-variable-default-value 'org-modules)
-                 '(ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-eww))))
+                 '(ol-doi ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-eww))))
 
 (provide 'custom-test)
