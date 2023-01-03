@@ -956,7 +956,7 @@ before packages are loaded."
   (use-package explain-pause-mode
     :config
     (explain-pause-mode)
-    (setf (second (assoc 'explain-pause-mode minor-mode-alist)) ""))
+    (setf (cadr (assoc 'explain-pause-mode minor-mode-alist)) ""))
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
 
