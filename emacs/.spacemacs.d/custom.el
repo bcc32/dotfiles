@@ -77,7 +77,8 @@
  '(mode-line-bell-mode t)
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files
-   '("~/file-server/" "~/journal/" "~/src/film-metadata/" "~/src/watch-later/" "~/todo/" "~/todo/ideas/"))
+   (seq-filter #'file-directory-p
+               '("~/file-server/" "~/journal/" "~/src/film-metadata/" "~/src/watch-later/" "~/todo/" "~/todo/ideas/")))
  '(org-agenda-prefer-last-repeat t)
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-span 'day)
