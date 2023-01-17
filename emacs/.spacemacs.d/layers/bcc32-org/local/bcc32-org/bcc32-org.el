@@ -37,6 +37,11 @@
   "Return t if FILE-NAME refers to an *.org_archive file."
   (f-ext? file-name "org_archive"))
 
+(defalias 'bcc32-org--fold-show-all
+  (if (functionp #'org-fold-show-all)
+      #'org-fold-show-all
+    #'org-show-all))
+
 ;;;###autoload
 (defun bcc32-org-cleanup ()
   "Run some cleanup on the current buffer, if it's an org buffer.
@@ -65,7 +70,7 @@
     ;; all entries, then evaluate `current-column' again.  You get a different,
     ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
     (org-save-outline-visibility :use-markers
-      (org-fold-show-all)
+      (bcc32-org--fold-show-all)
       (org-align-tags :all))))
 
 (defun bcc32-org--sort-by-closed-getkey ()
