@@ -22,7 +22,6 @@ A name is considered installed if `executable-find' returns non-nil."
   (if (seq-some #'executable-find executable-names)
       pkgs))
 
-;; TODO conditionally reimplement this in Ecaml
 (declare-function ansi-color-apply-on-region "ansi-color")
 (defun bcc32/ansi-color-region-or-buffer ()
   "Render ANSI SGR color sequences in the current region if it is active.
