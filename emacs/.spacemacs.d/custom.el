@@ -13,6 +13,7 @@
  '(calendar-week-start-day 1)
  '(column-enforce-column nil)
  '(counsel-find-file-at-point nil)
+ '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
  '(dired-async-mode t)
  '(dired-omit-verbose nil)
  '(display-time-mode t)
