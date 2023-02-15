@@ -72,6 +72,8 @@
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
  '(lsp-enable-suggest-server-download nil)
  '(magit-clone-default-directory "~/src/")
+ '(merlin-eldoc-doc nil)
+ '(merlin-eldoc-type nil)
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mode-line-bell-flash-time 0.2)
