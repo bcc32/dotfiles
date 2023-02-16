@@ -39,8 +39,9 @@ Otherwise, render sequences in the current buffer."
 
 If ARG is non-nil, take next ARG files instead."
   (interactive "P")
-  (let ((was-dired-async-mode dired-async-mode))
-    (dired-async-mode -1)
+  (let ((was-dired-async-mode (bound-and-true-p dired-async-mode)))
+    (when was-dired-async-mode
+      (dired-async-mode -1))
     (dired-do-create-files 'take #'bcc32-dired-take-file "Take" arg t)
     (when was-dired-async-mode
       (dired-async-mode))))
