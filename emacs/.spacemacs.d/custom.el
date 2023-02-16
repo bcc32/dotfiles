@@ -15,6 +15,7 @@
  '(counsel-find-file-at-point nil)
  '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
  '(dired-async-mode t)
+ '(dired-async-skip-fast t)
  '(dired-omit-verbose nil)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
