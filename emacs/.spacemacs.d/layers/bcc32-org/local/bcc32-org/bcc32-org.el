@@ -146,7 +146,9 @@ in the current repo."
                (y-or-n-p "Revert all project buffers? "))
       (let ((projectile-buffers-filter-function #'projectile-buffers-with-file))
         (projectile-process-current-project-buffers-current
-         (lambda () (revert-buffer :ignore-auto :no-confirm))))))
+         (lambda ()
+           (when (funcall (or buffer-stale-function #'buffer-stale--default-function) nil)
+             (revert-buffer :ignore-auto :no-confirm)))))))
   (message "Committing and pushing... done"))
 
 (defcustom bcc32-org-always-skip-weekends nil
