@@ -144,11 +144,10 @@ in the current repo."
     (setq head-after (magit-rev-parse (magit-headish)))
     (when (and (not (magit-rev-eq head-before head-after))
                (y-or-n-p "Revert all project buffers? "))
-      (let ((projectile-buffers-filter-function #'projectile-buffers-with-file))
-        (projectile-process-current-project-buffers-current
-         (lambda ()
-           (when (funcall (or buffer-stale-function #'buffer-stale--default-function) nil)
-             (revert-buffer :ignore-auto :no-confirm)))))))
+      (projectile-process-current-project-buffers-current
+       (lambda ()
+         (when (funcall (or buffer-stale-function #'buffer-stale--default-function) nil)
+           (revert-buffer :ignore-auto :no-confirm))))))
   (message "Committing and pushing... done"))
 
 (defcustom bcc32-org-always-skip-weekends nil
