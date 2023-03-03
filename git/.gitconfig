@@ -35,10 +35,10 @@
 	enabled = true
 [sendemail]
 	annotate = yes
-	smtpencryption = tls
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpuser = zeng.aaron.l@gmail.com
+	smtpencryption = ssl
+	smtpserver = smtp.fastmail.com
+	smtpserverport = 465
+	smtpuser = z@bcc32.com
 [user]
 	email = me@bcc32.com
 	name = Aaron L. Zeng
