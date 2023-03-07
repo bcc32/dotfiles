@@ -12,7 +12,6 @@
    (expand-file-name "calc-settings.el" dotspacemacs-directory))
  '(calendar-week-start-day 1)
  '(column-enforce-column nil)
- '(counsel-find-file-at-point nil)
  '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
  '(dired-async-mode t)
  '(dired-async-skip-fast t)
