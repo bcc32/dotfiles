@@ -386,6 +386,7 @@ This function should only modify configuration layer settings."
      spotify
 
      ;; User layers
+     bcc32
      bcc32-org
      )
 
