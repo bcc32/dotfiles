@@ -28,7 +28,7 @@
   :tags '(bcc32 custom)
   (require 'grep)
   (should (equal (custom-variable-default-value 'grep-files-aliases)
-                 '(("all" .   "* .[!.]* ..?*")
+                 '(("all" .   "* .*")
                    ("el" .    "*.el")
                    ("ch" .    "*.[ch]")
                    ("c" .     "*.c")
