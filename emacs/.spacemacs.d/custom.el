@@ -36,7 +36,7 @@
  '(global-column-enforce-mode t)
  '(gofmt-command "goimports")
  '(grep-files-aliases
-   '(("ocaml" . "*.ml *.mli *.mll *.mly")
+   '(("ml" . "*.ml *.mli *.mll *.mlt *.mly *.mdx")
      ("all" . "* .[!.]* ..?*")
      ("el" . "*.el")
      ("ch" . "*.[ch]")
