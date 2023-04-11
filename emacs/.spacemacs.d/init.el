@@ -355,7 +355,8 @@ This function should only modify configuration layer settings."
      osx
 
      ;; Source control
-     git
+     (git :variables
+          git-enable-magit-todos-plugin t)
      (version-control :variables
                       version-control-diff-tool nil)
 
