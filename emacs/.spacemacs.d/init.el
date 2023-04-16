@@ -1023,6 +1023,10 @@ before packages are loaded."
   (declare-function bcc32-ocaml-abbrevs "bcc32-abbrev" ())
   (bcc32-ocaml-abbrevs)
 
+  (with-eval-after-load 'savehist
+    (defvar savehist-additional-variables)
+    (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
+
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
   ;;
