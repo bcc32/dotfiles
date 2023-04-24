@@ -131,8 +131,8 @@ match%optional " _ " with
           (let ((abbrev    (elt z 0))
                 (expansion (elt z 1)))
             (define-abbrev global-abbrev-table abbrev expansion nil :case-fixed t))
-        (let* ((abbrev    (first z))
-               (skeleton  (rest z))
+        (let* ((abbrev    (cl-first z))
+               (skeleton  (cl-rest z))
                (expansion "") ;; because we want to insert a skeleton
                (hook      `(lambda () (skeleton-insert (cons nil ',skeleton)))))
           (define-abbrev global-abbrev-table abbrev expansion hook :case-fixed t))))))
@@ -163,10 +163,10 @@ match%optional " _ " with
     ('()
      (when include
        (let* ((include (reverse include))
-              (abbrev (apply 'concat (cons "qd" (mapcar #'first include))))
+              (abbrev (apply 'concat (cons "qd" (mapcar #'cl-first include))))
               (expansion
                (concat "[@@deriving "
-                       (mapconcat #'second include ", ")
+                       (mapconcat #'cl-second include ", ")
                        "]")))
          (define-abbrev global-abbrev-table abbrev expansion nil :case-fixed t))))))
 
