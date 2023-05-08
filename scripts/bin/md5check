@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-find . -type f \
-  | sed --regexp-extended 's:.*/([[:xdigit:]]{32})[.]\w+$:\1  \0:; t; d' \
-  | parallel --block-size 1K --pipe --line-buffer md5sum -c --quiet
