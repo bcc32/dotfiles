@@ -150,7 +150,6 @@
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
- '(spaceline-info-mode t)
  '(sql-product 'sqlite)
  '(tab-width 8)
  '(tao-theme-use-sepia nil)
