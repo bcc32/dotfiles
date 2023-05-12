@@ -135,7 +135,8 @@
  '(rust-format-on-save t)
  '(rust-format-show-buffer nil)
  '(safe-local-variable-values
-   '((flycheck-mode)
+   '((projectile-project-compilation-cmd . "make -j")
+     (flycheck-mode)
      (vc-prepare-patches-separately)
      (diff-add-log-use-relative-names . t)
      (vc-git-annotate-switches . "-w")
