@@ -88,21 +88,25 @@ else +INF for entries with a todo keyword, -INF otherwise."
 (defun bcc32-org-sort-by-closed ()
   "Sort org entry at point by the CLOSED property."
   (interactive "*")
-  (with-demoted-errors "Error sorting: %S"
-    (org-sort-entries nil ?f 'bcc32-org--sort-by-closed-getkey)))
+  (org-sort-entries nil ?f 'bcc32-org--sort-by-closed-getkey))
 
 ;;;###autoload
 (defun bcc32-org-sort-entire-agenda ()
   "Sort all agenda subtrees by CLOSED."
   (interactive)
-  (save-excursion
-    (dolist (buf (org-buffer-list 'agenda))
-      (set-buffer buf)
-      (goto-char (point-min))
-      (bcc32-org-sort-by-closed)
-      (org-map-entries #'bcc32-org-sort-by-closed
-                       t
-                       nil))))
+  (cl-flet ((sort-if-nonempty
+             ()
+             (condition-case e
+                 (bcc32-org-sort-by-closed)
+               (user-error
+                (unless (string= (cadr e) "Nothing to sort")
+                  (signal (car e) (cadr e)))))))
+    (save-excursion
+      (dolist (buf (org-buffer-list 'agenda))
+        (set-buffer buf)
+        (goto-char (point-min))
+        (sort-if-nonempty)
+        (org-map-entries #'sort-if-nonempty t nil)))))
 
 ;;;###autoload
 (defun bcc32-org-lint-agenda-buffers ()
