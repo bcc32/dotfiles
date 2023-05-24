@@ -23,7 +23,7 @@
 
 (require 'bcc32-org-flycheck)
 
-(defgroup bcc32-org nil "Bcc32's org-mode customizations."
+(defgroup bcc32-org nil "Bcc32's `org-mode' customizations."
   :group 'emacs)
 
 (defvar org-indent-mode)
@@ -38,7 +38,7 @@
   (f-ext? file-name "org_archive"))
 
 (defalias 'bcc32-org--fold-show-all
-  (if (functionp #'org-fold-show-all)
+  (if (functionp 'org-fold-show-all)
       #'org-fold-show-all
     #'org-show-all))
 
@@ -110,7 +110,7 @@ else +INF for entries with a todo keyword, -INF otherwise."
 
 ;;;###autoload
 (defun bcc32-org-lint-agenda-buffers ()
-  "Run `org-lint' in all org buffers visiting agenda files, stopping at the first error."
+  "Run `org-lint' in all org agenda files, stopping at the first error."
   (interactive)
   (dolist (buf (org-buffer-list 'agenda))
     (set-buffer buf)
