@@ -301,8 +301,7 @@ This function should only modify configuration layer settings."
                     unicode-fonts-enable-ligatures (>= emacs-major-version 28))
 
      ;; Programming and markup languages
-     (lsp :variables
-          lsp-rust-server 'rust-analyzer)
+     lsp
      autohotkey
      c-c++
      csv
