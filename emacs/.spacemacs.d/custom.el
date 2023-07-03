@@ -136,7 +136,8 @@
  '(rust-format-on-save t)
  '(rust-format-show-buffer nil)
  '(safe-local-variable-values
-   '((magit-todos-mode)
+   '((projectile-project-compilation-cmd . "cargo test -q && cargo clippy -- -Dwarnings")
+     (magit-todos-mode)
      (projectile-project-compilation-cmd . "make -j")
      (flycheck-mode)
      (vc-prepare-patches-separately)
