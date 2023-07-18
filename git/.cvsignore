@@ -1,5 +1,3 @@
 .DS_Store
-.dir-locals.el
 .direnv
-.envrc
 .ruby-version
