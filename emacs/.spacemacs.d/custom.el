@@ -137,7 +137,8 @@
  '(rust-format-on-save t)
  '(rust-format-show-buffer nil)
  '(safe-local-variable-values
-   '((auto-insert-alist
+   '((projectile-project-compilation-cmd . "cargo check && cargo clippy -- -Dwarnings -Dclippy::pedantic")
+     (auto-insert-alist
       (rust-mode "" "// "
                  '(setq v1
                         (read-from-minibuffer "Title: "))
@@ -145,7 +146,7 @@
                  '(setq v2
                         (read-from-minibuffer "URL: "))
                  v2 n n "use super::def::*;" n n _ n n "#[cfg(test)]" n "mod tests {" n "use super::*;" n "use test_case::test_case;" n n "#[test_case(args => result)]" n "fn test(args: Ty) -> Ty {" n "}" n "}" n))
-     (projectile-project-compilation-cmd . "cargo test -q && cargo clippy -- -Dwarnings")
+     (projectile-project-compilation-cmd . "cargo test -q && cargo clippy -- -Dwarnings -Dclippy::pedantic")
      (magit-todos-mode)
      (projectile-project-compilation-cmd . "make -j")
      (flycheck-mode)
