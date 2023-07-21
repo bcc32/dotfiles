@@ -71,7 +71,6 @@
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
- '(lsp-eldoc-enable-hover nil)
  '(lsp-enable-suggest-server-download nil)
  '(lsp-inlay-hint-enable t)
  '(lsp-rust-analyzer-completion-add-call-parenthesis nil)
