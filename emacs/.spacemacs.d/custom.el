@@ -73,6 +73,7 @@
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
  '(lsp-eldoc-enable-hover nil)
  '(lsp-enable-suggest-server-download nil)
+ '(lsp-inlay-hint-enable t)
  '(magit-clone-default-directory "~/src/")
  '(magit-diff-refine-hunk t)
  '(merlin-eldoc-doc nil)
