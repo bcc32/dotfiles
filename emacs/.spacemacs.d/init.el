@@ -409,6 +409,9 @@ This function should only modify configuration layer settings."
      (direnv :toggle (executable-find "direnv"))
      (explain-pause-mode :location (recipe :fetcher github
                                            :repo "lastquestion/explain-pause-mode"))
+     (helm-make :location (recipe :fetcher github
+                                  :repo "bcc32/helm-make"
+                                  :branch "try-nproc-on-darwin"))
      mode-line-bell
      (pocket-reader :location (recipe :fetcher github
                                       :repo "bcc32/pocket-reader.el"
