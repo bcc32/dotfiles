@@ -290,6 +290,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-appear-support t
           org-enable-github-support t
+          org-enable-modern-support t
           org-enable-notifications t
           org-projectile-file "TODO.org"
           org-start-notification-daemon-on-startup t
