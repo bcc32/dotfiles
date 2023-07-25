@@ -138,9 +138,7 @@
  '(rust-format-on-save t)
  '(rust-format-show-buffer nil)
  '(safe-local-variable-values
-   '((projectile-project-compilation-cmd . "make")
-     (projectile-project-compilation-cmd . "cargo check && cargo clippy -- -Dwarnings -Dclippy::pedantic")
-     (auto-insert-alist
+   '((auto-insert-alist
       (rust-mode "" "// "
                  '(setq v1
                         (read-from-minibuffer "Title: "))
@@ -148,18 +146,20 @@
                  '(setq v2
                         (read-from-minibuffer "URL: "))
                  v2 n n "use super::def::*;" n n _ n n "#[cfg(test)]" n "mod tests {" n "use super::*;" n "use test_case::test_case;" n n "#[test_case(args => result)]" n "fn test(args: Ty) -> Ty {" n "}" n "}" n))
-     (projectile-project-compilation-cmd . "cargo test -q && cargo clippy -- -Dwarnings -Dclippy::pedantic")
-     (magit-todos-mode)
-     (projectile-project-compilation-cmd . "make -j")
-     (flycheck-mode)
-     (vc-prepare-patches-separately)
      (diff-add-log-use-relative-names . t)
-     (vc-git-annotate-switches . "-w")
-     (typescript-backend . tide)
-     (typescript-backend . lsp)
-     (javascript-backend . tide)
+     (flycheck-mode)
+     (javascript-backend . lsp)
      (javascript-backend . tern)
-     (javascript-backend . lsp)))
+     (javascript-backend . tide)
+     (magit-todos-mode)
+     (projectile-project-compilation-cmd . "cargo test -q && cargo clippy -- -Dwarnings -Dclippy::pedantic")
+     (projectile-project-compilation-cmd . "cargo check && cargo clippy -- -Dwarnings -Dclippy::pedantic")
+     (projectile-project-compilation-cmd . "make")
+     (projectile-project-compilation-cmd . "make -j")
+     (typescript-backend . lsp)
+     (typescript-backend . tide)
+     (vc-git-annotate-switches . "-w")
+     (vc-prepare-patches-separately)))
  '(save-abbrevs 'silently)
  '(sentence-end-double-space t)
  '(sh-basic-offset 2)
