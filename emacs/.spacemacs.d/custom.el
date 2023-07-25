@@ -138,7 +138,8 @@
  '(rust-format-on-save t)
  '(rust-format-show-buffer nil)
  '(safe-local-variable-values
-   '((projectile-project-compilation-cmd . "cargo check && cargo clippy -- -Dwarnings -Dclippy::pedantic")
+   '((projectile-project-compilation-cmd . "make")
+     (projectile-project-compilation-cmd . "cargo check && cargo clippy -- -Dwarnings -Dclippy::pedantic")
      (auto-insert-alist
       (rust-mode "" "// "
                  '(setq v1
