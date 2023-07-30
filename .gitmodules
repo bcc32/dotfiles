@@ -5,7 +5,6 @@
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
 	url = git@github.com:bcc32/spacemacs.git
-	branch = develop
 [submodule "tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
