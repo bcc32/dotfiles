@@ -408,6 +408,7 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
      (direnv :toggle (executable-find "direnv"))
+     debbugs
      (explain-pause-mode :location (recipe :fetcher github
                                            :repo "lastquestion/explain-pause-mode"))
      (helm-make :location (recipe :fetcher github
