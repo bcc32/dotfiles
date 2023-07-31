@@ -400,23 +400,10 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '((advent-of-code :location (recipe :fetcher github
-                                       :repo "bcc32/advent-of-code"
-                                       :files ("elisp/advent-of-code.el")))
-     base16-theme
+   '(base16-theme
      solarized-theme
      tao-theme
-     zenburn-theme
-     debbugs
-     (explain-pause-mode :location (recipe :fetcher github
-                                           :repo "lastquestion/explain-pause-mode"))
-     (helm-make :location (recipe :fetcher github
-                                  :repo "bcc32/helm-make"
-                                  :branch "try-nproc-on-darwin"))
-     mode-line-bell
-     (pocket-reader :location (recipe :fetcher github
-                                      :repo "bcc32/pocket-reader.el"
-                                      :branch "working")))
+     zenburn-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -956,12 +943,6 @@ before packages are loaded."
   (declare-function spacemacs/set-leader-keys "core-keybindings")
   (declare-function spacemacs/set-leader-keys-for-major-mode "core-keybindings")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
-
-  (declare-function explain-pause-mode "explain-pause-mode")
-  (use-package explain-pause-mode
-    :config
-    (explain-pause-mode)
-    (setf (cadr (assoc 'explain-pause-mode minor-mode-alist)) ""))
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
 

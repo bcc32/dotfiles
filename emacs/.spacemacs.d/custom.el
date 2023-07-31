@@ -80,8 +80,6 @@
  '(merlin-eldoc-type nil)
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
- '(mode-line-bell-flash-time 0.2)
- '(mode-line-bell-mode t)
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files
    (seq-filter #'file-directory-p
