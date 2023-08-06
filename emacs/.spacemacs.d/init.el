@@ -338,6 +338,7 @@ This function should only modify configuration layer settings."
                                    python-sort-imports-on-save t))
      ,(when-any-installed '("ruby") 'ruby)
      (rust :variables
+           cargo-process-reload-on-modify t
            rust-backend 'lsp)
      ,(when-any-installed '("chicken" "guile")
                           '(scheme :variables
