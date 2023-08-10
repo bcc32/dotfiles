@@ -97,9 +97,7 @@
       "* TODO %? %^g")
      ("t" "Todo" entry
       (file "")
-      "* TODO %?
-%U
-%a")))
+      "* TODO %?\12%U\12%a")))
  '(org-clock-history-length 35)
  '(org-clock-persist t)
  '(org-default-notes-file "~/todo/refile.org")
