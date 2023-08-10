@@ -158,6 +158,7 @@
      (vc-git-annotate-switches . "-w")
      (vc-prepare-patches-separately)))
  '(save-abbrevs 'silently)
+ '(send-mail-function 'mailclient-send-it)
  '(sentence-end-double-space t)
  '(sh-basic-offset 2)
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
