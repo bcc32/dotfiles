@@ -135,7 +135,9 @@
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rustic-format-trigger 'on-save)
  '(safe-local-variable-values
-   '((auto-insert-alist
+   '((lsp-rust-analyzer-diagnostics-disabled .
+                                             ["unresolved-proc-macro"])
+     (auto-insert-alist
       (rust-mode "" "// "
                  '(setq v1
                         (read-from-minibuffer "Title: "))
