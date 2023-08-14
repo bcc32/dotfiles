@@ -83,8 +83,9 @@ If ARG is non-nil, take next ARG files instead."
       (while (ledger-next-account end)
         (push (match-string 1) xact-accounts))
       (not (or (member account '("Assets:Cash:Wallet"
-                                 "Assets:Venmo"
-                                 "Assets:eBay:Pending Payouts"))
+                                 "Assets:eBay:Pending Payouts"
+                                 "Assets:Prepaid Expenses:Uber Cash"
+                                 "Assets:Venmo"))
                (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
                          xact-accounts)))))
 
