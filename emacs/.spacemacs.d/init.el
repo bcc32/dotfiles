@@ -112,7 +112,7 @@ found, passing ARGS."
                     (format "start /wait /b %s" url))
     (apply #'browse-url-default-browser url args)))
 
-(defun bcc32/copy-region-as-kill-refill-for-web (beg end &optional region)
+(defun bcc32/kill-ring-save-refill-for-web (beg end &optional region)
   "Copy the region to the kill ring, refilling the text for web use.
 
 When pasting into web forms, newlines separate paragraphs, unlike
@@ -122,7 +122,7 @@ command fills the copied text with no newlines within paragraphs.
 Use the region between BEG and END.  When called from Lisp and
 REGION is non-nil, use the current region instead of BEG and
 END."
-  (interactive (list (mark) (point) (prefix-numeric-value current-prefix-arg)))
+  (interactive (list (mark) (point) 'region))
   (let ((filter-buffer-substring-function
          (lambda (beg end delete)
            (let ((contents (if delete
@@ -134,7 +134,7 @@ END."
                (indent-region (point-min) (point-max))
                (fill-region (point-min) (point-max))
                (buffer-string))))))
-    (copy-region-as-kill beg end region)))
+    (kill-ring-save beg end region)))
 
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
