@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+
+session_id=$(
+  curl 'http://localhost:9091/transmission/rpc' \
+    -sSL \
+    --compressed \
+    -I \
+    -X POST \
+    -o /dev/null \
+    -w '%header{X-Transmission-Session-Id}'
+)
+
+curl 'http://localhost:9091/transmission/rpc' \
+  -fsSL \
+  --compressed \
+  -X POST \
+  -H "X-Transmission-Session-Id: $session_id" \
+  --data-raw '{"method":"torrent-get","arguments":{"fields":["id","name","isFinished","downloadDir"]}}' \
+  | jq '.arguments.torrents[] | select(.isFinished and (.downloadDir | endswith("/delete-when-done")))'
