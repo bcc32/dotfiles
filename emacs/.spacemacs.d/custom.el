@@ -17,6 +17,7 @@
  '(dired-async-skip-fast t)
  '(dired-omit-verbose nil)
  '(display-time-mode t)
+ '(editorconfig-mode-lighter "")
  '(enable-recursive-minibuffers t)
  '(enable-remote-dir-locals t)
  '(epg-pinentry-mode 'loopback)
