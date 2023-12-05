@@ -166,6 +166,7 @@
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
  '(sql-product 'sqlite)
+ '(tab-always-indent 'complete)
  '(tab-width 8)
  '(tao-theme-use-sepia nil)
  '(terminal-here-linux-terminal-command 'urxvt)
