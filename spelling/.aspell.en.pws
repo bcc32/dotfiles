@@ -1,4 +1,4 @@
-personal_ws-1.1 en 116 
+personal_ws-1.1 en 118 
 Android
 EXIF
 Elisp
@@ -42,6 +42,7 @@ config
 croissant
 customizability
 customizable
+customizations
 cybersecurity
 deadbolt
 deduplicate
@@ -57,6 +58,7 @@ enqueuing
 epiphanies
 escheat
 evaporative
+flymake
 formatter
 gamers
 gemstone
