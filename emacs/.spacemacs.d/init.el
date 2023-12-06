@@ -220,9 +220,7 @@ This function should only modify configuration layer settings."
           org-want-todo-bindings t)
      pdf
      (unicode-fonts :variables
-                    ;; https://github.com/mickeynp/ligature.el/issues/10
-                    ;; https://github.com/mickeynp/ligature.el/issues/28
-                    unicode-fonts-enable-ligatures (>= emacs-major-version 28))
+                    unicode-fonts-enable-ligatures t)
 
      ;; Programming and markup languages
      lsp
