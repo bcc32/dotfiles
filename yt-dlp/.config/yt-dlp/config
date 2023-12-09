@@ -16,3 +16,6 @@
 
 # Don't fool mtime, just leave it as downloaded time
 --no-mtime
+
+# Use ~/.netrc if necessary
+--netrc
