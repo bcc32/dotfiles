@@ -1,5 +1,5 @@
 # Most likely to be playable without transcoding in Plex
---format 'bestvideo[vcodec^=vp09]+bestaudio[acodec=opus]/best'
+--format 'bestvideo[vcodec^=vp09]+bestaudio[acodec=opus]/best/best*'
 --merge-output-format webm
 
 # Write all auxiliary files and embed all available metadata
