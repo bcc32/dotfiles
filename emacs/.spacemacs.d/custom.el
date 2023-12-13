@@ -134,7 +134,8 @@
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rustic-format-trigger 'on-save)
  '(safe-local-variable-values
-   '((lsp-rust-analyzer-diagnostics-disabled .
+   '((projectile-project-compilation-cmd . "make -O -j")
+     (lsp-rust-analyzer-diagnostics-disabled .
                                              ["unresolved-proc-macro"])
      (auto-insert-alist
       (rust-mode "" "// "
