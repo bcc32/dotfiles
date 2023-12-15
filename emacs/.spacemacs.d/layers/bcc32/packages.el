@@ -72,7 +72,8 @@
         (ledger-navigate-beginning-of-xact)
         (while (ledger-next-account end)
           (push (match-string 1) xact-accounts))
-        (not (or (member account '("Assets:Cash:Wallet"
+        (not (or (member account '("Assets:Cash App"
+                                   "Assets:Cash:Wallet"
                                    "Assets:eBay:Pending Payouts"
                                    "Assets:Prepaid Expenses:Uber Cash"
                                    "Assets:Venmo"))
