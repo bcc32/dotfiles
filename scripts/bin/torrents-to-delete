@@ -17,4 +17,4 @@ curl 'http://localhost:9091/transmission/rpc' \
   -X POST \
   -H "X-Transmission-Session-Id: $session_id" \
   --data-raw '{"method":"torrent-get","arguments":{"fields":["id","name","isFinished","downloadDir"]}}' \
-  | jq '.arguments.torrents[] | select(.isFinished and (.downloadDir | endswith("/delete-when-done")))'
+  | jq '.arguments.torrents[] | select(.isFinished and (.downloadDir | contains("/delete-when-done")))'
