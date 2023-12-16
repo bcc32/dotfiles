@@ -324,8 +324,15 @@ This function should only modify configuration layer settings."
    '(base16-theme
      solarized-theme
      tao-theme
-     zenburn-theme)
+     zenburn-theme
 
+     (async :location (recipe :fetcher github
+                              :repo "bcc32/emacs-async"
+                              :branch "allow-let-binding-async-prompt-for-password"))
+
+     (org-wild-notifier :location (recipe :fetcher github
+                                          :repo "bcc32/org-wild-notifier.el"
+                                          :branch "async-dont-prompt-for-password")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
