@@ -330,6 +330,9 @@ This function should only modify configuration layer settings."
                               :repo "bcc32/emacs-async"
                               :branch "allow-let-binding-async-prompt-for-password"))
 
+     (ledger-mode :location (recipe :fetcher github
+                                    :repo "bcc32/ledger-mode"))
+
      (org-wild-notifier :location (recipe :fetcher github
                                           :repo "bcc32/org-wild-notifier.el"
                                           :branch "async-dont-prompt-for-password")))
