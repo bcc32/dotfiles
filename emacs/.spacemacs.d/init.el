@@ -331,7 +331,8 @@ This function should only modify configuration layer settings."
                               :branch "allow-let-binding-async-prompt-for-password"))
 
      (ledger-mode :location (recipe :fetcher github
-                                    :repo "bcc32/ledger-mode"))
+                                    :repo "bcc32/ledger-mode"
+                                    :files ("ledger-*.el" "doc/*.texi")))
 
      (org-wild-notifier :location (recipe :fetcher github
                                           :repo "bcc32/org-wild-notifier.el"
