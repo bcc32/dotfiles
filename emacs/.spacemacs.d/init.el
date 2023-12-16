@@ -344,7 +344,10 @@ This function should only modify configuration layer settings."
    '(;; Disabled due to a bad interaction with find-dired.  Patch submitted
     ;; upstream as
     ;; https://gitlab.com/xuhdev/dired-quick-sort/-/merge_requests/4.
-     dired-quick-sort)
+     dired-quick-sort
+
+     ;; this package litters .pdf-view-restore files all over my disk
+     pdf-view-restore)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
