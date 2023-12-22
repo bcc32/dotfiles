@@ -335,8 +335,7 @@ This function should only modify configuration layer settings."
                                     :files ("ledger-*.el" "doc/*.texi")))
 
      (org-wild-notifier :location (recipe :fetcher github
-                                          :repo "bcc32/org-wild-notifier.el"
-                                          :branch "async-dont-prompt-for-password")))
+                                          :repo "bcc32/org-wild-notifier.el")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
