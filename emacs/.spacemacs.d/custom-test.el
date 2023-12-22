@@ -57,4 +57,13 @@
                  '(ol-doi ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info
                           ol-irc ol-mhe ol-rmail ol-eww))))
 
+(ert-deftest test-spacemacs-large-file-modes-list ()
+  "`spacemacs-large-file-modes-list' default value has not changed."
+  :tags '(bcc32 custom)
+  (require 'org)
+  (should (equal (custom-variable-default-value 'spacemacs-large-file-modes-list)
+                 '(archive-mode tar-mode jka-compr git-commit-mode image-mode
+                                doc-view-mode doc-view-mode-maybe ebrowse-tree-mode
+                                pdf-view-mode tags-table-mode fundamental-mode))))
+
 (provide 'custom-test)
