@@ -603,7 +603,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-auto-save-file-location 'cache
 
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
-   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-max-rollback-slots most-positive-fixnum
 
    ;; If non-nil, the paste transient-state is enabled. While enabled, after you
    ;; paste something, pressing `C-j' and `C-k' several times cycles through the
