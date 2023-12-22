@@ -326,8 +326,7 @@ This function should only modify configuration layer settings."
      zenburn-theme
 
      (async :location (recipe :fetcher github
-                              :repo "bcc32/emacs-async"
-                              :branch "allow-let-binding-async-prompt-for-password"))
+                              :repo "bcc32/emacs-async"))
 
      (ledger-mode :location (recipe :fetcher github
                                     :repo "bcc32/ledger-mode"
