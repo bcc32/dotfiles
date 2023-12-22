@@ -22,7 +22,7 @@
  '(enable-remote-dir-locals t)
  '(epg-pinentry-mode 'loopback)
  '(eshell-visual-commands
-   '("ncdu" "vi" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
+   '("ncdu" "vi" "vim" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-kill-on-visual-paste nil)
  '(evil-symbol-word-search t)
@@ -47,6 +47,7 @@
      ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++")
      ("h" . "*.h")
      ("l" . "[Cc]hange[Ll]og*")
+     ("am" . "Makefile.am GNUmakefile *.mk")
      ("m" . "[Mm]akefile*")
      ("tex" . "*.tex")
      ("texi" . "*.texi")
@@ -166,6 +167,8 @@
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
+ '(spacemacs-large-file-modes-list
+   '(ledger-mode archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode fundamental-mode))
  '(sql-product 'sqlite)
  '(tab-always-indent 'complete)
  '(tab-width 8)
