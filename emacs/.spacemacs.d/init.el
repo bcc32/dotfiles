@@ -283,7 +283,6 @@ This function should only modify configuration layer settings."
 
      ;; Spacemacs distribution layers
      spacemacs-completion
-     spacemacs-layouts
      spacemacs-editing
      spacemacs-editing-visual
      spacemacs-evil
