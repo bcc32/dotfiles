@@ -204,8 +204,7 @@ This function should only modify configuration layer settings."
      ;; Completion
      (auto-completion :variables
                       auto-completion-idle-delay 1.0)
-     (ivy :variables
-          ivy-enable-advanced-buffer-information t)
+     ivy
 
      ;; Emacs
      helpful
