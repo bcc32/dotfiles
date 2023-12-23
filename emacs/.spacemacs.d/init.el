@@ -202,8 +202,7 @@ This function should only modify configuration layer settings."
      syntax-checking
 
      ;; Completion
-     (auto-completion :variables
-                      auto-completion-idle-delay 1.0)
+     auto-completion
      ivy
 
      ;; Emacs
