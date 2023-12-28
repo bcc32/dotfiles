@@ -124,9 +124,9 @@
 
     (cl-pushnew 'bcc32-ledger-lint flycheck-checkers))
 
-  (spacemacs/set-leader-keys-for-major-mode 'ledger-mode
-    "j" 'bcc32/ledger-promote-effective-date
-    "y" 'bcc32/ledger-yank-code)
+  (bind-keys :map spacemacs-ledger-mode-map
+             ("j" . bcc32/ledger-promote-effective-date)
+             ("y" . bcc32/ledger-yank-code))
 
   (add-hook 'ledger-mode-hook #'turn-off-auto-fill))
 

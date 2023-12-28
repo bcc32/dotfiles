@@ -869,8 +869,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (declare-function spacemacs/set-leader-keys "core-keybindings")
-  (declare-function spacemacs/set-leader-keys-for-major-mode "core-keybindings")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
@@ -883,9 +881,10 @@ before packages are loaded."
   ;; `spacemacs/save-buffers-kill-emacs'.  The former functions do not properly
   ;; run `kill-emacs-query-functions' and so will kill buffers that have
   ;; processes running.
-  (spacemacs/set-leader-keys
-    "qq" #'spacemacs/save-buffers-kill-emacs
-    "qQ" #'spacemacs/save-buffers-kill-emacs)
+  (bind-keys :map spacemacs-default-map
+             ;; TODO: Use remap?
+             ("qq" . spacemacs/save-buffers-kill-emacs)
+             ("qQ" . spacemacs/save-buffers-kill-emacs))
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
@@ -902,9 +901,9 @@ before packages are loaded."
     (setf (alist-get t ivy-format-functions-alist)
           #'ivy-format-function-line))
 
-  (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
-    "v" 'merlin-enclosing-expand
-    "f" 'ocamlformat)
+  (bind-keys :map spacemacs-tuareg-mode-map
+             ("f" . ocamlformat)
+             ("v" . merlin-enclosing-expand))
 
   (with-eval-after-load 'magit
     (defvar magit-git-executable)

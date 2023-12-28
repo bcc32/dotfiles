@@ -1,4 +1,4 @@
 (when (configuration-layer/package-used-p 'org)
-  (spacemacs/set-leader-keys
-    "aob" 'org-switchb
-    "aog" 'counsel-org-goto-all))
+  (bind-keys :map spacemacs-default-map
+             ("aob" . org-switchb)
+             ("aog" . counsel-org-goto-all)))
