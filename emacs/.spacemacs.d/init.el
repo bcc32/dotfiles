@@ -875,8 +875,6 @@ before packages are loaded."
 
   (put 'list-timers 'disabled nil)
 
-  (bind-key "C-x C-c" (lambda () (interactive) (error "Do not use C-x C-c")))
-
   ;; Replace `spacemacs/kill-emacs' and `spacemacs/prompt-kill-emacs' with
   ;; `spacemacs/save-buffers-kill-emacs'.  The former functions do not properly
   ;; run `kill-emacs-query-functions' and so will kill buffers that have
