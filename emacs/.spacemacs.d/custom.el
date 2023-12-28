@@ -182,7 +182,6 @@
  '(tuareg-prettify-symbols-full t)
  '(typescript-indent-level 2)
  '(undo-tree-auto-save-history nil)
- '(valign-fancy-bar t)
  '(vc-follow-symlinks t)
  '(what-cursor-show-names t)
  '(which-function-mode t))
