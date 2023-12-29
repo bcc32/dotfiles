@@ -34,24 +34,6 @@ Otherwise, render sequences in the current buffer."
       (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
-(defun bcc32-dired-do-take (&optional arg)
-  "Take (cp --reflink=always) marked files into target directory.
-
-If ARG is non-nil, take next ARG files instead."
-  (interactive "P")
-  (let ((was-dired-async-mode (bound-and-true-p dired-async-mode)))
-    (when was-dired-async-mode
-      (dired-async-mode -1))
-    (dired-do-create-files 'take #'bcc32-dired-take-file "Take" arg t)
-    (when was-dired-async-mode
-      (dired-async-mode))))
-
-(defun bcc32-dired-take-file (file1 file2 &optional _)
-  "Internal to `bcc32-dired-do-take'.  Copy FILE1 to FILE2 with reflinks."
-  (call-process-shell-command
-   (format "cp --reflink=always -r -T %s %s"
-           (shell-quote-argument file1) (shell-quote-argument file2))))
-
 (declare-function org-web-tools--get-first-url "org-web-tools")
 (declare-function pocket-lib-add-urls "pocket-lib")
 (defun bcc32/add-link (url tags)
