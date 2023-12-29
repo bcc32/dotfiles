@@ -11,7 +11,6 @@
 
 (require 'browse-url)
 (require 'cl-lib)
-(require 'dired-x)
 (require 'seq)
 (eval-when-compile (require 'subr-x))
 
@@ -843,6 +842,8 @@ dump."
 
 (defvar spaceline-org-clock-p)
 (defvar spaceline-version-control-p)
+(defvar spacemacs-default-map)
+(defvar spacemacs-tuareg-mode-map)
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -851,6 +852,9 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  (declare-function dired-omit-mode "dired-x")
+  (declare-function merlin-enclosing-expand "merlin")
+  (declare-function ocamlformat "ocamlformat")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
