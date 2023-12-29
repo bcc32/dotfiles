@@ -166,7 +166,6 @@
  '(sentence-end-double-space t)
  '(sh-basic-offset 2)
  '(shell-file-name (executable-find "bash"))
- '(shell-pop-term-shell "/bin/zsh" nil nil "See https://github.com/kyagi/shell-pop-el/pull/70")
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
