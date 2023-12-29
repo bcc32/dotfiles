@@ -865,10 +865,8 @@ before packages are loaded."
   ;; `spacemacs/save-buffers-kill-emacs'.  The former functions do not properly
   ;; run `kill-emacs-query-functions' and so will kill buffers that have
   ;; processes running.
-  (bind-keys :map spacemacs-default-map
-             ;; TODO: Use remap?
-             ("qq" . spacemacs/save-buffers-kill-emacs)
-             ("qQ" . spacemacs/save-buffers-kill-emacs))
+  (bind-keys ([remap spacemacs/kill-emacs] . spacemacs/save-buffers-kill-emacs)
+             ([remap spacemacs/prompt-kill-emacs] . spacemacs/save-buffers-kill-emacs))
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
