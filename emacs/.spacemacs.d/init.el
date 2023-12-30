@@ -812,8 +812,9 @@ See the header of this file for more information."
 (define-advice ocamlformat (:after () run-ocp-indent)
   (ocp-indent-buffer))
 
-(define-advice package--save-selected-packages (:around (&rest _) dont-save-to-custom-file 100)
-  "Don't save `package-selected-packages' to `custom-file'.")
+(define-advice package--save-selected-packages (:override (&rest _) dont-save-to-custom-file -100)
+  "Don't save `package-selected-packages' to `custom-file'."
+  nil)
 
 (define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
   "Clean up `file-name-history' after cleaning up recentf lists."
