@@ -916,6 +916,9 @@ before packages are loaded."
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
 
+  ;; shell layer setqs this variable, so it overrides the defcustom default
+  (setq shell-pop-term-shell explicit-shell-file-name)
+
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
   ;;
