@@ -77,6 +77,7 @@
  '(lsp-enable-suggest-server-download nil)
  '(lsp-inlay-hint-enable t)
  '(lsp-rust-analyzer-completion-add-call-parenthesis nil)
+ '(lsp-solargraph-use-bundler t)
  '(magit-clone-default-directory "~/src/")
  '(magit-diff-refine-hunk t)
  '(merlin-eldoc-doc nil)
