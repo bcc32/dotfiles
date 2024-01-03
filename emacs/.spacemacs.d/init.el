@@ -303,9 +303,6 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
 
-     (async :location (recipe :fetcher github
-                              :repo "bcc32/emacs-async"))
-
      (ledger-mode :location (recipe :fetcher github
                                     :repo "bcc32/ledger-mode"
                                     :files ("ledger-*.el" "doc/*.texi")))
