@@ -845,7 +845,6 @@ dump."
 
 (defvar spaceline-org-clock-p)
 (defvar spaceline-version-control-p)
-(defvar spacemacs-default-map)
 (defvar spacemacs-tuareg-mode-map)
 
 (defun dotspacemacs/user-config ()
