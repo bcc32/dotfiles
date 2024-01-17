@@ -75,7 +75,7 @@ unset in the selected frame, passing ARGS."
       (let ((process-environment (append (frame-parameter nil 'environment)
                                          process-environment)))
         (with-current-buffer (get-buffer-create "*browse-on-ssh-client*")
-          (if (equal 0 (call-process (expand-file-name "~/bin/browse-on-ssh-client")
+          (if (equal 0 (call-process (expand-file-name "~/bin/,browse-on-ssh-client")
                                          nil t nil url))
               (kill-buffer (current-buffer))
             (display-buffer (current-buffer))
