@@ -896,10 +896,6 @@ before packages are loaded."
     (when (eq system-type 'darwin)
       (setq magit-git-executable "/usr/bin/git")))
 
-  (with-eval-after-load 'magit-todos
-    (defvar magit-todos-exclude-globs)
-    (add-to-list 'magit-todos-exclude-globs "*.org_archive"))
-
   (with-eval-after-load 'pocket-reader
     (defvar pocket-reader-mode-map)
     (bind-key "b" 'bcc32/pocket-reader-browse pocket-reader-mode-map))

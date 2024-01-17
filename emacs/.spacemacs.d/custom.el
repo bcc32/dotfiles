@@ -82,6 +82,7 @@
  '(lsp-solargraph-use-bundler t)
  '(magit-clone-default-directory "~/src/")
  '(magit-diff-refine-hunk t)
+ '(magit-todos-exclude-globs '("*.org_archive" ".git/"))
  '(merlin-eldoc-doc nil)
  '(merlin-eldoc-type nil)
  '(midnight-mode t)
