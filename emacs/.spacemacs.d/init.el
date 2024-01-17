@@ -305,6 +305,9 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
 
+     (nano-agenda :location (recipe :fetcher github
+                                    :repo "rougier/nano-agenda"))
+
      (ledger-mode :location (recipe :fetcher github
                                     :repo "bcc32/ledger-mode"
                                     :files ("ledger-*.el" "doc/*.texi")))
