@@ -139,13 +139,7 @@
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rustic-format-trigger 'on-save)
  '(safe-local-variable-values
-   '((magit-todos-exclude-globs ".git/" ".vendor/")
-     (magit-todos-rg-extra-args "--hidden")
-     (org-archive-location . "archive/%s_archive::")
-     (projectile-project-compilation-cmd . "make -O -j")
-     (lsp-rust-analyzer-diagnostics-disabled .
-                                             ["unresolved-proc-macro"])
-     (auto-insert-alist
+   '((auto-insert-alist
       (rust-mode "" "// "
                  '(setq v1
                         (read-from-minibuffer "Title: "))
@@ -158,11 +152,17 @@
      (javascript-backend . lsp)
      (javascript-backend . tern)
      (javascript-backend . tide)
+     (lsp-rust-analyzer-diagnostics-disabled .
+                                             ["unresolved-proc-macro"])
+     (magit-todos-exclude-globs ".git/" ".vendor/")
      (magit-todos-mode)
+     (magit-todos-rg-extra-args "--hidden")
+     (org-archive-location . "archive/%s_archive::")
      (projectile-project-compilation-cmd . "cargo test -q && cargo clippy -- -Dwarnings -Dclippy::pedantic")
      (projectile-project-compilation-cmd . "cargo check && cargo clippy -- -Dwarnings -Dclippy::pedantic")
      (projectile-project-compilation-cmd . "make")
      (projectile-project-compilation-cmd . "make -j")
+     (projectile-project-compilation-cmd . "make -O -j")
      (typescript-backend . lsp)
      (typescript-backend . tide)
      (vc-git-annotate-switches . "-w")
