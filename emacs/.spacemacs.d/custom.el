@@ -149,6 +149,8 @@
                         (read-from-minibuffer "URL: "))
                  v2 n n "use super::def::*;" n n _ n n "#[cfg(test)]" n "mod tests {" n "use super::*;" n "use test_case::test_case;" n n "#[test_case(args => result)]" n "fn test(args: Ty) -> Ty {" n "}" n "}" n))
      (diff-add-log-use-relative-names . t)
+     (dired-guess-shell-alist-user
+      ("\\.zip\\'" "../bin/import.sh"))
      (flycheck-mode)
      (javascript-backend . lsp)
      (javascript-backend . tern)
