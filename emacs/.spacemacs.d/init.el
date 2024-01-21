@@ -14,13 +14,6 @@
 (require 'seq)
 (eval-when-compile (require 'subr-x))
 
-(defun when-any-installed (executable-names pkgs)
-  "Only enable PKGS if any of EXECUTABLE-NAMES is installed.
-
-A name is considered installed if `executable-find' returns non-nil."
-  (if (seq-some #'executable-find executable-names)
-      pkgs))
-
 (declare-function ansi-color-apply-on-region "ansi-color")
 (defun bcc32/ansi-color-region-or-buffer ()
   "Render ANSI SGR color sequences in the current region if it is active.
@@ -207,13 +200,12 @@ This function should only modify configuration layer settings."
      autohotkey
      c-c++
      csv
-     ,(when-any-installed '("sbcl") 'common-lisp)
+     ;; common-lisp
      emacs-lisp
-     ,(when-any-installed '("go")
-                          '(go :variables
-                               go-format-before-save t
-                               go-tab-width 4))
-     ,(when-any-installed '("ghc" "stack") 'haskell)
+     ;; (go :variables
+     ;;     go-format-before-save t
+     ;;     go-tab-width 4)
+     ;; haskell
      html
      (javascript :variables
                  javascript-backend 'tide
@@ -221,24 +213,21 @@ This function should only modify configuration layer settings."
                  javascript-fmt-tool 'prettier)
      json
      jsonnet
-     ,@(when-any-installed '("xelatex" "lualatex" "pdflatex" "latexmk")
-                           '(bibtex
-                             latex))
+     ;; bibtex
+     ;; latex
      markdown
      (ocaml :variables
             ocaml-format-on-save t)
      perl5
-     ,(when-any-installed '("python" "python3")
-                          '(python :variables
-                                   python-format-on-save t
-                                   python-formatter 'black
-                                   python-sort-imports-on-save t))
-     ,(when-any-installed '("ruby") 'ruby)
+     (python :variables
+             python-format-on-save t
+             python-formatter 'black
+             python-sort-imports-on-save t)
+     ;; ruby
      (rust :variables
            cargo-process-reload-on-modify t)
-     ,(when-any-installed '("chicken" "guile")
-                          '(scheme :variables
-                                   scheme-implementations '(chicken guile)))
+     (scheme :variables
+              scheme-implementations '(chicken guile))
      (shell-scripts :variables
                     shell-scripts-backend nil
                     shell-scripts-format-on-save t)
@@ -277,7 +266,7 @@ This function should only modify configuration layer settings."
      ;; Tools
      command-log
      fasd
-     ,(when-any-installed '("ledger" "hledger") 'finance)
+     finance
      (shell :variables
             shell-enable-smart-eshell t)
 
