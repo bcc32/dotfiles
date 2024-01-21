@@ -77,7 +77,7 @@ unset in the selected frame, passing ARGS."
         (with-current-buffer (get-buffer-create "*browse-on-ssh-client*")
           (if (equal 0 (call-process (expand-file-name "~/bin/,browse-on-ssh-client")
                                          nil t nil url))
-              (kill-buffer (current-buffer))
+              (kill-buffer)
             (display-buffer (current-buffer))
             (error "Failed to browse URL on SSH client"))))
     (apply #'browse-url-default-browser url args)))
