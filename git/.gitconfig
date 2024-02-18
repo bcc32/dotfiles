@@ -8,12 +8,16 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	lol = log --graph --oneline --decorate --color --all
 	wow = log --graph --oneline --decorate --color --all --simplify-by-decoration
+[branch]
+	sort = -committerdate
 [core]
 	autocrlf = input
 	excludesfile = ~/.cvsignore
 [diff]
 	algorithm = histogram
+	colorMoved = default
 	guitool = gvimdiff
+	submodule = log
 	tool = vimdiff
 [fetch]
 	prune = true
@@ -21,6 +25,8 @@
 	user = bcc32
 [init]
 	defaultBranch = main
+[log]
+	date = iso
 [merge]
 	conflictStyle = diff3
 [pull]
@@ -39,6 +45,8 @@
 	smtpserver = smtp.fastmail.com
 	smtpserverport = 465
 	smtpuser = z@bcc32.com
+[status]
+	submoduleSummary = true
 [user]
 	email = me@bcc32.com
 	name = Aaron L. Zeng
