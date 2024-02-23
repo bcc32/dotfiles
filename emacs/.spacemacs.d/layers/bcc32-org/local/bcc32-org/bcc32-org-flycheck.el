@@ -1,3 +1,16 @@
+;;; bcc32-org-flycheck.el --- bcc32's org-mode lints  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2024  Aaron L. Zeng
+
+;; Author: Aaron L. Zeng <me@bcc32.com>
+;; Keywords: convenience, languages
+
+;;; Commentary:
+
+;;
+
+;;; Code:
+
 (require 'org)
 (require 'flycheck)
 
@@ -59,3 +72,4 @@ CALLBACK should be a flycheck checker callback."
 (add-to-list 'flycheck-checkers 'bcc32-org-lint)
 
 (provide 'bcc32-org-flycheck)
+;;; bcc32-org-flycheck.el ends here
