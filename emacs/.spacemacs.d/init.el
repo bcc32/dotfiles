@@ -819,7 +819,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq source-directory (expand-file-name "~/src/emacs/"))
+  (setq source-directory "~/src/emacs/trunk/")
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   (load custom-file)
   (add-to-list 'load-path dotspacemacs-directory))
