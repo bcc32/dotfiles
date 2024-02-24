@@ -17,12 +17,10 @@
 
 (defun bcc32-org-lint--entry-has-todo-children-p (elt)
   "Return non-nil if the entry ELT has a child with any TODO state."
-  (org-element-map elt '(headline)
-    (lambda (child)
-      (and (not (eq child elt))
-           (org-element-property :todo-keyword child)))
-    nil
-    'first-match))
+  (seq-some
+   (lambda (child)
+     (org-element-property :todo-keyword child))
+   (org-element-contents elt)))
 
 (defun bcc32-org-lint--lint-headline-statistics-cookie (elt)
   "Return non-nil if the heading ELT is missing a statistics cookie.
