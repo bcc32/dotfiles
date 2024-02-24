@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27.1") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0"))
+;; Package-Requires: ((emacs "29.1") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -34,11 +34,6 @@
   "Return non-nil if FILE-NAME refers to an *.org_archive file."
   (string-match-p (rx ".org_archive" eos) file-name))
 
-(defalias 'bcc32-org--fold-show-all
-  (if (functionp 'org-fold-show-all)
-      #'org-fold-show-all
-    #'org-show-all))
-
 ;;;###autoload
 (defun bcc32-org-cleanup ()
   "Run some cleanup on the current buffer, if it's an org buffer.
@@ -67,7 +62,7 @@
     ;; all entries, then evaluate `current-column' again.  You get a different,
     ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
     (org-save-outline-visibility :use-markers
-      (bcc32-org--fold-show-all)
+      (org-fold-show-all)
       (org-align-tags :all))))
 
 (defun bcc32-org--sort-by-closed-getkey ()
