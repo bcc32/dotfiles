@@ -18,32 +18,23 @@
 (defun bcc32-org-lint--entry-has-todo-children-p (elt)
   "Return non-nil if the entry ELT has a child with any TODO state."
   (seq-some
-   (lambda (child)
-     (org-element-property :todo-keyword child))
+   (apply-partially #'org-element-property :todo-keyword)
    (org-element-contents elt)))
-
-(defun bcc32-org-lint--lint-headline-statistics-cookie (elt)
-  "Return non-nil if the heading ELT is missing a statistics cookie.
-
-The return value is a list (POS MESSAGE) containing the start
-position of ELT and an error message, suitable for
-`org-lint-add-checker'.
-
-Only returns non-nil if this heading is missing a statistics
-cookie but should have one, i.e., if it has children with TODO
-keywords."
-  (when (and (bcc32-org-lint--entry-has-todo-children-p elt)
-             (not (assoc 'statistics-cookie (org-element-property :title elt))))
-    (list (org-element-property :begin elt) "heading has no statistics cookie")))
 
 (defun bcc32-org-lint-statistics-cookies (parse-tree)
   "Report missing statistics cookies for headings with TODO subitems.
 
 PARSE-TREE should be an Org-mode parse tree."
-  (org-element-map parse-tree '(headline)
-    #'bcc32-org-lint--lint-headline-statistics-cookie))
+  (org-element-map parse-tree 'headline
+    (lambda (elt)
+      (and (bcc32-org-lint--entry-has-todo-children-p elt)
+           (not (org-element-map (org-element-property :title elt)
+                    'statistics-cookie
+                  #'identity))
+           (list (org-element-property :begin elt)
+                 "heading has no statistics cookie")))))
 
-(org-lint-add-checker 'bcc32-org-statistics-cookies
+(org-lint-add-checker 'bcc32-org-lint-statistics-cookies
   "Report missing statistics cookies for headings with TODO subitems"
   #'bcc32-org-lint-statistics-cookies
   :categories '(bcc32-org))
