@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27.1") (f "0.20.0") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0") (s "1.12.0"))
+;; Package-Requires: ((emacs "27.1") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0") (s "1.12.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -13,7 +13,6 @@
 
 ;;; Code:
 
-(require 'f)
 (require 'magit-core)
 (require 'org)
 (require 'org-agenda)
@@ -33,8 +32,8 @@
     (apply f args)))
 
 (defun bcc32-org--archive-file-p (file-name)
-  "Return t if FILE-NAME refers to an *.org_archive file."
-  (f-ext? file-name "org_archive"))
+  "Return non-nil if FILE-NAME refers to an *.org_archive file."
+  (string-match-p (rx ".org_archive" eos) file-name))
 
 (defalias 'bcc32-org--fold-show-all
   (if (functionp 'org-fold-show-all)
@@ -119,9 +118,9 @@ else +INF for entries with a todo keyword, -INF otherwise."
 
 (defun bcc32-org--auto-ingest-init-org-hook ()
   "Ingest an org file if it is named init.org."
-  (when-let ((file-name (buffer-file-name)))
-    (when (string= (f-filename file-name) "init.org")
-      (org-babel-lob-ingest file-name))))
+  (when-let ((file-name (buffer-file-name))
+             ((string= (file-name-nondirectory file-name) "init.org")))
+    (org-babel-lob-ingest file-name)))
 
 (autoload 'magit-merge-in-progress-p "magit-merge")
 (autoload 'magit-rebase-in-progress-p "magit-sequence")
