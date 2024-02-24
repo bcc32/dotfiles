@@ -173,15 +173,20 @@ non-nil.  Suggested usage is to add this function to
 
 ;;;###autoload
 (defun bcc32-org-agenda-babel-execute-subtree-and-done ()
-  "Execute babel source blocks in the subtree of the heading in this agenda buffer."
+  "Execute babel source blocks in the subtree of the heading in this agenda buffer.
+
+Signal an error if there are no source blocks in the subtree.
+
+Otherwise, mark the heading DONE after executing source blocks,
+if there were no errors during execution."
   (interactive)
-  (let* ((blocks-executed 0)
+  (let* ((executed-any-blocks-p nil)
          (org-babel-after-execute-hook
-          (cons (lambda () (cl-incf blocks-executed))
+          (cons (lambda () (setq executed-any-blocks-p t))
                 org-babel-after-execute-hook)))
     (org-agenda-with-point-at-orig-entry nil
       (org-babel-execute-subtree))
-    (if (cl-plusp blocks-executed)
+    (if executed-any-blocks-p
         (org-agenda-todo 'done)
       (user-error "No blocks executed, so not marking DONE"))))
 
