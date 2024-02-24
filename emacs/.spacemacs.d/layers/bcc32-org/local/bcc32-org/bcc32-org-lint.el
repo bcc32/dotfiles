@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;;
+;; Loading this file registers bcc32's custom linters with org-lint.
 
 ;;; Code:
 
