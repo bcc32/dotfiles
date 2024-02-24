@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27.1") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0") (s "1.12.0"))
+;; Package-Requires: ((emacs "27.1") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -17,7 +17,6 @@
 (require 'org)
 (require 'org-agenda)
 (require 'projectile)
-(require 's)
 
 (require 'bcc32-org-lint)
 
