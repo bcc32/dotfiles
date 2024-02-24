@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((dash "2.16.0") (emacs "27.1") (f "0.20.0") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0") (s "1.12.0"))
+;; Package-Requires: ((emacs "27.1") (f "0.20.0") (magit "2.11.0") (org "9.6.0") (projectile "2.2.0") (s "1.12.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -13,7 +13,6 @@
 
 ;;; Code:
 
-(require 'dash)
 (require 'f)
 (require 'magit-core)
 (require 'org)
@@ -51,7 +50,7 @@
 - Align heading tags"
   (interactive "*")
   (when (and (derived-mode-p 'org-mode)
-             (not (-when-let (file-name (buffer-file-name))
+             (not (when-let ((file-name (buffer-file-name)))
                     (bcc32-org--archive-file-p file-name))))
     (org-map-dblocks
      (lambda ()
@@ -78,7 +77,7 @@
 
 For CLOSED entries, time is returned as a floating-point time,
 else +INF for entries with a todo keyword, -INF otherwise."
-  (-if-let (closed (org-entry-get nil "CLOSED"))
+  (if-let ((closed (org-entry-get nil "CLOSED")))
       (org-2ft closed)
     (if (org-get-todo-state)
         1.0e+INF
@@ -120,7 +119,7 @@ else +INF for entries with a todo keyword, -INF otherwise."
 
 (defun bcc32-org--auto-ingest-init-org-hook ()
   "Ingest an org file if it is named init.org."
-  (-when-let (file-name (buffer-file-name))
+  (when-let ((file-name (buffer-file-name)))
     (when (string= (f-filename file-name) "init.org")
       (org-babel-lob-ingest file-name))))
 
