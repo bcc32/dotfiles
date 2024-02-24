@@ -21,7 +21,7 @@
 (require 'projectile)
 (require 's)
 
-(require 'bcc32-org-flycheck)
+(require 'bcc32-org-lint)
 
 (defgroup bcc32-org nil "Bcc32's `org-mode' customizations."
   :group 'emacs)

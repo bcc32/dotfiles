@@ -1,6 +1,5 @@
 (defconst bcc32-org-packages
   '((bcc32-org :location (recipe :fetcher local))
-    flycheck
     org))
 
 (defun bcc32-org//cleanup-before-save-hook ()
@@ -23,10 +22,6 @@
   ;; doesn't hurt, and it's clearer what the intention of this package is.
   (with-eval-after-load 'org
     (require 'bcc32-org)))
-
-(defun bcc32-org/post-init-flycheck ()
-  (with-eval-after-load 'flycheck
-    (require 'bcc32-org-flycheck)))
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org
