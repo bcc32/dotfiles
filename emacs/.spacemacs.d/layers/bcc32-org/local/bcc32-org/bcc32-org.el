@@ -85,7 +85,7 @@ else +INF for entries with a todo keyword, -INF otherwise."
 (defun bcc32-org-sort-by-closed ()
   "Sort org entry at point by the CLOSED property."
   (interactive "*")
-  (org-sort-entries nil ?f 'bcc32-org--sort-by-closed-getkey))
+  (org-sort-entries nil ?f #'bcc32-org--sort-by-closed-getkey))
 
 ;;;###autoload
 (defun bcc32-org-sort-entire-agenda ()
