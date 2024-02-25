@@ -176,6 +176,7 @@
  '(sentence-end-double-space t)
  '(sh-basic-offset 2)
  '(shell-file-name (executable-find "bash"))
+ '(shell-pop-term-shell explicit-shell-file-name nil nil "prevent Spacemacs shell layer from overriding the defcustom default")
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
