@@ -845,6 +845,7 @@ before packages are loaded."
   (declare-function dired-omit-mode "dired-x")
   (declare-function merlin-enclosing-expand "merlin")
   (declare-function ocamlformat "ocamlformat")
+  (declare-function spacemacs/enable-flycheck "~/.emacs.d/layers/+checkers/syntax-checking/funcs.el")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
@@ -866,6 +867,8 @@ before packages are loaded."
   ;; mode line segments
   (setq spaceline-org-clock-p t)
   (setq spaceline-version-control-p nil)
+
+  (spacemacs/enable-flycheck 'emacs-lisp-mode)
 
   (with-eval-after-load 'ivy
     (defvar ivy-format-functions-alist)
