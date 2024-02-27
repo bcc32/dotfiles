@@ -150,7 +150,6 @@ match%optional " _ " with
      (("s" "sexp") ("so" "sexp_of") ("os" "of_sexp"))
      (("t" "typerep"))
      (("v" "variants"))))
-  ;; TODO: Figure out why this line is here.
   (dolist (abbrev '("qdv"))
     (define-abbrev global-abbrev-table abbrev nil nil :case-fixed t)))
 
