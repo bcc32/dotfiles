@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defconst bcc32-org-packages
   '((bcc32-org :location (recipe :fetcher local))
     org))

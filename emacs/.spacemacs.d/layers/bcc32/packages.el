@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defconst bcc32-packages
   '((advent-of-code :location (recipe :fetcher github
                                       :repo "bcc32/advent-of-code"
@@ -62,6 +64,7 @@
     ;; original line, but I actually like this behavior for ledger-mode.
     (bind-key "RET" #'reindent-then-newline-and-indent ledger-mode-map)
 
+    ;; FIXME: Define these at top-level in funcs.el
     (defun bcc32-ledger-should-insert-effective-date ()
       (let ((end (save-excursion (ledger-navigate-end-of-xact) (point)))
             xact-accounts

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'ert)
 
 ;; TODO: Add tests for custom faces
