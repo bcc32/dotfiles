@@ -136,7 +136,7 @@
      (type "BUG(b/!)" "CLEANUP(l/!)" "|" "FIXED(x/@)" "WONTFIX(w@/@)")
      (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
  '(org-wild-notifier-alert-time '(10 2))
- '(paradox-github-token t)
+ '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
  '(pocket-reader-archive-on-open nil)
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rustic-format-trigger 'on-save)
