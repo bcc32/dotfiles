@@ -32,7 +32,6 @@
  '(fancy-battery-mode t)
  '(flycheck-emacs-lisp-initialize-packages t nil nil "Set so that ~/.spacemacs.d/init.el is checked properly")
  '(flycheck-emacs-lisp-load-path '("./"))
- '(flycheck-idle-change-delay 1.0)
  '(flycheck-ledger-explicit t)
  '(flycheck-ledger-pedantic t)
  '(garbage-collection-messages t)
