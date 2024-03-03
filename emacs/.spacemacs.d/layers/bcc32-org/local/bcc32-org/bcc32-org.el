@@ -133,17 +133,8 @@ in the current repo."
   (magit-maybe-save-repository-buffers)
   (when (magit-anything-modified-p)
     (magit-git "commit" "-am" "_"))
-  (let (head-before head-after)
-    (setq head-before (magit-rev-parse (magit-headish)))
-    (magit-git "pull" "--rebase")
-    (magit-git "push")
-    (setq head-after (magit-rev-parse (magit-headish)))
-    (when (and (not (magit-rev-eq head-before head-after))
-               (y-or-n-p "Revert all project buffers? "))
-      (projectile-process-current-project-buffers-current
-       (lambda ()
-         (when (funcall (or buffer-stale-function #'buffer-stale--default-function) nil)
-           (revert-buffer :ignore-auto :no-confirm))))))
+  (magit-git "pull" "--rebase")
+  (magit-git "push")
   (message "Committing and pushing... done"))
 
 (defcustom bcc32-org-always-skip-weekends nil
