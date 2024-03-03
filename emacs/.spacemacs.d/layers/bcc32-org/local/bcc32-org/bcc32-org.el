@@ -105,7 +105,7 @@ else +INF for entries with a todo keyword, -INF otherwise."
   "Run `org-lint' in all org agenda files, stopping at the first error."
   (interactive)
   (dolist (buf (org-buffer-list 'agenda))
-    (set-buffer buf)
+    (switch-to-buffer buf)
     (call-interactively 'org-lint)
     (when (> (buffer-size) 0)
       (error "Lint found errors in buffer"))))
