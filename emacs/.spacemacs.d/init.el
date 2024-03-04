@@ -302,10 +302,8 @@ This function should only modify configuration layer settings."
 
      (ledger-mode :location (recipe :fetcher github
                                     :repo "bcc32/ledger-mode"
-                                    :files ("ledger-*.el" "doc/*.texi")))
+                                    :files ("ledger-*.el" "doc/*.texi"))))
 
-     (org-wild-notifier :location (recipe :fetcher github
-                                          :repo "bcc32/org-wild-notifier.el")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
