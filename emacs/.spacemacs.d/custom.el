@@ -16,6 +16,7 @@
  '(dired-async-mode t)
  '(dired-async-skip-fast t)
  '(dired-omit-verbose nil)
+ '(dired-recursive-copies 'always)
  '(display-time-mode t)
  '(editorconfig-mode-lighter "")
  '(enable-recursive-minibuffers t)
