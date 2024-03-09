@@ -91,12 +91,7 @@
  '(org-agenda-files
    (seq-map #'file-truename
             (seq-filter #'file-directory-p
-                        '("~/file-server/"
-                          "~/journal/"
-                          "~/src/film-metadata/"
-                          "~/src/watch-later/"
-                          "~/todo/"
-                          "~/todo/ideas/"))))
+                        '("~/file-server/" "~/journal/" "~/src/film-metadata/" "~/src/watch-later/" "~/todo/" "~/todo/ideas/"))))
  '(org-agenda-prefer-last-repeat t)
  '(org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
  '(org-agenda-skip-scheduled-if-done t)
