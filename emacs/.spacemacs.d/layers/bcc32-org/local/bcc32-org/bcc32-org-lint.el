@@ -15,6 +15,19 @@
 (require 'org-element)
 (require 'org-lint)
 
+(defconst bcc32-org-lint-skip-statistics-cookies-property
+  "BCC32_SKIP_STATISTICS_COOKIES"
+  "If a headline has this property, do not check statistics cookies.")
+
+(defconst bcc32-org-lint--skip-statistics-cookies-property-key
+  (intern (concat ":" bcc32-org-lint-skip-statistics-cookies-property)))
+
+(defun bcc32-org-lint--skip-check-statistics-cookies-p (elt)
+  "Return nil if the entry ELT should be checked for statistics cookies."
+  (or (org-element-property bcc32-org-lint--skip-statistics-cookies-property-key elt)
+      (when-let ((parent (org-element-property :parent elt)))
+        (bcc32-org-lint--skip-check-statistics-cookies-p parent))))
+
 (defun bcc32-org-lint--entry-has-todo-children-p (elt)
   "Return non-nil if the entry ELT has a child with any TODO state."
   (seq-some
@@ -27,7 +40,8 @@
 PARSE-TREE should be an Org-mode parse tree."
   (org-element-map parse-tree 'headline
     (lambda (elt)
-      (and (bcc32-org-lint--entry-has-todo-children-p elt)
+      (and (not (bcc32-org-lint--skip-check-statistics-cookies-p elt))
+           (bcc32-org-lint--entry-has-todo-children-p elt)
            (not (org-element-map (org-element-property :title elt)
                     'statistics-cookie
                   #'identity))
