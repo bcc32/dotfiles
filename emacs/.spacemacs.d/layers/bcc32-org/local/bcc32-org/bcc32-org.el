@@ -100,16 +100,6 @@ else +INF for entries with a todo keyword, -INF otherwise."
         (sort-if-nonempty)
         (org-map-entries #'sort-if-nonempty t nil)))))
 
-;;;###autoload
-(defun bcc32-org-lint-agenda-buffers ()
-  "Run `org-lint' in all org agenda files, stopping at the first error."
-  (interactive)
-  (dolist (buf (org-buffer-list 'agenda))
-    (switch-to-buffer buf)
-    (call-interactively 'org-lint)
-    (when (> (buffer-size) 0)
-      (error "Lint found errors in buffer"))))
-
 (defun bcc32-org--auto-ingest-init-org-hook ()
   "Ingest an org file if it is named init.org."
   (when-let ((file-name (buffer-file-name))

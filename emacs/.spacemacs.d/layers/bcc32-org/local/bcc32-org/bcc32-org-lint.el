@@ -53,5 +53,15 @@ PARSE-TREE should be an Org-mode parse tree."
   #'bcc32-org-lint-statistics-cookies
   :categories '(bcc32-org))
 
+;;;###autoload
+(defun bcc32-org-lint-agenda-buffers ()
+  "Run `org-lint' in all org agenda files, stopping at the first error."
+  (interactive)
+  (dolist (buf (org-buffer-list 'agenda))
+    (switch-to-buffer buf)
+    (call-interactively 'org-lint)
+    (when (> (buffer-size) 0)
+      (error "Lint found errors in buffer"))))
+
 (provide 'bcc32-org-lint)
 ;;; bcc32-org-lint.el ends here
