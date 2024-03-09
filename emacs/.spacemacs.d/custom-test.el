@@ -66,6 +66,13 @@
                  '(ol-doi ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info
                           ol-irc ol-mhe ol-rmail ol-eww))))
 
+(ert-deftest test-safe-local-variable-values-is-sorted ()
+  "Variables in `safe-local-variable-values' are in alphabetical order."
+  :tags '(bcc32 custom)
+  (let ((vars (mapcar #'car safe-local-variable-values)))
+    (should (equal vars
+                   (sort vars (lambda (a b) (string< (symbol-name a) (symbol-name b))))))))
+
 (ert-deftest test-spacemacs-large-file-modes-list ()
   "`spacemacs-large-file-modes-list' default value has not changed."
   :tags '(bcc32 custom)
