@@ -202,7 +202,15 @@
  '(undo-tree-auto-save-history nil)
  '(vc-follow-symlinks t)
  '(what-cursor-show-names t)
- '(which-function-mode t))
+ '(which-function-mode t)
+ '(zoneinfo-style-world-list
+   '(("America/Los_Angeles" "Seattle")
+     ("America/New_York" "New York")
+     ("Europe/London" "London")
+     ("Europe/Amsterdam" "Amsterdam")
+     ("Asia/Hong_Kong" "Hong Kong")
+     ("Asia/Shanghai" "Shanghai")
+     ("Asia/Tokyo" "Tokyo"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
