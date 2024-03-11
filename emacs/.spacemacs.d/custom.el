@@ -154,6 +154,10 @@
      (diff-add-log-use-relative-names . t)
      (dired-guess-shell-alist-user
       ("\\.zip\\'" "../bin/import.sh"))
+     (etags-regen-ignores "test/manual/etags/")
+     (etags-regen-regexp-alist
+      (("c" "objc")
+       "/[ \11]*DEFVAR_[A-Z_ \11(]+\"\\([^\"]+\\)\"/\\1/" "/[ \11]*DEFVAR_[A-Z_ \11(]+\"[^\"]+\",[ \11]\\([A-Za-z0-9_]+\\)/\\1/"))
      (flycheck-mode)
      (javascript-backend . lsp)
      (javascript-backend . tern)
