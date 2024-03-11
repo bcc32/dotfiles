@@ -53,15 +53,23 @@ PARSE-TREE should be an Org-mode parse tree."
   #'bcc32-org-lint-statistics-cookies
   :categories '(bcc32-org))
 
+(defun bcc32-org-lint--skip-buffer-p (&optional buf)
+  "Return non-nil if the entire buffer BUF should not be linted."
+  (with-current-buffer (or buf (current-buffer))
+    (save-excursion
+      (goto-char (point-min))
+      (search-forward "This file is managed by beorg. Any changes will likely be overwritten." nil t))))
+
 ;;;###autoload
 (defun bcc32-org-lint-agenda-buffers ()
   "Run `org-lint' in all org agenda files, stopping at the first error."
   (interactive)
   (dolist (buf (org-buffer-list 'agenda))
-    (switch-to-buffer buf)
-    (call-interactively 'org-lint)
-    (when (> (buffer-size) 0)
-      (error "Lint found errors in buffer"))))
+    (unless (bcc32-org-lint--skip-buffer-p buf)
+      (switch-to-buffer buf)
+      (call-interactively 'org-lint)
+      (when (> (buffer-size) 0)
+        (error "Lint found errors in buffer")))))
 
 (provide 'bcc32-org-lint)
 ;;; bcc32-org-lint.el ends here
