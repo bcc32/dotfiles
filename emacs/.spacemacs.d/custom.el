@@ -82,6 +82,7 @@
  '(lsp-solargraph-use-bundler t)
  '(magit-clone-default-directory "~/src/")
  '(magit-diff-refine-hunk t)
+ '(magit-published-branches '("origin/main" "origin/master"))
  '(magit-todos-exclude-globs '("*.org_archive" ".git/"))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(merlin-eldoc-doc nil)
