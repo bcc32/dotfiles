@@ -70,6 +70,7 @@
  '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("debts" "ledger register --by-payee 'Personal Debts'")
+     ("net-worth" "ledger bal '^Assets' '^Liabilities' -X USD")
      ("reconcile" "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
      ("reimbursement" "%(binary) -f %(ledger-file) --group-by payee reg -U '^Assets:Reimbursable Expenses'")
      ("uncleared" "%(binary) -f %(ledger-file) reg --current -U --group-by account '^Assets' '^Equity' '^Liabilities'")
