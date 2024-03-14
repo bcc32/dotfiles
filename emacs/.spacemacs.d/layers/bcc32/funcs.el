@@ -100,7 +100,10 @@ Prefix commodity symbols are not implemented."
   (ledger-post-align-xact (point)))
 
 (defun bcc32-ledger-promote-effective-date ()
-  "Move the effective date for a posting in this transaction to the transaction."
+  "Move the effective date for a posting in this transaction to the transaction.
+
+Error if there are multiple postings in this transaction with
+effective dates."
   (interactive)
   (let ((end (ledger-navigate-end-of-xact)))
     (ledger-navigate-beginning-of-xact)
