@@ -302,6 +302,7 @@ This function should only modify configuration layer settings."
 
      (ledger-mode :location (recipe :fetcher github
                                     :repo "bcc32/ledger-mode"
+                                    :branch "bcc32"
                                     :files ("ledger-*.el" "doc/*.texi"))))
 
    ;; A list of packages that cannot be updated.
