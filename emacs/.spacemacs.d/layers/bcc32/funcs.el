@@ -60,7 +60,7 @@ it will display the right message, e.g.:
 
 (with-eval-after-load 'ledger-mode
   (setq bcc32--ledger-posting-effective-date-regexp
-	(thunk-force bcc32--ledger-posting-effective-date-regexp)))
+        (thunk-force bcc32--ledger-posting-effective-date-regexp)))
 
 (defun bcc32--ledger-should-insert-effective-date ()
   "Return non-nil if an effective date is required for this posting."
@@ -87,9 +87,9 @@ it will display the right message, e.g.:
   (let ((end (ledger-navigate-end-of-xact)))
     (ledger-navigate-beginning-of-xact)
     (unless (re-search-forward bcc32--ledger-posting-effective-date-regexp end t)
-      (error "No effective date in transaction"))
+      (user-error "No effective date in transaction"))
     (when (re-search-forward bcc32--ledger-posting-effective-date-regexp end t)
-      (error "Multiple effective dates in transaction"))
+      (user-error "Multiple effective dates in transaction"))
     (let ((effective-date (match-string 1)))
       (delete-region (match-beginning 0) (match-end 0))
       (ledger-navigate-beginning-of-xact)
