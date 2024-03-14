@@ -64,7 +64,7 @@ it will display the right message, e.g.:
 
 (defun bcc32--ledger-should-insert-effective-date ()
   "Return non-nil if an effective date is required for this posting."
-  (let ((end (save-excursion (ledger-navigate-end-of-xact) (point)))
+  (let ((end (save-excursion (ledger-navigate-end-of-xact)))
         xact-accounts
         account)
     (beginning-of-line)
