@@ -90,7 +90,8 @@ it will display the right message, e.g.:
 
 Prefix commodity symbols are not implemented."
   (interactive)
-  (let ((end (save-excursion (ledger-navigate-end-of-xact))))
+  (let ((end (save-excursion (ledger-navigate-end-of-xact) (point-marker))))
+    (set-marker-insertion-type end t)
     (save-excursion
       (ledger-navigate-beginning-of-xact)
       (while-let ((amount-width (ledger-next-amount end)))
