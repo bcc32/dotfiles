@@ -2,10 +2,12 @@
 
 (require 'ert)
 
-;; TODO: Add tests for custom faces
 ;; Adapted from https://emacs.stackexchange.com/questions/3022/reset-custom-variable-to-default-value-programmatically
 (defun custom-variable-default-value (var)
   (eval (car (get var 'standard-value))))
+
+(defun custom-face-default-spec (face)
+  (get face 'face-defface-spec))
 
 (ert-deftest test-eshell-visual-commands ()
   "`eshell-visual-commands' default value has not changed."
@@ -66,6 +68,13 @@
                  '(ol-doi ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info
                           ol-irc ol-mhe ol-rmail ol-eww))))
 
+(ert-deftest test-org-link ()
+  "`org-link' default face spec has not changed."
+  :tags '(bcc32 custom face)
+  (require 'org-faces)
+  (should (equal (custom-face-default-spec 'org-link)
+                 '((t :inherit link)))))
+
 (ert-deftest test-safe-local-variable-values-is-sorted ()
   "Variables in `safe-local-variable-values' are in alphabetical order."
   :tags '(bcc32 custom)
@@ -81,5 +90,28 @@
                  '(archive-mode tar-mode jka-compr git-commit-mode image-mode
                                 doc-view-mode doc-view-mode-maybe ebrowse-tree-mode
                                 pdf-view-mode tags-table-mode fundamental-mode))))
+
+(ert-deftest test-tuareg-font-lock-attribute-face ()
+  "`tuareg-font-lock-attribute-face' default face spec has not changed."
+  :tags '(bcc32 custom face)
+  (require 'tuareg)
+  (should (equal (custom-face-default-spec 'tuareg-font-lock-attribute-face)
+                 '((t :inherit font-lock-preprocessor-face)))))
+
+(ert-deftest test-tuareg-font-lock-extension-node-face ()
+  "`tuareg-font-lock-extension-node-face' default face spec has not changed."
+  :tags '(bcc32 custom face)
+  (require 'tuareg)
+  (should (equal (custom-face-default-spec 'tuareg-font-lock-extension-node-face)
+                 '((default :inherit tuareg-font-lock-infix-extension-node-face)
+                   (((background dark)) :foreground "LightSteelBlue")
+                   (t :background "gray92")))))
+
+(ert-deftest test-tuareg-font-lock-infix-extension-node-face ()
+  "`tuareg-font-lock-infix-extension-node-face' default face spec has not changed."
+  :tags '(bcc32 custom face)
+  (require 'tuareg)
+  (should (equal (custom-face-default-spec 'tuareg-font-lock-infix-extension-node-face)
+                 '((t :inherit font-lock-preprocessor-face)))))
 
 (provide 'custom-test)
