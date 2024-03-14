@@ -43,16 +43,20 @@ it will display the right message, e.g.:
 
 ;;; Ledger customizations
 
+(defvar ledger-commoditized-amount-regexp)
 (defvar ledger-iso-date-regexp)
 (defvar ledger-iterate-regexp)
+(defvar ledger-reconcile-default-commodity)
 (defvar ledger-regex-iterate-group-code)
 (defvar ledger-regex-iterate-group-payee)
 
 (declare-function ledger-navigate-beginning-of-xact "ledger-navigate")
 (declare-function ledger-navigate-end-of-xact       "ledger-navigate")
 (declare-function ledger-next-account               "ledger-post")
+(declare-function ledger-next-amount                "ledger-post")
 (declare-function ledger-regex-iterate-code         "ledger-regex" t t)
 (declare-function ledger-toggle-current             "ledger-state")
+(declare-function ledger-post-align-xact            "ledger-post")
 
 (defconst bcc32--ledger-posting-effective-date-regexp
   (thunk-delay (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]"))
@@ -80,6 +84,20 @@ it will display the right message, e.g.:
                                "Assets:Venmo"))
              (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
                        xact-accounts)))))
+
+(defun bcc32-ledger-fill-in-default-commodity ()
+  "Add the default commodity to each posting if none is specified.
+
+Prefix commodity symbols are not implemented."
+  (interactive)
+  (let ((end (save-excursion (ledger-navigate-end-of-xact))))
+    (save-excursion
+      (ledger-navigate-beginning-of-xact)
+      (while-let ((amount-width (ledger-next-amount end)))
+        (unless (looking-at-p ledger-commoditized-amount-regexp)
+          (forward-char amount-width)
+          (insert " " ledger-reconcile-default-commodity)))))
+  (ledger-post-align-xact (point)))
 
 (defun bcc32-ledger-promote-effective-date ()
   "Move the effective date for a posting in this transaction to the transaction."

@@ -69,6 +69,7 @@
 
   (bind-keys :map spacemacs-ledger-mode-map
              ("j" . bcc32-ledger-promote-effective-date)
+             ("u" . bcc32-ledger-fill-in-default-commodity)
              ("y" . bcc32-ledger-yank-code))
 
   (add-hook 'ledger-mode-hook #'turn-off-auto-fill))
