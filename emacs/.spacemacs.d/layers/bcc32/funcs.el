@@ -66,7 +66,7 @@ it will display the right message, e.g.:
   (setq bcc32--ledger-posting-effective-date-regexp
         (thunk-force bcc32--ledger-posting-effective-date-regexp)))
 
-(defun bcc32--ledger-should-insert-effective-date ()
+(defun bcc32-ledger-should-insert-effective-date ()
   "Return non-nil if an effective date is required for this posting."
   (let ((end (save-excursion (ledger-navigate-end-of-xact)))
         xact-accounts
