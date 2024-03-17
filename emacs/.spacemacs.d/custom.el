@@ -62,6 +62,7 @@
  '(ivy-magic-tilde nil)
  '(ivy-use-virtual-buffers nil)
  '(js-indent-level 2)
+ '(ledger-accounts-exclude-function 'bcc32-ledger-accounts-exclude-function)
  '(ledger-default-date-format ledger-iso-date-format)
  '(ledger-reconcile-default-commodity "USD")
  '(ledger-reconcile-display-balance-in-header t)

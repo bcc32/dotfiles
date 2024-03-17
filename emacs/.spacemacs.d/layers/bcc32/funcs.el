@@ -133,4 +133,37 @@ effective dates."
     (let ((code (current-kill 0)))
       (insert (format "(%s) " (string-trim code))))))
 
+(defvar-local bcc32-ledger--accounts-list-in-buffer-cache nil)
+(define-advice ledger-accounts-list-in-buffer (:around (f &rest args) bcc32-ledger--cache)
+  "Cache the result of `ledger-accounts-list-in-buffer'.
+
+The result doesn't change significantly, or frequently, enough to
+recompute it."
+  (or bcc32-ledger--accounts-list-in-buffer-cache
+      (setq bcc32-ledger--accounts-list-in-buffer-cache
+            (apply f args))))
+
+(defvar-local bcc32-ledger--excluded-accounts-regexp nil)
+(defun bcc32-ledger--load-excluded-accounts ()
+  "Load the list of excluded account regexps from closed-accounts.txt."
+  (or bcc32-ledger--excluded-accounts-regexp
+      (setq bcc32-ledger--excluded-accounts-regexp
+            (let (regexps)
+              (with-demoted-errors "Could not load closed accounts list: %S"
+                (with-temp-buffer
+                  (insert-file-contents "closed-accounts.txt")
+                  (while (< (point) (point-max))
+                    (let ((regexp (buffer-substring-no-properties (point) (line-end-position))))
+                      (push (pcre-to-elisp regexp) regexps)
+                      (forward-line)))))
+              (rx-to-string
+               `(or ,@(mapcar (lambda (r) `(regexp ,r)) regexps)))))))
+
+(defun bcc32-ledger-accounts-exclude-function (account)
+  "Setting for `ledger-accounts-exclude-function'.
+
+Return non-nil if ACCOUNT should be omitted from completion."
+  (bcc32-ledger--load-excluded-accounts)
+  (string-match-p bcc32-ledger--excluded-accounts-regexp (car account)))
+
 ;;; funcs.el ends here
