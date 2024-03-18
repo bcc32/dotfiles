@@ -72,7 +72,8 @@
              ("u" . bcc32-ledger-fill-in-default-commodity)
              ("y" . bcc32-ledger-yank-code))
 
-  (add-hook 'ledger-mode-hook #'turn-off-auto-fill))
+  (add-hook 'ledger-mode-hook #'turn-off-auto-fill)
+  (add-hook 'ledger-reconcile-mode-hook #'ledger-reconcile-display-balance-in-header-mode))
 
 (defun bcc32/init-mode-line-bell ()
   (use-package mode-line-bell
