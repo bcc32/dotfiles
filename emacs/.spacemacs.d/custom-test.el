@@ -2,10 +2,6 @@
 
 (require 'ert)
 
-;; Adapted from https://emacs.stackexchange.com/questions/3022/reset-custom-variable-to-default-value-programmatically
-(defun custom-variable-default-value (var)
-  (eval (car (get var 'standard-value))))
-
 (defun custom-face-default-spec (face)
   (get face 'face-defface-spec))
 
@@ -13,7 +9,7 @@
   "`eshell-visual-commands' default value has not changed."
   :tags '(bcc32 custom)
   (require 'em-term)
-  (should (equal (custom-variable-default-value 'eshell-visual-commands)
+  (should (equal (custom--standard-value 'eshell-visual-commands)
                  '("vi" "vim" "screen" "tmux" "top" "htop" "less"
                    "more" "lynx" "links" "ncftp" "mutt" "pine" "tin" "trn" "elm"))))
 
@@ -21,14 +17,14 @@
   "`eshell-visual-subcommands' default value has not changed."
   :tags '(bcc32 custom)
   (require 'em-term)
-  (should (equal (custom-variable-default-value 'eshell-visual-subcommands)
+  (should (equal (custom--standard-value 'eshell-visual-subcommands)
                  nil)))
 
 (ert-deftest test-grep-files-aliases ()
   "`grep-files-aliases' default value has not changed."
   :tags '(bcc32 custom)
   (require 'grep)
-  (should (equal (custom-variable-default-value 'grep-files-aliases)
+  (should (equal (custom--standard-value 'grep-files-aliases)
                  '(("all" . "* .*")
                    ("el" . "*.el")
                    ("ch" . "*.[ch]")
@@ -48,7 +44,7 @@
   "`grep-find-ignored-directories' default value has not changed."
   :tags '(bcc32 custom)
   (require 'grep)
-  (should (equal (custom-variable-default-value 'grep-find-ignored-directories)
+  (should (equal (custom--standard-value 'grep-find-ignored-directories)
                  '("SCCS" "RCS" "CVS" "MCVS"
                    ".src" ".svn" ".git" ".hg" ".bzr"
                    "_MTN" "_darcs" "{arch}"))))
@@ -57,14 +53,14 @@
   "`magit-todos-exclude-globs' default value has not changed."
   :tags '(bcc32 custom)
   (require 'magit-todos)
-  (should (equal (custom-variable-default-value 'magit-todos-exclude-globs)
+  (should (equal (custom--standard-value 'magit-todos-exclude-globs)
                  '(".git/"))))
 
 (ert-deftest test-org-modules ()
   "`org-modules' default value has not changed."
   :tags '(bcc32 custom)
   (require 'org)
-  (should (equal (custom-variable-default-value 'org-modules)
+  (should (equal (custom--standard-value 'org-modules)
                  '(ol-doi ol-w3m ol-bbdb ol-bibtex ol-docview ol-gnus ol-info
                           ol-irc ol-mhe ol-rmail ol-eww))))
 
@@ -86,7 +82,7 @@
   "`spacemacs-large-file-modes-list' default value has not changed."
   :tags '(bcc32 custom)
   (require 'org)
-  (should (equal (custom-variable-default-value 'spacemacs-large-file-modes-list)
+  (should (equal (custom--standard-value 'spacemacs-large-file-modes-list)
                  '(archive-mode tar-mode jka-compr git-commit-mode image-mode
                                 doc-view-mode doc-view-mode-maybe ebrowse-tree-mode
                                 pdf-view-mode tags-table-mode fundamental-mode))))
