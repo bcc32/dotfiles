@@ -141,6 +141,7 @@
      (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
  '(org-wild-notifier-alert-time '(10 2))
  '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
+ '(pdf-tools-installer-os "nixos")
  '(pocket-reader-archive-on-open nil)
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rustic-default-test-arguments "--quiet --benches --tests --all-features")
