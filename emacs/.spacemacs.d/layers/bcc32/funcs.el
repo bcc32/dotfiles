@@ -60,11 +60,10 @@ it will display the right message, e.g.:
 
 (defconst bcc32--ledger-posting-effective-date-regexp
   (thunk-delay (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]"))
-  "A comment containing an effective date for a posting.")
+  "Matches a comment containing an effective date for a posting.
 
-(with-eval-after-load 'ledger-mode
-  (setq bcc32--ledger-posting-effective-date-regexp
-        (thunk-force bcc32--ledger-posting-effective-date-regexp)))
+This regexp is defined as a lazy thunk, so `thunk-force' must be
+used to actually use it.")
 
 (defun bcc32-ledger-should-insert-effective-date ()
   "Return non-nil if an effective date is required for this posting."
@@ -106,11 +105,12 @@ Prefix commodity symbols are not implemented."
 Error if there are multiple postings in this transaction with
 effective dates."
   (interactive)
-  (let ((end (ledger-navigate-end-of-xact)))
+  (let ((effective-date (thunk-force bcc32--ledger-posting-effective-date-regexp))
+        (end (ledger-navigate-end-of-xact)))
     (ledger-navigate-beginning-of-xact)
-    (unless (re-search-forward bcc32--ledger-posting-effective-date-regexp end t)
+    (unless (re-search-forward effective-date end t)
       (user-error "No effective date in transaction"))
-    (when (re-search-forward bcc32--ledger-posting-effective-date-regexp end t)
+    (when (re-search-forward effective-date end t)
       (user-error "Multiple effective dates in transaction"))
     (let ((effective-date (match-string 1)))
       (delete-region (match-beginning 0) (match-end 0))
