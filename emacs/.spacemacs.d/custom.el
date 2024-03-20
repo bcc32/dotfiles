@@ -178,6 +178,7 @@
      (projectile-project-compilation-cmd . "make")
      (projectile-project-compilation-cmd . "make -j")
      (projectile-project-compilation-cmd . "make -O -j")
+     (projectile-project-compilation-cmd . "nix run 'nixpkgs#cmake' -- -S . && make && make -C test ")
      (typescript-backend . lsp)
      (typescript-backend . tide)
      (vc-git-annotate-switches . "-w")
