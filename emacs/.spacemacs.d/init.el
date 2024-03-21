@@ -866,6 +866,8 @@ before packages are loaded."
   (bind-keys ([remap spacemacs/kill-emacs] . spacemacs/save-buffers-kill-emacs)
              ([remap spacemacs/prompt-kill-emacs] . spacemacs/save-buffers-kill-emacs))
 
+  (bind-key [remap zap-to-char] #'zap-up-to-char)
+
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
     (declare-function forward-evil-symbol "evil-common")
