@@ -65,6 +65,8 @@ it will display the right message, e.g.:
 This regexp is defined as a lazy thunk, so `thunk-force' must be
 used to actually use it.")
 
+;; TODO: This should use a file specifying some regexps like
+;; `bcc32-ledger-accounts-exclude-function' does.
 (defun bcc32-ledger-should-insert-effective-date ()
   "Return non-nil if an effective date is required for this posting."
   (let ((end (save-excursion (ledger-navigate-end-of-xact)))
