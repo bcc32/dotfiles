@@ -5,7 +5,7 @@
                                       :repo "bcc32/advent-of-code"
                                       :files ("elisp/advent-of-code.el")))
     debbugs
-    direnv
+    envrc
     evil-quickscope
     (explain-pause-mode :location (recipe :fetcher github
                                           :repo "lastquestion/explain-pause-mode"))
@@ -26,9 +26,9 @@
   (use-package debbugs
     :defer t))
 
-(defun bcc32/init-direnv ()
-  (use-package direnv
-    :defer t))
+(defun bcc32/init-envrc ()
+  (use-package envrc
+    :init (envrc-global-mode)))
 
 (defun bcc32/init-evil-quickscope ()
   (use-package evil-quickscope
