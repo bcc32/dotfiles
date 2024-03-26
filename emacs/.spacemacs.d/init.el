@@ -293,9 +293,6 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
 
-     (magit-todos :location (recipe :fetcher github
-                                    :repo "bcc32/magit-todos"))
-
      (nano-agenda :location (recipe :fetcher github
                                     :repo "rougier/nano-agenda"))
 
