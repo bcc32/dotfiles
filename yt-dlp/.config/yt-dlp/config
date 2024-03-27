@@ -19,3 +19,4 @@
 
 # Use ~/.netrc if necessary
 --netrc
+--netrc-location ~/.authinfo
