@@ -147,6 +147,7 @@
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
  '(rustic-default-test-arguments "--quiet --benches --tests --all-features")
  '(rustic-format-trigger 'on-save)
+ '(rustic-lsp-client 'eglot)
  '(safe-local-variable-values
    '((auto-insert-alist
       (rust-mode "" "// "
