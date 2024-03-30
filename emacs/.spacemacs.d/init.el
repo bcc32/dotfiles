@@ -270,6 +270,7 @@ This function should only modify configuration layer settings."
      fasd
      finance
      (shell :variables
+            shell-default-shell 'shell
             shell-enable-smart-eshell t)
 
      ;; Web services
