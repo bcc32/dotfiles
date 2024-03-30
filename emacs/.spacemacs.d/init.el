@@ -279,6 +279,7 @@ This function should only modify configuration layer settings."
 
      ;; User layers
      bcc32
+     bcc32-ledger
      bcc32-org
      )
 
@@ -299,6 +300,8 @@ This function should only modify configuration layer settings."
      (nano-agenda :location (recipe :fetcher github
                                     :repo "rougier/nano-agenda"))
 
+     ;; TODO: can I move this into the layer, or will :location not be respected
+     ;; in that case?
      (ledger-mode :location (recipe :fetcher github
                                     :repo "bcc32/ledger-mode"
                                     :branch "bcc32"
