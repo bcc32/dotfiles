@@ -53,6 +53,8 @@
     ;; original line, but I actually like this behavior for ledger-mode.
     (bind-key "RET" #'reindent-then-newline-and-indent ledger-mode-map))
 
+  ;; FIXME: ledger already defines a flymake checker, can we just reuse it for
+  ;; flycheck?
   (flycheck-define-command-checker 'bcc32-ledger-lint
     "Lint by running `bin/check.sh' with no arguments."
     :command '("bin/check.sh" source-inplace)
@@ -73,7 +75,11 @@
              ("y" . bcc32-ledger-yank-code))
 
   (add-hook 'ledger-mode-hook #'turn-off-auto-fill)
-  (add-hook 'ledger-reconcile-mode-hook #'ledger-reconcile-display-balance-in-header-mode))
+  (add-hook 'ledger-reconcile-mode-hook #'ledger-reconcile-display-balance-in-header-mode)
+
+  (define-advice ledger-copy-transaction-at-point (:after (&rest _) reset-xact-state)
+    "Make sure copied xact has clean state."
+    (bcc32-ledger-reset-xact-state)))
 
 (defun bcc32/init-mode-line-bell ()
   (use-package mode-line-bell

@@ -46,17 +46,22 @@ it will display the right message, e.g.:
 (defvar ledger-commoditized-amount-regexp)
 (defvar ledger-iso-date-regexp)
 (defvar ledger-iterate-regexp)
+(defvar ledger-post-line-regexp)
 (defvar ledger-reconcile-default-commodity)
 (defvar ledger-regex-iterate-group-code)
 (defvar ledger-regex-iterate-group-payee)
+(defvar ledger-regex-xact-line-group-code)
+(defvar ledger-xact-line-regexp)
 
 (declare-function ledger-navigate-beginning-of-xact "ledger-navigate")
 (declare-function ledger-navigate-end-of-xact       "ledger-navigate")
 (declare-function ledger-next-account               "ledger-post")
 (declare-function ledger-next-amount                "ledger-post")
-(declare-function ledger-regex-iterate-code         "ledger-regex" t t)
-(declare-function ledger-toggle-current             "ledger-state")
 (declare-function ledger-post-align-xact            "ledger-post")
+(declare-function ledger-regex-iterate-code         "ledger-regex" t t)
+(declare-function ledger-remove-effective-date      "ledger-mode")
+(declare-function ledger-toggle-current             "ledger-state")
+(declare-function ledger-toggle-current-posting     "ledger-state")
 
 (defconst bcc32--ledger-posting-effective-date-regexp
   (thunk-delay (rx ";" (one-or-more space) "[=" (group (regexp ledger-iso-date-regexp)) "]"))
@@ -167,5 +172,42 @@ recompute it."
 Return non-nil if ACCOUNT should be omitted from completion."
   (bcc32-ledger--load-excluded-accounts)
   (string-match-p bcc32-ledger--excluded-accounts-regexp (car account)))
+
+(defun bcc32-ledger-reset-xact-state ()
+  "Remove effective dates and states from this xact."
+  (interactive)
+  (save-excursion
+    (ledger-navigate-beginning-of-xact)
+    (unless (looking-at ledger-xact-line-regexp)
+      (error "Not at an xact"))
+
+    ;; Remove code and surrounding ()
+    (when-let ((code-beginning (match-beginning ledger-regex-xact-line-group-code)))
+      ;; include the leading (
+      (cl-decf code-beginning (1- code-beginning))
+      ;; include the trailing ) and any whitespace
+      (save-excursion
+        (goto-char (1+ (match-end ledger-regex-xact-line-group-code)))
+        (skip-syntax-forward "-")
+        (delete-region code-beginning (point))))
+
+    ;; Remove xact effective date
+    (ledger-remove-effective-date)
+
+    (save-restriction
+      (narrow-to-region (point) (save-excursion (ledger-navigate-end-of-xact)))
+
+      ;; Make all postings uncleared; this also removes xact state marker
+      (save-excursion
+        (while (< (point) (point-max))
+          (forward-line)
+          (when (looking-at ledger-post-line-regexp)
+            (while (ledger-toggle-current-posting)))))
+
+      ;; FIXME: This doesn't work for things like "[2024-03-01=2024-03-02]"
+      ;; Remove effective dates specified in comments
+      (let ((regexp (thunk-force bcc32--ledger-posting-effective-date-regexp)))
+        (while (re-search-forward regexp nil t)
+          (delete-region (match-beginning 0) (match-end 0)))))))
 
 ;;; funcs.el ends here
