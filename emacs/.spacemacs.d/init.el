@@ -298,14 +298,7 @@ This function should only modify configuration layer settings."
      zenburn-theme
 
      (nano-agenda :location (recipe :fetcher github
-                                    :repo "rougier/nano-agenda"))
-
-     ;; TODO: can I move this into the layer, or will :location not be respected
-     ;; in that case?
-     (ledger-mode :location (recipe :fetcher github
-                                    :repo "bcc32/ledger-mode"
-                                    :branch "bcc32"
-                                    :files ("ledger-*.el" "doc/*.texi"))))
+                                    :repo "rougier/nano-agenda")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()

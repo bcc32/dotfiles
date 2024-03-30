@@ -5,7 +5,10 @@
 ;;; Code:
 
 (defconst bcc32-ledger-packages
-  '(ledger-mode))
+  '((ledger-mode :location (recipe :fetcher github
+                                   :repo "bcc32/ledger-mode"
+                                   :branch "bcc32"
+                                   :files ("ledger-*.el" "doc/*.texi")))))
 
 (defun bcc32-ledger/post-init-ledger-mode ()
   (defvar flycheck-checkers)
