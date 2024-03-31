@@ -36,8 +36,11 @@
 
 (defun bcc32/init-explain-pause-mode ()
   (use-package explain-pause-mode
+    :defer t
+    :init
+    (when bcc32-enable-explain-pause-at-startup
+      (explain-pause-mode))
     :config
-    (explain-pause-mode)
     (setf (cadr (assoc 'explain-pause-mode minor-mode-alist)) "")))
 
 (defun bcc32/post-init-helm-make ())

@@ -278,7 +278,8 @@ This function should only modify configuration layer settings."
      spotify
 
      ;; User layers
-     bcc32
+     (bcc32 :variables
+            bcc32-enable-explain-pause-at-startup nil)
      bcc32-ledger
      bcc32-org
      )
