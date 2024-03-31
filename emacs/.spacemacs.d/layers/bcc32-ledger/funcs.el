@@ -149,7 +149,7 @@ Return non-nil if ACCOUNT should be omitted from completion."
     ;; Remove code and surrounding ()
     (when-let ((code-beginning (match-beginning ledger-regex-xact-line-group-code)))
       ;; include the leading (
-      (cl-decf code-beginning (1- code-beginning))
+      (cl-decf code-beginning)
       ;; include the trailing ) and any whitespace
       (save-excursion
         (goto-char (1+ (match-end ledger-regex-xact-line-group-code)))
