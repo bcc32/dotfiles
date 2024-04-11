@@ -19,6 +19,7 @@
  '(dired-recursive-copies 'always)
  '(display-time-mode t)
  '(editorconfig-mode-lighter "")
+ '(eglot-confirm-server-initiated-edits nil)
  '(enable-recursive-minibuffers t)
  '(enable-remote-dir-locals t)
  '(epg-pinentry-mode 'loopback)
