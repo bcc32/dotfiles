@@ -306,12 +306,7 @@ This function should only modify configuration layer settings."
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
-   '(;; Disabled due to a bad interaction with find-dired.  Patch submitted
-    ;; upstream as
-    ;; https://gitlab.com/xuhdev/dired-quick-sort/-/merge_requests/4.
-     dired-quick-sort
-
-     ;; this package litters .pdf-view-restore files all over my disk
+   '(;; this package litters .pdf-view-restore files all over my disk
      pdf-view-restore)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
