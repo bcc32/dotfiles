@@ -919,6 +919,9 @@ before packages are loaded."
   ;; of a separate file.
   (load custom-file))
 
+;; workaround for https://github.com/Fuco1/smartparens/issues/1204
+(defalias 'sp--syntax-class-to-char 'syntax-class-to-char)
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
