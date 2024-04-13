@@ -48,7 +48,6 @@
 (defun bcc32/init-mode-line-bell ()
   (use-package mode-line-bell
     :config
-    (setq mode-line-bell-flash-time 0.2)
     (mode-line-bell-mode)))
 
 (defun bcc32/post-init-pocket-reader ())
