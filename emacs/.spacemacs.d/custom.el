@@ -27,6 +27,7 @@
    '("ncdu" "vi" "vim" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-escape-excluded-major-modes '(term-mode))
+ '(evil-ex-visual-char-range t)
  '(evil-kill-on-visual-paste nil)
  '(evil-symbol-word-search t)
  '(evil-want-Y-yank-to-eol t)
