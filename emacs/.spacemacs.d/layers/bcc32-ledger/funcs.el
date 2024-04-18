@@ -138,6 +138,7 @@ Return non-nil if ACCOUNT should be omitted from completion."
   (bcc32-ledger--load-excluded-accounts)
   (string-match-p bcc32-ledger--excluded-accounts-regexp (car account)))
 
+;; TODO: upstream this and make it a defcustom
 (defun bcc32-ledger-reset-xact-state ()
   "Remove effective dates and states from this xact."
   (interactive)
