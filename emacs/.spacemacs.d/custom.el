@@ -88,7 +88,6 @@
  '(magit-diff-refine-hunk t)
  '(magit-published-branches '("origin/main" "origin/master"))
  '(magit-todos-exclude-globs '("flycheck_*" "*.org_archive" ".git/"))
- '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(magit-todos-update 120)
  '(merlin-eldoc-doc nil)
  '(merlin-eldoc-type nil)
