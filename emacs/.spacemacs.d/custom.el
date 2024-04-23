@@ -68,7 +68,6 @@
  '(ledger-copy-transaction-insert-blank-line-after t)
  '(ledger-default-date-format ledger-iso-date-format)
  '(ledger-reconcile-default-commodity "USD")
- '(ledger-reconcile-display-balance-in-header t)
  '(ledger-reconcile-insert-effective-date 'bcc32-ledger-should-insert-effective-date)
  '(ledger-report-use-header-line t)
  '(ledger-reports
