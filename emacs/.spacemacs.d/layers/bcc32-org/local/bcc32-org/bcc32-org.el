@@ -65,6 +65,16 @@
       (org-fold-show-all)
       (org-align-tags :all))))
 
+(defun bcc32-org-cleanup-entire-agenda ()
+  "Clean up all org agenda buffers.
+
+See `bcc32-org-cleanup'."
+  (interactive)
+  (dolist-with-progress-reporter (b (org-buffer-list 'agenda))
+      "Cleaning up agenda files..."
+    (with-current-buffer b
+      (bcc32-org-cleanup))))
+
 (defun bcc32-org--sort-by-closed-getkey ()
   "Return the CLOSED property of the org entry at point.
 
