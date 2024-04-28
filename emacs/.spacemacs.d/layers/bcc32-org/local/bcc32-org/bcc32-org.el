@@ -133,7 +133,7 @@ in the current repo."
   (magit-maybe-save-repository-buffers)
   (when (magit-anything-modified-p)
     (magit-git "commit" "-am" "_"))
-  (magit-git "pull" "--rebase")
+  (magit-git "pull" "--rebase" "-Xignore-space-change")
   (magit-git "push")
   (message "Committing and pushing... done"))
 
