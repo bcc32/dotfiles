@@ -1,4 +1,4 @@
-personal_ws-1.1 en 122 
+personal_ws-1.1 en 125 
 Android
 EXIF
 Elisp
@@ -67,6 +67,7 @@ gemstone
 gemstones
 guacamole
 healthcare
+iff
 latte
 learnability
 lumens
@@ -107,6 +108,8 @@ smoothie
 soundtrack
 splitter
 subcommand
+substring
+substrings
 symlink
 symlinks
 tad
