@@ -18,5 +18,4 @@
 --no-mtime
 
 # Use ~/.netrc if necessary
---netrc
---netrc-location ~/.authinfo
+--netrc-cmd "grep -v ' port ' ~/.authinfo"
