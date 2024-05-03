@@ -214,7 +214,6 @@ This function should only modify configuration layer settings."
                  javascript-fmt-on-save t
                  javascript-fmt-tool 'prettier)
      json
-     jsonnet
      ;; bibtex
      ;; latex
      markdown
