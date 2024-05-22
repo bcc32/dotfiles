@@ -17,6 +17,7 @@
  '(dired-async-skip-fast t)
  '(dired-omit-verbose nil)
  '(dired-recursive-copies 'always)
+ '(dired-vc-rename-file t)
  '(display-time-mode t)
  '(editorconfig-mode-lighter "")
  '(eglot-confirm-server-initiated-edits nil)
