@@ -33,6 +33,7 @@
  '(evil-kill-on-visual-paste nil)
  '(evil-symbol-word-search t)
  '(evil-want-Y-yank-to-eol t)
+ '(evil-want-fine-undo t)
  '(explicit-shell-file-name "zsh")
  '(fancy-battery-mode t)
  '(flycheck-emacs-lisp-initialize-packages t nil nil "Set so that ~/.spacemacs.d/init.el is checked properly")
