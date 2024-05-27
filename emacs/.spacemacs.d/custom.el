@@ -15,6 +15,7 @@
  '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
  '(dired-async-mode t)
  '(dired-async-skip-fast t)
+ '(dired-auto-revert-buffer t)
  '(dired-omit-verbose nil)
  '(dired-recursive-copies 'always)
  '(dired-vc-rename-file t)
