@@ -173,12 +173,6 @@ let g:ledger_main = '~/journal/journal.ldg'
 "" Set shorter key sequence timeout
 set timeoutlen=250
 
-"" SPC begins commands
-noremap <Space> :
-
-"" fd is ESC
-inoremap fd <Esc>
-
 "" make Y consistent with C, S, D, etc.
 nnoremap Y y$
 
