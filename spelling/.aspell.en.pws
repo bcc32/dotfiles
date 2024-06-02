@@ -1,4 +1,4 @@
-personal_ws-1.1 en 125 
+personal_ws-1.1 en 127 
 Android
 EXIF
 Elisp
@@ -70,6 +70,8 @@ healthcare
 iff
 latte
 learnability
+lockfile
+lockfiles
 lumens
 macOS
 macchiato
