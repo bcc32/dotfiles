@@ -177,8 +177,8 @@ This function should only modify configuration layer settings."
      syntax-checking
 
      ;; Completion
-     (auto-completion :variables
-                      auto-completion-idle-delay nil)
+     ;; (auto-completion :variables
+     ;;                  auto-completion-idle-delay nil)
      ;; ivy
      compleseus
 
