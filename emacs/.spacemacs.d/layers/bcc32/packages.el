@@ -4,6 +4,7 @@
   '((advent-of-code :location (recipe :fetcher github
                                       :repo "bcc32/advent-of-code"
                                       :files ("elisp/advent-of-code.el")))
+    (bcc32 :location local)
     debbugs
     envrc
     evil-quickscope
@@ -19,6 +20,11 @@
 
 (defun bcc32/init-advent-of-code ()
   (use-package advent-of-code
+    :defer t))
+
+(defun bcc32/init-bcc32 ()
+  (use-package bcc32
+    :commands (bcc32-report-bad-custom-variables)
     :defer t))
 
 (defun bcc32/init-debbugs ()
