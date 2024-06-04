@@ -59,5 +59,50 @@
         (display-buffer buf)
       (kill-buffer buf))))
 
+(require 'autorevert)
+
+(defun bcc32-enable-auto-revert-debugging ()
+  "Enable some debugging advice and command hooks to find some auto-revert issues."
+  (interactive)
+  (setq auto-revert-debug t)
+  (setq auto-revert-verbose t)
+
+  (add-hook 'post-command-hook #'bcc32-auto-revert-warn-if-problem-post-command)
+
+  ;; I think this is the only function that may remove things from `auto-revert--buffer-by-watch-descriptor'
+  (advice-add 'auto-revert-notify-rm-watch :after #'bcc32-auto-revert-ensure-all-buffers-accounted-for))
+
+(defun bcc32-auto-revert-warn-if-problem-post-command ()
+  "Warn if there is an auto-revert problem in the current buffer.
+
+This is used as a `post-command-hook'."
+  (when-let ((desc auto-revert-notify-watch-descriptor))
+    (unless (assoc desc auto-revert--buffer-by-watch-descriptor)
+      (delay-warning
+       'bcc32
+       (format-message "In buffer %S, notify-watch descriptor %S is absent from global list"
+                       (current-buffer)
+                       desc)))))
+
+(defun bcc32-auto-revert-ensure-all-buffers-accounted-for (&rest _)
+  "Error if any buffers' notify-watch descriptor is not in the alist."
+  (cl-loop for (desc . buf) in auto-revert--buffer-by-watch-descriptor
+           unless (buffer-base-buffer buf)
+           do
+           (cl-assert (buffer-live-p buf) t)
+           (cl-assert
+            (equal desc
+                   (buffer-local-value 'auto-revert-notify-watch-descriptor buf))
+            t))
+
+  (cl-loop for buf being the buffers
+           unless (buffer-base-buffer buf)
+           for desc = (buffer-local-value 'auto-revert-notify-watch-descriptor buf)
+           when desc
+           do
+           (cl-assert
+            (when-let ((buf2 (alist-get desc auto-revert--buffer-by-watch-descriptor)))
+              (eq buf buf2)))))
+
 (provide 'bcc32)
 ;;; bcc32.el ends here

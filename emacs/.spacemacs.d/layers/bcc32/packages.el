@@ -24,8 +24,12 @@
 
 (defun bcc32/init-bcc32 ()
   (use-package bcc32
-    :commands (bcc32-report-bad-custom-variables)
-    :defer t))
+    :commands (bcc32-enable-auto-revert-debugging
+               bcc32-report-bad-custom-variables)
+    :defer t
+    :init
+    (when bcc32-enable-auto-revert-debugging-at-startup
+      (bcc32-enable-auto-revert-debugging))))
 
 (defun bcc32/init-debbugs ()
   (use-package debbugs

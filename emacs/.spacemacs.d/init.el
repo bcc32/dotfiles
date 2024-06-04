@@ -279,6 +279,7 @@ This function should only modify configuration layer settings."
 
      ;; User layers
      (bcc32 :variables
+            bcc32-enable-auto-revert-debugging-at-startup t
             bcc32-enable-explain-pause-at-startup nil)
      bcc32-ledger
      bcc32-org
