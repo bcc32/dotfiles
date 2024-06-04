@@ -11,8 +11,7 @@
     (explain-pause-mode :location (recipe :fetcher github
                                           :repo "lastquestion/explain-pause-mode"))
     (helm-make :location (recipe :fetcher github
-                                 :repo "bcc32/helm-make"
-                                 :branch "try-nproc-on-darwin"))
+                                 :repo "bcc32/helm-make"))
     mode-line-bell
     (pocket-reader :location (recipe :fetcher github
                                      :repo "bcc32/pocket-reader.el"
