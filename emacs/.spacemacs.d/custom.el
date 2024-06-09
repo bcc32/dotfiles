@@ -72,6 +72,7 @@
  '(ledger-default-date-format ledger-iso-date-format)
  '(ledger-reconcile-default-commodity "USD")
  '(ledger-reconcile-insert-effective-date 'bcc32-ledger-should-insert-effective-date)
+ '(ledger-report-links-beginning-of-xact nil)
  '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("debts" "%(binary) -f %(ledger-file) register --by-payee 'Personal Debts'")
