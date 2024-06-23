@@ -183,7 +183,7 @@ This function should only modify configuration layer settings."
      compleseus
 
      ;; Emacs
-     helpful
+     ;; helpful
      ibuffer
      (org :variables
           org-enable-appear-support t
