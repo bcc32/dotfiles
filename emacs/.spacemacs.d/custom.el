@@ -193,6 +193,7 @@
      (vc-prepare-patches-separately)
      (whitespace-style)))
  '(save-abbrevs 'silently)
+ '(save-some-buffers-default-predicate 'save-some-buffers-root)
  '(send-mail-function 'smtpmail-send-it)
  '(sentence-end-double-space t)
  '(sh-basic-offset 2)
