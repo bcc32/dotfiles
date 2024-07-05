@@ -406,7 +406,6 @@ It should only modify the values of Spacemacs settings."
    ;; (default 'vim)
    dotspacemacs-editing-style
    '(hybrid :variables
-            hybrid-mode-enable-hjkl-bindings t
             vim-style-enable-undo-region t
             vim-style-remap-Y-to-y$ t)
 

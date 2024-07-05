@@ -15,7 +15,8 @@
     mode-line-bell
     (pocket-reader :location (recipe :fetcher github
                                      :repo "bcc32/pocket-reader.el"
-                                     :branch "working"))))
+                                     :branch "working"))
+    vertico))
 
 (defun bcc32/init-advent-of-code ()
   (use-package advent-of-code
@@ -60,3 +61,7 @@
     (mode-line-bell-mode)))
 
 (defun bcc32/post-init-pocket-reader ())
+
+(defun bcc32/post-init-vertico ()
+  (with-eval-after-load 'vertico
+    (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)))
