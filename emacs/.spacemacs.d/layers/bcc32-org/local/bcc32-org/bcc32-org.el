@@ -97,12 +97,12 @@ else +INF for entries with a todo keyword, -INF otherwise."
   "Sort all agenda subtrees by CLOSED."
   (interactive)
   (cl-flet ((sort-if-nonempty
-             ()
-             (condition-case e
-                 (bcc32-org-sort-by-closed)
-               (user-error
-                (unless (string= (cadr e) "Nothing to sort")
-                  (signal (car e) (cadr e)))))))
+              ()
+              (condition-case e
+                  (bcc32-org-sort-by-closed)
+                (user-error
+                 (unless (string= (cadr e) "Nothing to sort")
+                   (signal (car e) (cadr e)))))))
     (save-excursion
       (dolist (buf (org-buffer-list 'agenda))
         (set-buffer buf)
