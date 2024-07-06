@@ -23,13 +23,6 @@
 (defgroup bcc32-org nil "Bcc32's `org-mode' customizations."
   :group 'emacs)
 
-(defvar org-indent-mode)
-
-(define-advice org-align-tags (:around (f &rest args) bcc32-org--disable-org-indent-mode)
-  "Ignore the value of `org-indent-mode' while aligning tags."
-  (let (org-indent-mode)
-    (apply f args)))
-
 (defun bcc32-org--archive-file-p (file-name)
   "Return non-nil if FILE-NAME refers to an *.org_archive file."
   (string-match-p (rx ".org_archive" eos) file-name))
@@ -49,21 +42,7 @@
      (lambda ()
        (unless (member "ARCHIVE" (org-get-tags))
          (org-update-dblock))))
-    (org-update-statistics-cookies t)
-    ;; FIXME: This workaround for incorrect alignment in org headings containing
-    ;; links doesn't work.  The key point is that `current-column' returns a
-    ;; different result when the point is visible (and the link is rendered like
-    ;; so) vs. when the point is not visible (and the link is rendered as raw
-    ;; org markup).
-    ;;
-    ;; I also noticed that `current-column' has spooky side effects: if you
-    ;; place point at the end of a heading with a link, then call "M-:
-    ;; (current-column)", you get some small-ish number.  Press S-tab to hide
-    ;; all entries, then evaluate `current-column' again.  You get a different,
-    ;; larger number.  Press S-tab twice more to reveal point.  Point has moved.
-    (org-save-outline-visibility :use-markers
-      (org-fold-show-all)
-      (org-align-tags :all))))
+    (org-update-statistics-cookies t)))
 
 (defun bcc32-org-cleanup-entire-agenda ()
   "Clean up all org agenda buffers.
