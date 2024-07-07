@@ -63,6 +63,7 @@
  '(grep-find-ignored-directories
    '("_build" "_opam" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
  '(helm-make-nproc 0)
+ '(help-enable-variable-value-editing t)
  '(indent-guide-global-mode t)
  '(ivy-magic-tilde nil)
  '(ivy-use-virtual-buffers nil)
