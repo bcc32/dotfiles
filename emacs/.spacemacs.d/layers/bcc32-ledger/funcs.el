@@ -177,4 +177,16 @@ Return non-nil if ACCOUNT should be omitted from completion."
         (while (re-search-forward regexp nil t)
           (delete-region (match-beginning 0) (match-end 0)))))))
 
+(defun bcc32-ledger-append-adjustments-null-posting ()
+  "Append a null Adjustments posting to the xact at point."
+  (interactive)
+  (save-excursion
+    (ledger-navigate-end-of-xact)
+    (back-to-indentation)
+    (if (looking-at-p (rx "Equity:Adjustments" eol))
+        (user-error "Xact already contains a null Adjustments posting")
+      (end-of-line)
+      (newline-and-indent)
+      (insert "Equity:Adjustments"))))
+
 ;;; funcs.el ends here

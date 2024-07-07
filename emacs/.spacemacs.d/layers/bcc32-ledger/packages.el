@@ -37,6 +37,7 @@
   (cl-pushnew 'bcc32-ledger-lint flycheck-checkers)
 
   (bind-keys :map spacemacs-ledger-mode-map
+             ("d" . bcc32-ledger-append-adjustments-null-posting)
              ("j" . bcc32-ledger-promote-effective-date)
              ("u" . bcc32-ledger-fill-in-default-commodity)
              ("y" . bcc32-ledger-yank-code))
