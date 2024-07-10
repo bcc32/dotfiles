@@ -186,7 +186,13 @@ This function should only modify configuration layer settings."
      ;; helpful
      ibuffer
      (org :variables
-          org-enable-appear-support t
+          org-enable-appear-support
+          (ignore-errors
+            (version-list-< (pkg-info-package-version 'org)
+                            (version-to-list "9.7")))
+          ;; TODO: re-enable when https://github.com/awth13/org-appear/issues/58
+          ;; is fixed
+
           org-enable-github-support t
           org-enable-modern-support t
           org-enable-notifications t
