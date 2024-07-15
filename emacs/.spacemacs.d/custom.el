@@ -209,7 +209,7 @@
  '(solarized-use-more-italic t)
  '(spacemacs-keep-legacy-current-buffer-delete-bindings nil)
  '(spacemacs-large-file-modes-list
-   '(ledger-mode archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode fundamental-mode))
+   '(org-mode ledger-mode archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode fundamental-mode))
  '(sql-product 'sqlite)
  '(tab-always-indent 'complete)
  '(tab-width 8)
