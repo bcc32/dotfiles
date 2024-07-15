@@ -28,9 +28,4 @@
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org
     (org-clock-persistence-insinuate)
-    (set-face-attribute 'org-headline-done nil :strike-through t))
-
-  ;; TODO: Remove this workaround for
-  ;; https://list.orgmode.org/87frwkfasl.fsf@bcc32.com/T/#u.
-  (define-advice org-agenda-clock-cancel (:after (&rest _) bcc32-update-agenda-buffer)
-    (org-agenda-unmark-clocking-task)))
+    (set-face-attribute 'org-headline-done nil :strike-through t)))
