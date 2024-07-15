@@ -207,6 +207,7 @@
  '(smtpmail-stream-type 'ssl)
  '(solarized-distinct-doc-face t)
  '(solarized-use-more-italic t)
+ '(spacemacs-keep-legacy-current-buffer-delete-bindings nil)
  '(spacemacs-large-file-modes-list
    '(ledger-mode archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode fundamental-mode))
  '(sql-product 'sqlite)
