@@ -148,6 +148,7 @@
    '((sequence "TODO(t)" "MAYBE(m/!)" "INPROGRESS(p!)" "STALLED(a)" "BLOCKED(k@/!)" "INREVIEW(r!)" "|" "DONE(d/@)" "DELEGATED(g@)" "DEFERRED(e!)" "NOTDONE(n)")
      (type "BUG(b/!)" "CLEANUP(l/!)" "|" "FIXED(x/@)" "WONTFIX(w@/@)")
      (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
+ '(org-use-effective-time t)
  '(org-web-tools-pandoc-sleep-time 2.0)
  '(org-wild-notifier-alert-time '(10 2))
  '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
