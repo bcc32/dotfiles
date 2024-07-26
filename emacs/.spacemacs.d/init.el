@@ -801,10 +801,6 @@ See the header of this file for more information."
   (when (eq system-type 'darwin)
     (spacemacs/load-spacemacs-env)))
 
-(declare-function ocp-indent-buffer "ocp-indent" ())
-(define-advice ocamlformat (:after () run-ocp-indent)
-  (ocp-indent-buffer))
-
 (define-advice package--save-selected-packages (:override (&rest _) dont-save-to-custom-file -100)
   "Don't save `package-selected-packages' to `custom-file'."
   nil)
