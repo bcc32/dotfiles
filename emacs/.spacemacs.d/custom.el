@@ -100,6 +100,7 @@
  '(merlin-eldoc-type nil)
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
+ '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files
    (seq-map #'file-truename
