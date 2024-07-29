@@ -728,7 +728,7 @@ It should only modify the values of Spacemacs settings."
    ;; from undo-tree to undo-fu or undo-redo.
    ;; The default is currently 'undo-tree, but it will likely be changed
    ;; and at some point removed because undo-tree is not maintained anymore.
-   dotspacemacs-undo-system 'undo-tree
+   dotspacemacs-undo-system 'undo-fu
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
