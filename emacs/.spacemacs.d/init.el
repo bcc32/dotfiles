@@ -315,7 +315,9 @@ This function should only modify configuration layer settings."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
    '(;; this package litters .pdf-view-restore files all over my disk
-     pdf-view-restore)
+     pdf-view-restore
+     popwin                             ;annoying behavior with *Help* buffers.
+     )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
