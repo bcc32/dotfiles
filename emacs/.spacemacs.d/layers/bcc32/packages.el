@@ -5,6 +5,7 @@
                                       :repo "bcc32/advent-of-code"
                                       :files ("elisp/advent-of-code.el")))
     (bcc32 :location local)
+    corfu
     debbugs
     envrc
     evil-quickscope
@@ -30,6 +31,13 @@
     :init
     (when bcc32-enable-auto-revert-debugging-at-startup
       (bcc32-enable-auto-revert-debugging))))
+
+(defun bcc32/init-corfu ()
+  (use-package corfu
+    :defer t
+    :init (global-corfu-mode)
+    :config
+    (setopt corfu-auto t)))
 
 (defun bcc32/init-debbugs ()
   (use-package debbugs

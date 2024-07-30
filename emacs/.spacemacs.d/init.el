@@ -305,7 +305,6 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
 
-     corfu
      (nano-agenda :location (recipe :fetcher github
                                     :repo "rougier/nano-agenda")))
 
@@ -914,12 +913,6 @@ before packages are loaded."
   (with-eval-after-load 'savehist
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
-
-  (use-package corfu
-    :defer t
-    :init (global-corfu-mode)
-    :config
-    (setopt corfu-auto t))
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
