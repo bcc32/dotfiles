@@ -32,8 +32,7 @@
   "Run some cleanup on the current buffer, if it's an org buffer.
 
 - Update dynamic blocks (e.g., clock reports)
-- Update statistics cookies (e.g., [2/3])
-- Align heading tags"
+- Update statistics cookies (e.g., [2/3])"
   (interactive "*")
   (when (and (derived-mode-p 'org-mode)
              (not (when-let ((file-name (buffer-file-name)))
