@@ -206,7 +206,7 @@ This function should only modify configuration layer settings."
      ;; Programming and markup languages
      ;; lsp
      autohotkey
-     c-c++
+     ;; c-c++
      csv
      ;; common-lisp
      emacs-lisp
@@ -214,22 +214,22 @@ This function should only modify configuration layer settings."
      ;;     go-format-before-save t
      ;;     go-tab-width 4)
      ;; haskell
-     html
-     (javascript :variables
-                 javascript-backend 'tide
-                 javascript-fmt-on-save t
-                 javascript-fmt-tool 'prettier)
+     ;; html
+     ;; (javascript :variables
+     ;;             javascript-backend 'tide
+     ;;             javascript-fmt-on-save t
+     ;;             javascript-fmt-tool 'prettier)
      json
      ;; bibtex
      ;; latex
      markdown
      (ocaml :variables
             ocaml-format-on-save t)
-     perl5
-     (python :variables
-             python-format-on-save t
-             python-formatter 'black
-             python-sort-imports-on-save t)
+     ;; perl5
+     ;; (python :variables
+     ;;         python-format-on-save t
+     ;;         python-formatter 'black
+     ;;         python-sort-imports-on-save t)
      ;; ruby
      (rust :variables
            cargo-process-reload-on-modify t
@@ -240,11 +240,11 @@ This function should only modify configuration layer settings."
                     shell-scripts-backend nil
                     shell-scripts-format-on-save t)
      sql
-     (typescript :variables
-                 typescript-backend 'tide
-                 typescript-fmt-on-save t
-                 typescript-fmt-tool 'prettier)
-     yaml
+     ;; (typescript :variables
+     ;;             typescript-backend 'tide
+     ;;             typescript-fmt-on-save t
+     ;;             typescript-fmt-tool 'prettier)
+     ;; yaml
 
      ;; Operating systems
      (nixos :variables
@@ -272,8 +272,8 @@ This function should only modify configuration layer settings."
      spacemacs-visual
 
      ;; Tools
-     command-log
-     fasd
+     ;; command-log
+     ;; fasd
      finance
      (shell :variables
             shell-default-shell 'shell
@@ -281,7 +281,7 @@ This function should only modify configuration layer settings."
 
      ;; Web services
      pocket
-     spotify
+     ;; spotify
 
      ;; User layers
      (bcc32 :variables
