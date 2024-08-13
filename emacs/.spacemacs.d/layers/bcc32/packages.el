@@ -8,6 +8,7 @@
     corfu
     debbugs
     envrc
+    evil
     evil-quickscope
     (explain-pause-mode :location (recipe :fetcher github
                                           :repo "lastquestion/explain-pause-mode"))
@@ -46,6 +47,10 @@
 (defun bcc32/init-envrc ()
   (use-package envrc
     :init (envrc-global-mode)))
+
+(defun bcc32/post-init-evil ()
+  (with-eval-after-load 'evil
+    (evil-define-key* '(visual) prog-mode-map "t" #'bcc32-wrap-thunk)))
 
 (defun bcc32/init-evil-quickscope ()
   (use-package evil-quickscope

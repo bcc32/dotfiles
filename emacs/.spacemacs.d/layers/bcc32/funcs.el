@@ -36,3 +36,17 @@ it will display the right message, e.g.:
 \(bind-key \"<f1>\" #\\='bcc32-hard-disable-command)"
   (interactive)
   (user-error "Do not use %s" (key-description (this-command-keys))))
+
+(defun bcc32-wrap-thunk (start end)
+  "Wrap the expression in the region from START to END as a thunk.
+
+The \"thunk\" syntax depends on the current major mode, e.g., in
+Elisp buffers it makes the current region the body of a lambda
+expression."
+  (interactive "r")
+  (cl-flet ((wrap (before after)
+              (save-excursion (goto-char end) (insert after))
+              (save-excursion (goto-char start) (insert before))))
+    (cond
+     ((derived-mode-p 'tuareg-mode) (wrap "(fun () -> " ")"))
+     ((derived-mode-p 'emacs-lisp-mode) (wrap "(lambda () " ")")))))
