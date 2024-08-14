@@ -12,6 +12,7 @@
    (expand-file-name "calc-settings.el" dotspacemacs-directory))
  '(calendar-week-start-day 1)
  '(column-enforce-column nil)
+ '(corfu-auto-delay 0.5)
  '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
  '(dired-async-mode t)
  '(dired-async-skip-fast t)
