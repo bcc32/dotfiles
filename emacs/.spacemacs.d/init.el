@@ -890,13 +890,6 @@ before packages are loaded."
              ("f" . ocamlformat)
              ("v" . merlin-enclosing-expand))
 
-  (with-eval-after-load 'magit
-    (defvar magit-git-executable)
-    ;; Hack to force usage of native ARM git executable on macOS, which is much
-    ;; faster than the x86 version from nixpkgs.
-    (when (eq system-type 'darwin)
-      (setq magit-git-executable "/usr/bin/git")))
-
   (with-eval-after-load 'pocket-reader
     (defvar pocket-reader-mode-map)
     (bind-key "b" 'bcc32/pocket-reader-browse pocket-reader-mode-map))
