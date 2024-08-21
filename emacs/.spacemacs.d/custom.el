@@ -142,6 +142,7 @@
  '(org-priority-default 67)
  '(org-refile-targets '((nil :maxlevel . 10) (org-agenda-files :maxlevel . 10)))
  '(org-refile-use-outline-path 'buffer-name)
+ '(org-startup-folded 'nofold)
  '(org-startup-indented t)
  '(org-startup-shrink-all-tables t)
  '(org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil ""))
