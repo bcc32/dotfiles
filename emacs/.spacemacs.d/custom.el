@@ -10,6 +10,7 @@
  '(calc-context-sensitive-enter t)
  '(calc-settings-file
    (expand-file-name "calc-settings.el" dotspacemacs-directory))
+ '(calendar-view-holidays-initially-flag t)
  '(calendar-week-start-day 1)
  '(column-enforce-column nil)
  '(corfu-auto-delay 0.5)
