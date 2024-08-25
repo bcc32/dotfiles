@@ -10,6 +10,8 @@
  '(calc-context-sensitive-enter t)
  '(calc-settings-file
    (expand-file-name "calc-settings.el" dotspacemacs-directory))
+ '(calendar-latitude 40.65)
+ '(calendar-longitude -73.95)
  '(calendar-view-holidays-initially-flag t)
  '(calendar-week-start-day 1)
  '(column-enforce-column nil)
