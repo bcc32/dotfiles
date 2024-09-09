@@ -15,6 +15,7 @@
  '(calendar-view-holidays-initially-flag t)
  '(calendar-week-start-day 1)
  '(column-enforce-column nil)
+ '(completions-detailed t)
  '(corfu-auto-delay 0.5)
  '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
  '(dired-async-mode t)
