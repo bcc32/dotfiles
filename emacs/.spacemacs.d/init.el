@@ -182,6 +182,9 @@ This function should only modify configuration layer settings."
      ;; ivy
      compleseus
 
+     ;; E-mail
+     notmuch
+
      ;; Emacs
      ;; helpful
      ibuffer
