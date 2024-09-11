@@ -147,6 +147,7 @@
  '(org-pretty-entities t)
  '(org-priority-default 67)
  '(org-refile-targets '((nil :maxlevel . 10) (org-agenda-files :maxlevel . 10)))
+ '(org-refile-use-cache t)
  '(org-refile-use-outline-path t)
  '(org-startup-folded 'nofold)
  '(org-startup-indented t)
