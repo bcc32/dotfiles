@@ -281,6 +281,8 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-shell 'shell
             shell-enable-smart-eshell t)
+     (transmission :variables
+                   transmission-auto-refresh-all t)
 
      ;; Web services
      pocket
