@@ -190,9 +190,7 @@ This function should only modify configuration layer settings."
      ibuffer
      (org :variables
           org-enable-appear-support
-          (ignore-errors
-            (version-list-< (pkg-info-package-version 'org)
-                            (version-to-list "9.7")))
+          (ignore-errors (version< (org-version) "9.7"))
           ;; TODO: re-enable when https://github.com/awth13/org-appear/issues/58
           ;; is fixed
 
