@@ -312,10 +312,7 @@ This function should only modify configuration layer settings."
    '(base16-theme
      solarized-theme
      tao-theme
-     zenburn-theme
-
-     (nano-agenda :location (recipe :fetcher github
-                                    :repo "rougier/nano-agenda")))
+     zenburn-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
