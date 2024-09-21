@@ -183,6 +183,7 @@ This function should only modify configuration layer settings."
      compleseus
 
      ;; E-mail
+     mu4e
      notmuch
 
      ;; Emacs

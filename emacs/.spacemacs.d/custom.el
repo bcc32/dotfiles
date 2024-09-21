@@ -105,6 +105,16 @@
  '(merlin-eldoc-type nil)
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
+ '(mu4e-bookmarks
+   '((:name "inbox" :query "maildir:/INBOX" :key 105)
+     (:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key 117)
+     (:name "Today's messages" :query "date:today..now" :key 116)
+     (:name "Last 7 days" :query "date:7d..now" :hide-unread t :key 119)
+     (:name "Messages with images" :query "mime:image/*" :key 112)))
+ '(mu4e-drafts-folder "/Drafts")
+ '(mu4e-refile-folder "/Archive")
+ '(mu4e-sent-folder "/Sent")
+ '(mu4e-trash-folder "/Trash")
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files
