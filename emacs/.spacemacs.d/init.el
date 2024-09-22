@@ -922,6 +922,22 @@ before packages are loaded."
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
 
+  (use-package mu4e
+    :defer t
+    :config
+    ;; TODO: Refactor if mu4e-marks becomes more easily configurable.
+    ;; https://github.com/djcb/mu/issues/1136#issuecomment-1066303788
+    (setf (alist-get 'trash mu4e-marks)
+          (list :char '("d" . "▼")
+                :prompt "dtrash"
+                :dyn-target (lambda (target msg)
+                              (mu4e-get-trash-folder msg))
+                :action (lambda (docid msg target)
+                          ;; Here's the main difference to the regular trash mark,
+                          ;; no +T before -N so the message is not marked as
+                          ;; IMAP-deleted:
+                          (mu4e--server-move docid (mu4e--mark-check-target target) "-N")))))
+
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
   ;;
