@@ -105,6 +105,7 @@
  '(merlin-eldoc-type nil)
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
+ '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
  '(mu4e-bookmarks
    '((:name "inbox" :query "maildir:/INBOX" :key 105)
      (:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key 117)
