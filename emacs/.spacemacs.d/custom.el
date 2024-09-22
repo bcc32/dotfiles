@@ -113,6 +113,7 @@
      (:name "Last 7 days" :query "date:7d..now" :hide-unread t :key 119)
      (:name "Messages with images" :query "mime:image/*" :key 112)))
  '(mu4e-drafts-folder "/Drafts")
+ '(mu4e-get-mail-command "offlineimap")
  '(mu4e-refile-folder "/Archive")
  '(mu4e-sent-folder "/Sent")
  '(mu4e-trash-folder "/Trash")
