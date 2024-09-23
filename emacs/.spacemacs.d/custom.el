@@ -176,6 +176,7 @@
  '(org-use-effective-time t)
  '(org-web-tools-pandoc-sleep-time 2.0)
  '(org-wild-notifier-alert-time '(10 2))
+ '(orgit-rev-description-format "%%N (magit-rev %%R): %s")
  '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
  '(pdf-tools-installer-os "nixos")
  '(pocket-reader-archive-on-open nil)
