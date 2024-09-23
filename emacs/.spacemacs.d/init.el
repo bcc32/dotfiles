@@ -937,6 +937,14 @@ before packages are loaded."
                           ;; IMAP-deleted:
                           (mu4e--server-move docid (mu4e--mark-check-target target) "-N")))))
 
+  ;; TODO: Remove workaround after https://github.com/minad/org-modern/pull/235
+  ;; is merged.
+  (with-eval-after-load 'org-modern
+    (add-hook 'org-modern-mode-hook
+              (lambda ()
+                (when org-modern-mode
+                  (setq-local which-func-cleanup-function #'substring-no-properties)))))
+
   ;; Make sure my customizations take precedence over settings that Spacemacs
   ;; `setq's, even after running `dotspacemacs/sync-configuration-layers'.
   ;;
