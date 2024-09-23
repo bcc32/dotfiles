@@ -183,7 +183,7 @@ This function should only modify configuration layer settings."
      compleseus
 
      ;; E-mail
-     mu4e
+     ,(when (assq 'mu4e package-alist) 'mu4e)
 
      ;; Emacs
      ;; helpful
