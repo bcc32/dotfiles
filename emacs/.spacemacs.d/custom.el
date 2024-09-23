@@ -107,14 +107,11 @@
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
- '(mu4e-bookmarks
-   '((:name "inbox" :query "maildir:/INBOX" :key 105)
-     (:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key 117)
-     (:name "Today's messages" :query "date:today..now" :key 116)
-     (:name "Last 7 days" :query "date:7d..now" :hide-unread t :key 119)
-     (:name "Messages with images" :query "mime:image/*" :key 112)))
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "offlineimap")
+ '(mu4e-maildir-shortcuts
+   '((:maildir "/INBOX" :key 105)
+     (:maildir "/TODO.Input into ledger" :key 108)))
  '(mu4e-refile-folder "/Archive")
  '(mu4e-sent-folder "/Sent")
  '(mu4e-trash-folder "/Trash")
