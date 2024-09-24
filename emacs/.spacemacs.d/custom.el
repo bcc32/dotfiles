@@ -112,13 +112,14 @@
  '(mu4e-headers-fields
    '((:human-date . 12)
      (:flags . 6)
-     (:mailing-list . 10)
+     (:maildir . 10)
      (:from-or-to . 22)
      (:subject)))
  '(mu4e-maildir-shortcuts
    '((:maildir "/INBOX" :key 105)
      (:maildir "/TODO.Input into ledger" :key 108)))
  '(mu4e-refile-folder "/Archive")
+ '(mu4e-search-skip-duplicates nil)
  '(mu4e-sent-folder "/Sent")
  '(mu4e-trash-folder "/Trash")
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
