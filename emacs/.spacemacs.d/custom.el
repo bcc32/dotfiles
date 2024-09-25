@@ -144,6 +144,7 @@
  '(org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-span 'day)
+ '(org-agenda-sticky t)
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-scheduled 'future)
  '(org-agenda-todo-ignore-time-comparison-use-seconds t)
