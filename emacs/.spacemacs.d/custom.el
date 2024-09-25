@@ -124,6 +124,7 @@
      (:maildir . 10)
      (:from-or-to . 22)
      (:subject)))
+ '(mu4e-headers-time-format "%T")
  '(mu4e-maildir-shortcuts
    '((:maildir "/INBOX" :key 105)
      (:maildir "/TODO.Input into ledger" :key 108)))
