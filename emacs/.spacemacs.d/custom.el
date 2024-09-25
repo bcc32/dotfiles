@@ -108,6 +108,7 @@
  '(minibuffer-depth-indicate-mode t)
  '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
  '(mu4e-compose-complete-only-personal t)
+ '(mu4e-compose-format-flowed t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "offlineimap")
  '(mu4e-headers-fields
