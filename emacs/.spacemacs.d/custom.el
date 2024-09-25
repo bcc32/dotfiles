@@ -121,7 +121,7 @@
  '(mu4e-headers-fields
    '((:human-date . 12)
      (:flags . 6)
-     (:maildir . 10)
+     (:maildir . 20)
      (:from-or-to . 22)
      (:subject)))
  '(mu4e-headers-time-format "%T")
