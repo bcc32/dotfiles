@@ -117,6 +117,7 @@
  '(mu4e-compose-format-flowed t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command "offlineimap")
+ '(mu4e-headers-date-format "%F")
  '(mu4e-headers-fields
    '((:human-date . 12)
      (:flags . 6)
