@@ -110,8 +110,8 @@
  '(mu4e-bookmarks
    '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key 117)
      (:name "TODO" :query "maildir:/TODO*" :key 84)
-     (:name "Today's messages" :query "date:today..now AND -maildir:/Trash" :key 116)
-     (:name "Last 7 days" :query "date:7d..now AND -maildir:/Trash" :hide-unread t :key 119)
+     (:name "Today's messages" :query "date:today..now AND NOT maildir:/Trash" :key 116)
+     (:name "Last 7 days" :query "date:7d..now AND NOT maildir:/Trash" :hide-unread t :key 119)
      (:name "Messages with images" :query "mime:image/*" :key 112)))
  '(mu4e-compose-complete-only-personal t)
  '(mu4e-compose-format-flowed t)
