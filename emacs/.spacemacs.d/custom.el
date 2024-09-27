@@ -240,6 +240,7 @@
  '(shell-pop-term-shell explicit-shell-file-name nil nil "prevent Spacemacs shell layer from overriding the defcustom default")
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
  '(smtpmail-debug-info t)
+ '(smtpmail-queue-dir "~/mail/queue/")
  '(smtpmail-servers-requiring-authorization "smtp[.]fastmail[.]com")
  '(smtpmail-smtp-server "smtp.fastmail.com")
  '(smtpmail-smtp-service 465)
