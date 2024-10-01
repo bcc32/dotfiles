@@ -927,7 +927,11 @@ before packages are loaded."
             ;; Here's the main difference to the regular trash mark,
             ;; no +T before -N so the message is not marked as
             ;; IMAP-deleted:
-            (mu4e--server-move docid (mu4e--mark-check-target target) "-N"))))
+            (mu4e--server-move docid (mu4e--mark-check-target target) "-N")))
+    (setf (plist-get (alist-get 'refile mu4e-marks) :action)
+          (lambda (docid msg target)
+            ;; mark messages read when archiving
+            (mu4e--server-move docid (mu4e--mark-check-target target) "+S-N"))))
 
   ;; TODO: Remove workaround after https://github.com/minad/org-modern/pull/235
   ;; is merged.
