@@ -7,6 +7,7 @@ accounts = main
 localrepository = main-local
 # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
 remoterepository = main-remote
+postsynchook = mu index
 
 [Repository main-local]
 # OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
