@@ -125,6 +125,7 @@
      (:from-or-to . 22)
      (:subject)))
  '(mu4e-headers-time-format "%T")
+ '(mu4e-hide-index-messages t)
  '(mu4e-maildir-shortcuts
    '((:maildir "/INBOX" :key 105)
      (:maildir "/TODO.Input into ledger" :key 108)))
@@ -132,6 +133,7 @@
  '(mu4e-search-skip-duplicates nil)
  '(mu4e-sent-folder "/Sent")
  '(mu4e-trash-folder "/Trash")
+ '(mu4e-update-interval 180)
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files
