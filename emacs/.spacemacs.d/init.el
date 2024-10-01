@@ -922,16 +922,12 @@ before packages are loaded."
     :config
     ;; TODO: Refactor if mu4e-marks becomes more easily configurable.
     ;; https://github.com/djcb/mu/issues/1136#issuecomment-1066303788
-    (setf (alist-get 'trash mu4e-marks)
-          (list :char '("d" . "▼")
-                :prompt "dtrash"
-                :dyn-target (lambda (target msg)
-                              (mu4e-get-trash-folder msg))
-                :action (lambda (docid msg target)
-                          ;; Here's the main difference to the regular trash mark,
-                          ;; no +T before -N so the message is not marked as
-                          ;; IMAP-deleted:
-                          (mu4e--server-move docid (mu4e--mark-check-target target) "-N")))))
+    (setf (plist-get (alist-get 'trash mu4e-marks) :action)
+          (lambda (docid msg target)
+            ;; Here's the main difference to the regular trash mark,
+            ;; no +T before -N so the message is not marked as
+            ;; IMAP-deleted:
+            (mu4e--server-move docid (mu4e--mark-check-target target) "-N"))))
 
   ;; TODO: Remove workaround after https://github.com/minad/org-modern/pull/235
   ;; is merged.
