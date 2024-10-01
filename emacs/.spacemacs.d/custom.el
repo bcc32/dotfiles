@@ -165,6 +165,7 @@
  '(org-enforce-todo-dependencies t)
  '(org-export-backends '(ascii gfm html icalendar latex md org texinfo))
  '(org-extend-today-until 2)
+ '(org-fontify-whole-heading-line t)
  '(org-habit-graph-column 80)
  '(org-habit-show-habits-only-for-today nil)
  '(org-html-htmlize-output-type 'css)
