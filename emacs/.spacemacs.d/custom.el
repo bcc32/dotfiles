@@ -108,7 +108,7 @@
  '(minibuffer-depth-indicate-mode t)
  '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
  '(mu4e-bookmarks
-   '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key 117)
+   '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" :key 117)
      (:name "TODO" :query "maildir:/TODO*" :key 84)
      (:name "Today's messages" :query "date:today..now AND NOT maildir:/Trash" :key 116)
      (:name "Last 7 days" :query "date:7d..now AND NOT maildir:/Trash" :hide-unread t :key 119)
