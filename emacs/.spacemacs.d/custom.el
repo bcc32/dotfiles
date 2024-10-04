@@ -182,7 +182,6 @@
  '(org-refile-use-cache t)
  '(org-refile-use-outline-path 'buffer-name)
  '(org-startup-folded 'nofold)
- '(org-startup-indented t)
  '(org-startup-shrink-all-tables t)
  '(org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil ""))
  '(org-todo-keywords
