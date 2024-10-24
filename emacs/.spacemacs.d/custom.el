@@ -173,8 +173,7 @@
  '(org-log-into-drawer t)
  '(org-log-redeadline 'note)
  '(org-log-reschedule 'time)
- '(org-modules
-   '(ol-bibtex ol-docview org-habit ol-info org-tempo ol-eshell org-checklist ol-man))
+ '(org-modules '(org-habit ol-info org-tempo org-checklist ol-man))
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities t)
  '(org-priority-default 67)
