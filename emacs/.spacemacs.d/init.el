@@ -194,7 +194,7 @@ This function should only modify configuration layer settings."
           org-enable-modern-support t
           org-enable-notifications t
           org-projectile-file "TODO.org"
-          org-start-notification-daemon-on-startup t
+          org-start-notification-daemon-on-startup nil
           org-want-todo-bindings t)
      pdf
      (unicode-fonts :variables
