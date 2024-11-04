@@ -135,6 +135,7 @@
  '(mu4e-trash-folder "/Trash")
  '(mu4e-update-interval 180)
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
+ '(org-M-RET-may-split-line '((default)))
  '(org-agenda-dim-blocked-tasks t)
  '(org-agenda-files
    (seq-map #'file-truename
