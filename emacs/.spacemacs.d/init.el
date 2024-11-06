@@ -863,6 +863,14 @@ before packages are loaded."
 
   (put 'list-timers 'disabled nil)
 
+  ;; Enable completions for `Font Family’ field in `M-x customize-face RET’
+  ;; https://emacsnotes.wordpress.com/2024/11/03/enable-completions-for-font-family-field-in-m-x-customize-face-ret/
+  (advice-add 'widget-complete :before
+              (defun widget-complete--before (&rest orig-args)
+                (pcase-let* ((`nil orig-args))
+                  (when (equal (widget-get (widget-at) :tag) "Font Family")
+                    (widget-put (widget-at) :completions (font-family-list))))))
+
   ;; Replace `spacemacs/kill-emacs' and `spacemacs/prompt-kill-emacs' with
   ;; `spacemacs/save-buffers-kill-emacs'.  The former functions do not properly
   ;; run `kill-emacs-query-functions' and so will kill buffers that have
