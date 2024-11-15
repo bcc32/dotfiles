@@ -174,6 +174,7 @@
  '(org-log-into-drawer t)
  '(org-log-redeadline 'note)
  '(org-log-reschedule 'time)
+ '(org-modern-hide-stars nil)
  '(org-modules '(org-habit ol-info org-tempo org-checklist ol-man))
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities t)
