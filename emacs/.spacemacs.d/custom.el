@@ -184,6 +184,7 @@
  '(org-startup-folded 'nofold)
  '(org-startup-shrink-all-tables t)
  '(org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil ""))
+ '(org-tag-persistent-alist '(("daily" . 100) ("weekly" . 119)))
  '(org-todo-keywords
    '((sequence "TODO(t)" "MAYBE(m/!)" "INPROGRESS(p!)" "STALLED(a)" "BLOCKED(k@/!)" "INREVIEW(r!)" "|" "DONE(d/@)" "DELEGATED(g@)" "DEFERRED(e!)" "NOTDONE(n)")
      (type "BUG(b/!)" "CLEANUP(l/!)" "|" "FIXED(x/@)" "WONTFIX(w@/@)")
