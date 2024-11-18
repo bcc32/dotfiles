@@ -22,4 +22,4 @@ type = IMAP
 remotehost = imap.fastmail.com
 remoteuser = z@bcc32.com
 # Necessary for SSL connections, if using offlineimap version > 6.5.4
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = OS-DEFAULT
