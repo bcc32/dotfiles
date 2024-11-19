@@ -156,6 +156,9 @@
    '(("g" "Groceries" entry
       (file+olp "~/todo/shopping-list.org" "Groceries")
       "* TODO %? %^g")
+     ("r" "Reading list entry" entry
+      (file "~/todo/ideas/reading-list.org")
+      "* TODO [[%c][%^{title}]] %^g\12%U")
      ("t" "Todo" entry
       (file "")
       "* TODO %?\12%U\12%a")))
