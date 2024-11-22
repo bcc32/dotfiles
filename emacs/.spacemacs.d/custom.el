@@ -102,6 +102,7 @@
  '(magit-published-branches '("origin/main" "origin/master"))
  '(magit-todos-exclude-globs '("flycheck_*" "*.org_archive" ".git/"))
  '(magit-todos-update 120)
+ '(merlin-command "ocamlmerlin")
  '(merlin-eldoc-doc nil)
  '(merlin-eldoc-type nil)
  '(midnight-mode t)
