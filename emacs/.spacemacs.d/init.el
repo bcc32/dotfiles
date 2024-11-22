@@ -302,7 +302,11 @@ This function should only modify configuration layer settings."
    '(base16-theme
      solarized-theme
      tao-theme
-     zenburn-theme)
+     zenburn-theme
+
+     (bcc32-private
+      :location (recipe :fetcher file
+                        :path "~/src/dotfiles-private/Emacs")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
