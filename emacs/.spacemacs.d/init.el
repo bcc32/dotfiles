@@ -276,8 +276,10 @@ This function should only modify configuration layer settings."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
    '(
+     multi-vterm
      pdf-view-restore ;this package litters .pdf-view-restore files all over my disk
      popwin           ;annoying behavior with *Help* buffers.
+     vterm
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
