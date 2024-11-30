@@ -15,9 +15,6 @@
     (helm-make :location (recipe :fetcher github
                                  :repo "bcc32/helm-make"))
     mode-line-bell
-    (pocket-reader :location (recipe :fetcher github
-                                     :repo "bcc32/pocket-reader.el"
-                                     :branch "working"))
     vertico))
 
 (defun bcc32/init-advent-of-code ()
@@ -72,8 +69,6 @@
   (use-package mode-line-bell
     :config
     (mode-line-bell-mode)))
-
-(defun bcc32/post-init-pocket-reader ())
 
 (defun bcc32/post-init-vertico ()
   (with-eval-after-load 'vertico

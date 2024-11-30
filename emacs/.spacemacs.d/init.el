@@ -26,39 +26,6 @@ Otherwise, render sequences in the current buffer."
       (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
-(declare-function org-web-tools--get-first-url "org-web-tools")
-(declare-function pocket-lib-add-urls "pocket-lib")
-(defun bcc32/add-link (url tags)
-  "Add URL from clipboard to pocket reader, prompting for TAGS."
-  (interactive
-   (let* ((url (progn
-                 (require 'org-web-tools)
-                 (or (org-web-tools--get-first-url)
-                     (user-error "No URL found in kill-ring"))))
-          (tags (read-from-minibuffer (format "Tags for %s: " url) nil nil nil
-                                      'bcc32/add-link-history)))
-     (list url tags)))
-  (require 'pocket-lib)
-  (when (pocket-lib-add-urls (list url) :tags tags)
-    (message "Added %s" url)))
-
-(define-advice org-web-tools-read-url-as-org (:after (&rest _) disable-org-indent-mode)
-  (when (fboundp 'org-indent-mode)
-    (org-indent-mode -1)))
-
-;; TODO: Perhaps this should be upstreamed?
-(declare-function pocket-reader-open-url "pocket-reader")
-(defun bcc32/pocket-reader-browse ()
-  "Open marked or current items in external browser.
-The `browse-url' function is used."
-  (interactive)
-  (pocket-reader-open-url
-   :fn (lambda (&rest args)
-         (apply #'browse-url args)
-         ;; Return t because the browsing function may not return non-nil
-         ;; when it succeeds, preventing the item from being archived
-         t)))
-
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
   "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
 
@@ -275,7 +242,6 @@ This function should only modify configuration layer settings."
                    transmission-auto-refresh-all t)
 
      ;; Web services
-     pocket
      ;; spotify
 
      ;; User layers
@@ -917,10 +883,6 @@ before packages are loaded."
     ;; faster than the x86 version from nixpkgs.
     (when (eq system-type 'darwin)
       (setq magit-git-executable "/usr/bin/git")))
-
-  (with-eval-after-load 'pocket-reader
-    (defvar pocket-reader-mode-map)
-    (bind-key "b" 'bcc32/pocket-reader-browse pocket-reader-mode-map))
 
   (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
   (add-hook 'text-mode-hook #'turn-on-auto-fill)
