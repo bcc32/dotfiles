@@ -8,6 +8,21 @@
 
 (declare-function dired-do-create-files "dired-aux")
 
+(defun bcc32-declare-function (function)
+  (interactive
+   (list
+    (intern (completing-read "Function: " obarray #'fboundp t nil nil (thing-at-point 'symbol)))))
+  (let ((declaration (pp-to-string `(declare-function ,function
+                                                      ,(file-name-base (symbol-file function 'defun))
+                                                      ,(help-function-arglist function 'preserve-names)))))
+    (save-excursion
+      (goto-char (point-min))
+      (while (pcase (read (current-buffer)) (`(require . ,_) t)))
+      (backward-sexp)
+      (message "%s" declaration)
+      (insert declaration)
+      (recursive-edit))))
+
 (defun bcc32-dired-do-take (&optional arg)
   "Take (cp --reflink=always) marked files into target directory.
 
