@@ -228,7 +228,6 @@ This function should only modify configuration layer settings."
      spacemacs-navigation
      spacemacs-org
      spacemacs-project
-     spacemacs-purpose
      spacemacs-visual
 
      ;; Tools
