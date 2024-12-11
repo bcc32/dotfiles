@@ -52,6 +52,7 @@ used to actually use it.")
                                "Assets:Cash:Wallet"
                                "Assets:eBay:Pending Payouts"
                                "Assets:Prepaid Expenses:Apple"
+                               "Assets:Prepaid Expenses:Hosting:Namecheap"
                                "Assets:Prepaid Expenses:Uber Cash"
                                "Assets:Venmo"))
              (seq-some (lambda (account) (string-match-p (rx bos "Income:Work:") account))
