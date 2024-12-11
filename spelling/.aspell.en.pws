@@ -1,4 +1,4 @@
-personal_ws-1.1 en 128 
+personal_ws-1.1 en 129 
 Android
 EXIF
 Elisp
@@ -61,6 +61,7 @@ enqueuing
 epiphanies
 escheat
 evaporative
+exiftool
 flymake
 formatter
 gamers
