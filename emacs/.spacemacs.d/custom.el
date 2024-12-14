@@ -174,6 +174,7 @@
  '(org-habit-graph-column 80)
  '(org-habit-show-habits-only-for-today nil)
  '(org-html-htmlize-output-type 'css)
+ '(org-indirect-buffer-display 'current-window)
  '(org-insert-heading-respect-content t)
  '(org-log-into-drawer t)
  '(org-log-redeadline 'note)
