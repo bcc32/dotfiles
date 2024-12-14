@@ -146,7 +146,7 @@ This function should only modify configuration layer settings."
      compleseus
 
      ;; E-mail
-     ,(when (assq 'mu4e package-alist) 'mu4e)
+     ,(when (executable-find "mu") 'mu4e)
 
      ;; Emacs
      ;; helpful
