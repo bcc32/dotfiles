@@ -275,7 +275,9 @@ This function should only modify configuration layer settings."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
    '(
+     flycheck-elsa
      multi-vterm
+     overseer
      pdf-view-restore ;this package litters .pdf-view-restore files all over my disk
      popwin           ;annoying behavior with *Help* buffers.
      vterm
