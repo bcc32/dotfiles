@@ -22,19 +22,20 @@
 
   ;; FIXME: ledger already defines a flymake checker, can we just reuse it for
   ;; flycheck?
-  (flycheck-define-command-checker 'bcc32-ledger-lint
-    "Lint by running `bin/check.sh' with no arguments."
-    :command '("bin/check.sh" source-inplace)
-    :error-patterns
-    '((error line-start "sort: " (file-name) ":" line ":" (message))
-      (error line-start (file-name) ":" line ":"
-             (message (one-or-more (or not-newline "\n " (seq "\n" line-end)))))
-      (error line-start "While parsing file \"" (file-name) "\", line " line ":"
-             (message (+? anychar) line-start "Error:" (one-or-more nonl) line-end)))
-    :modes 'ledger-mode
-    :next-checkers '(ledger))
+  (when (configuration-layer/package-used-p 'flycheck)
+    (flycheck-define-command-checker 'bcc32-ledger-lint
+      "Lint by running `bin/check.sh' with no arguments."
+      :command '("bin/check.sh" source-inplace)
+      :error-patterns
+      '((error line-start "sort: " (file-name) ":" line ":" (message))
+        (error line-start (file-name) ":" line ":"
+               (message (one-or-more (or not-newline "\n " (seq "\n" line-end)))))
+        (error line-start "While parsing file \"" (file-name) "\", line " line ":"
+               (message (+? anychar) line-start "Error:" (one-or-more nonl) line-end)))
+      :modes 'ledger-mode
+      :next-checkers '(ledger))
 
-  (cl-pushnew 'bcc32-ledger-lint flycheck-checkers)
+    (cl-pushnew 'bcc32-ledger-lint flycheck-checkers))
 
   (bind-keys :map spacemacs-ledger-mode-map
              ("d" . bcc32-ledger-append-adjustments-null-posting)
