@@ -164,6 +164,7 @@ This function should only modify configuration layer settings."
                     unicode-fonts-enable-ligatures t)
 
      ;; Programming and markup languages
+     eglot
      ;; lsp
      autohotkey
      ;; c-c++
