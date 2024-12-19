@@ -6,6 +6,7 @@
  '(advent-of-code-cookie-jar "~/src/advent-of-code/cookies.txt")
  '(advent-of-code-email "me@bcc32.com")
  '(after-save-hook '(executable-make-buffer-file-executable-if-script-p))
+ '(async-shell-command-display-buffer nil)
  '(browse-url-browser-function 'bcc32/browse-url-on-ssh-client-if-exists)
  '(calc-context-sensitive-enter t)
  '(calc-settings-file
