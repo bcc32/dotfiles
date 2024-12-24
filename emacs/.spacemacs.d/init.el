@@ -193,7 +193,6 @@ This function should only modify configuration layer settings."
      ;;         python-sort-imports-on-save t)
      ;; ruby
      (rust :variables
-           cargo-process-reload-on-modify t
            rust-backend nil)
      (scheme :variables
              scheme-implementations '(chez chicken guile))
