@@ -196,7 +196,7 @@ This function should only modify configuration layer settings."
            cargo-process-reload-on-modify t
            rust-backend nil)
      (scheme :variables
-             scheme-implementations '(chicken guile))
+             scheme-implementations '(chez chicken guile))
      (shell-scripts :variables
                     shell-scripts-backend nil
                     shell-scripts-format-on-save t)
