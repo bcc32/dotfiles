@@ -118,7 +118,8 @@
  '(mu4e-compose-complete-only-personal t)
  '(mu4e-compose-format-flowed t)
  '(mu4e-drafts-folder "/Drafts")
- '(mu4e-get-mail-command "if ~/bin/,am-online; then timeout 2m offlineimap; fi")
+ '(mu4e-get-mail-command
+   "if ~/bin/,am-online; then timeout -k 1m 2m offlineimap; fi")
  '(mu4e-headers-date-format "%F")
  '(mu4e-headers-fields
    '((:human-date . 12)
