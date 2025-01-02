@@ -6,7 +6,7 @@ url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
 
 if [[ $url == http* ]]; then
-  file=$(mktemp)
+  file=$(mktemp --tmpdir browse-on-ssh-client.XXXXXX)
   trap 'rm -f "$file"' EXIT
   cat >"$file" <<EOF
 [InternetShortcut]
