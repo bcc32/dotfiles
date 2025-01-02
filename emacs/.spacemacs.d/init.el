@@ -267,7 +267,10 @@ This function should only modify configuration layer settings."
 
      (bcc32-private
       :location (recipe :fetcher file
-                        :path "~/src/dotfiles-private/Emacs")))
+                        :path "~/src/dotfiles-private/Emacs"))
+
+     (wl :location (recipe :fetcher github
+                           :repo "bcc32/watch-later")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
