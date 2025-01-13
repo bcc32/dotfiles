@@ -73,7 +73,6 @@
  '(help-enable-variable-value-editing t)
  '(holiday-bahai-holidays nil)
  '(imenu-max-item-length 300)
- '(indent-guide-global-mode t)
  '(initial-buffer-choice t)
  '(ivy-magic-tilde nil)
  '(ivy-use-virtual-buffers nil)
