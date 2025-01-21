@@ -26,6 +26,7 @@
  '(dired-recursive-copies 'always)
  '(dired-vc-rename-file t)
  '(display-time-mode t)
+ '(eat-kill-buffer-on-exit t)
  '(editorconfig-mode-lighter "")
  '(eglot-autoshutdown t)
  '(eglot-confirm-server-initiated-edits nil)
