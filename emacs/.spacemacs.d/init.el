@@ -265,6 +265,8 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
 
+     olivetti
+
      (bcc32-private
       :location (recipe :fetcher file
                         :path "~/src/dotfiles-private/Emacs"))
