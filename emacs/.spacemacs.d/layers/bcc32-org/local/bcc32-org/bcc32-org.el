@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((emacs "29.1") (magit "2.11.0") (org "9.6.0"))
+;; Package-Requires: ((emacs "29.1") (magit "2.11.0") (org "9.6.0") (uuidgen "1.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -16,6 +16,7 @@
 (require 'magit-core)
 (require 'org)
 (require 'org-agenda)
+(require 'uuidgen)
 
 (require 'bcc32-org-lint)
 
@@ -154,7 +155,6 @@ if there were no errors during execution."
 (defun bcc32-org-ensure-custom-id ()
   "If the org entry at point does not have a CUSTOM_ID property, add one."
   (interactive)
-  (require 'uuidgen)
   (if (org-entry-get nil "CUSTOM_ID")
       (message "Entry already has CUSTOM_ID")
     (let ((uuid (uuidgen-4)))
