@@ -11,10 +11,14 @@
 (defun bcc32-org/init-bcc32-org ()
   (use-package bcc32-org
     :defer t
-    :commands (bcc32-org-cleanup bcc32-org-commit-and-push-all)
+    :commands (bcc32-org-cleanup
+               bcc32-org-commit-and-push-all
+               bcc32-org-ensure-custom-id)
     :init
     (spacemacs/set-leader-keys
       "gy" #'bcc32-org-commit-and-push-all)
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode
+      "ic" #'bcc32-org-ensure-custom-id)
     (with-eval-after-load 'org-agenda
       (add-to-list 'org-agenda-bulk-custom-functions '(?x bcc32-org-agenda-babel-execute-subtree-and-done)))
     :hook (before-save . bcc32-org//cleanup-before-save-hook)

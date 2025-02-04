@@ -150,6 +150,17 @@ if there were no errors during execution."
         (org-agenda-todo 'done)
       (user-error "No blocks executed, so not marking DONE"))))
 
+;;;###autoload
+(defun bcc32-org-ensure-custom-id ()
+  "If the org entry at point does not have a CUSTOM_ID property, add one."
+  (interactive)
+  (require 'uuidgen)
+  (if (org-entry-get nil "CUSTOM_ID")
+      (message "Entry already has CUSTOM_ID")
+    (let ((uuid (uuidgen-4)))
+      (org-set-property "CUSTOM_ID" uuid)
+      (message "CUSTOM_ID set to %s" uuid))))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here
