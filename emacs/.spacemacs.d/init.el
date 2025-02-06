@@ -183,6 +183,7 @@ This function should only modify configuration layer settings."
      json
      ;; bibtex
      ;; latex
+     lua
      markdown
      (ocaml :variables
             ocaml-format-on-save t)
