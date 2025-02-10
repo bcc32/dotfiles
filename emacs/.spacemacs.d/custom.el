@@ -131,7 +131,8 @@
  '(mu4e-hide-index-messages t)
  '(mu4e-maildir-shortcuts
    '((:maildir "/INBOX" :key 105)
-     (:maildir "/TODO.Input into ledger" :key 108)))
+     (:maildir "/TODO.Input into ledger" :key 108)
+     (:maildir "/Newsletters.to read" :key 110)))
  '(mu4e-refile-folder "/Archive")
  '(mu4e-search-skip-duplicates nil)
  '(mu4e-sent-folder "/Sent")
