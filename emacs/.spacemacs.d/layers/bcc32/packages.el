@@ -7,6 +7,7 @@
     (bcc32 :location local)
     corfu
     debbugs
+    diminish
     envrc
     evil
     evil-quickscope
@@ -40,6 +41,19 @@
 (defun bcc32/init-debbugs ()
   (use-package debbugs
     :defer t))
+
+(defun bcc32/post-init-diminish ()
+  (define-advice spacemacs/diminish-hook (:override (&rest _) bcc32-diminish-empty)
+    "Diminish minor mode lighters to empty instead of a single letter."
+    (mapc #'diminish '(auto-fill-function
+                       column-enforce-mode
+                       flycheck-mode
+                       flyspell-mode
+                       hybrid-mode
+                       org-table-header-line-mode
+                       smartparens-mode
+                       spacemacs-whitespace-cleanup-mode
+                       which-key-mode))))
 
 (defun bcc32/init-envrc ()
   (use-package envrc

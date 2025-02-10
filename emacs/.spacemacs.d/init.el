@@ -852,15 +852,6 @@ before packages are loaded."
   (declare-function spacemacs/enable-flycheck "~/.emacs.d/layers/+checkers/syntax-checking/funcs.el")
   (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
 
-  (mapc #'diminish '(column-enforce-mode
-                     flycheck-mode
-                     flyspell-mode
-                     hybrid-mode
-                     org-table-header-line-mode
-                     smartparens-mode
-                     spacemacs-whitespace-cleanup-mode
-                     which-key-mode))
-
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
 
   (put 'list-timers 'disabled nil)
