@@ -249,6 +249,7 @@
  '(shell-file-name (executable-find "bash"))
  '(shell-pop-term-shell explicit-shell-file-name nil (shell) "prevent Spacemacs shell layer from overriding the defcustom default")
  '(shfmt-arguments '("-i" "2" "-bn" "-s"))
+ '(shr-use-colors nil)
  '(smtpmail-debug-info t)
  '(smtpmail-queue-dir "~/mail/queue/")
  '(smtpmail-servers-requiring-authorization "smtp[.]fastmail[.]com")
