@@ -261,7 +261,8 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(base16-theme
+   '(auto-dark
+     base16-theme
      solarized-theme
      tao-theme
      zenburn-theme
