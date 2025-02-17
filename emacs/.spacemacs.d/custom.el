@@ -7,8 +7,6 @@
  '(advent-of-code-email "me@bcc32.com")
  '(after-save-hook '(executable-make-buffer-file-executable-if-script-p))
  '(async-shell-command-display-buffer nil)
- '(auto-dark-mode t)
- '(auto-dark-themes '((modus-vivendi) (modus-operandi)))
  '(browse-url-browser-function 'bcc32/browse-url-on-ssh-client-if-exists)
  '(calc-context-sensitive-enter t)
  '(calc-settings-file

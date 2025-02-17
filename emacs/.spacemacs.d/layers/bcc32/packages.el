@@ -45,8 +45,7 @@
 (defun bcc32/post-init-diminish ()
   (define-advice spacemacs/diminish-hook (:override (&rest _) bcc32-diminish-empty)
     "Diminish minor mode lighters to empty instead of a single letter."
-    (mapc #'diminish '(auto-dark-mode
-                       auto-fill-function
+    (mapc #'diminish '(auto-fill-function
                        column-enforce-mode
                        flycheck-mode
                        flyspell-mode
