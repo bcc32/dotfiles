@@ -21,7 +21,6 @@
  '(completions-detailed t)
  '(corfu-auto-delay 0.5)
  '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
- '(dired-async-mode t)
  '(dired-async-skip-fast t)
  '(dired-auto-revert-buffer t)
  '(dired-omit-verbose nil)

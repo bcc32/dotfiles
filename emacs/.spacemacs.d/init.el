@@ -914,6 +914,9 @@ before packages are loaded."
   (declare-function bcc32-ocaml-abbrevs "bcc32-abbrev" ())
   (bcc32-ocaml-abbrevs)
 
+  (with-eval-after-load 'dired
+    (dired-async-mode))
+
   (with-eval-after-load 'savehist
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
