@@ -286,6 +286,7 @@ This function should only modify configuration layer settings."
      multi-vterm
      overseer                           ;loads itself on emacs-lisp-mode-hook
                                         ;even if it would not enable itself.
+     info+
      pdf-view-restore ;this package litters .pdf-view-restore files all over my disk
      popwin           ;annoying behavior with *Help* buffers.
      vterm
