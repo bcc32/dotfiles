@@ -262,8 +262,7 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(base16-theme
-     solarized-theme
+   '(solarized-theme
      tao-theme
      zenburn-theme
 
@@ -456,7 +455,6 @@ It should only modify the values of Spacemacs settings."
    ;; DOCUMENTATION.org for the full theme specifications.
    dotspacemacs-themes '(
                          modus-vivendi
-                         base16-material
                          leuven
                          )
 
