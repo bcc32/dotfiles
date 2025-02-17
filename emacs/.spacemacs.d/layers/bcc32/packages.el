@@ -33,9 +33,9 @@
 
 (defun bcc32/init-corfu ()
   (use-package corfu
-    :defer t
-    :init (global-corfu-mode)
+    :defer 5
     :config
+    (global-corfu-mode)
     (setopt corfu-auto t)))
 
 (defun bcc32/init-debbugs ()
