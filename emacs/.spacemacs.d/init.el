@@ -284,7 +284,8 @@ This function should only modify configuration layer settings."
      evil-unimpaired
      flycheck-elsa
      multi-vterm
-     overseer
+     overseer                           ;loads itself on emacs-lisp-mode-hook
+                                        ;even if it would not enable itself.
      pdf-view-restore ;this package litters .pdf-view-restore files all over my disk
      popwin           ;annoying behavior with *Help* buffers.
      vterm
