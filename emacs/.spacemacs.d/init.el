@@ -237,7 +237,8 @@ This function should only modify configuration layer settings."
      finance
      (shell :variables
             shell-default-shell 'shell
-            shell-enable-smart-eshell t)
+            shell-enable-smart-eshell t
+            shell-enable-vterm-support nil)
      (transmission :variables
                    transmission-auto-refresh-all t)
 
@@ -283,13 +284,11 @@ This function should only modify configuration layer settings."
    '(
      evil-unimpaired
      flycheck-elsa
-     multi-vterm
      overseer                           ;loads itself on emacs-lisp-mode-hook
                                         ;even if it would not enable itself.
      info+
      pdf-view-restore ;this package litters .pdf-view-restore files all over my disk
      popwin           ;annoying behavior with *Help* buffers.
-     vterm
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
