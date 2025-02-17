@@ -273,6 +273,7 @@
  '(undo-tree-auto-save-history nil)
  '(user-mail-address "z@bcc32.com")
  '(vc-follow-symlinks t)
+ '(vc-handled-backends '(Git Hg))
  '(what-cursor-show-names t)
  '(which-func-modes '(c-mode emacs-lisp-mode tuareg-mode))
  '(which-function-mode t)

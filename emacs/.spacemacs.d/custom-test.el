@@ -110,4 +110,10 @@
   (should (equal (custom-face-default-spec 'tuareg-font-lock-infix-extension-node-face)
                  '((t :inherit font-lock-preprocessor-face)))))
 
+(ert-deftest test-vc-handled-backends ()
+  "`vc-handled-backends' default value has not changed."
+  :tags '(bcc32 custom)
+  (should (equal (custom--standard-value 'vc-handled-backends)
+                 '(RCS CVS SVN SCCS SRC Bzr Git Hg))))
+
 (provide 'custom-test)
