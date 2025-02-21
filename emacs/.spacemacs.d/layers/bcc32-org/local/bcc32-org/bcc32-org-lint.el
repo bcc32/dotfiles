@@ -66,10 +66,13 @@ PARSE-TREE should be an Org-mode parse tree."
   (interactive)
   (dolist (buf (org-buffer-list 'agenda))
     (unless (bcc32-org-lint--skip-buffer-p buf)
-      (switch-to-buffer buf)
+      (set-buffer buf)
       (call-interactively 'org-lint)
-      (when (> (buffer-size) 0)
-        (error "Lint found errors in buffer")))))
+      (when (cl-plusp (with-current-buffer "*Org Lint*" (buffer-size)))
+        (display-buffer buf)
+        (error "Lint found errors in buffer"))
+      (when-let* ((w (get-buffer-window "*Org Lint*")))
+        (delete-window w)))))
 
 (provide 'bcc32-org-lint)
 ;;; bcc32-org-lint.el ends here
