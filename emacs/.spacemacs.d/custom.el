@@ -26,6 +26,7 @@
  '(dired-vc-rename-file t)
  '(display-time-mode t)
  '(eat-kill-buffer-on-exit t)
+ '(echo-keystrokes-help nil)
  '(editorconfig-mode-lighter "")
  '(eglot-autoshutdown t)
  '(eglot-confirm-server-initiated-edits nil)
