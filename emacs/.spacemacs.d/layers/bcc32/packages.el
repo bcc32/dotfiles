@@ -16,6 +16,7 @@
     (helm-make :location (recipe :fetcher github
                                  :repo "bcc32/helm-make"))
     mode-line-bell
+    orderless
     vertico))
 
 (defun bcc32/init-advent-of-code ()
@@ -83,6 +84,12 @@
   (use-package mode-line-bell
     :config
     (mode-line-bell-mode)))
+
+(defun bcc32/pre-init-orderless ()
+  (spacemacs|use-package-add-hook orderless
+    :post-init
+    ;; revert spacemacs customization
+    (setq orderless-component-separator #'orderless-escapable-split-on-space)))
 
 (defun bcc32/post-init-vertico ()
   (with-eval-after-load 'vertico
