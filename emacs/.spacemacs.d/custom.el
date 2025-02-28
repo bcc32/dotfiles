@@ -34,7 +34,8 @@
  '(enable-remote-dir-locals t)
  '(epg-pinentry-mode 'loopback)
  '(eshell-visual-commands
-   '("ncdu" "vi" "vim" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp" "mutt" "pine" "tin" "trn" "elm"))
+   '("ncdu" "vi" "vim" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp"
+     "mutt" "pine" "tin" "trn" "elm"))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-escape-excluded-major-modes '(term-mode))
  '(evil-ex-visual-char-range t)
@@ -53,23 +54,17 @@
  '(global-column-enforce-mode t)
  '(gofmt-command "goimports")
  '(grep-files-aliases
-   '(("ml" . "*.ml *.mli *.mll *.mlt *.mly *.mdx")
-     ("all" . "* .[!.]* ..?*")
-     ("el" . "*.el")
-     ("ch" . "*.[ch]")
-     ("c" . "*.c")
+   '(("ml" . "*.ml *.mli *.mll *.mlt *.mly *.mdx") ("all" . "* .[!.]* ..?*")
+     ("el" . "*.el") ("ch" . "*.[ch]") ("c" . "*.c")
      ("cc" . "*.cc *.cxx *.cpp *.C *.CC *.c++")
      ("cchh" . "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++")
-     ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++")
-     ("h" . "*.h")
-     ("l" . "[Cc]hange[Ll]og*")
-     ("am" . "Makefile.am GNUmakefile *.mk")
-     ("m" . "[Mm]akefile*")
-     ("tex" . "*.tex")
-     ("texi" . "*.texi")
+     ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++") ("h" . "*.h")
+     ("l" . "[Cc]hange[Ll]og*") ("am" . "Makefile.am GNUmakefile *.mk")
+     ("m" . "[Mm]akefile*") ("tex" . "*.tex") ("texi" . "*.texi")
      ("asm" . "*.[sS]")))
  '(grep-find-ignored-directories
-   '("_build" "_opam" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}"))
+   '("_build" "_opam" "SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr"
+     "_MTN" "_darcs" "{arch}"))
  '(helm-make-nproc 0)
  '(help-enable-variable-value-editing t)
  '(holiday-bahai-holidays nil)
@@ -87,10 +82,14 @@
  '(ledger-report-use-header-line t)
  '(ledger-reports
    '(("debts" "%(binary) -f %(ledger-file) register --by-payee 'Personal Debts'")
-     ("net-worth" "%(binary) -f %(ledger-file) bal '^Assets' '^Liabilities' -X USD")
-     ("reconcile" "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
-     ("reimbursement" "%(binary) -f %(ledger-file) --group-by payee reg -U '^Assets:Reimbursable Expenses'")
-     ("uncleared" "%(binary) -f %(ledger-file) reg --current -U --group-by account '^Assets' '^Equity' '^Liabilities'")
+     ("net-worth"
+      "%(binary) -f %(ledger-file) bal '^Assets' '^Liabilities' -X USD")
+     ("reconcile"
+      "%(binary) -f %(ledger-file) reg --current --effective --sort '(X ? 0 : 1), d' -d \"!X || d>=[90 days ago]\" \"/^%(account)$/\" | tac")
+     ("reimbursement"
+      "%(binary) -f %(ledger-file) --group-by payee reg -U '^Assets:Reimbursable Expenses'")
+     ("uncleared"
+      "%(binary) -f %(ledger-file) reg --current -U --group-by account '^Assets' '^Equity' '^Liabilities'")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
@@ -110,10 +109,15 @@
  '(minibuffer-depth-indicate-mode t)
  '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
  '(mu4e-bookmarks
-   '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" :key 117)
+   '((:name "Unread messages" :query
+            "flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" :key 117)
      (:name "TODO" :query "maildir:/TODO*" :key 84)
-     (:name "Today's messages" :query "date:today..now AND NOT maildir:/Trash AND NOT maildir:/Spam" :key 116)
-     (:name "Last 7 days" :query "date:7d..now AND NOT maildir:/Trash AND NOT maildir:/Spam" :hide-unread t :key 119)
+     (:name "Today's messages" :query
+            "date:today..now AND NOT maildir:/Trash AND NOT maildir:/Spam" :key
+            116)
+     (:name "Last 7 days" :query
+            "date:7d..now AND NOT maildir:/Trash AND NOT maildir:/Spam"
+            :hide-unread t :key 119)
      (:name "Messages with images" :query "mime:image/*" :key 112)))
  '(mu4e-compose-complete-only-personal t)
  '(mu4e-compose-format-flowed t)
@@ -122,16 +126,11 @@
    "if ~/bin/,am-online; then timeout -k 1m 2m offlineimap; fi")
  '(mu4e-headers-date-format "%F")
  '(mu4e-headers-fields
-   '((:human-date . 12)
-     (:flags . 6)
-     (:maildir . 20)
-     (:from-or-to . 22)
-     (:subject)))
+   '((:human-date . 12) (:flags . 6) (:maildir . 20) (:from-or-to . 22) (:subject)))
  '(mu4e-headers-time-format "%T")
  '(mu4e-hide-index-messages t)
  '(mu4e-maildir-shortcuts
-   '((:maildir "/INBOX" :key 105)
-     (:maildir "/TODO.Input into ledger" :key 108)
+   '((:maildir "/INBOX" :key 105) (:maildir "/TODO.Input into ledger" :key 108)
      (:maildir "/Newsletters.to read" :key 110)))
  '(mu4e-refile-folder "/Archive")
  '(mu4e-search-skip-duplicates nil)
@@ -144,7 +143,8 @@
  '(org-agenda-files
    (seq-map #'file-truename
             (seq-filter #'file-directory-p
-                        '("~/file-server/" "~/journal/" "~/src/film-metadata/" "~/src/watch-later/" "~/todo/" "~/todo/ideas/"))))
+                        '("~/file-server/" "~/journal/" "~/src/film-metadata/"
+                          "~/src/watch-later/" "~/todo/" "~/todo/ideas/"))))
  '(org-agenda-include-diary t)
  '(org-agenda-mouse-1-follows-link t)
  '(org-agenda-prefer-last-repeat t)
@@ -157,15 +157,11 @@
  '(org-agenda-todo-ignore-time-comparison-use-seconds t)
  '(org-appear-autolinks nil)
  '(org-capture-templates
-   '(("g" "Groceries" entry
-      (file+olp "~/todo/shopping-list.org" "Groceries")
+   '(("g" "Groceries" entry (file+olp "~/todo/shopping-list.org" "Groceries")
       "* TODO %? %^g")
-     ("r" "Reading list entry" entry
-      (file "~/todo/ideas/reading-list.org")
+     ("r" "Reading list entry" entry (file "~/todo/ideas/reading-list.org")
       "* TODO [[%c][%^{title}]] %^g\12%U")
-     ("t" "Todo" entry
-      (file "")
-      "* TODO %?\12%U\12%a")))
+     ("t" "Todo" entry (file "") "* TODO %?\12%U\12%a")))
  '(org-clock-history-length 35)
  '(org-clock-persist t)
  '(org-default-notes-file "~/todo/refile.org")
@@ -195,7 +191,9 @@
  '(org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil ""))
  '(org-tag-persistent-alist '(("daily" . 100) ("weekly" . 119)))
  '(org-todo-keywords
-   '((sequence "TODO(t)" "MAYBE(m/!)" "INPROGRESS(p!)" "STALLED(a)" "BLOCKED(k@/!)" "INREVIEW(r!)" "|" "DONE(d/@)" "DELEGATED(g@)" "DEFERRED(e!)" "NOTDONE(n)")
+   '((sequence "TODO(t)" "MAYBE(m/!)" "INPROGRESS(p!)" "STALLED(a)" "BLOCKED(k@/!)"
+               "INREVIEW(r!)" "|" "DONE(d/@)" "DELEGATED(g@)" "DEFERRED(e!)"
+               "NOTDONE(n)")
      (type "BUG(b/!)" "CLEANUP(l/!)" "|" "FIXED(x/@)" "WONTFIX(w@/@)")
      (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
  '(org-use-effective-time t)
@@ -209,37 +207,29 @@
  '(rustic-lsp-client 'eglot)
  '(safe-local-variable-values
    '((auto-insert-alist
-      (rust-mode "" "// "
-                 '(setq v1
-                        (read-from-minibuffer "Title: "))
-                 v1 n "// "
-                 '(setq v2
-                        (read-from-minibuffer "URL: "))
-                 v2 n n "use super::def::*;" n n _ n n "#[cfg(test)]" n "mod tests {" n "use super::*;" n "use test_case::test_case;" n n "#[test_case(args => result)]" n "fn test(args: Ty) -> Ty {" n "}" n "}" n))
+      (rust-mode "" "// " '(setq v1 (read-from-minibuffer "Title: ")) v1 n "// "
+                 '(setq v2 (read-from-minibuffer "URL: ")) v2 n n
+                 "use super::def::*;" n n _ n n "#[cfg(test)]" n "mod tests {" n
+                 "use super::*;" n "use test_case::test_case;" n n
+                 "#[test_case(args => result)]" n "fn test(args: Ty) -> Ty {" n
+                 "}" n "}" n))
      (diff-add-log-use-relative-names . t)
-     (dired-guess-shell-alist-user
-      ("\\.zip\\'" "../bin/import.sh"))
+     (dired-guess-shell-alist-user ("\\.zip\\'" "../bin/import.sh"))
      (etags-regen-ignores "test/manual/etags/")
      (etags-regen-regexp-alist
-      (("c" "objc")
-       "/[ \11]*DEFVAR_[A-Z_ \11(]+\"\\([^\"]+\\)\"/\\1/" "/[ \11]*DEFVAR_[A-Z_ \11(]+\"[^\"]+\",[ \11]\\([A-Za-z0-9_]+\\)/\\1/"))
-     (flycheck-mode)
-     (javascript-backend . lsp)
-     (javascript-backend . tern)
+      (("c" "objc") "/[ \11]*DEFVAR_[A-Z_ \11(]+\"\\([^\"]+\\)\"/\\1/"
+       "/[ \11]*DEFVAR_[A-Z_ \11(]+\"[^\"]+\",[ \11]\\([A-Za-z0-9_]+\\)/\\1/"))
+     (flycheck-mode) (javascript-backend . lsp) (javascript-backend . tern)
      (javascript-backend . tide)
-     (lsp-rust-analyzer-diagnostics-disabled .
-                                             ["unresolved-proc-macro"])
-     (magit-todos-exclude-globs ".git/" ".vendor/")
-     (magit-todos-mode)
+     (lsp-rust-analyzer-diagnostics-disabled . ["unresolved-proc-macro"])
+     (magit-todos-exclude-globs ".git/" ".vendor/") (magit-todos-mode)
      (magit-todos-rg-extra-args "--hidden")
-     (org-archive-location . "archive/%s_archive::")
-     (org-table-copy-increment)
+     (org-archive-location . "archive/%s_archive::") (org-table-copy-increment)
      (projectile-project-compilation-cmd . "make -O -j")
-     (projectile-project-compilation-cmd . "nix run 'nixpkgs#cmake' -- -S . && make && make -C test test-batch")
-     (typescript-backend . lsp)
-     (typescript-backend . tide)
-     (vc-git-annotate-switches . "-w")
-     (vc-prepare-patches-separately)
+     (projectile-project-compilation-cmd
+      . "nix run 'nixpkgs#cmake' -- -S . && make && make -C test test-batch")
+     (typescript-backend . lsp) (typescript-backend . tide)
+     (vc-git-annotate-switches . "-w") (vc-prepare-patches-separately)
      (whitespace-style)))
  '(save-abbrevs 'silently)
  '(save-some-buffers-default-predicate 'save-some-buffers-root)
@@ -261,7 +251,9 @@
  '(solarized-use-more-italic t)
  '(spacemacs-keep-legacy-current-buffer-delete-bindings nil)
  '(spacemacs-large-file-modes-list
-   '(org-mode ledger-mode archive-mode tar-mode jka-compr git-commit-mode image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode pdf-view-mode tags-table-mode fundamental-mode))
+   '(org-mode ledger-mode archive-mode tar-mode jka-compr git-commit-mode
+              image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode
+              pdf-view-mode tags-table-mode fundamental-mode))
  '(sql-product 'sqlite)
  '(tab-always-indent 'complete)
  '(tab-width 8)
@@ -279,12 +271,9 @@
  '(which-func-modes '(c-mode emacs-lisp-mode tuareg-mode))
  '(which-function-mode t)
  '(zoneinfo-style-world-list
-   '(("America/Los_Angeles" "Seattle")
-     ("America/New_York" "New York")
-     ("Europe/London" "London")
-     ("Europe/Amsterdam" "Amsterdam")
-     ("Asia/Hong_Kong" "Hong Kong")
-     ("Asia/Shanghai" "Shanghai")
+   '(("America/Los_Angeles" "Seattle") ("America/New_York" "New York")
+     ("Europe/London" "London") ("Europe/Amsterdam" "Amsterdam")
+     ("Asia/Hong_Kong" "Hong Kong") ("Asia/Shanghai" "Shanghai")
      ("Asia/Tokyo" "Tokyo"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
