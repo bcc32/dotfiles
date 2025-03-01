@@ -64,7 +64,7 @@
 
 (defun bcc32/post-init-evil ()
   (with-eval-after-load 'evil
-    (evil-define-key* '(visual) prog-mode-map "t" #'bcc32-wrap-thunk)))
+    (evil-define-key* '(visual) prog-mode-map "gt" #'bcc32-wrap-thunk)))
 
 (defun bcc32/init-evil-quickscope ()
   (use-package evil-quickscope
