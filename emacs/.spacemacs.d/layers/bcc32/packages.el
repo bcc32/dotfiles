@@ -91,7 +91,7 @@
   (spacemacs|use-package-add-hook orderless
     :post-init
     ;; revert spacemacs customization
-    (setq orderless-component-separator #'orderless-escapable-split-on-space)))
+    (setopt orderless-component-separator #'orderless-escapable-split-on-space)))
 
 (defun bcc32/post-init-vertico ()
   (with-eval-after-load 'vertico
