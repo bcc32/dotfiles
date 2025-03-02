@@ -12,6 +12,7 @@
  '(calc-settings-file
    (expand-file-name "calc-settings.el" dotspacemacs-directory))
  '(calendar-latitude 40.65)
+ '(calendar-location-name "New York City")
  '(calendar-longitude -73.95)
  '(calendar-mark-holidays-flag t)
  '(calendar-week-start-day 1)
