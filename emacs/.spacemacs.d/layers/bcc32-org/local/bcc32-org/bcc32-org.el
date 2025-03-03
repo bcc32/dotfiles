@@ -152,6 +152,43 @@ if there were no errors during execution."
       (user-error "No blocks executed, so not marking DONE"))))
 
 ;;;###autoload
+(defun bcc32-org-update-blocked-tasks ()
+  "Execute babel source blocks in entries with todo keyword BLOCKED.
+
+If the results change for a given entry, add the FLAGGED tag to the
+entry.
+
+If any FLAGGED tags were added, list the entries."
+  (interactive)
+  (let ((org-confirm-babel-evaluate nil)
+        (entries-flagged 0))
+    (message "Updating blocked tasks...")
+    (save-window-excursion
+      (org-map-entries
+       (lambda ()
+         ;; Make sure buffer containing code block is visible; otherwise the
+         ;; query (if a code block has `:eval query') is asking about an
+         ;; invisible code block.
+         (let ((buffer (current-buffer)))
+           (pop-to-buffer-same-window buffer)
+           (let* ((before (save-restriction
+                            (org-narrow-to-subtree)
+                            (buffer-string)))
+                  (_ (org-babel-execute-subtree))
+                  (after (save-restriction
+                           (org-narrow-to-subtree)
+                           (buffer-string))))
+             (unless (string= (string-trim before) (string-trim after))
+               (cl-incf entries-flagged)
+               (org-toggle-tag "FLAGGED" 'on)))))
+       "/BLOCKED"
+       'agenda
+       'archive))
+    (message "Updating blocked tasks... done.  %d entries updated." entries-flagged)
+    (when (cl-plusp entries-flagged)
+      (run-with-idle-timer 0 nil #'org-tags-view nil "+FLAGGED"))))
+
+;;;###autoload
 (defun bcc32-org-ensure-custom-id ()
   "If the org entry at point does not have a CUSTOM_ID property, add one."
   (interactive)
