@@ -207,6 +207,7 @@
  '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
  '(pdf-tools-installer-os "nixos")
  '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
+ '(revert-without-query '(""))
  '(rustic-default-test-arguments "--quiet --benches --tests --all-features")
  '(rustic-format-trigger 'on-compile)
  '(rustic-lsp-client 'eglot)
