@@ -67,6 +67,7 @@ command fills the copied text with no newlines within paragraphs."
                              (buffer-substring beg end))))
              (with-temp-buffer
                (insert contents)
+               ;; TODO: Consider using unfill here instead of reimplementing it.
                (setq fill-column most-positive-fixnum)
                (indent-region (point-min) (point-max))
                (fill-region (point-min) (point-max))
