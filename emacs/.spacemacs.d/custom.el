@@ -193,6 +193,8 @@
  '(org-refile-use-outline-path 'buffer-name)
  '(org-startup-folded 'nofold)
  '(org-startup-shrink-all-tables t)
+ '(org-sticky-header-always-show-header nil)
+ '(org-sticky-header-full-path 'reversed)
  '(org-stuck-projects '("+LEVEL<=2/!" ("TODO" "MAYBE" "INPROGRESS") nil ""))
  '(org-tag-persistent-alist '(("daily" . 100) ("weekly" . 119)))
  '(org-todo-keywords
