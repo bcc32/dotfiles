@@ -937,11 +937,6 @@ before packages are loaded."
             ;; mark messages read when archiving
             (mu4e--server-move docid (mu4e--mark-check-target target) "+S-N"))))
 
-  ;; TODO: Maybe which-func should do this *always*, upstream?  (Follow up with
-  ;; a comment at https://github.com/minad/org-modern/pull/235 if I report it
-  ;; upstream.)
-  (setq-default which-func-cleanup-function #'substring-no-properties)
-
   (lossage-size 3000)
 
   ;; Make sure my customizations take precedence over settings that Spacemacs
