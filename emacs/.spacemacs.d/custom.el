@@ -110,6 +110,7 @@
  '(midnight-mode t)
  '(minibuffer-depth-indicate-mode t)
  '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
+ '(mu4e-attachment-dir "~/Downloads/")
  '(mu4e-bookmarks
    '((:name "Unread messages" :query
             "flag:unread AND NOT flag:trashed AND NOT maildir:/Spam" :key 117)
