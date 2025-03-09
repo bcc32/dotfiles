@@ -24,7 +24,8 @@
     :hook (before-save . bcc32-org//cleanup-before-save-hook)
     :hook (org-mode . bcc32-org--auto-ingest-init-org-hook)
     :hook (org-mode . org-table-header-line-mode)
-    :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends))
+    :hook (org-todo-repeat . bcc32-org-todo-repeat-maybe-skip-weekends)
+    :hook (org-agenda-finalize . bcc32-org-set-default-directory-to-todo))
   ;; This is honestly redundant due to the org-mode-hook defined above, but it
   ;; doesn't hurt, and it's clearer what the intention of this package is.
   (with-eval-after-load 'org

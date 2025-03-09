@@ -198,6 +198,14 @@ If any FLAGGED tags were added, list the entries."
       (org-set-property "CUSTOM_ID" uuid)
       (message "CUSTOM_ID set to %s" uuid))))
 
+;;;###autoload
+(defun bcc32-org-set-default-directory-to-todo ()
+  "Set `default-directory' to ~/todo.
+
+Used as a hook to ensure that my Org Agenda buffers have a predictable
+`default-directory' (so that I can comfortably run commands in them)."
+  (setq default-directory "~/todo/"))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here
