@@ -161,10 +161,10 @@
  '(org-appear-autolinks nil)
  '(org-capture-templates
    '(("g" "Groceries" entry (file+olp "~/todo/shopping-list.org" "Groceries")
-      "* TODO %? %^g")
+      "* TODO %? %^g" :hook evil-insert-state)
      ("r" "Reading list entry" entry (file "~/todo/ideas/reading-list.org")
       "* TODO [[%c][%^{title}]] %^g\12%U")
-     ("t" "Todo" entry (file "") "* TODO %?\12%U\12%a")))
+     ("t" "Todo" entry (file "") "* TODO %?\12%U\12%a" :hook evil-insert-state)))
  '(org-clock-history-length 35)
  '(org-clock-persist t)
  '(org-default-notes-file "~/todo/refile.org")
