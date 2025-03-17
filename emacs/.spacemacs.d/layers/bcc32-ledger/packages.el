@@ -44,6 +44,9 @@
              ("y" . bcc32-ledger-yank-code))
 
   (add-hook 'ledger-mode-hook #'turn-off-auto-fill)
+  (add-hook 'ledger-mode-hook (lambda ()
+                                (setq-local outline-regexp "[^[:space:]]")
+                                (outline-minor-mode)))
   (add-hook 'ledger-reconcile-mode-hook #'ledger-reconcile-display-balance-in-header-mode)
 
   (define-advice ledger-copy-transaction-at-point (:after (&rest _) reset-xact-state)
