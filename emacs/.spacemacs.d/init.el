@@ -77,7 +77,7 @@ command fills the copied text with no newlines within paragraphs."
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
   (or (string-prefix-p "/nix/store/" project-root)
-      (string-match-p (regexp-quote "/.cargo/registry/") project-root)))
+      (string-search "/.cargo/registry/" project-root)))
 
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
