@@ -821,13 +821,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq source-directory "~/src/emacs/trunk/")
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   (load custom-file)
-  (add-to-list 'load-path dotspacemacs-directory)
-  (let ((default-directory "~/.nix-profile/share/emacs/site-lisp"))
-    (when (file-directory-p default-directory)
-      (add-to-list 'load-path default-directory)
-      (normal-top-level-add-subdirs-to-load-path)
-      ;; Emulate behavior of `package-directory-list'.
-      (add-to-list 'package-directory-list (expand-file-name "elpa")))))
+  (add-to-list 'load-path dotspacemacs-directory))
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
