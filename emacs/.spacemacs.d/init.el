@@ -899,10 +899,6 @@ before packages are loaded."
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
-  (require 'bcc32-abbrev)
-  (declare-function bcc32-ocaml-abbrevs "bcc32-abbrev" ())
-  (bcc32-ocaml-abbrevs)
-
   (with-eval-after-load 'dired
     (dired-async-mode))
 
