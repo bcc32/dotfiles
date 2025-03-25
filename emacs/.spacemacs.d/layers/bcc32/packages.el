@@ -8,9 +8,7 @@
     corfu
     debbugs
     diminish
-    (envrc :location (recipe :fetcher github
-                             :repo "bcc32/envrc"
-                             :branch "add-predicate"))
+    envrc
     evil
     evil-quickscope
     (explain-pause-mode :location (recipe :fetcher github

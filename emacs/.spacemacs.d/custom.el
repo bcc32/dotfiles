@@ -33,7 +33,6 @@
  '(eglot-confirm-server-initiated-edits nil)
  '(enable-recursive-minibuffers t)
  '(enable-remote-dir-locals t)
- '(envrc-global-modes '((not org-mode fundamental-mode) t))
  '(epg-pinentry-mode 'loopback)
  '(eshell-visual-commands
    '("ncdu" "vi" "vim" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp"
