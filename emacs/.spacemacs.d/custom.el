@@ -142,11 +142,7 @@
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
  '(org-M-RET-may-split-line '((default)))
  '(org-agenda-dim-blocked-tasks t)
- '(org-agenda-files
-   (seq-map #'file-truename
-            (seq-filter #'file-directory-p
-                        '("~/file-server/" "~/journal/" "~/src/film-metadata/"
-                          "~/src/watch-later/" "~/todo/" "~/todo/ideas/"))))
+ '(org-agenda-files '("~/todo/" "~/todo/ideas/"))
  '(org-agenda-include-diary t)
  '(org-agenda-mouse-1-follows-link t)
  '(org-agenda-prefer-last-repeat t)
