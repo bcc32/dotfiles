@@ -52,6 +52,26 @@ it will display the right message, e.g.:
   (interactive)
   (user-error "Do not use %s" (key-description (this-command-keys))))
 
+(defun bcc32-kill-ring-save-refill-for-web (beg end)
+  "Copy the region BEG to END to the kill ring, refilling the text for web use.
+
+When pasting into web forms, newlines separate paragraphs, unlike
+in Emacs where paragraphs are delimited by empty lines.  This
+command fills the copied text with no newlines within paragraphs."
+  (interactive "r")
+  (let ((filter-buffer-substring-function
+         (lambda (beg end delete)
+           (let ((contents (if delete
+                               (delete-and-extract-region beg end)
+                             (buffer-substring beg end))))
+             (with-temp-buffer
+               (insert contents)
+               (setq fill-column most-positive-fixnum)
+               (indent-region (point-min) (point-max))
+               (fill-region (point-min) (point-max))
+               (buffer-string))))))
+    (kill-ring-save beg end)))
+
 (defun bcc32-wrap-thunk (start end)
   "Wrap the expression in the region from START to END as a thunk.
 

@@ -53,27 +53,6 @@ found, passing ARGS."
                     (format "start /wait /b %s" url))
     (apply #'browse-url-default-browser url args)))
 
-(defun bcc32/kill-ring-save-refill-for-web (beg end)
-  "Copy the region BEG to END to the kill ring, refilling the text for web use.
-
-When pasting into web forms, newlines separate paragraphs, unlike
-in Emacs where paragraphs are delimited by empty lines.  This
-command fills the copied text with no newlines within paragraphs."
-  (interactive "r")
-  (let ((filter-buffer-substring-function
-         (lambda (beg end delete)
-           (let ((contents (if delete
-                               (delete-and-extract-region beg end)
-                             (buffer-substring beg end))))
-             (with-temp-buffer
-               (insert contents)
-               ;; TODO: Consider using unfill here instead of reimplementing it.
-               (setq fill-column most-positive-fixnum)
-               (indent-region (point-min) (point-max))
-               (fill-region (point-min) (point-max))
-               (buffer-string))))))
-    (kill-ring-save beg end)))
-
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
   (or (string-prefix-p "/nix/store/" project-root)
