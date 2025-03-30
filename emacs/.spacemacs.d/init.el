@@ -14,17 +14,18 @@
 (require 'seq)
 (eval-when-compile (require 'subr-x))
 
-(declare-function ansi-color-apply-on-region "ansi-color")
-(defun bcc32/ansi-color-region-or-buffer ()
-  "Render ANSI SGR color sequences in the current region if it is active.
+(autoload 'ansi-color-apply-on-region "ansi-color")
+(defun bcc32/ansi-color (beg end)
+  "Render ANSI SGR color sequences from BEG to END.
 
-Otherwise, render sequences in the current buffer."
-  (interactive)
-  (require 'ansi-color)
+Interactively, render sequences in the current buffer, or in the current
+region if the region is active."
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list (point-min) (point-max))))
   (with-silent-modifications
-    (save-restriction
-      (when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
-      (ansi-color-apply-on-region (point-min) (point-max)))))
+    (ansi-color-apply-on-region beg end)))
 
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
   "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
