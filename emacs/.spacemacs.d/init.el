@@ -217,7 +217,7 @@ This function should only modify configuration layer settings."
      ;; fasd
      finance
      (shell :variables
-            shell-default-shell 'shell
+            shell-default-shell 'eat
             shell-enable-smart-eshell t
             shell-enable-vterm-support nil)
      (transmission :variables
