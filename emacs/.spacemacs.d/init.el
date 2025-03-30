@@ -11,8 +11,6 @@
 
 (require 'browse-url)
 (require 'cl-lib)
-(require 'seq)
-(eval-when-compile (require 'subr-x))
 
 (autoload 'ansi-color-apply-on-region "ansi-color")
 (defun bcc32/ansi-color (beg end)
