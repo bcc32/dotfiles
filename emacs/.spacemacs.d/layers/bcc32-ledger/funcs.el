@@ -150,7 +150,7 @@ Return non-nil if ACCOUNT should be omitted from completion."
       (error "Not at an xact"))
 
     ;; Remove code and surrounding ()
-    (when-let ((code-beginning (match-beginning ledger-regex-xact-line-group-code)))
+    (when-let* ((code-beginning (match-beginning ledger-regex-xact-line-group-code)))
       ;; include the leading (
       (cl-decf code-beginning)
       ;; include the trailing ) and any whitespace

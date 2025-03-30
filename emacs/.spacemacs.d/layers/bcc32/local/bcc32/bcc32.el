@@ -18,8 +18,8 @@
 
 (defun bcc32-custom-variable-mismatch-p (var)
   "Return non-nil if VAR's default value does not match its customization type."
-  (when-let (((custom-variable-p var))
-             (type (custom-variable-type var)))
+  (when-let* (((custom-variable-p var))
+              (type (custom-variable-type var)))
     (let ((inhibit-message t))
       (custom-load-symbol var))
     (let (conv value)
@@ -76,7 +76,7 @@
   "Warn if there is an auto-revert problem in the current buffer.
 
 This is used as a `post-command-hook'."
-  (when-let ((desc auto-revert-notify-watch-descriptor))
+  (when-let* ((desc auto-revert-notify-watch-descriptor))
     (unless (assoc desc auto-revert--buffer-by-watch-descriptor)
       (delay-warning
        'bcc32
@@ -101,7 +101,7 @@ This is used as a `post-command-hook'."
            when desc
            do
            (cl-assert
-            (when-let ((buf2 (alist-get desc auto-revert--buffer-by-watch-descriptor)))
+            (let ((buf2 (alist-get desc auto-revert--buffer-by-watch-descriptor)))
               (eq buf buf2)))))
 
 (provide 'bcc32)

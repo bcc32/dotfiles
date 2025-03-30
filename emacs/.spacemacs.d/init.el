@@ -32,7 +32,7 @@ region if the region is active."
 
 Fall back to `browse-url-default-browser' if SSH_CONNECTION is
 unset in the selected frame, passing ARGS."
-  (if-let ((ssh-connection (getenv "SSH_CONNECTION" (selected-frame))))
+  (if-let* ((ssh-connection (getenv "SSH_CONNECTION" (selected-frame))))
       (with-current-buffer (get-buffer-create "*browse-on-ssh-client*")
         (make-local-variable 'process-environment)
         (push (concat "SSH_CONNECTION=" ssh-connection) process-environment)
@@ -48,7 +48,7 @@ unset in the selected frame, passing ARGS."
 
 Fall back to `browse-url-default-browser' if cmd.exe is not
 found, passing ARGS."
-  (if-let ((cmd (executable-find "cmd.exe")))
+  (if-let* ((cmd (executable-find "cmd.exe")))
       (call-process cmd nil nil nil
                     "/c"
                     (format "start /wait /b %s" url))
@@ -61,7 +61,7 @@ found, passing ARGS."
 
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
-  (unless (when-let ((hash (bound-and-true-p editorconfig-properties-hash)))
+  (unless (and-let* ((hash (bound-and-true-p editorconfig-properties-hash)))
             (gethash 'max_line_length hash))
     (setq-local fill-column 70)))
 

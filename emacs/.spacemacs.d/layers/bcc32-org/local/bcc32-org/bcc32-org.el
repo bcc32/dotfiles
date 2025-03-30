@@ -35,7 +35,7 @@
 - Update statistics cookies (e.g., [2/3])"
   (interactive "*")
   (when (and (derived-mode-p 'org-mode)
-             (not (when-let ((file-name (buffer-file-name)))
+             (not (and-let* ((file-name (buffer-file-name)))
                     (bcc32-org--archive-file-p file-name))))
     (org-map-dblocks
      (lambda ()
@@ -58,7 +58,7 @@ See `bcc32-org-cleanup'."
 
 For CLOSED entries, time is returned as a floating-point time,
 else +INF for entries with a todo keyword, -INF otherwise."
-  (if-let ((closed (org-entry-get nil "CLOSED")))
+  (if-let* ((closed (org-entry-get nil "CLOSED")))
       (org-2ft closed)
     (if (org-get-todo-state)
         1.0e+INF
@@ -90,8 +90,8 @@ else +INF for entries with a todo keyword, -INF otherwise."
 
 (defun bcc32-org--auto-ingest-init-org-hook ()
   "Ingest an org file if it is named init.org."
-  (when-let ((file-name (buffer-file-name))
-             ((string= (file-name-nondirectory file-name) "init.org")))
+  (when-let* ((file-name (buffer-file-name))
+              ((string= (file-name-nondirectory file-name) "init.org")))
     (org-babel-lob-ingest file-name)))
 
 (autoload 'magit-merge-in-progress-p "magit-merge")

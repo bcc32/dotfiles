@@ -25,7 +25,7 @@
 (defun bcc32-org-lint--skip-check-statistics-cookies-p (elt)
   "Return nil if the entry ELT should be checked for statistics cookies."
   (or (org-element-property bcc32-org-lint--skip-statistics-cookies-property-key elt)
-      (when-let ((parent (org-element-property :parent elt)))
+      (when-let* ((parent (org-element-property :parent elt)))
         (bcc32-org-lint--skip-check-statistics-cookies-p parent))))
 
 (defun bcc32-org-lint--entry-has-todo-children-p (elt)
