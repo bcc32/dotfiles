@@ -123,7 +123,6 @@
             :hide-unread t :key 119)
      (:name "Messages with images" :query "mime:image/*" :key 112)))
  '(mu4e-compose-complete-only-personal t)
- '(mu4e-compose-format-flowed t)
  '(mu4e-drafts-folder "/Drafts")
  '(mu4e-get-mail-command
    "if ~/bin/,am-online; then timeout -k 1m 2m offlineimap; fi")
