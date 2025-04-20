@@ -802,8 +802,6 @@ This function is called only while dumping Spacemacs configuration.  You can
 dump."
   )
 
-(defvar spacemacs-tuareg-mode-map)
-
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -861,9 +859,9 @@ before packages are loaded."
         (org-expiry-deinsinuate))
     (warn "org-expiry workaround is no longer necessary."))
 
-  (bind-keys :map spacemacs-tuareg-mode-map
-             ("f" . ocamlformat)
-             ("v" . merlin-enclosing-expand))
+  (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
+    "f" #'ocamlformat
+    "v" #'merlin-enclosing-expand)
 
   (add-hook 'text-mode-hook #'bcc32//set-fill-column-in-text-mode-hook)
   (add-hook 'text-mode-hook #'turn-on-auto-fill)
