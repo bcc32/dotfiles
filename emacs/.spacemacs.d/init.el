@@ -802,8 +802,6 @@ This function is called only while dumping Spacemacs configuration.  You can
 dump."
   )
 
-(defvar spaceline-org-clock-p)
-(defvar spaceline-version-control-p)
 (defvar spacemacs-tuareg-mode-map)
 
 (defun dotspacemacs/user-config ()
@@ -844,10 +842,6 @@ before packages are loaded."
   (with-eval-after-load 'evil
     (declare-function forward-evil-symbol "evil-common")
     (defalias 'forward-evil-word #'forward-evil-symbol))
-
-  ;; mode line segments
-  (setq spaceline-org-clock-p t)
-  (setq spaceline-version-control-p nil)
 
   (spacemacs/enable-flycheck 'emacs-lisp-mode)
 
