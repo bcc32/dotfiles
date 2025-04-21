@@ -836,10 +836,11 @@ before packages are loaded."
 
   (bind-key [remap zap-to-char] #'zap-up-to-char)
 
-  (bind-key "g" (lambda (dir)
-                  (interactive "Ddirectory: ")
-                  (magit-status dir))
-            embark-file-map)
+  (with-eval-after-load 'embark
+    (bind-key "g" (lambda (dir)
+                    (interactive "Ddirectory: ")
+                    (magit-status dir))
+              embark-file-map))
 
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
