@@ -143,8 +143,7 @@
  '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
  '(org-M-RET-may-split-line '((default)))
  '(org-agenda-dim-blocked-tasks t)
- '(org-agenda-files (mapcar #'file-truename '("~/todo/" "~/todo/ideas/")) nil nil
-                    "Must not contain symlinks or else auto-revert breaks, bug #65904")
+ '(org-agenda-files (mapcar #'file-truename '("~/todo/" "~/todo/ideas/")) nil nil "Must not contain symlinks or else auto-revert breaks, bug #65904")
  '(org-agenda-include-diary t)
  '(org-agenda-mouse-1-follows-link t)
  '(org-agenda-prefer-last-repeat t)
