@@ -62,7 +62,8 @@
 
 (defun bcc32/post-init-evil ()
   (with-eval-after-load 'evil
-    (define-key evil-normal-state-map "gt" 'bcc32-make-thunk)))
+    (define-key evil-normal-state-map "gt" 'bcc32-make-thunk)
+    (define-key evil-motion-state-map "gt" 'bcc32-make-thunk)))
 
 (defun bcc32/init-evil-quickscope ()
   (use-package evil-quickscope
