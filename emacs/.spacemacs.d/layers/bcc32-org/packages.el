@@ -34,4 +34,7 @@
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org
     (org-clock-persistence-insinuate)
-    (set-face-attribute 'org-headline-done nil :strike-through t)))
+    (set-face-attribute 'org-headline-done nil :strike-through t)
+    (add-to-list 'display-buffer-alist
+                 `(,(rx bos "CAPTURE-")
+                   (display-buffer-in-side-window)))))
