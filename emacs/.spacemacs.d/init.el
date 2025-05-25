@@ -876,7 +876,8 @@ before packages are loaded."
     (setf (plist-get (alist-get 'refile mu4e-marks) :action)
           (lambda (docid msg target)
             ;; mark messages read when archiving
-            (mu4e--server-move docid (mu4e--mark-check-target target) "+S-N"))))
+            (mu4e--server-move docid (mu4e--mark-check-target target) "+S-N")))
+    (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode))
 
   (lossage-size 3000)
 
