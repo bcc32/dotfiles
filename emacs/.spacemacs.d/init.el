@@ -433,8 +433,8 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font
-   '(("Cascadia Code" :size 16.0 :weight normal :width normal)
-     ("Iosevka"       :size 16.0 :weight normal :width normal))
+   '(("Cascadia Code" :size 16.0)
+     ("Iosevka"       :size 16.0))
 
    ;; Default icons font, it can be `all-the-icons' or `nerd-icons'.
    dotspacemacs-default-icons-font 'all-the-icons
