@@ -37,4 +37,9 @@
     (set-face-attribute 'org-headline-done nil :strike-through t)
     (add-to-list 'display-buffer-alist
                  `(,(rx bos "CAPTURE-")
-                   (display-buffer-in-side-window)))))
+                   (display-buffer-in-side-window)))
+    (add-to-list 'display-buffer-alist
+                 `(,(rx bos "*Org Agenda(a)*" eos)
+                   (display-buffer-in-side-window)
+                   (side . top)
+                   (window-height . 10)))))

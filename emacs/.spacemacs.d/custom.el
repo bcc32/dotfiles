@@ -154,6 +154,7 @@
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-scheduled 'future)
  '(org-agenda-todo-ignore-time-comparison-use-seconds t)
+ '(org-agenda-window-setup 'other-window)
  '(org-appear-autolinks nil)
  '(org-capture-templates
    '(("g" "Groceries" entry (file+olp "~/todo/shopping-list.org" "Groceries")
