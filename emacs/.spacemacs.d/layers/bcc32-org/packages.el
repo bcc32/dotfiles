@@ -42,4 +42,10 @@
                  `(,(rx bos "*Org Agenda(a)*" eos)
                    (display-buffer-in-side-window)
                    (side . top)
-                   (window-height . 10)))))
+                   (window-height . 10)))
+    (add-to-list 'display-buffer-alist
+                 '((and (derived-mode . org-mode)
+                        (lambda (buffer-or-name _action)
+                          (buffer-base-buffer (get-buffer buffer-or-name))))
+                   (display-buffer-in-side-window
+                    (side . bottom))))))
