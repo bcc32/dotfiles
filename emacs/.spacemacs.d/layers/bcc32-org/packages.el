@@ -35,17 +35,16 @@
   (with-eval-after-load 'org
     (org-clock-persistence-insinuate)
     (set-face-attribute 'org-headline-done nil :strike-through t)
-    (add-to-list 'display-buffer-alist
-                 `(,(rx bos "CAPTURE-")
-                   (display-buffer-in-side-window)))
-    (add-to-list 'display-buffer-alist
-                 `(,(rx bos "*Org Agenda(a)*" eos)
-                   (display-buffer-in-side-window)
-                   (side . top)
-                   (window-height . 10)))
+    ;; This covers capture buffers too
     (add-to-list 'display-buffer-alist
                  '((and (derived-mode . org-mode)
                         (lambda (buffer-or-name _action)
                           (buffer-base-buffer (get-buffer buffer-or-name))))
-                   (display-buffer-in-side-window
-                    (side . bottom))))))
+                   display-buffer-in-side-window
+                   (side . bottom)
+                   (dedicated . t)))
+    (add-to-list 'display-buffer-alist
+                 `(,(rx bos "*Org Agenda(a)*" eos)
+                   (display-buffer-in-side-window)
+                   (side . top)
+                   (window-height . 10)))))
