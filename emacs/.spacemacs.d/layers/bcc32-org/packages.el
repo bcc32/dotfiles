@@ -47,4 +47,4 @@
                  `(,(rx bos "*Org Agenda(a)*" eos)
                    (display-buffer-in-side-window)
                    (side . top)
-                   (window-height . 10)))))
+                   (window-height . 0.3)))))
