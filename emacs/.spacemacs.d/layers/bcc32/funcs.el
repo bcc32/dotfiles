@@ -38,7 +38,7 @@ If ARG is non-nil, take next ARG files instead."
 (defun bcc32-dired-take-file (file1 file2 &optional _)
   "Internal to `bcc32-dired-do-take'.  Copy FILE1 to FILE2 with reflinks."
   (call-process-shell-command
-   (format "cp --reflink=always -r -T %s %s"
+   (format "cp --reflink=always --preserve=timestamps -r -T %s %s"
            (shell-quote-argument file1) (shell-quote-argument file2))))
 
 (defun bcc32-hard-disable-command ()
