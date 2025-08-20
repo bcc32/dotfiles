@@ -242,7 +242,7 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(solarized-theme
+   `(solarized-theme
      tao-theme
      zenburn-theme
 
@@ -253,7 +253,8 @@ This function should only modify configuration layer settings."
                         :path "~/src/dotfiles-private/Emacs"))
 
      (wl :location (recipe :fetcher github
-                           :repo "bcc32/watch-later")))
+                           :repo "bcc32/watch-later"))
+     ,@(when (executable-find "journalctl") '(journalctl-mode)))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
