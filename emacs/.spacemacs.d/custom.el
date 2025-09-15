@@ -185,6 +185,7 @@
  '(org-outline-path-complete-in-steps nil)
  '(org-pretty-entities t)
  '(org-priority-default 67)
+ '(org-refile-target-verify-function 'bcc32-org-refile-verify-target)
  '(org-refile-targets '((nil :maxlevel . 10) (org-agenda-files :maxlevel . 10)))
  '(org-refile-use-cache t)
  '(org-refile-use-outline-path 'buffer-name)

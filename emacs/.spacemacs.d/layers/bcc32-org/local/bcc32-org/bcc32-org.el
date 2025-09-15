@@ -206,6 +206,15 @@ Used as a hook to ensure that my Org Agenda buffers have a predictable
 `default-directory' (so that I can comfortably run commands in them)."
   (setq default-directory "~/todo/"))
 
+;;;###autoload
+(defun bcc32-org-refile-verify-target ()
+  "Function for `org-refile-target-verify-function'."
+  (cond
+   (buffer-read-only                    ;skip generated files
+    (goto-char (point-max))
+    nil)
+   (t t)))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here
