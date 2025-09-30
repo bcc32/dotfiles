@@ -125,8 +125,7 @@
      (:name "Messages with images" :query "mime:image/*" :key 112)))
  '(mu4e-compose-complete-only-personal t)
  '(mu4e-drafts-folder "/Drafts")
- '(mu4e-get-mail-command
-   "if ~/bin/,am-online; then timeout -k 1m 2m offlineimap; fi")
+ '(mu4e-get-mail-command "~/bin/,offlineimap")
  '(mu4e-headers-date-format "%F")
  '(mu4e-headers-fields
    '((:human-date . 12) (:flags . 6) (:maildir . 20) (:from-or-to . 22) (:subject)))

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -o errexit -o nounset
+
+if ~/bin/,am-online; then
+  if [ -n "$(find ~/.last-successful-offlineimap-full-sync -mmin -1)" ]; then
+    flags=(-q)
+    touch_full_sync_when_done=0
+  else
+    flags=()
+    touch_full_sync_when_done=1
+  fi
+  set -o xtrace
+  timeout -k 1m 2m offlineimap "${flags[@]}"
+  if ((touch_full_sync_when_done)); then
+    touch ~/.last-successful-offlineimap-full-sync
+  fi
+else
+  echo >&2 "No Internet connection"
+  exit 1
+fi
