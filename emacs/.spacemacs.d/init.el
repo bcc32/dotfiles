@@ -54,7 +54,8 @@ found, passing ARGS."
 
 (defun bcc32/projectile-ignored-project-function (project-root)
   "Return t if a project rooted at PROJECT-ROOT should be ignored by projectile."
-  (or (string-prefix-p "/nix/store/" project-root)
+  (or (file-remote-p project-root)
+      (string-prefix-p "/nix/store/" project-root)
       (string-search "/.cargo/registry/" project-root)))
 
 (defun bcc32//set-fill-column-in-text-mode-hook ()
