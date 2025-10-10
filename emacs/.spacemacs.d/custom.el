@@ -274,6 +274,7 @@
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git Hg))
  '(what-cursor-show-names t)
+ '(which-func-display 'header)
  '(which-func-modes '(c-mode emacs-lisp-mode tuareg-mode))
  '(which-function-mode t)
  '(zoneinfo-style-world-list
