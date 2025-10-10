@@ -3,7 +3,7 @@
 set -o errexit -o nounset
 
 if ~/bin/,am-online; then
-  if [ -n "$(find ~/.last-successful-offlineimap-full-sync -mmin -1)" ]; then
+  if [ -n "$(find ~/.last-successful-offlineimap-full-sync -mmin -10)" ]; then
     flags=(-q)
     touch_full_sync_when_done=0
   else
