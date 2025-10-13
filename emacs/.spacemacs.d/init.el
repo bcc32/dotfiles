@@ -838,16 +838,6 @@ before packages are loaded."
     (setf (alist-get t ivy-format-functions-alist)
           #'ivy-format-function-line))
 
-  (if (version-list-<= (package-desc-version (cadr (assq 'org-contrib package-alist)))
-                       '(0 6))
-      (with-eval-after-load 'org-expiry
-        ;; Loading this package (which can happen due to autoloads during completion over symbols)
-        ;; unfortunately immediately activates the advice.
-        ;;
-        ;; Fixed upstream in https://git.sr.ht/~bzg/org-contrib/commit/82d33ade0925d1a170d6d9e9f71051655a2a2e6e
-        (org-expiry-deinsinuate))
-    (warn "org-expiry workaround is no longer necessary."))
-
   (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
     "f" #'ocamlformat
     "v" #'merlin-enclosing-expand)
