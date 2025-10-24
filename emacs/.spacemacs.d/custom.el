@@ -266,7 +266,6 @@
  '(terminal-here-linux-terminal-command 'urxvt)
  '(terminal-here-mac-terminal-command 'iterm2)
  '(tramp-use-connection-share nil)
- '(tramp-use-ssh-controlmaster-options nil nil nil "Delete after upgrading to Emacs 30.1")
  '(tuareg-prettify-symbols-full t)
  '(typescript-indent-level 2)
  '(undo-tree-auto-save-history nil)
