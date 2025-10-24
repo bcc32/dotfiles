@@ -35,10 +35,6 @@
  '(enable-recursive-minibuffers t)
  '(enable-remote-dir-locals t)
  '(epg-pinentry-mode 'loopback)
- '(eshell-visual-commands
-   '("ncdu" "vi" "vim" "screen" "tmux" "top" "htop" "less" "more" "lynx" "ncftp"
-     "mutt" "pine" "tin" "trn" "elm"))
- '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-escape-excluded-major-modes '(term-mode))
  '(evil-ex-visual-char-range t)
  '(evil-kill-on-visual-paste nil)

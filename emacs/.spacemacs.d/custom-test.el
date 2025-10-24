@@ -5,21 +5,6 @@
 (defun custom-face-default-spec (face)
   (get face 'face-defface-spec))
 
-(ert-deftest test-eshell-visual-commands ()
-  "`eshell-visual-commands' default value has not changed."
-  :tags '(bcc32 custom)
-  (require 'em-term)
-  (should (equal (custom--standard-value 'eshell-visual-commands)
-                 '("vi" "vim" "screen" "tmux" "top" "htop" "less"
-                   "more" "lynx" "links" "ncftp" "mutt" "pine" "tin" "trn" "elm"))))
-
-(ert-deftest test-eshell-visual-subcommands ()
-  "`eshell-visual-subcommands' default value has not changed."
-  :tags '(bcc32 custom)
-  (require 'em-term)
-  (should (equal (custom--standard-value 'eshell-visual-subcommands)
-                 nil)))
-
 (ert-deftest test-grep-files-aliases ()
   "`grep-files-aliases' default value has not changed."
   :tags '(bcc32 custom)

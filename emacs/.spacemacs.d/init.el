@@ -825,6 +825,10 @@ before packages are loaded."
                     (magit-status dir))
               embark-file-map))
 
+  (with-eval-after-load 'eshell
+    (add-to-list 'eshell-visual-commands "ncdu")
+    (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show")))
+
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
     (declare-function forward-evil-symbol "evil-common")
