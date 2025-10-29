@@ -42,9 +42,4 @@
                           (buffer-base-buffer (get-buffer buffer-or-name))))
                    display-buffer-in-side-window
                    (side . bottom)
-                   (dedicated . t)))
-    (add-to-list 'display-buffer-alist
-                 `(,(rx bos "*Org Agenda(a)*" eos)
-                   (display-buffer-in-side-window)
-                   (side . top)
-                   (window-height . 0.3)))))
+                   (dedicated . t)))))
