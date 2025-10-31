@@ -215,6 +215,25 @@ Used as a hook to ensure that my Org Agenda buffers have a predictable
     nil)
    (t t)))
 
+;;;###autoload
+(defun bcc32-org-bump-task-counter ()
+  "If the current headline has a counter like n/m, increment the count.
+
+If the numerator and denominator now match, reset the numerator to 0 and
+mark the entry DONE."
+  (interactive)
+  (org-end-of-subtree)
+  (beginning-of-line)
+  (unless (looking-at (rx (group (+ digit)) ?/ (group (+ digit))))
+    (error "No counter found"))
+  (let ((cur (string-to-number (match-string 1)))
+        (total (string-to-number (match-string 2))))
+    (cl-incf cur)
+    (if (< cur total)
+        (replace-match (number-to-string cur) t t nil 1)
+      (replace-match "0" t t nil 1)
+      (org-todo 'done))))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here
