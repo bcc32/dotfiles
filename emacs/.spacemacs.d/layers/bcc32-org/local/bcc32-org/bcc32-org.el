@@ -216,23 +216,26 @@ Used as a hook to ensure that my Org Agenda buffers have a predictable
    (t t)))
 
 ;;;###autoload
-(defun bcc32-org-bump-task-counter ()
+(defun bcc32-org-bump-task-counter (&optional arg)
   "If the current headline has a counter like n/m, increment the count.
 
 If the numerator and denominator now match, reset the numerator to 0 and
-mark the entry DONE."
-  (interactive)
+mark the entry DONE.
+
+With numeric prefix argument ARG, bump the counter ARG times."
+  (interactive (list (prefix-numeric-value current-prefix-arg)))
   (org-end-of-subtree)
   (beginning-of-line)
   (unless (looking-at (rx (group (+ digit)) ?/ (group (+ digit))))
     (error "No counter found"))
   (let ((cur (string-to-number (match-string 1)))
         (total (string-to-number (match-string 2))))
-    (cl-incf cur)
-    (if (< cur total)
-        (replace-match (number-to-string cur) t t nil 1)
-      (replace-match "0" t t nil 1)
-      (org-todo 'done))))
+    (save-match-data
+      (cl-incf cur arg)
+      (while (>= cur total)
+        (org-todo 'done)
+        (cl-decf cur total)))
+    (replace-match (number-to-string cur) t t nil 1)))
 
 (provide 'bcc32-org)
 
