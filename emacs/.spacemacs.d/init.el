@@ -857,6 +857,11 @@ before packages are loaded."
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
 
+  (with-eval-after-load 'undo-fu-session
+    (add-to-list 'undo-fu-session-incompatible-files
+                 (lambda (file)
+                   (file-in-directory-p file "~/todo/"))))
+
   (use-package mu4e
     :defer t
     :config
