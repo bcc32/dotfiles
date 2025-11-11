@@ -256,6 +256,8 @@
               image-mode doc-view-mode doc-view-mode-maybe ebrowse-tree-mode
               pdf-view-mode tags-table-mode fundamental-mode))
  '(sql-product 'sqlite)
+ '(switch-to-buffer-in-dedicated-window 'pop)
+ '(switch-to-buffer-obey-display-actions t)
  '(tab-always-indent 'complete)
  '(tab-width 8)
  '(tao-theme-use-sepia nil)
