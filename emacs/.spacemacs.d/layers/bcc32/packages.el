@@ -48,6 +48,8 @@
     "Diminish minor mode lighters to empty instead of a single letter."
     (mapc #'diminish '(auto-fill-function
                        column-enforce-mode
+                       eldoc-box-hover-mode
+                       eldoc-box-hover-at-point-mode
                        flycheck-mode
                        flyspell-mode
                        hybrid-mode
