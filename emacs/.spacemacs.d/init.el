@@ -12,19 +12,6 @@
 (require 'browse-url)
 (require 'cl-lib)
 
-(autoload 'ansi-color-apply-on-region "ansi-color")
-(defun bcc32/ansi-color (beg end)
-  "Render ANSI SGR color sequences from BEG to END.
-
-Interactively, render sequences in the current buffer, or in the current
-region if the region is active."
-  (interactive
-   (if (use-region-p)
-       (list (region-beginning) (region-end))
-     (list (point-min) (point-max))))
-  (with-silent-modifications
-    (ansi-color-apply-on-region beg end)))
-
 (defun bcc32/browse-url-on-ssh-client-if-exists (url &rest args)
   "Browse URL on the selected frame's $SSH_CONNECTION, if it exists.
 
