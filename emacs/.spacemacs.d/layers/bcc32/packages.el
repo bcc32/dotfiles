@@ -54,6 +54,7 @@
                        flyspell-mode
                        hybrid-mode
                        org-table-header-line-mode
+                       outline-minor-mode
                        smartparens-mode
                        spacemacs-whitespace-cleanup-mode
                        which-key-mode))))
