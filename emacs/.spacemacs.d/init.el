@@ -156,10 +156,10 @@ This function should only modify configuration layer settings."
      (ocaml :variables
             ocaml-format-on-save t)
      ;; perl5
-     ;; (python :variables
-     ;;         python-format-on-save t
-     ;;         python-formatter 'black
-     ;;         python-sort-imports-on-save t)
+     (python :variables
+             python-format-on-save t
+             python-formatter 'ruff
+             python-sort-imports-on-save t)
      ;; ruby
      (rust :variables
            rust-backend nil)
