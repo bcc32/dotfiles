@@ -108,7 +108,8 @@
  '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
  '(mu4e-attachment-dir "~/Downloads/")
  '(mu4e-bookmarks
-   '((:name "Unread messages" :query
+   '((:name "Inbox" :query "maildir:/INBOX" :key 105)
+     (:name "Unread messages" :query
             "flag:unread AND NOT flag:trashed AND NOT maildir:/Spam AND NOT maildir:/Newsletters*"
             :key 117)
      (:name "TODO" :query "maildir:/TODO*" :key 84)
