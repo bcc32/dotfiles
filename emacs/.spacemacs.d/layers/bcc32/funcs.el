@@ -100,3 +100,26 @@ expression."
     (search-forward ";")
     (while (/= old-depth (car (syntax-ppss)))
       (search-forward ";"))))
+
+(defun bcc32-smerge-fill-in-dummy-conflict-region-names ()
+  "Fill in dummy names for conflict regions since patch(1) doesn't.
+
+`smerge-mode' requires some non-empty name (or at least a space)
+for conflict regions, but patch(1) inserts plain conflict markers
+with no labels."
+  (interactive "*")
+  (when buffer-file-name
+    (let (found-bare-conflicts)
+      (save-restriction
+        (widen)
+        (save-excursion
+          (goto-char (point-min))
+          (while (re-search-forward (rx bol (or "<<<<<<<" ">>>>>>>" "|||||||") eol) nil t)
+            (setq found-bare-conflicts t)
+            (insert " "
+                    (pcase-exhaustive (match-string 0)
+                      ("<<<<<<<" "local changes")
+                      ("|||||||" "common ancestor")
+                      (">>>>>>>" "patch changes"))))))
+      (when found-bare-conflicts
+        (smerge-start-session)))))
