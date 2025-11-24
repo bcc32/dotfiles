@@ -90,3 +90,13 @@ expression."
   (evil-define-operator bcc32-make-thunk (beg end)
     "Wrap the region from BEG to END in a function taking no arguments."
     (bcc32-wrap-thunk beg end)))
+
+(defun bcc32-tuareg-select-through-semicolon ()
+  "Select a region from point to the end of some unit-type expression."
+  (interactive nil tuareg-mode)
+  (cl-assert (evil-normal-state-p))
+  (evil-visual-state)
+  (let ((old-depth (car (syntax-ppss))))
+    (search-forward ";")
+    (while (/= old-depth (car (syntax-ppss)))
+      (search-forward ";"))))
