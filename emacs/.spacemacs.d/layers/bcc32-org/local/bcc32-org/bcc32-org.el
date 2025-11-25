@@ -233,7 +233,15 @@ With numeric prefix argument ARG, bump the counter ARG times."
     (save-match-data
       (cl-incf cur arg)
       (while (>= cur total)
+        ;; HACK: `org-todo' relies on `org-add-log-setup' which uses
+        ;; post-command-hook to implement logging.  This means calling it
+        ;; repeatedly in a loop doesn't work correctly (doesn't log the right
+        ;; number of iterations, although it does bump the timestamp the right
+        ;; number of times).
+        ;;
+        ;; Call `post-command-hook' manually to trigger the logging.
         (org-todo 'done)
+        (run-hooks 'post-command-hook)
         (cl-decf cur total)))
     (replace-match (number-to-string cur) t t nil 1)))
 
