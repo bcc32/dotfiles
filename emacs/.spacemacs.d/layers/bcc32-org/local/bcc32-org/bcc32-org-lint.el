@@ -53,26 +53,24 @@ PARSE-TREE should be an Org-mode parse tree."
   #'bcc32-org-lint-statistics-cookies
   :categories '(bcc32-org))
 
-(defun bcc32-org-lint--skip-buffer-p (&optional buf)
+(defun bcc32-org-lint--skip-buffer-p (buf)
   "Return non-nil if the entire buffer BUF should not be linted."
-  (with-current-buffer (or buf (current-buffer))
-    (save-excursion
-      (goto-char (point-min))
-      (search-forward "This file is managed by beorg. Any changes will likely be overwritten." nil t))))
+  (buffer-local-value 'buffer-read-only buf))
 
 ;;;###autoload
 (defun bcc32-org-lint-agenda-buffers ()
-  "Run `org-lint' in all org agenda files, stopping at the first error."
+  "Run `org-lint' in all org agenda files, erroring at the first lint."
   (interactive)
   (dolist (buf (org-buffer-list 'agenda))
     (unless (bcc32-org-lint--skip-buffer-p buf)
       (set-buffer buf)
-      (call-interactively 'org-lint)
-      (when (cl-plusp (with-current-buffer "*Org Lint*" (buffer-size)))
+      ;; org-lint only creates the report buffer when called interactively
+      (save-window-excursion
+        (funcall-interactively 'org-lint))
+      (when (buffer-local-value 'tabulated-list-entries (get-buffer "*Org Lint*"))
+        (pop-to-buffer "*Org Lint*")
         (display-buffer buf)
-        (error "Lint found errors in buffer"))
-      (when-let* ((w (get-buffer-window "*Org Lint*")))
-        (delete-window w)))))
+        (error "Lint found errors in buffer")))))
 
 (provide 'bcc32-org-lint)
 ;;; bcc32-org-lint.el ends here
