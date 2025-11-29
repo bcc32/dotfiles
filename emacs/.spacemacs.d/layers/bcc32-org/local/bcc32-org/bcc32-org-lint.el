@@ -65,7 +65,7 @@ PARSE-TREE should be an Org-mode parse tree."
     (unless (bcc32-org-lint--skip-buffer-p buf)
       (set-buffer buf)
       ;; org-lint only creates the report buffer when called interactively
-      (save-window-excursion
+      (let ((display-buffer-overriding-action '(display-buffer-no-window (allow-no-window t))))
         (funcall-interactively 'org-lint))
       (when (buffer-local-value 'tabulated-list-entries (get-buffer "*Org Lint*"))
         (pop-to-buffer "*Org Lint*")
