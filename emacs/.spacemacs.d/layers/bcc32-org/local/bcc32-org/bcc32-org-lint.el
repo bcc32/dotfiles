@@ -61,16 +61,14 @@ PARSE-TREE should be an Org-mode parse tree."
 (defun bcc32-org-lint-agenda-buffers ()
   "Run `org-lint' in all org agenda files, erroring at the first lint."
   (interactive)
-  (dolist (buf (org-buffer-list 'agenda))
-    (unless (bcc32-org-lint--skip-buffer-p buf)
-      (set-buffer buf)
-      ;; org-lint only creates the report buffer when called interactively
-      (let ((display-buffer-overriding-action '(display-buffer-no-window (allow-no-window t))))
-        (funcall-interactively 'org-lint))
-      (when (buffer-local-value 'tabulated-list-entries (get-buffer "*Org Lint*"))
-        (pop-to-buffer "*Org Lint*")
-        (display-buffer buf)
-        (error "Lint found errors in buffer")))))
+  (dolist-with-progress-reporter (buf (cl-remove-if #'bcc32-org-lint--skip-buffer-p (org-buffer-list 'agenda)))
+      "Linting..."
+    (let ((display-buffer-overriding-action '(display-buffer-no-window (allow-no-window t))))
+      (org-lint--display-reports buf org-lint--checkers))
+    (when (buffer-local-value 'tabulated-list-entries (get-buffer "*Org Lint*"))
+      (pop-to-buffer "*Org Lint*")
+      (display-buffer buf)
+      (error "Lint found errors in buffer"))))
 
 (provide 'bcc32-org-lint)
 ;;; bcc32-org-lint.el ends here
