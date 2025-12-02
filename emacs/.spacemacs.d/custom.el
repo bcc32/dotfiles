@@ -268,6 +268,7 @@
  '(tuareg-prettify-symbols-full t)
  '(typescript-indent-level 2)
  '(undo-tree-auto-save-history nil)
+ '(use-package-compute-statistics t)
  '(user-mail-address "z@bcc32.com")
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git Hg))
