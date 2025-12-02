@@ -64,6 +64,20 @@ Intended to be added to `eval-expression-minibuffer-setup-hook'."
   (sp-local-pair 'eval-expression-minibuffer "`" nil :actions nil)
   (sp-update-local-pairs 'eval-expression-minibuffer))
 
+;; https://emacsredux.com/blog/2025/06/01/let-s-make-keyboard-quit-smarter/
+(defun er-keyboard-quit ()
+  "Smarter version of the built-in `keyboard-quit'.
+
+The generic `keyboard-quit' does not do the expected thing when
+the minibuffer is open.  Whereas we want it to close the
+minibuffer, even without explicitly focusing it."
+  (interactive)
+  (if (active-minibuffer-window)
+      (if (minibufferp)
+          (minibuffer-keyboard-quit)
+        (abort-recursive-edit))
+    (keyboard-quit)))
+
 (defvar dotspacemacs-directory)
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -813,6 +827,7 @@ before packages are loaded."
              ([remap spacemacs/prompt-kill-emacs] . spacemacs/save-buffers-kill-emacs))
 
   (bind-key [remap zap-to-char] #'zap-up-to-char)
+  (bind-key [remap keyboard-quit] #'er-keyboard-quit)
 
   (with-eval-after-load 'embark
     (bind-key "g" (lambda (dir)
