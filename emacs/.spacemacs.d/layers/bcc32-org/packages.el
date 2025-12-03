@@ -33,6 +33,7 @@
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org
+    (keymap-set org-agenda-mode-map "a" 'undefined) ;avoid accidental archiving
     (org-clock-persistence-insinuate)
     (set-face-attribute 'org-headline-done nil :strike-through t)
     ;; This covers capture buffers too
