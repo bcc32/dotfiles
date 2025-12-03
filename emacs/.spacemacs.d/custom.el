@@ -7,6 +7,7 @@
  '(advent-of-code-email "me@bcc32.com")
  '(after-save-hook '(executable-make-buffer-file-executable-if-script-p))
  '(async-shell-command-display-buffer nil)
+ '(breadcrumb-mode t)
  '(browse-url-browser-function 'bcc32/browse-url-on-ssh-client-if-exists)
  '(calc-context-sensitive-enter t)
  '(calc-settings-file
@@ -273,9 +274,6 @@
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git Hg))
  '(what-cursor-show-names t)
- '(which-func-display 'header)
- '(which-func-modes '(c-mode emacs-lisp-mode tuareg-mode))
- '(which-function-mode t)
  '(zoneinfo-style-world-list
    '(("America/Los_Angeles" "Seattle") ("America/New_York" "New York")
      ("Europe/London" "London") ("Europe/Amsterdam" "Amsterdam")

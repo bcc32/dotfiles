@@ -137,7 +137,6 @@ This function should only modify configuration layer settings."
           org-enable-github-support t
           org-enable-modern-support t
           org-enable-notifications t
-          org-enable-sticky-header t
           org-project-capture-projects-file "TODO.org"
           org-start-notification-daemon-on-startup nil
           org-want-todo-bindings t)
