@@ -786,13 +786,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (load custom-file)
   (add-to-list 'load-path dotspacemacs-directory))
 
-(defun dotspacemacs/user-load ()
-  "Library to load while dumping.
-This function is called only while dumping Spacemacs configuration.  You can
-`require' or `load' the libraries of your choice that will be included in the
-dump."
-  )
-
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
