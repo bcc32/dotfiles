@@ -75,6 +75,8 @@
  '(ledger-accounts-exclude-function 'bcc32-ledger-accounts-exclude-function)
  '(ledger-copy-transaction-insert-blank-line-after t)
  '(ledger-default-date-format ledger-iso-date-format)
+ '(ledger-reconcile-buffer-line-format "%(date)s %-20(code)s %-30(payee)s %15(amount)s\12")
+ '(ledger-reconcile-buffer-payee-max-chars 30)
  '(ledger-reconcile-default-commodity "USD")
  '(ledger-reconcile-insert-effective-date 'bcc32-ledger-should-insert-effective-date)
  '(ledger-report-links-beginning-of-xact nil)
