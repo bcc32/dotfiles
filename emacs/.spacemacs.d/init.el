@@ -932,6 +932,7 @@ This function is called at the very end of Spacemacs initialization."
    '(evil-escape-excluded-major-modes '(term-mode))
    '(evil-ex-visual-char-range t)
    '(evil-kill-on-visual-paste nil)
+   '(evil-shift-round nil)
    '(evil-symbol-word-search t)
    '(evil-want-Y-yank-to-eol t)
    '(evil-want-fine-undo t)
