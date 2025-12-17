@@ -74,7 +74,7 @@ minibuffer, even without explicitly focusing it."
   (interactive)
   (if (active-minibuffer-window)
       (if (minibufferp)
-          (minibuffer-keyboard-quit)
+          (abort-minibuffers)
         (abort-recursive-edit))
     (keyboard-quit)))
 
