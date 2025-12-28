@@ -224,9 +224,6 @@ This function should only modify configuration layer settings."
      (transmission :variables
                    transmission-auto-refresh-all t)
 
-     ;; Web services
-     ;; spotify
-
      ;; User layers
      (bcc32 :variables
             bcc32-enable-auto-revert-debugging-at-startup nil
