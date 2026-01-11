@@ -877,7 +877,7 @@ before packages are loaded."
             ;; mark messages read when archiving
             (mu4e--server-move docid (mu4e--mark-check-target target) "+S-N")))
     (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode)
-    (add-hook 'gnus-article-mode-hook (lambda () (evil-quickscope-always-mode -1))))
+    (add-hook 'gnus-article-mode-hook (lambda () (evil-quickscope-mode -1))))
 
   (lossage-size 3000))
 
