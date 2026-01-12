@@ -25,4 +25,4 @@ for package in "${packages[@]}"; do
   fi
 done
 
-./stow.sh -R "$@" "${filtered_packages[@]}"
+./stow.sh --restow "$@" "${filtered_packages[@]}"
