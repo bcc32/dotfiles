@@ -459,7 +459,6 @@ use POSIX qw(getcwd);
 use Getopt::Long qw(GetOptionsFromArray);
 use Scalar::Util qw(reftype);
 
-
 use Stow;
 use Stow::Util qw(parent error);
 
