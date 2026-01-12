@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 
 prefix=$(pwd)
 
-version=2.3.1
+version=2.4.1
 filename=stow-$version
 
 curl -fsSL https://ftp.gnu.org/gnu/stow/$filename.tar.gz -o $filename.tar.gz
