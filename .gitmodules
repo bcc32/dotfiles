@@ -1,8 +1,8 @@
-[submodule ".zprezto"]
+[submodule "prezto"]
 	path = zsh/dot-zprezto
 	url = git@github.com:bcc32/prezto.git
 	shallow = true
-[submodule "emacs/.emacs.d"]
+[submodule "spacemacs"]
 	path = emacs/dot-emacs.d
 	url = git@github.com:bcc32/spacemacs.git
 [submodule "tpm"]
