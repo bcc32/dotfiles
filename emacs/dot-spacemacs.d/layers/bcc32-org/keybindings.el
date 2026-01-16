@@ -4,8 +4,8 @@
   "Prompt and visit an org agenda heading."
   (interactive)
   (call-interactively
-   (or (seq-find #'commandp '(counsel-org-goto-all
-                              consult-org-agenda))
+   (or (seq-find #'commandp '(consult-org-agenda
+                              counsel-org-goto-all))
        (error "No command available to prompt for org agendas"))))
 
 (when (configuration-layer/package-used-p 'org)
