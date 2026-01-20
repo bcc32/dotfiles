@@ -924,7 +924,7 @@ This function is called at the very end of Spacemacs initialization."
    '(echo-keystrokes-help nil)
    '(editorconfig-mode-lighter "")
    '(eglot-autoshutdown t)
-   '(eglot-confirm-server-initiated-edits nil)
+   '(eglot-confirm-server-edits nil)
    '(enable-recursive-minibuffers t)
    '(enable-remote-dir-locals t)
    '(epg-pinentry-mode 'loopback)
