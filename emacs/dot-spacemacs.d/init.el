@@ -830,7 +830,9 @@ before packages are loaded."
   ;; Superword mode, for evil
   (with-eval-after-load 'evil
     (declare-function forward-evil-symbol "evil-common")
-    (defalias 'forward-evil-word #'forward-evil-symbol))
+    (declare-function evil-set-initial-state "evil-core")
+    (defalias 'forward-evil-word #'forward-evil-symbol)
+    (evil-set-initial-state 'shell-command-mode 'normal))
 
   (spacemacs/enable-flycheck 'emacs-lisp-mode)
 
