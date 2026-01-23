@@ -979,6 +979,7 @@ This function is called at the very end of Spacemacs initialization."
    '(ledger-report-use-header-line t)
    '(ledger-reports
      '(("debts" "%(binary) -f %(ledger-file) register --by-payee 'Personal Debts'")
+       ("deposits" "ledger reg '^Assets:Deposits' --by-payee")
        ("net-worth"
         "%(binary) -f %(ledger-file) bal '^Assets' '^Liabilities' -X USD")
        ("reconcile"
