@@ -150,7 +150,7 @@ This function should only modify configuration layer settings."
      autohotkey
      ;; c-c++
      csv
-     ;; common-lisp
+     common-lisp
      emacs-lisp
      ;; (go :variables
      ;;     go-format-before-save t
