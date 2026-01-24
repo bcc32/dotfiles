@@ -1167,6 +1167,7 @@ This function is called at the very end of Spacemacs initialization."
    '(tramp-use-connection-share nil nil nil "Configure ControlMaster in ~/.ssh/config instead")
    '(tuareg-prettify-symbols-full t)
    '(typescript-indent-level 2)
+   '(undo-no-redo t)
    '(undo-tree-auto-save-history nil)
    '(use-package-compute-statistics t)
    '(user-mail-address "z@bcc32.com")
