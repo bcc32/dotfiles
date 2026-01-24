@@ -245,6 +245,7 @@ This function should only modify configuration layer settings."
      tao-theme
      zenburn-theme
 
+     meow
      olivetti
 
      (bcc32-private
@@ -883,6 +884,18 @@ before packages are loaded."
 
   (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
                                             (vc-git-register (list attach-dir))))
+
+  ;; configure meow
+  (require 'meow)
+  (load (expand-file-name "meow-config" dotspacemacs-directory))
+  (meow-setup)
+
+  ;; enable meow in place of evil
+  (when nil
+    (evil-mode -1)
+    (evil-escape-mode -1)
+    (keymap-unset universal-argument-map "SPC" t)
+    (meow-global-mode))
 
   (lossage-size 3000))
 
