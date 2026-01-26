@@ -1,3 +1,6 @@
+(keymap-global-set "C-c C" #'org-capture)
+(keymap-global-set "C-c M" #'mu4e)
+
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-define-key
@@ -79,15 +82,14 @@
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
-   '("<escape>" . ignore)))
+   '("<escape>" . ignore))
 
-(meow-setup-indicator)
-(meow-setup-line-number)
-(keymap-global-set "C-c C" #'org-capture)
-(keymap-global-set "C-c M" #'mu4e)
+  (meow-setup-indicator)
+  (meow-setup-line-number)
 
-(meow-leader-define-key
- '("o" . "C-x o")
- '("p" . "C-x p")
- '("v" . "C-x v")
- '("m" . "C-c M"))
+  (meow-leader-define-key
+   '("i" . "M-g i")
+   '("o" . "C-x o")
+   '("p" . "C-x p")
+   '("v" . "C-x v")
+   '("m" . "C-c M")))
