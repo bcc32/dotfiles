@@ -1026,6 +1026,7 @@ This function is called at the very end of Spacemacs initialization."
    '(magit-section-initial-visibility-alist '((untracked . show) (stashes . hide)))
    '(magit-todos-exclude-globs '("flycheck_*" "*.org_archive" ".git/"))
    '(magit-todos-update 120)
+   '(meow-use-clipboard t)
    '(merlin-command "ocamlmerlin")
    '(merlin-eldoc-doc nil)
    '(merlin-eldoc-type nil)
