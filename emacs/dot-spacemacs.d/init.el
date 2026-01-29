@@ -1164,7 +1164,7 @@ This function is called at the very end of Spacemacs initialization."
    '(tao-theme-use-sepia nil)
    '(terminal-here-linux-terminal-command 'urxvt)
    '(terminal-here-mac-terminal-command 'iterm2)
-   '(tramp-use-connection-share nil)
+   '(tramp-use-connection-share nil nil nil "Configure ControlMaster in ~/.ssh/config instead")
    '(tuareg-prettify-symbols-full t)
    '(typescript-indent-level 2)
    '(undo-tree-auto-save-history nil)
