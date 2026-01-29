@@ -897,6 +897,9 @@ before packages are loaded."
     (keymap-unset universal-argument-map "SPC" t)
     (meow-global-mode))
 
+  (setq magit-define-global-key-bindings 'recommended)
+  (magit-maybe-define-global-key-bindings t)
+
   (lossage-size 3000))
 
 ;; Do not write anything past this comment. This is where Emacs will
