@@ -2,6 +2,10 @@
 
 set -o errexit -o nounset
 
+# Prevent ~/.offlineimap.py from being cached and creating ~/__pycache__/
+# https://stackoverflow.com/questions/50752302/python3-pycache-generating-even-if-pythondontwritebytecode-1
+export PYTHONDONTWRITEBYTECODE=1
+
 if ~/bin/,am-online; then
   if [ -n "$(find ~/.last-successful-offlineimap-full-sync -mmin -10)" ]; then
     flags=(-q)
