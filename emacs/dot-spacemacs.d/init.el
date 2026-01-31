@@ -49,6 +49,12 @@ found, passing ARGS."
   "Return t if PROJECT should be ignored by project.el."
   (bcc32/projectile-ignored-project-function (project-root project)))
 
+(declare-function evil-insert-state "evil-states" (&optional arg))
+(defun bcc32-evil-insert-state-if-evil ()
+  "Enter `insert' state if `evil-local-mode' is enabled."
+  (when (bound-and-true-p evil-local-mode)
+    (evil-insert-state)))
+
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (unless (and-let* ((hash (bound-and-true-p editorconfig-properties-hash)))
@@ -1082,10 +1088,11 @@ This function is called at the very end of Spacemacs initialization."
    '(org-appear-autolinks nil)
    '(org-capture-templates
      '(("g" "Groceries" entry (file+olp "~/todo/main/shopping-list.org" "Groceries")
-        "* TODO %? %^g" :hook evil-insert-state)
+        "* TODO %? %^g" :hook bcc32-evil-insert-state-if-evil)
        ("r" "Reading list entry" entry (file "~/todo/low/reading-list.org")
         "* TODO [[%c][%^{title}]] %^g\12%U")
-       ("t" "Todo" entry (file "") "* TODO %?\12%U\12%a" :hook evil-insert-state)))
+       ("t" "Todo" entry (file "") "* TODO %?\12%U\12%a" :hook
+        bcc32-evil-insert-state-if-evil)))
    '(org-clock-history-length 35)
    '(org-clock-idle-time 5)
    '(org-clock-persist t)
