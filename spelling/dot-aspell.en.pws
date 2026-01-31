@@ -1,4 +1,4 @@
-personal_ws-1.1 en 132 
+personal_ws-1.1 en 134 
 Android
 EXIF
 Elisp
@@ -42,6 +42,7 @@ ciphertext
 ciphertexts
 collimation
 config
+configs
 croissant
 customizability
 customizable
@@ -92,6 +93,7 @@ nonce
 nonnegative
 pastrami
 payee
+performant
 pita
 plaintext
 playlist
