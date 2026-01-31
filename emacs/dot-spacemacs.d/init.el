@@ -1135,6 +1135,10 @@ This function is called at the very end of Spacemacs initialization."
        (type "BUG(b/!)" "CLEANUP(l/!)" "|" "FIXED(x/@)" "WONTFIX(w@/@)")
        (type "ENHANCEMENT(h/!)" "FEATURE(f/!)" "|" "RELEASED(s/@)" "CANCELED(c/@)")))
    '(org-use-effective-time t)
+   '(org-use-speed-commands
+     '(lambda nil
+        (and (not (bound-and-true-p evil-local-mode))
+             (looking-at org-outline-regexp) (looking-back "^**"))))
    '(orgit-rev-description-format "%%N (magit-rev %%R): %s")
    '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
    '(pdf-tools-installer-os "nixos")
