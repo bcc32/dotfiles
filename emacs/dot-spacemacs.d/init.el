@@ -918,6 +918,7 @@ This function is called at the very end of Spacemacs initialization."
    '(corfu-auto-delay 0.5)
    '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
    '(diary-file "~/todo/diary")
+   '(diary-nongregorian-marking-hook '(diary-chinese-mark-entries))
    '(dired-async-skip-fast t)
    '(dired-auto-revert-buffer t)
    '(dired-omit-verbose nil)
