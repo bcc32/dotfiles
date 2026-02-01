@@ -907,6 +907,7 @@ This function is called at the very end of Spacemacs initialization."
    '(calc-context-sensitive-enter t)
    '(calc-settings-file
      (expand-file-name "calc-settings.el" dotspacemacs-directory))
+   '(calendar-chinese-all-holidays-flag t)
    '(calendar-latitude 40.65)
    '(calendar-location-name "New York City")
    '(calendar-longitude -73.95)
