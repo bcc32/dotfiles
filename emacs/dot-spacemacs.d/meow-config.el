@@ -92,4 +92,6 @@
    '("o" . "C-x o")
    '("p" . "C-x p")
    '("v" . "C-x v")
-   '("m" . "C-c M")))
+   '("m" . "C-c M"))
+
+  (add-to-list 'meow-mode-state-list '(sldb-mode . motion)))
