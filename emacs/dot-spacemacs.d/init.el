@@ -1134,6 +1134,7 @@ This function is called at the very end of Spacemacs initialization."
        (lsp-rust-analyzer-diagnostics-disabled . ["unresolved-proc-macro"])
        (magit-todos-exclude-globs ".git/" ".vendor/") (magit-todos-mode)
        (magit-todos-rg-extra-args "--hidden")
+       (org-archive-location . "../archive/%s_archive::")
        (org-archive-location . "archive/%s_archive::") (org-table-copy-increment)
        (projectile-project-compilation-cmd . "make -O -j")
        (projectile-project-compilation-cmd
