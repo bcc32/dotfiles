@@ -908,6 +908,11 @@ This function is called at the very end of Spacemacs initialization."
    '(calc-settings-file
      (expand-file-name "calc-settings.el" dotspacemacs-directory))
    '(calendar-chinese-all-holidays-flag t)
+   '(calendar-chinese-celestial-stem
+     ["Jia3" "Yi3" "Bing3" "Ding1" "Wu4" "Ji3" "Geng1" "Xin1" "Ren2" "Gui3"])
+   '(calendar-chinese-terrestrial-branch
+     ["Zi3" "Chou3" "Yin2" "Mao3" "Chen2" "Si4" "Wu3" "Wei4" "Shen1" "You3" "Xu1"
+      "Hai4"])
    '(calendar-latitude 40.65)
    '(calendar-location-name "New York City")
    '(calendar-longitude -73.95)
