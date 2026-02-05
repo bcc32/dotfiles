@@ -972,6 +972,7 @@ This function is called at the very end of Spacemacs initialization."
    '(holiday-bahai-holidays nil)
    '(imenu-max-item-length 300)
    '(indicate-buffer-boundaries 'left)
+   '(indicate-empty-lines t)
    '(initial-buffer-choice t)
    '(ivy-magic-tilde nil)
    '(ivy-use-virtual-buffers nil)
