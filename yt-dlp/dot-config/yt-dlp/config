@@ -16,4 +16,4 @@
 --no-mtime
 
 # Use ~/.authinfo.gpg if necessary
---netrc-cmd "gpg --decrypt ~/.authinfo.gpg | grep -v ' port '"
+--netrc-cmd "gpg --pinentry-mode loopback --decrypt ~/.authinfo.gpg | grep -v ' port '"
