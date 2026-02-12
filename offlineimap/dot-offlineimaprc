@@ -1,7 +1,6 @@
 [general]
 # List of accounts to be synced, separated by a comma.
 accounts = main
-pythonfile = ~/.offlineimap.py
 
 [Account main]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -21,6 +20,6 @@ localfolders = ~/mail
 type = IMAP
 remotehost = imap.fastmail.com
 remoteuser = z@bcc32.com
-remotepasseval = get_pass()
+remotepassfile = ~/src/dotfiles-private/offlineimap/password.txt
 # Necessary for SSL connections, if using offlineimap version > 6.5.4
 sslcacertfile = OS-DEFAULT
