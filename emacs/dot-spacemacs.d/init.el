@@ -881,6 +881,9 @@ before packages are loaded."
     (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode)
     (add-hook 'gnus-article-mode-hook (lambda () (evil-quickscope-mode -1))))
 
+  (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
+                                            (vc-git-register (list attach-dir))))
+
   (lossage-size 3000))
 
 ;; Do not write anything past this comment. This is where Emacs will
