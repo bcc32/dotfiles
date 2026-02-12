@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-set -eu
+set -o errexit -o nounset
+
+cd "$(dirname "$0")"
 
 # Ensure certain directories already exist so that stow won't try to create
 # symlinks too high in the file hierarchy, leading to unmanaged files appearing
 # in the repo.
 mkdir -p ~/.config ~/.gnupg ~/.ssh ~/.stack
+
+# Satisfy ssh
+chmod go-w ssh/dot-ssh/config
 
 packages=(*/)
 filtered_packages=()
