@@ -221,6 +221,7 @@ This function should only modify configuration layer settings."
             shell-default-shell 'eat
             shell-enable-smart-eshell t
             shell-enable-vterm-support nil)
+     systemd
      (transmission :variables
                    transmission-auto-refresh-all t)
 
@@ -252,8 +253,7 @@ This function should only modify configuration layer settings."
                         :path "~/src/dotfiles-private/Emacs"))
 
      (wl :location (recipe :fetcher github
-                           :repo "bcc32/watch-later"))
-     ,@(when (executable-find "journalctl") '(journalctl-mode)))
+                           :repo "bcc32/watch-later")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
