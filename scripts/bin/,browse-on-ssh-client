@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -eux
 
 url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
@@ -13,8 +13,16 @@ if [[ $url == http* ]]; then
 URL=$url
 EOF
   dest_file_basename="$(uuid -v4).url"
-elif [[ $url == /* ]] || [[ $url == file:///* ]]; then
-  file=${url#file://}
+elif [[ $url == file:///* ]]; then
+  if command -v trurl >/dev/null 2>/dev/null; then
+    file=$(trurl --get='[path]' "$url")
+  else
+    # do our best if trurl is not available
+    file=${url#file://}
+  fi
+  dest_file_basename=
+elif [[ $url == /* ]]; then
+  file=$url
   dest_file_basename=
 else
   echo >&2 "Unrecognized URL type: $url"
