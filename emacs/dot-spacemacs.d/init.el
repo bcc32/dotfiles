@@ -1173,6 +1173,7 @@ This function is called at the very end of Spacemacs initialization."
    '(switch-to-buffer-in-dedicated-window 'pop)
    '(switch-to-buffer-obey-display-actions t)
    '(tab-always-indent 'complete)
+   '(tab-bar-show 1)
    '(tab-width 8)
    '(tao-theme-use-sepia nil)
    '(terminal-here-linux-terminal-command 'urxvt)
