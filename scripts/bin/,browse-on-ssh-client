@@ -35,10 +35,4 @@ ssh_options=(
   -o ControlPersist=5s
 )
 
-# TODO: it's unfortunate to shell out specifically to call mkdir when the
-# directory usually exists already.  perhaps the open-links exe should be made
-# to create it, and this should just fail if it doesn't exist yet?
-
-# On Windows, the ssh shell might be PowerShell, so invoke sh explicitly.
-ssh "${ssh_options[@]}" "$ssh_client_ip" 'sh -c "mkdir -p .links-to-open/"'
 scp "${ssh_options[@]}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
