@@ -32,7 +32,7 @@ fi
 ssh_options=(
   -o ControlMaster=auto
   -o ControlPath=/tmp/browse-on-ssh-client-%C
-  -o ControlPersist=5s
+  -o ControlPersist=3600s
 )
-
-scp "${ssh_options[@]}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
+ssh -Nf "${ssh_options[@]}" "$ssh_client_ip"
+scp -v "${ssh_options[@]}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
