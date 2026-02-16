@@ -30,7 +30,7 @@ else
 fi
 
 ssh_options=(
-  -o ControlMaster=yes
+  -o ControlMaster=auto
   -o ControlPath=/tmp/browse-on-ssh-client-%C
   -o ControlPersist=5s
 )
