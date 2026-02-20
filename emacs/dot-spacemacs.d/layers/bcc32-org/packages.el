@@ -34,7 +34,16 @@
 
 (defun bcc32-org/post-init-org ()
   (with-eval-after-load 'org-agenda
-    (keymap-set org-agenda-mode-map "a" 'undefined)) ;avoid accidental archiving
+    (keymap-set org-agenda-mode-map "a" 'undefined) ;avoid accidental archiving
+
+    ;; HACK: force org-agenda to use prettier characters even in text terminals,
+    ;; since I only care about terminals that can handle these characters just fine.
+    (cl-letf (((symbol-function 'display-graphic-p) #'always)
+              ((symbol-function 'char-displayable-p) #'always))
+      (mapc #'custom-theme-recalc-variable
+            '(org-agenda-block-separator
+              org-agenda-current-time-string
+              org-agenda-time-grid))))
   (with-eval-after-load 'org
     (org-clock-persistence-insinuate)
     (set-face-attribute 'org-headline-done nil :strike-through t)
