@@ -935,7 +935,6 @@ This function is called at the very end of Spacemacs initialization."
    '(display-time-mode t)
    '(eat-kill-buffer-on-exit t)
    '(echo-keystrokes-help nil)
-   '(editorconfig-mode-lighter "")
    '(eglot-autoshutdown t)
    '(eglot-confirm-server-edits nil)
    '(enable-recursive-minibuffers t)
