@@ -9,6 +9,16 @@ cd "$(dirname "$0")"
 # in the repo.
 mkdir -p ~/.config ~/.gnupg ~/.ssh ~/.stack
 
+# On the other hand, ensure certain directories do not exist since they /should/ in fact be symlinked as a single unit.
+assert_not_dir() {
+    d=$1
+    if [ -d "$d" ] && ! [ -L "$d" ]; then
+        echo >&2 "$d is a directory (not a symlink); aborting"
+    fi
+}
+assert_not_dir ~/.emacs.d
+assert_not_dir ~/.zprezto
+
 # Satisfy ssh
 chmod go-w ssh/dot-ssh/config
 
