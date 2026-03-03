@@ -1155,7 +1155,7 @@ This function is called at the very end of Spacemacs initialization."
    '(sh-basic-offset 2)
    '(shell-file-name (executable-find "bash"))
    '(shell-pop-term-shell explicit-shell-file-name nil (shell) "prevent Spacemacs shell layer from overriding the defcustom default")
-   '(shfmt-arguments '("-bn" "-s"))
+   '(shfmt-arguments '("--binary-next-line" "--simplify"))
    '(shfmt-respect-sh-basic-offset t)
    '(shr-use-colors nil)
    '(smtpmail-debug-info t)
