@@ -1009,6 +1009,7 @@ This function is called at the very end of Spacemacs initialization."
    '(magit-clone-default-directory "~/src/")
    '(magit-diff-refine-hunk t)
    '(magit-published-branches '("origin/main" "origin/master"))
+   '(magit-repository-directories '(("~/src/" . 1)))
    '(magit-section-initial-visibility-alist '((untracked . show) (stashes . hide)))
    '(magit-todos-exclude-globs '("flycheck_*" "*.org_archive" ".git/"))
    '(magit-todos-update 120)
