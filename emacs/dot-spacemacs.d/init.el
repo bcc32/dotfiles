@@ -1072,6 +1072,7 @@ This function is called at the very end of Spacemacs initialization."
         "* TODO [[%c][%^{title}]] %^g\12%U")
        ("t" "Todo" entry (file "") "* TODO %?\12%U\12%a" :hook evil-insert-state)))
    '(org-clock-history-length 35)
+   '(org-clock-idle-time 5)
    '(org-clock-persist t)
    '(org-default-notes-file "~/todo/main/refile.org")
    '(org-enforce-todo-checkbox-dependencies t)
