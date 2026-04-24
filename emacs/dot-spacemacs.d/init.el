@@ -1019,6 +1019,7 @@ This function is called at the very end of Spacemacs initialization."
    '(midnight-mode t)
    '(minibuffer-depth-indicate-mode t)
    '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
+   '(mode-line-compact 'long)
    '(mu4e-attachment-dir "~/Downloads/")
    '(mu4e-bookmarks
      '((:name "Inbox" :query "maildir:/INBOX" :key 105)
