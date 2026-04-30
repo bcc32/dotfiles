@@ -14,6 +14,7 @@ assert_not_dir() {
   d=$1
   if [ -d "$d" ] && ! [ -L "$d" ]; then
     echo >&2 "$d is a directory (not a symlink); aborting"
+    exit 1
   fi
 }
 assert_not_dir ~/.emacs.d
