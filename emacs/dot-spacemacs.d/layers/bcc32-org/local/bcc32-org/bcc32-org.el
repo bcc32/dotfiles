@@ -180,7 +180,10 @@ If any FLAGGED tags were added, list the entries."
                            (buffer-string))))
              (unless (string= (string-trim before) (string-trim after))
                (cl-incf entries-flagged)
-               (org-toggle-tag "FLAGGED" 'on)))))
+               (org-toggle-tag "FLAGGED" 'on))))
+         ;; After each code block, run `accept-process-output' to avoid starving
+         ;; timers and Async cycles.
+         (accept-process-output nil 0.050))
        "/BLOCKED"
        'agenda
        'archive))
