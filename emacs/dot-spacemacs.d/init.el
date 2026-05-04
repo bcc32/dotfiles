@@ -1115,6 +1115,7 @@ This function is called at the very end of Spacemacs initialization."
    '(orgit-rev-description-format "%%N (magit-rev %%R): %s")
    '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
    '(pdf-tools-installer-os "nixos")
+   '(pixel-scroll-precision-mode t)
    '(project-list-exclude '("\\`/nix/store/"))
    '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
    '(remote-file-name-inhibit-auto-save-visited t)
