@@ -260,6 +260,7 @@ This function should only modify configuration layer settings."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
    '(
+     evil-escape
      flycheck-elsa
      overseer                           ;loads itself on emacs-lisp-mode-hook
                                         ;even if it would not enable itself.
@@ -939,7 +940,6 @@ This function is called at the very end of Spacemacs initialization."
    '(enable-recursive-minibuffers t)
    '(enable-remote-dir-locals t)
    '(epg-pinentry-mode 'loopback)
-   '(evil-escape-excluded-major-modes '(term-mode))
    '(evil-ex-visual-char-range t)
    '(evil-kill-on-visual-paste nil)
    '(evil-shift-round nil)
