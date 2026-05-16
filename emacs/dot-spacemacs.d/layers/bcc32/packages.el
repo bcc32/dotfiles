@@ -71,8 +71,7 @@
 (defun bcc32/init-evil-quickscope ()
   (use-package evil-quickscope
     :config
-    (global-evil-quickscope-mode)
-    (add-hook 'dired-mode-hook (lambda () (evil-quickscope-mode -1)))))
+    (global-evil-quickscope-mode)))
 
 (defun bcc32/init-explain-pause-mode ()
   (use-package explain-pause-mode
