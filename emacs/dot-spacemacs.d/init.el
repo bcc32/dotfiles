@@ -196,8 +196,7 @@ This function should only modify configuration layer settings."
 
      ;; Source control
      git
-     (version-control :variables
-                      version-control-diff-tool nil)
+     version-control
 
      ;; Spacemacs distribution layers
      spacemacs-completion
