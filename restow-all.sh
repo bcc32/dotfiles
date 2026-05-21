@@ -44,4 +44,6 @@ for package in "${packages[@]}"; do
   fi
 done
 
-./stow.sh --restow --dotfiles --target "$HOME" "$@" "${filtered_packages[@]}"
+./stow.sh --restow --dotfiles --target "$HOME" \
+  --ignore='\.DS_Store' \
+  "$@" "${filtered_packages[@]}"
