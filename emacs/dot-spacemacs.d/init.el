@@ -45,6 +45,10 @@ found, passing ARGS."
       (string-prefix-p "/nix/store/" project-root)
       (string-search "/.cargo/registry/" project-root)))
 
+(defun bcc32/project-ignored-project-function (project)
+  "Return t if PROJECT should be ignored by project.el."
+  (bcc32/projectile-ignored-project-function (project-root project)))
+
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (unless (and-let* ((hash (bound-and-true-p editorconfig-properties-hash)))
@@ -1120,7 +1124,7 @@ This function is called at the very end of Spacemacs initialization."
    '(paradox-github-token t nil nil "Disable GitHub integration in Paradox")
    '(pdf-tools-installer-os "nixos")
    '(pixel-scroll-precision-mode t)
-   '(project-list-exclude '("\\`/nix/store/"))
+   '(project-list-exclude '(bcc32/project-ignored-project-function))
    '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
    '(remote-file-name-inhibit-auto-save-visited t)
    '(remote-file-name-inhibit-locks t)
