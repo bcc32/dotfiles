@@ -1142,6 +1142,8 @@ This function is called at the very end of Spacemacs initialization."
                    "}" n "}" n))
        (diff-add-log-use-relative-names . t)
        (dired-guess-shell-alist-user ("\\.zip\\'" "../bin/import.sh"))
+       (dired-guess-shell-alist-user
+        ("\\.zip\\'" "LOCAL_TZ=America/New_York ../bin/import.sh"))
        (etags-regen-ignores "test/manual/etags/")
        (etags-regen-regexp-alist
         (("c" "objc") "/[ \11]*DEFVAR_[A-Z_ \11(]+\"\\([^\"]+\\)\"/\\1/"
