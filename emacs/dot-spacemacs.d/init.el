@@ -885,12 +885,6 @@ before packages are loaded."
     :defer t
     :config
     (setq mu4e-trash-without-flag t)
-    ;; TODO: Refactor if mu4e-marks becomes more easily configurable.
-    ;; https://github.com/djcb/mu/issues/1136#issuecomment-1066303788
-    (setf (plist-get (alist-get 'refile mu4e-marks) :action)
-          (lambda (docid msg target)
-            ;; mark messages read when archiving
-            (mu4e--server-move docid (mu4e--mark-check-target target) "+S-N")))
     (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode))
 
   (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
