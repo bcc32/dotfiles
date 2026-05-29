@@ -542,6 +542,14 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-maximize-window-keep-side-windows t
 
+   ;; TODO: replace this with load-path-filter-function when that is available
+   ;; upstream.
+   ;; ** New feature to speed up repeated lookup of Lisp files in 'load-path'.
+   ;; If the new variable 'load-path-filter-function' is set to the new
+   ;; function 'load-path-filter-cache-directory-files', calling 'load' will
+   ;; cache the directories it scans and their files, and the following
+   ;; lookups should be faster.
+
    ;; If nil, no load-hints enabled. If t, enable the `load-hints' which will
    ;; put the most likely path on the top of `load-path' to reduce walking
    ;; through the whole `load-path'. It's an experimental feature to speedup
@@ -555,6 +563,8 @@ It should only modify the values of Spacemacs settings."
    ;; Refer to the FAQ.org "package-quickstart" section for details.
    ;; (default nil)
    dotspacemacs-enable-package-quickstart nil
+   ;; TODO: above didn't work for me, it keeps reinstalling transient.el and
+   ;; org.el (hmm, both built-in packages... with newer ELPA versions...)
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
