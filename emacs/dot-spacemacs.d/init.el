@@ -127,7 +127,6 @@ This function should only modify configuration layer settings."
      ;; Completion
      ;; (auto-completion :variables
      ;;                  auto-completion-idle-delay nil)
-     ;; ivy
      compleseus
 
      ;; E-mail
@@ -854,12 +853,6 @@ before packages are loaded."
 
   (spacemacs/enable-flycheck 'emacs-lisp-mode)
 
-  (with-eval-after-load 'ivy
-    (defvar ivy-format-functions-alist)
-    (declare-function ivy-format-function-line "ivy")
-    (setf (alist-get t ivy-format-functions-alist)
-          #'ivy-format-function-line))
-
   (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
     "f" #'ocamlformat
     "v" #'merlin-enclosing-expand)
@@ -981,8 +974,6 @@ This function is called at the very end of Spacemacs initialization."
    '(indicate-buffer-boundaries 'left)
    '(indicate-empty-lines t)
    '(initial-buffer-choice t)
-   '(ivy-magic-tilde nil)
-   '(ivy-use-virtual-buffers nil)
    '(js-indent-level 2)
    '(ledger-accounts-exclude-function 'bcc32-ledger-accounts-exclude-function)
    '(ledger-copy-transaction-insert-blank-line-after t)
