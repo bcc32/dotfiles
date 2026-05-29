@@ -876,6 +876,9 @@ before packages are loaded."
     :config
     ;; TODO: Refactor if mu4e-marks becomes more easily configurable.
     ;; https://github.com/djcb/mu/issues/1136#issuecomment-1066303788
+    ;;
+    ;; TODO: look if mu4e-trash-without-flag fixes this problem for me?
+    ;; https://github.com/djcb/mu/issues/1136#issuecomment-2543938870
     (setf (plist-get (alist-get 'trash mu4e-marks) :action)
           (lambda (docid msg target)
             ;; Here's the main difference to the regular trash mark,
