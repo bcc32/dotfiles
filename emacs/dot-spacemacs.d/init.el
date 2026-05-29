@@ -884,17 +884,9 @@ before packages are loaded."
   (use-package mu4e
     :defer t
     :config
+    (setq mu4e-trash-without-flag t)
     ;; TODO: Refactor if mu4e-marks becomes more easily configurable.
     ;; https://github.com/djcb/mu/issues/1136#issuecomment-1066303788
-    ;;
-    ;; TODO: look if mu4e-trash-without-flag fixes this problem for me?
-    ;; https://github.com/djcb/mu/issues/1136#issuecomment-2543938870
-    (setf (plist-get (alist-get 'trash mu4e-marks) :action)
-          (lambda (docid msg target)
-            ;; Here's the main difference to the regular trash mark,
-            ;; no +T before -N so the message is not marked as
-            ;; IMAP-deleted:
-            (mu4e--server-move docid (mu4e--mark-check-target target) "-N")))
     (setf (plist-get (alist-get 'refile mu4e-marks) :action)
           (lambda (docid msg target)
             ;; mark messages read when archiving
