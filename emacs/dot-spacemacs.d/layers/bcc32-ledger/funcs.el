@@ -113,9 +113,11 @@ effective dates."
 
 The result doesn't change significantly, or frequently, enough to
 recompute it."
-  (or bcc32-ledger--accounts-list-in-buffer-cache
-      (setq bcc32-ledger--accounts-list-in-buffer-cache
-            (apply f args))))
+  (if (and (fboundp 'ert-running-test) (ert-running-test))
+      (apply f args)
+    (or bcc32-ledger--accounts-list-in-buffer-cache
+        (setq bcc32-ledger--accounts-list-in-buffer-cache
+              (apply f args)))))
 
 (defvar-local bcc32-ledger--excluded-accounts-regexp nil)
 (defun bcc32-ledger--load-excluded-accounts ()
