@@ -1,5 +1,4 @@
 --file ~/journal/journal.ldg
 --price-db ~/journal/pricedb.ldg
---explicit
 --pedantic
 --date-format %Y-%m-%d
