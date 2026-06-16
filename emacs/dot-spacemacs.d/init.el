@@ -883,6 +883,9 @@ before packages are loaded."
   (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
                                             (vc-git-register (list attach-dir))))
 
+  ;; Put abbrevs back somewhere in version control
+  (setq abbrev-file-name "~/src/dotfiles-private/Emacs/abbrev_defs")
+
   (lossage-size 3000))
 
 ;; Do not write anything past this comment. This is where Emacs will
