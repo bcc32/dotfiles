@@ -862,6 +862,9 @@ before packages are loaded."
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
+  (add-hook 'diary-mode-hook (lambda () (setq-local require-final-newline t)))
+  (add-hook 'diary-mode-hook #'flyspell-mode)
+
   (with-eval-after-load 'dired
     (dired-async-mode))
 
