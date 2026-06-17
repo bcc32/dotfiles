@@ -59,9 +59,15 @@
                        spacemacs-whitespace-cleanup-mode
                        which-key-mode))))
 
+(defvar envrc-mode)
+(defun bcc32--inhibit-envrc (f &rest args)
+  (let ((envrc-mode nil))
+    (apply f args)))
 (defun bcc32/init-envrc ()
   (use-package envrc
-    :init (envrc-global-mode)))
+    :init (envrc-global-mode)
+    :config
+    (advice-add 'magit-repolist-fetch :around #'bcc32--inhibit-envrc)))
 
 (defun bcc32/post-init-evil ()
   (with-eval-after-load 'evil
