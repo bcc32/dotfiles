@@ -834,6 +834,10 @@ before packages are loaded."
   (bind-key [remap zap-to-char] #'zap-up-to-char)
   (bind-key [remap keyboard-quit] #'er-keyboard-quit)
 
+  (bind-key [remap upcase-word] #'upcase-dwim)
+  (bind-key [remap downcase-word] #'downcase-dwim)
+  (bind-key [remap capitalize-word] #'capitalize-dwim)
+
   (with-eval-after-load 'embark
     (bind-key "g" (lambda (dir)
                     (interactive "Ddirectory: ")
