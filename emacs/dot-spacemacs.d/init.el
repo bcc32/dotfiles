@@ -1126,6 +1126,7 @@ This function is called at the very end of Spacemacs initialization."
    '(pixel-scroll-precision-mode t)
    '(project-list-exclude '(bcc32/project-ignored-project-function))
    '(projectile-ignored-project-function 'bcc32/projectile-ignored-project-function)
+   '(read-extended-command-predicate 'command-completion-default-include-p)
    '(remote-file-name-inhibit-auto-save-visited t)
    '(remote-file-name-inhibit-locks t)
    '(revert-without-query '(""))
