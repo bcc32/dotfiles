@@ -797,7 +797,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  )
+  (setq abbrev-file-name "~/src/dotfiles-private/Emacs/abbrev_defs"))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -889,9 +889,6 @@ before packages are loaded."
 
   (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
                                             (vc-git-register (list attach-dir))))
-
-  ;; Put abbrevs back somewhere in version control
-  (setq abbrev-file-name "~/src/dotfiles-private/Emacs/abbrev_defs")
 
   (lossage-size 3000))
 
