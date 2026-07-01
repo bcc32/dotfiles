@@ -1,4 +1,4 @@
-;;; packages.el --- bcc32-ledger layer packages file for Spacemacs.
+;;; packages.el --- bcc32-ledger layer packages file for Spacemacs.  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
