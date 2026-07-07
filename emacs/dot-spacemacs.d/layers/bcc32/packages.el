@@ -64,12 +64,18 @@
 (defun bcc32/init-dired-rsync ()
   (use-package dired-rsync
     :defer t
+    :init
+    (spacemacs/set-leader-keys-for-major-mode 'dired-mode
+      "r" 'dired-rsync)
     :config
     (add-to-list 'mode-line-modes '(dired-rsync-modeline-status dired-rsync-modeline-status))))
 
 (defun bcc32/init-dired-rsync-transient ()
   (use-package dired-rsync-transient
-    :defer t))
+    :defer t
+    :init
+    (spacemacs/set-leader-keys-for-major-mode 'dired-mode
+      "R" 'dired-rsync-transient)))
 
 (defvar envrc-mode)
 (defun bcc32--inhibit-envrc (f &rest args)
