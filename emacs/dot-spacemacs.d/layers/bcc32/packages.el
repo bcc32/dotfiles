@@ -8,6 +8,8 @@
     corfu
     debbugs
     diminish
+    dired-rsync
+    dired-rsync-transient
     envrc
     evil
     evil-quickscope
@@ -58,6 +60,16 @@
                        smartparens-mode
                        spacemacs-whitespace-cleanup-mode
                        which-key-mode))))
+
+(defun bcc32/init-dired-rsync ()
+  (use-package dired-rsync
+    :defer t
+    :config
+    (add-to-list 'mode-line-modes '(dired-rsync-modeline-status dired-rsync-modeline-status))))
+
+(defun bcc32/init-dired-rsync-transient ()
+  (use-package dired-rsync-transient
+    :defer t))
 
 (defvar envrc-mode)
 (defun bcc32--inhibit-envrc (f &rest args)
