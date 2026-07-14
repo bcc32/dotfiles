@@ -993,6 +993,7 @@ This function is called at the very end of Spacemacs initialization."
    '(ledger-accounts-exclude-function 'bcc32-ledger-accounts-exclude-function)
    '(ledger-copy-transaction-insert-blank-line-after t)
    '(ledger-default-date-format ledger-iso-date-format)
+   '(ledger-occur-use-face-shown nil)
    '(ledger-reconcile-buffer-line-format "%(date)s %-20(code)s %-30(payee)s %15(amount)s\12")
    '(ledger-reconcile-buffer-payee-max-chars 30)
    '(ledger-reconcile-default-commodity "USD")
