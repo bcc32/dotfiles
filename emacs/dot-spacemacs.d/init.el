@@ -185,7 +185,8 @@ This function should only modify configuration layer settings."
                     shell-scripts-backend nil
                     shell-scripts-format-on-save t)
      (sql :variables
-          sql-capitalize-keywords t)
+          sql-capitalize-keywords t
+          sql-capitalize-keywords-blacklist '("name" "schema"))
      ;; (typescript :variables
      ;;             typescript-backend 'tide
      ;;             typescript-fmt-on-save t
