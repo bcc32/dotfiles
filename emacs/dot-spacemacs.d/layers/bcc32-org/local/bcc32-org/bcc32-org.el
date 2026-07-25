@@ -110,6 +110,7 @@ else +INF for entries with a todo keyword, -INF otherwise."
     (magit-git "commit" "-am" "_"))
   (magit-git "pull" "--rebase" "-Xignore-space-change")
   (magit-git "push")
+  (magit-refresh-all)
   (message "Committing and pushing... done"))
 
 (defcustom bcc32-org-always-skip-weekends nil
