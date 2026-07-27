@@ -967,6 +967,7 @@ This function is called at the very end of Spacemacs initialization."
    '(flycheck-emacs-lisp-load-path '("./"))
    '(flycheck-ledger-explicit t)
    '(flycheck-ledger-pedantic t)
+   '(flymake-show-diagnostics-at-end-of-line 'short)
    '(garbage-collection-messages t)
    '(geiser-default-implementation 'chicken)
    '(global-column-enforce-mode t)
