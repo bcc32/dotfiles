@@ -49,6 +49,9 @@
                                 (outline-minor-mode)))
   (add-hook 'ledger-reconcile-mode-hook #'ledger-reconcile-display-balance-in-header-mode)
 
+  ;; This command is a footgun and I don't want it.
+  (put 'ledger-reconcile-delete 'disabled t)
+
   (define-advice ledger-copy-transaction-at-point (:after (&rest _) reset-xact-state)
     "Make sure copied xact has clean state."
     (bcc32-ledger-reset-xact-state)))
