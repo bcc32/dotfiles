@@ -888,6 +888,8 @@ before packages are loaded."
     (setq mu4e-trash-without-flag t)
     (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode))
 
+  ;; FIXME: should this use `vc-register' with a fileset, to be generic across
+  ;; backends?
   (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
                                             (vc-git-register (list attach-dir))))
 
