@@ -932,6 +932,7 @@ This function is called at the very end of Spacemacs initialization."
      ["Jiǎ" "Yǐ" "Bǐng" "Dīng" "Wù" "Jǐ" "Gēng" "Xīn" "Rén" "Guǐ"])
    '(calendar-chinese-terrestrial-branch
      ["Zǐ" "Chǒu" "Yín" "Mǎo" "Chén" "Sì" "Wǔ" "Wèi" "Shēn" "Yǒu" "Xū" "Hài"])
+   '(calendar-date-style 'iso)
    '(calendar-latitude 40.65)
    '(calendar-location-name "New York City")
    '(calendar-longitude -73.95)
