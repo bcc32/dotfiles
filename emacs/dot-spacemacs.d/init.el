@@ -1112,6 +1112,7 @@ This function is called at the very end of Spacemacs initialization."
    '(org-modern-todo nil)
    '(org-modules '(org-habit ol-info org-tempo org-checklist ol-man))
    '(org-outline-path-complete-in-steps nil)
+   '(org-pomodoro-clock-break t)
    '(org-pretty-entities t)
    '(org-priority-default 67)
    '(org-refile-target-verify-function 'bcc32-org-refile-verify-target)
