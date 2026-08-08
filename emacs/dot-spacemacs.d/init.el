@@ -1211,6 +1211,7 @@ This function is called at the very end of Spacemacs initialization."
    '(tramp-use-scp-direct-remote-copying t)
    '(tuareg-prettify-symbols-full t)
    '(typescript-indent-level 2)
+   '(undelete-frame-mode t)
    '(undo-no-redo t)
    '(undo-tree-auto-save-history nil)
    '(use-package-compute-statistics t)
