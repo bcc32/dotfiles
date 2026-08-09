@@ -21,7 +21,7 @@ unset in the selected frame, passing ARGS."
       (with-current-buffer (get-buffer-create " *browse-on-ssh-client*")
         (let ((process-environment (cons (concat "SSH_CONNECTION=" ssh-connection)
                                          process-environment)))
-          (if (equal 0 (call-process (expand-file-name "~/bin/,browse-on-ssh-client")
+          (if (equal 0 (call-process "~/bin/,browse-on-ssh-client"
                                      nil t nil url))
               (kill-buffer)
             (display-buffer (current-buffer))
