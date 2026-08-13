@@ -113,6 +113,23 @@ else +INF for entries with a todo keyword, -INF otherwise."
   (magit-refresh-all)
   (message "Committing and pushing... done"))
 
+(defun bcc32-org--refresh-vc-state-in-repo-buffers ()
+  "Refresh `vc-mode' in all buffers visiting files in the current repo."
+  (when-let* ((toplevel (magit-toplevel)))
+    (dolist (buffer (buffer-list))
+      (when-let* ((file (buffer-file-name buffer))
+                  ((file-in-directory-p file toplevel)))
+        (with-current-buffer buffer
+          (vc-refresh-state))))))
+
+;; Unlike `magit-run-git', `magit-git' does not call `magit-refresh', so
+;; `bcc32-org-commit-and-push-all' only runs this hook via its explicit
+;; `magit-refresh-all' (which runs `magit-post-refresh-hook' even when no
+;; magit buffers are open).  The hook also runs after every other magit
+;; refresh, spawning one git process per file buffer each time; fine for a
+;; small repo with few buffers, consider debouncing if it ever gets slow.
+(add-hook 'magit-post-refresh-hook #'bcc32-org--refresh-vc-state-in-repo-buffers)
+
 (defcustom bcc32-org-always-skip-weekends nil
   "If non-nil, always reschedule events to the next weekday."
   :type 'boolean
