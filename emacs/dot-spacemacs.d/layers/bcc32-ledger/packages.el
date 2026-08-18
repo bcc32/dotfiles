@@ -14,12 +14,6 @@
   (defvar flycheck-checkers)
   (defvar spacemacs-ledger-mode-map)
 
-  (with-eval-after-load 'ledger-mode
-    (defvar ledger-mode-map)
-    ;; Emacs 28 fixes a bug where newline-and-indent incorrectly indents the
-    ;; original line, but I actually like this behavior for ledger-mode.
-    (bind-key "RET" #'reindent-then-newline-and-indent ledger-mode-map))
-
   ;; FIXME: ledger already defines a flymake checker, can we just reuse it for
   ;; flycheck?
   (when (configuration-layer/package-used-p 'flycheck)
