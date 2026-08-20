@@ -1035,6 +1035,7 @@ This function is called at the very end of Spacemacs initialization."
    '(merlin-eldoc-type nil)
    '(midnight-mode t)
    '(minibuffer-depth-indicate-mode t)
+   '(minibuffer-visible-completions t)
    '(mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
    '(mode-line-compact 'long)
    '(mu4e-attachment-dir "~/Downloads/")
