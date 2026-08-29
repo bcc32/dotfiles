@@ -1194,6 +1194,7 @@ This function is called at the very end of Spacemacs initialization."
    '(sql-product 'sqlite)
    '(switch-to-buffer-in-dedicated-window 'pop)
    '(switch-to-buffer-obey-display-actions t)
+   '(system-taskbar-mode t)
    '(tab-always-indent 'complete)
    '(tab-bar-show 1)
    '(tab-width 8)
