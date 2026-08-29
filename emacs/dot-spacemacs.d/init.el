@@ -1214,6 +1214,7 @@ This function is called at the very end of Spacemacs initialization."
    '(vc-async-checkin t)
    '(vc-follow-symlinks t)
    '(vc-handled-backends '(Git Hg))
+   '(view-lossage-auto-refresh t)
    '(what-cursor-show-names t)
    '(zoneinfo-style-world-list
      '(("America/Los_Angeles" "Seattle") ("America/New_York" "New York")
