@@ -1213,6 +1213,7 @@ This function is called at the very end of Spacemacs initialization."
    '(vc-allow-async-diff t)
    '(vc-allow-async-revert t)
    '(vc-async-checkin t)
+   '(vc-dir-auto-hide-up-to-date t)
    '(vc-follow-symlinks t)
    '(vc-handled-backends '(Git Hg))
    '(view-lossage-auto-refresh t)
