@@ -266,6 +266,22 @@ With numeric prefix argument ARG, bump the counter ARG times."
         (cl-decf cur total)))
     (replace-match (number-to-string cur) t t nil 1)))
 
+;;;###autoload
+(defun bcc32-org-move-example-block-to-attachment (file)
+  "Move the contents of the example block at point to FILE, so it can be attached to another node."
+  (interactive "FFile name:")
+  (let ((elt (org-element-at-point)))
+    (unless (org-element-type-p elt 'example-block)
+      (user-error "No example block at point"))
+    (let ((content (org-element-property :value elt nil 'force)))
+      (cl-assert (not (file-exists-p file)))
+      (with-temp-file file
+        (insert content)
+        (org-do-remove-indentation))
+      (without-restriction
+        (delete-region (org-element-begin elt) (org-element-end elt)))
+      (message "Wrote %s" file))))
+
 (provide 'bcc32-org)
 
 ;;; bcc32-org.el ends here
