@@ -249,6 +249,7 @@ This function should only modify configuration layer settings."
      zenburn-theme
 
      olivetti
+     typewriter
 
      (bcc32-private
       :location (recipe :fetcher file
