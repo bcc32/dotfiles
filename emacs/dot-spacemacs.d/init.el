@@ -959,6 +959,7 @@ This function is called at the very end of Spacemacs initialization."
    '(evil-want-fine-undo t)
    '(explicit-shell-file-name "zsh")
    '(fancy-battery-mode t)
+   '(flycheck-annotate-other-lines-style nil)
    '(flycheck-emacs-lisp-initialize-packages t nil nil "Set so that ~/.spacemacs.d/init.el is checked properly")
    '(flycheck-emacs-lisp-load-path '("./"))
    '(flycheck-ledger-explicit t)
