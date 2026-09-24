@@ -22,7 +22,7 @@ unset in the selected frame, passing ARGS."
         (let ((process-environment (cons (concat "SSH_CONNECTION=" ssh-connection)
                                          process-environment)))
           (if (equal 0 (call-process "~/bin/,browse-on-ssh-client"
-                                     nil t nil url))
+                                     nil t nil "--verbose" url))
               (kill-buffer)
             (display-buffer (current-buffer))
             (error "Failed to browse URL on SSH client"))))

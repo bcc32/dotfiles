@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-set -eux
+set -eu
+
+if [[ $1 == --verbose ]]; then
+  shift
+  verbose=1
+  set -x
+fi
 
 url=$1
 ssh_client_ip=${SSH_CONNECTION%% *}
@@ -35,4 +41,4 @@ ssh_options=(
   -o ControlPersist=3600s
 )
 ssh -Nf "${ssh_options[@]}" "$ssh_client_ip"
-scp -v "${ssh_options[@]}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
+scp ${verbose+-v} "${ssh_options[@]}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
