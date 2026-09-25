@@ -780,12 +780,6 @@ See the header of this file for more information."
   (when (eq system-type 'darwin)
     (spacemacs/load-spacemacs-env)))
 
-;; TODO: This should probably just be part of Spacemacs, if it's going to take
-;; over installed packages via spacemacs-sync-packages anyway.
-(define-advice package--save-selected-packages (:override (&rest _) dont-save-to-custom-file -100)
-  "Don't save `package-selected-packages' customization."
-  nil)
-
 (define-advice recentf-cleanup (:after (&rest _) cleanup-file-name-history)
   "Clean up `file-name-history' after cleaning up recentf lists."
   (setq file-name-history
