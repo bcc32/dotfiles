@@ -19,6 +19,7 @@
                                  :repo "bcc32/helm-make"))
     mode-line-bell
     orderless
+    projectile
     vertico))
 
 (defun bcc32/init-advent-of-code ()
@@ -118,6 +119,12 @@
     :post-init
     ;; revert spacemacs customization
     (setopt orderless-component-separator #'orderless-escapable-split-on-space)))
+
+(defun bcc32/post-init-projectile ()
+  ;; If I'm using a project.el command, I want project.el semantics.
+  (add-hook 'projectile-mode-hook
+            (lambda ()
+              (remove-hook 'project-find-functions 'project-projectile))))
 
 (defun bcc32/post-init-vertico ()
   (with-eval-after-load 'vertico
