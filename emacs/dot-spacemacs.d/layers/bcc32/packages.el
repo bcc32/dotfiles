@@ -4,7 +4,7 @@
   '((advent-of-code :location (recipe :fetcher github
                                       :repo "bcc32/advent-of-code"
                                       :files ("elisp/advent-of-code.el")))
-    (bcc32 :location local)
+    (bcc32 :location user-lisp)
     corfu
     debbugs
     diminish

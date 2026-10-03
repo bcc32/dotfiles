@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (defconst bcc32-org-packages
-  '((bcc32-org :location (recipe :fetcher local))
+  '((bcc32-org :location user-lisp)
     org))
 
 (defun bcc32-org//cleanup-before-save-hook ()
