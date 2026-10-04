@@ -7,4 +7,3 @@ Match exec ~/bin/,should-use-1password-ssh-agent
 Host *
     ControlMaster auto
     ControlPath ~/.ssh/master-%r@%h:%p
-    VisualHostKey yes
