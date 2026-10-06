@@ -59,17 +59,19 @@ When pasting into web forms, newlines separate paragraphs, unlike
 in Emacs where paragraphs are delimited by empty lines.  This
 command fills the copied text with no newlines within paragraphs."
   (interactive "r")
-  (let ((filter-buffer-substring-function
-         (lambda (beg end delete)
-           (let ((contents (if delete
-                               (delete-and-extract-region beg end)
-                             (buffer-substring beg end))))
-             (with-temp-buffer
-               (insert contents)
-               (setq fill-column most-positive-fixnum)
-               (indent-region (point-min) (point-max))
-               (fill-region (point-min) (point-max))
-               (buffer-string))))))
+  (let* ((orig-major-mode major-mode)
+         (filter-buffer-substring-function
+          (lambda (beg end delete)
+            (let ((contents (if delete
+                                (delete-and-extract-region beg end)
+                              (buffer-substring beg end))))
+              (with-temp-buffer
+                (funcall orig-major-mode)
+                (insert contents)
+                (setq fill-column most-positive-fixnum)
+                (indent-region (point-min) (point-max))
+                (fill-region (point-min) (point-max))
+                (buffer-string))))))
     (kill-ring-save beg end)))
 
 (with-eval-after-load 'evil
