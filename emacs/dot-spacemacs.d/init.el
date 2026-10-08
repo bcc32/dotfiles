@@ -944,6 +944,7 @@ This function is called at the very end of Spacemacs initialization."
    '(eglot-confirm-server-edits nil)
    '(enable-recursive-minibuffers t)
    '(enable-remote-dir-locals t)
+   '(envrc-async 2)
    '(epg-pinentry-mode 'loopback)
    '(evil-ex-visual-char-range t)
    '(evil-kill-on-visual-paste nil)
