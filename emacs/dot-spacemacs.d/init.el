@@ -872,10 +872,11 @@ before packages are loaded."
     (setq mu4e-trash-without-flag t)
     (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode))
 
-  ;; FIXME: should this use `vc-register' with a fileset, to be generic across
-  ;; backends?
-  (add-hook 'org-attach-after-change-hook (lambda (attach-dir)
-                                            (vc-git-register (list attach-dir))))
+  (add-hook 'org-attach-after-change-hook
+            (lambda (attach-dir)
+              (vc-register
+               (list (vc-backend-for-registration attach-dir)
+                     (list attach-dir)))))
 
   ;; startup.el normally calls `quietly-read-abbrev-file' automatically, but
   ;; `dotspacemacs/user-config' runs in `emacs-startup-hook', which is too late.
