@@ -857,9 +857,6 @@ before packages are loaded."
   (add-hook 'diary-mode-hook (lambda () (setq-local require-final-newline t)))
   (add-hook 'diary-mode-hook #'flyspell-mode)
 
-  (with-eval-after-load 'dired
-    (dired-async-mode))
-
   (with-eval-after-load 'savehist
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
