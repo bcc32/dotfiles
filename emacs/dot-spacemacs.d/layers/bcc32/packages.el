@@ -19,8 +19,7 @@
                                  :repo "bcc32/helm-make"))
     mode-line-bell
     orderless
-    projectile
-    vertico))
+    projectile))
 
 (defun bcc32/init-advent-of-code ()
   (use-package advent-of-code
@@ -125,7 +124,3 @@
   (add-hook 'projectile-mode-hook
             (lambda ()
               (remove-hook 'project-find-functions 'project-projectile))))
-
-(defun bcc32/post-init-vertico ()
-  (with-eval-after-load 'vertico
-    (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)))
