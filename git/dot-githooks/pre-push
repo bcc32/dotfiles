@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# Global git pre-push hook (installed via core.hooksPath = ~/.githooks/).
+#
+# Refuse to push a local branch to a remote branch with a *different* name,
+# e.g. feature-branch -> upstream/master.  This is almost always a mistake
+# caused by a long-lived personal branch having its upstream set to the branch
+# it was forked from (so that `git status` shows ahead/behind and `git pull`
+# merges from it), combined with `git push` or magit's
+# `magit-push-current-to-upstream` (P u) pushing to that same upstream.
+#
+# To push to a differently-named branch on purpose, either:
+#
+#   git push --no-verify ...                   # (magit: -h in the push transient)
+#   GIT_ALLOW_BRANCH_MISMATCH=1 git push ...
+#   git -c hooks.allowBranchMismatch=true push ...
+#   git config hooks.allowBranchMismatch true   # per repo, permanently
+#
+# Called with:
+#   $1 -- name of the remote to which the push is being done
+#   $2 -- URL to which the push is being done
+#
+# stdin: one line per ref being pushed:
+#   <local ref> <local sha1> <remote ref> <remote sha1>
+
+set -o errexit -o nounset -o pipefail
+
+remote=$1
+url=$2
+
+# Since core.hooksPath replaces the repo-local hooks directory entirely, give
+# any repo-local pre-push hook a chance to run as well.
+# (Not `--git-path hooks/pre-push`, which itself honours core.hooksPath.)
+local_hook=$(git rev-parse --git-common-dir)/hooks/pre-push
+if [ -x "$local_hook" ] && [ "$(realpath -- "$local_hook")" != "$(realpath -- "$0")" ]; then
+  input=$(cat)
+  printf '%s\n' "$input" | "$local_hook" "$@"
+  exec <<<"$input"
+fi
+
+allow=${GIT_ALLOW_BRANCH_MISMATCH:-}
+if [ -z "$allow" ]; then
+  allow=$(git config --type=bool --default=false hooks.allowBranchMismatch)
+  [ "$allow" = true ] || allow=
+fi
+
+z40=0000000000000000000000000000000000000000
+status=0
+
+while read -r local_ref local_sha remote_ref _remote_sha; do
+  # Deletions (git push origin :branch) have no local ref.
+  [ "$local_sha" = "$z40" ] && continue
+
+  case "$local_ref" in refs/heads/*) ;; *) continue ;; esac
+  case "$remote_ref" in refs/heads/*) ;; *) continue ;; esac
+
+  local_branch=${local_ref#refs/heads/}
+  remote_branch=${remote_ref#refs/heads/}
+
+  if [ "$local_branch" != "$remote_branch" ]; then
+    if [ -n "$allow" ]; then
+      echo >&2 "pre-push: allowing push of '$local_branch' to '$remote/$remote_branch' ($url)"
+    else
+      cat >&2 <<MSG
+pre-push: REFUSING to push local branch '$local_branch' to '$remote/$remote_branch'
+pre-push:   ($url)
+pre-push: Branch names differ; this is usually an accidental push to the
+pre-push: upstream branch.  If this is intended, re-run with
+pre-push:   GIT_ALLOW_BRANCH_MISMATCH=1 git push ...
+MSG
+      status=1
+    fi
+  fi
+done
+
+exit "$status"
