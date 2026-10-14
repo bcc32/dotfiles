@@ -925,6 +925,7 @@ This function is called at the very end of Spacemacs initialization."
    '(calendar-week-start-day 1)
    '(column-enforce-column nil)
    '(completions-detailed t)
+   '(confirm-kill-emacs 'yes-or-no-p)
    '(corfu-auto-delay 0.5)
    '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
    '(diary-file "~/todo/diary")
