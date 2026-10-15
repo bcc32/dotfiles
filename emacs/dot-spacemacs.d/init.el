@@ -806,18 +806,10 @@ before packages are loaded."
   (declare-function merlin-enclosing-expand "merlin")
   (declare-function ocamlformat "ocamlformat")
   (declare-function spacemacs/enable-flycheck "~/.emacs.d/layers/+checkers/syntax-checking/funcs.el")
-  (declare-function spacemacs/save-buffers-kill-emacs "~/.emacs.d/layers/+spacemacs/spacemacs-defaults/funcs.el")
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
 
   (put 'list-timers 'disabled nil)
-
-  ;; Replace `spacemacs/kill-emacs' and `spacemacs/prompt-kill-emacs' with
-  ;; `spacemacs/save-buffers-kill-emacs'.  The former functions do not properly
-  ;; run `kill-emacs-query-functions' and so will kill buffers that have
-  ;; processes running.
-  (bind-keys ([remap spacemacs/kill-emacs] . spacemacs/save-buffers-kill-emacs)
-             ([remap spacemacs/prompt-kill-emacs] . spacemacs/save-buffers-kill-emacs))
 
   (bind-key [remap zap-to-char] #'zap-up-to-char)
   (bind-key [remap keyboard-quit] #'er-keyboard-quit)
