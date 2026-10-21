@@ -820,7 +820,8 @@ before packages are loaded."
   (with-eval-after-load 'embark
     (bind-key "g" (lambda (dir)
                     (interactive "Ddirectory: ")
-                    (magit-status dir))
+                    (let ((default-directory dir))
+                      (call-interactively #'magit-status)))
               embark-file-map))
 
   (with-eval-after-load 'eshell
