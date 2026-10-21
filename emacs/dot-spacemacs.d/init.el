@@ -802,7 +802,6 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (declare-function dired-omit-mode "dired-x")
   (declare-function merlin-enclosing-expand "merlin")
   (declare-function ocamlformat "ocamlformat")
   (declare-function spacemacs/enable-flycheck "~/.emacs.d/layers/+checkers/syntax-checking/funcs.el")
