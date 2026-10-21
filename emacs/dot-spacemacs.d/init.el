@@ -861,6 +861,8 @@ before packages are loaded."
   (use-package mu4e
     :defer t
     :config
+    ;; Move to Trash but don't flag it.  See
+    ;; https://github.com/djcb/mu/issues/1136
     (setq mu4e-trash-without-flag t)
     (add-hook 'gnus-article-mode-hook #'spacemacs/disable-hl-line-mode))
 
