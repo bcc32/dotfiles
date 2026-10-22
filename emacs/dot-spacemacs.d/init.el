@@ -1053,6 +1053,9 @@ This function is called at the very end of Spacemacs initialization."
    '(mu4e-update-interval 180)
    '(orderless-matching-styles '(orderless-regexp orderless-literal orderless-prefixes))
    '(org-M-RET-may-split-line '((default)))
+   '(org-agenda-custom-commands
+     '(("a" "Agenda and time tracking"
+        ((agenda "" nil) (tags "time_tracking" nil)) nil nil)))
    '(org-agenda-dim-blocked-tasks t)
    '(org-agenda-files (mapcar #'file-truename '("~/todo/main/" "~/todo/low/")) nil nil "Must not contain symlinks or else auto-revert breaks, bug #65904")
    '(org-agenda-include-diary t)
