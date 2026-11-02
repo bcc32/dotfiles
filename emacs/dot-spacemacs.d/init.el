@@ -49,6 +49,16 @@ found, passing ARGS."
   "Return t if PROJECT should be ignored by project.el."
   (bcc32/projectile-ignored-project-function (project-root project)))
 
+(defun bcc32/save-sent-message-to-todo ()
+  "Save sent messages to ~/todo/ and copy their file names.
+
+Makes it easier to immediately `org-attach-attach-mv' them."
+  (let ((output-file (file-name-concat "~/todo/" (file-name-nondirectory buffer-file-name))))
+    (write-region nil nil output-file
+                  nil nil nil 'mustbenew)
+    (kill-new output-file)
+    (message "Copied %s" output-file)))
+
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (unless (and-let* ((hash (bound-and-true-p editorconfig-properties-hash)))
@@ -879,6 +889,10 @@ before packages are loaded."
   ;; be overridden by the spacemacs-defaults layer.
   (setq abbrev-file-name "~/src/dotfiles-private/Emacs/abbrev_defs")
   (read-abbrev-file)
+
+  ;; Convenience for archiving emails sent from Emacs, such as
+  ;; `report-emacs-bug'.
+  (add-hook 'message-sent-hook #'bcc32/save-sent-message-to-todo)
 
   (lossage-size 3000))
 
