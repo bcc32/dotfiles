@@ -1141,6 +1141,7 @@ This function is called at the very end of Spacemacs initialization."
    '(read-extended-command-predicate 'command-completion-default-include-p)
    '(remote-file-name-inhibit-auto-save-visited t)
    '(remote-file-name-inhibit-locks t)
+   '(report-emacs-bug-no-explanations t)
    '(revert-without-query '(""))
    '(rustic-default-test-arguments "--quiet --benches --tests --all-features")
    '(rustic-format-trigger 'on-compile)
