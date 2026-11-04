@@ -13,6 +13,7 @@
 [core]
 	autocrlf = input
 	excludesfile = ~/.cvsignore
+	hooksPath = ~/.githooks/
 [diff]
 	algorithm = histogram
 	colorMoved = default
