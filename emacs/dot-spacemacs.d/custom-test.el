@@ -34,13 +34,6 @@
                    ".src" ".svn" ".git" ".hg" ".bzr"
                    "_MTN" "_darcs" "{arch}"))))
 
-(ert-deftest test-magit-todos-exclude-globs ()
-  "`magit-todos-exclude-globs' default value has not changed."
-  :tags '(bcc32 custom)
-  (require 'magit-todos)
-  (should (equal (custom--standard-value 'magit-todos-exclude-globs)
-                 '(".git/"))))
-
 (ert-deftest test-org-modules ()
   "`org-modules' default value has not changed."
   :tags '(bcc32 custom)
