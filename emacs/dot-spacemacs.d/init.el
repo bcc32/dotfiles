@@ -888,7 +888,8 @@ before packages are loaded."
   ;; On the other hand, `dotspacemacs/user-init' is too early; the value would
   ;; be overridden by the spacemacs-defaults layer.
   (setq abbrev-file-name "~/src/dotfiles-private/Emacs/abbrev_defs")
-  (read-abbrev-file)
+  (when (file-readable-p abbrev-file-name)
+    (read-abbrev-file))
 
   ;; Convenience for archiving emails sent from Emacs, such as
   ;; `report-emacs-bug'.
