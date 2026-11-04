@@ -86,7 +86,8 @@ else +INF for entries with a todo keyword, -INF otherwise."
         (set-buffer buf)
         (goto-char (point-min))
         (sort-if-nonempty)
-        (org-map-entries #'sort-if-nonempty t nil)))))
+        (org-map-entries #'sort-if-nonempty t nil))))
+  (org-refile-cache-clear))
 
 (defun bcc32-org--auto-ingest-init-org-hook ()
   "Ingest an org file if it is named init.org."
