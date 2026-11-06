@@ -4,7 +4,7 @@
 
 ;; Author: Aaron L. Zeng <me@bcc32.com>
 ;; Version: 0.1
-;; Package-Requires: ((emacs "29.1") (magit "2.11.0") (org "9.6.0") (uuidgen "1.0"))
+;; Package-Requires: ((emacs "31.1") (magit "2.11.0") (org "9.6.0") (uuidgen "1.0"))
 ;; URL: https://github.com/bcc32/dotfiles
 
 ;;; Commentary:
@@ -17,6 +17,7 @@
 (require 'org)
 (require 'org-agenda)
 (require 'uuidgen)
+(require 'vc)
 
 (require 'bcc32-org-lint)
 
@@ -70,10 +71,30 @@ else +INF for entries with a todo keyword, -INF otherwise."
   (interactive "*")
   (org-sort-entries nil ?f #'bcc32-org--sort-by-closed-getkey))
 
+(defun bcc32-org--assert-agenda-clean ()
+  "Signal a `user-error' unless VC-managed agenda files are saved and clean.
+
+Agenda files not under version control are ignored."
+  (let (roots)
+    (dolist (buf (org-buffer-list 'agenda))
+      (when-let* ((file (buffer-file-name buf))
+                  (backend (vc-responsible-backend file t))
+                  (root (vc-call-backend backend 'root file)))
+        (when (buffer-modified-p buf)
+          (user-error "Agenda buffer %s has unsaved changes" buf))
+        (cl-pushnew (cons root backend) roots :test #'equal)))
+    (pcase-dolist (`(,root . ,backend) roots)
+      (when (vc-dir-status-files root nil backend)
+        (user-error "%s has uncommitted changes" root)))))
+
 ;;;###autoload
 (defun bcc32-org-sort-entire-agenda ()
-  "Sort all agenda subtrees by CLOSED."
+  "Sort all agenda subtrees by CLOSED.
+
+Refuse to run unless VC-managed agenda files are saved and their
+repos are clean, so the resulting diff contains only the sort."
   (interactive)
+  (bcc32-org--assert-agenda-clean)
   (cl-flet ((sort-if-nonempty
               ()
               (condition-case e
