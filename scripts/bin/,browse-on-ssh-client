@@ -19,7 +19,7 @@ if [[ $url == http* ]]; then
 URL=$url
 EOF
   dest_file_basename="$(uuid -v4).url"
-elif [[ $url == file:///* ]]; then
+elif [[ $url == file://* ]]; then
   if command -v trurl >/dev/null 2>/dev/null; then
     file=$(trurl --get='[path]' "$url")
   else
