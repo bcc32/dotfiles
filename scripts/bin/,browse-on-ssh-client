@@ -41,4 +41,4 @@ ssh_options=(
   -o ControlPersist=3600s
 )
 ssh -Nf "${ssh_options[@]}" "$ssh_client_ip"
-scp ${verbose+-v} "${ssh_options[@]}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
+rsync ${verbose+-v} -e "ssh ${ssh_options[*]@Q}" -q "$file" "$ssh_client_ip:.links-to-open/$dest_file_basename"
