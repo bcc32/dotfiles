@@ -61,9 +61,7 @@ Makes it easier to immediately `org-attach-attach-mv' them."
 
 (defun bcc32//set-fill-column-in-text-mode-hook ()
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
-  (unless (and-let* ((hash (bound-and-true-p editorconfig-properties-hash)))
-            (gethash 'max_line_length hash))
-    (setq-local fill-column 70)))
+  (setq-local fill-column 70))
 
 (declare-function sp-local-pair "smartparens")
 (declare-function sp-update-local-pairs "smartparens")
