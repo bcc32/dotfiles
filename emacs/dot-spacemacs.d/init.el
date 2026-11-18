@@ -63,19 +63,6 @@ Makes it easier to immediately `org-attach-attach-mv' them."
   "Set `fill-column' to 70 characters in derived modes of `text-mode'."
   (setq-local fill-column 70))
 
-(declare-function sp-local-pair "smartparens")
-(declare-function sp-update-local-pairs "smartparens")
-(defun bcc32--work-around-smartparens-1036 ()
-  "Work around Fuco1/smartparens#1036.
-
-`smartparens-strict-mode' has the wrong behavior for
-`eval-expression'.
-
-Intended to be added to `eval-expression-minibuffer-setup-hook'."
-  (sp-local-pair 'eval-expression-minibuffer "'" nil :actions nil)
-  (sp-local-pair 'eval-expression-minibuffer "`" nil :actions nil)
-  (sp-update-local-pairs 'eval-expression-minibuffer))
-
 ;; https://emacsredux.com/blog/2025/06/01/let-s-make-keyboard-quit-smarter/
 (defun er-keyboard-quit ()
   "Smarter version of the built-in `keyboard-quit'.
@@ -814,8 +801,6 @@ before packages are loaded."
   (declare-function ocamlformat "ocamlformat")
   (declare-function spacemacs/enable-flycheck "~/.emacs.d/layers/+checkers/syntax-checking/funcs.el")
 
-  (add-hook 'eval-expression-minibuffer-setup-hook #'bcc32--work-around-smartparens-1036)
-
   (put 'list-timers 'disabled nil)
 
   (bind-key [remap zap-to-char] #'zap-up-to-char)
@@ -892,6 +877,8 @@ before packages are loaded."
   ;; Convenience for archiving emails sent from Emacs, such as
   ;; `report-emacs-bug'.
   (add-hook 'message-sent-hook #'bcc32/save-sent-message-to-todo)
+
+  (bcc32-fix-apply-all)
 
   (lossage-size 3000))
 
