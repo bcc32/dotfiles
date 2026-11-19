@@ -829,6 +829,7 @@ before packages are loaded."
     (evil-set-initial-state 'shell-command-mode 'normal))
 
   (spacemacs/enable-flycheck 'emacs-lisp-mode)
+  (remove-hook 'emacs-lisp-mode-hook #'auto-compile-mode)
 
   (spacemacs/set-leader-keys-for-major-mode 'tuareg-mode
     "f" #'ocamlformat
