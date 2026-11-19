@@ -840,9 +840,6 @@ before packages are loaded."
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
-  (add-hook 'diary-mode-hook (lambda () (setq-local require-final-newline t)))
-  (add-hook 'diary-mode-hook #'flyspell-mode)
-
   (with-eval-after-load 'savehist
     (defvar savehist-additional-variables)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
@@ -923,7 +920,6 @@ This function is called at the very end of Spacemacs initialization."
    '(confirm-kill-emacs 'yes-or-no-p)
    '(corfu-auto-delay 0.5)
    '(counsel-org-goto-all-outline-path-prefix 'buffer-name)
-   '(diary-file "~/todo/diary")
    '(diary-nongregorian-marking-hook '(diary-chinese-mark-entries))
    '(diff-switches '("-u" "-r"))
    '(dired-async-skip-fast t)
@@ -1059,7 +1055,6 @@ This function is called at the very end of Spacemacs initialization."
         ((agenda "" nil) (tags "time_tracking" nil)) nil nil)))
    '(org-agenda-dim-blocked-tasks t)
    '(org-agenda-files (mapcar #'file-truename '("~/todo/main/" "~/todo/low/")) nil nil "Must not contain symlinks or else auto-revert breaks, bug #65904")
-   '(org-agenda-include-diary t)
    '(org-agenda-mouse-1-follows-link t)
    '(org-agenda-prefer-last-repeat t)
    '(org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
