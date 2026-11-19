@@ -1072,8 +1072,8 @@ This function is called at the very end of Spacemacs initialization."
    '(org-agenda-window-setup 'other-window)
    '(org-appear-autolinks nil)
    '(org-capture-templates
-     '(("d" "Diary entry" entry (file "~/todo/low/diary.org") "* %t\12- %?"
-        :jump-to-captured t :hook evil-insert-state)
+     '(("d" "Diary entry" entry (file "~/todo/low/diary.org") "* %t\12- %?" :hook
+        evil-insert-state)
        ("g" "Groceries" entry
         (file+olp "~/todo/main/shopping-list.org" "Groceries") "* TODO %? %^g"
         :hook evil-insert-state)
