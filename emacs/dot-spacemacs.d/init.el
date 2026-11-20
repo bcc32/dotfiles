@@ -1043,6 +1043,7 @@ This function is called at the very end of Spacemacs initialization."
    '(mu4e-refile-folder "/Archive")
    '(mu4e-search-skip-duplicates nil)
    '(mu4e-sent-folder "/Sent")
+   '(mu4e-sent-messages-behavior 'delete)
    '(mu4e-split-view nil)
    '(mu4e-trash-folder "/Trash")
    '(mu4e-update-interval 180)
