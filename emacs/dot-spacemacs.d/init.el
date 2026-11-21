@@ -1175,7 +1175,7 @@ This function is called at the very end of Spacemacs initialization."
    '(smtpmail-smtp-server "smtp.fastmail.com")
    '(smtpmail-smtp-service 465)
    '(smtpmail-smtp-user "z@bcc32.com")
-   '(smtpmail-stream-type 'ssl)
+   '(smtpmail-stream-type 'tls)
    '(solarized-distinct-doc-face t)
    '(solarized-use-more-italic t)
    '(spacemacs-keep-legacy-current-buffer-delete-bindings nil)
