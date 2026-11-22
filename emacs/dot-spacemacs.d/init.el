@@ -1029,17 +1029,18 @@ This function is called at the very end of Spacemacs initialization."
               "date:7d..now AND NOT maildir:/Trash AND NOT maildir:/Spam"
               :hide-unread t :key 119)
        (:name "Messages with images" :query "mime:image/*" :key 112)))
+   '(mu4e-change-filenames-when-moving t)
    '(mu4e-compose-complete-only-personal t)
    '(mu4e-drafts-folder "/Drafts")
-   '(mu4e-get-mail-command "~/bin/,offlineimap")
+   '(mu4e-get-mail-command "~/bin/,mbsync")
    '(mu4e-headers-date-format "%F")
    '(mu4e-headers-fields
      '((:human-date . 12) (:flags . 6) (:maildir . 20) (:from-or-to . 22) (:subject)))
    '(mu4e-headers-time-format "%T")
    '(mu4e-hide-index-messages t)
    '(mu4e-maildir-shortcuts
-     '((:maildir "/INBOX" :key 105) (:maildir "/TODO.Input into ledger" :key 108)
-       (:maildir "/Newsletters.to read" :key 110)))
+     '((:maildir "/INBOX" :key 105) (:maildir "/TODO/Input into ledger" :key 108)
+       (:maildir "/Newsletters/to read" :key 110)))
    '(mu4e-refile-folder "/Archive")
    '(mu4e-search-skip-duplicates nil)
    '(mu4e-sent-folder "/Sent")

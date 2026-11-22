@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -o errexit -o nounset
+
+if ~/bin/,am-online; then
+  timeout -k 1m 2m mbsync -a
+else
+  echo >&2 "No Internet connection"
+  exit 1
+fi
