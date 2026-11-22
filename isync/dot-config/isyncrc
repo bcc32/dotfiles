@@ -1,6 +1,6 @@
 MaildirStore local
 Path ~/Maildir/
-Inbox ~/Maildir/INBOX/
+Inbox ~/Maildir/INBOX
 SubFolders Verbatim
 
 IMAPAccount fastmail
