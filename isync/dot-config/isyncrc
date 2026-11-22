@@ -1,0 +1,22 @@
+MaildirStore local
+Path ~/Maildir/
+Inbox ~/Maildir/INBOX/
+SubFolders Verbatim
+
+IMAPAccount fastmail
+Host imap.fastmail.com
+TLSType IMAPS
+User z@bcc32.com
+PassCmd "cat ~/src/dotfiles-private/offlineimap/password.txt"
+# TODO separate password file
+
+IMAPStore remote-fastmail
+Account fastmail
+
+Channel local-remote-fastmail
+Near :local:
+Far :remote-fastmail:
+Pattern *
+# treat remote as source of truth for directories
+Create Near
+Remove Near
