@@ -20,6 +20,8 @@ Pattern *
 # treat remote as source of truth for directories
 Create Near
 Remove Near
+# Sync deletions as deletions rather than marking as trashed
+Expunge Both
 # https://vxlabs.com/2021/03/21/mbsync-copyarrivaldate-yes/
 # For Fastmail
 CopyArrivalDate yes
