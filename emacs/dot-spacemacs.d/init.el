@@ -217,6 +217,11 @@ This function should only modify configuration layer settings."
      finance
      (shell :variables
             shell-default-shell 'eat
+            ;; I would prefer to just have this use `explicit-shell-file-name',
+            ;; but that isn't customized until after package initialization.
+            ;; Even better would be if Spacemacs didn't interfere with these
+            ;; variables at all.
+            shell-default-term-shell "zsh"
             shell-enable-smart-eshell t
             shell-enable-vterm-support nil)
      systemd
