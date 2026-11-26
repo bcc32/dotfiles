@@ -37,9 +37,14 @@ If ARG is non-nil, take next ARG files instead."
 
 (defun bcc32-dired-take-file (file1 file2 &optional _)
   "Internal to `bcc32-dired-do-take'.  Copy FILE1 to FILE2 with reflinks."
-  (call-process-shell-command
-   (format "cp --reflink=always --preserve=timestamps -r -T %s %s"
-           (shell-quote-argument file1) (shell-quote-argument file2))))
+  (with-current-buffer (generate-new-buffer "*take file*")
+    (let* ((cmd (format "cp --reflink=always --preserve=timestamps -r -T %s %s"
+                        (shell-quote-argument file1) (shell-quote-argument file2)))
+           (ret (call-process-shell-command cmd nil t)))
+      (unless (eq 0 ret)
+        (display-buffer (current-buffer))
+        (insert (format "%s exited with status %s\n" cmd ret))
+        (error "Take failed")))))
 
 (defun bcc32-hard-disable-command ()
   "Raise an error and educate the user not to press those keys.
