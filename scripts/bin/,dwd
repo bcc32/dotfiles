@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ $# -lt 1 ]; then
-  echo >&2 "Usage: $0 TORRENT [TORRENT]..."
-fi
-
-for torrent; do
-  transmission-remote -t "$torrent" --move '/srv/share/var/transmission/Downloads/delete-when-done/'
-done
