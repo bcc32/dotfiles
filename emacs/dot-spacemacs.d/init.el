@@ -149,7 +149,8 @@ This function should only modify configuration layer settings."
      ;; c-c++
      csv
      common-lisp
-     emacs-lisp
+     (emacs-lisp :variables
+                 emacs-lisp-format-on-save nil)
      ;; (go :variables
      ;;     go-format-before-save t
      ;;     go-tab-width 4)
